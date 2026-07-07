@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HUBIX Motivation V6 · 3 Kombinationen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--orange:#FF9F1C;--orange-2:#ff8c00;--purple:#5625a2;--teal:#00D4BC}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:'Inter',sans-serif;background:#0a0a1e;color:#fff;padding:24px 16px 80px;min-height:100vh;overflow-x:hidden}
+  .page-title{max-width:1720px;margin:0 auto 26px;text-align:center}
+  .page-title h1{font-size:22px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-.3px}
+  .page-title p{font-size:13px;color:rgba(255,255,255,.6);font-weight:500;line-height:1.5;max-width:800px;margin:0 auto}
+  .page-title .hint{font-size:11px;color:var(--teal);margin-top:8px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800}
+
+  .grid{max-width:1720px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;justify-items:center}
+  @media(max-width:1400px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}}
+  @media(max-width:750px){.grid{grid-template-columns:1fr;gap:48px}}
+
+  .col-header{text-align:center;margin-bottom:12px;color:#fff;max-width:390px;padding:0 4px}
+  .col-header .no{display:inline-block;padding:5px 12px;background:linear-gradient(135deg,var(--orange),#ff8c00);color:#fff;font-size:10px;font-weight:900;letter-spacing:2px;border-radius:99px;margin-bottom:8px;box-shadow:0 4px 12px rgba(255,159,28,.35)}
+  .col-header .name{font-size:15px;font-weight:900;color:#fff;margin-bottom:3px;letter-spacing:-.2px}
+  .col-header .desc{font-size:11.5px;color:rgba(255,255,255,.55);font-weight:500;line-height:1.5}
+  .col{display:flex;flex-direction:column;align-items:center}
+
+  .phone{width:390px;height:944px;border-radius:48px;background:#F4F4F8;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 8px #1a1033,0 0 0 10px rgba(255,255,255,.05);overflow:hidden;position:relative}
+  @media(max-width:430px){.phone{width:100%;max-width:380px;height:900px}}
+  .screen{position:absolute;inset:0;padding:56px 22px 22px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;background:radial-gradient(ellipse at 50% 15%,rgba(0,212,188,.10),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(255,159,28,.10),transparent 60%),linear-gradient(160deg,#0e1128 0%,#0a0d20 55%,#050810 100%)}
+  .screen::-webkit-scrollbar{display:none}
+
+  .brand{color:#fff;font-weight:900}
+  .brand-x{color:var(--teal)}
+
+  .eyebrow-caps{font-family:'Inter',sans-serif;font-weight:900;font-size:10px;color:var(--orange);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;padding-left:26px;position:relative}
+  .eyebrow-caps::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:18px;height:2px;background:var(--orange)}
+
+  /* Title · V4-Style Playfair */
+  .title{font-family:'Playfair Display',serif;font-weight:900;font-size:36px;line-height:1;letter-spacing:-.9px;color:#fff;margin-bottom:8px}
+  .title-sub{font-family:'Inter',sans-serif;font-weight:700;font-size:15px;line-height:1.3;color:rgba(255,255,255,.8);letter-spacing:-.1px;margin-bottom:16px}
+  .title-sub .o{color:var(--orange);font-weight:800}
+  .title em{font-style:italic;color:var(--orange);text-shadow:0 0 30px rgba(255,159,28,.4)}
+
+  /* V4 Flow-copy (Story) */
+  .flow-copy{padding:14px 16px;border-radius:14px;background:rgba(0,212,188,.05);border:1px solid rgba(0,212,188,.22);margin-bottom:14px}
+  .flow-copy p.dies-here{font-size:16px;line-height:1.2;margin-bottom:12px}
+  .flow-copy p.dies-here b{color:var(--orange);font-weight:900;text-shadow:0 0 24px rgba(255,159,28,.45)}
+  .flow-copy p{font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.85);font-weight:500;margin-bottom:8px}
+  .flow-copy p:last-child{margin-bottom:0}
+  .flow-copy b{color:#fff;font-weight:800}
+  .flow-copy .o{color:var(--orange);font-weight:800}
+  .flow-copy .t{color:var(--teal);font-weight:800}
+  /* V1 Revolution lede */
+  .lede{padding:14px 14px 14px 16px;border-left:3px solid var(--orange);background:rgba(255,159,28,.05);border-radius:0 12px 12px 0;font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.9);font-weight:500;margin-bottom:14px}
+  .lede b{color:#fff;font-weight:800}
+  .lede .o{color:var(--orange);font-weight:800}
+  .lede .strike{color:rgba(255,255,255,.4);text-decoration:line-through;text-decoration-color:var(--orange);text-decoration-thickness:2px}
+  .title.inter{font-family:'Inter',sans-serif;font-weight:900;letter-spacing:-1.3px}
+  /* Sri Lanka stats list */
+  .sl-stats{list-style:none;padding:6px 0 8px;margin:0}
+  .sl-stats li{position:relative;padding:4px 0 4px 20px;font-size:13px;line-height:1.4;color:rgba(255,255,255,.88);font-weight:500}
+  .sl-stats li::before{content:'';position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px rgba(255,159,28,.55)}
+  .sl-stats li b{color:var(--orange);font-family:'JetBrains Mono',monospace;font-weight:900;letter-spacing:.3px}
+
+  /* Leitsatz block — the promise ("we grow with Sri Lanka") */
+  .promise{padding:16px 18px 16px 22px;border-radius:14px;background:linear-gradient(135deg,rgba(255,159,28,.14),rgba(0,212,188,.06));border:1px solid rgba(255,159,28,.36);margin-bottom:14px;position:relative;border-left:4px solid var(--orange);display:block}
+  .promise-eyebrow{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:12px;color:var(--teal);letter-spacing:.2px;margin-bottom:8px;display:block}
+  .promise-body{font-family:'Playfair Display',serif;font-weight:800;font-size:16px;line-height:1.4;color:#fff;letter-spacing:-.1px;display:block;margin-bottom:10px}
+  .promise-body .o{color:var(--orange);font-style:italic}
+  .promise-tag{font-family:'Inter',sans-serif;font-weight:800;font-size:10px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;padding-top:8px;border-top:1px solid rgba(255,255,255,.10);display:block}
+
+  /* Founder signature — credibility anchor (handwritten feel) */
+  .founder-sign{margin-bottom:14px;padding:16px 16px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(0,212,188,.06),rgba(255,159,28,.04));border:1px solid rgba(0,212,188,.22);text-align:center}
+  .founder-sign .sign-line{font-size:11.5px;color:rgba(255,255,255,.75);line-height:1.4;font-weight:600;margin-bottom:12px}
+  .founder-sign .sign-line b{color:#fff;font-weight:800}
+  .founder-sign .sign-name{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:28px;color:#fff;line-height:1;letter-spacing:.3px;display:inline-block;transform:rotate(-3deg);text-shadow:0 2px 10px rgba(0,0,0,.4)}
+  .founder-sign .sign-img{display:block;margin:2px auto 0;width:230px;height:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
+  .founder-sign .sign-role{font-size:9.5px;font-weight:800;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-top:8px}
+  .founder-sign .sign-o{color:var(--orange);font-weight:800}
+  .founder-story{margin-top:14px;text-align:left;border-top:1px solid rgba(255,255,255,.10);padding-top:12px}
+  .founder-story summary{list-style:none;cursor:pointer;font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:13.5px;color:var(--orange);text-align:center;letter-spacing:.2px}
+  .founder-story summary::-webkit-details-marker{display:none}
+  .founder-story .story-arrow{display:inline-block;transition:transform .2s;margin-left:4px;font-style:normal}
+  .founder-story[open] .story-arrow{transform:rotate(90deg)}
+  .story-body{margin-top:12px}
+  .story-body p{font-size:11.5px;line-height:1.6;color:rgba(255,255,255,.82);font-weight:500;margin-bottom:8px}
+  .story-body p:last-child{margin-bottom:0}
+  .story-body b{color:#fff;font-weight:800}
+  .story-body i{font-style:italic}
+  /* V1 Old-vs-New Split (stacks) */
+  .stacks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+  .stack{padding:10px 10px;border-radius:11px;text-align:center}
+  .stack.old{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1)}
+  .stack.new{background:linear-gradient(135deg,rgba(255,159,28,.14),rgba(255,159,28,.04));border:1px solid rgba(255,159,28,.35)}
+  .stack-e{font-size:8.5px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+  .stack.old .stack-e{color:rgba(255,255,255,.4)}
+  .stack.new .stack-e{color:var(--orange)}
+  .stack-l{font-size:11px;color:rgba(255,255,255,.75);line-height:1.4;font-weight:600}
+  .stack.new .stack-l{color:#fff}
+  .stack.old .stack-l{text-decoration:line-through;text-decoration-color:rgba(255,159,28,.6);text-decoration-thickness:1.5px}
+
+  /* V3 90%-Split (LKR-breakdown) */
+  .split{margin-bottom:14px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.10)}
+  .split-e{font-size:9px;font-weight:900;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+  .split-row{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;padding:4px 0;color:rgba(255,255,255,.82);font-weight:500;line-height:1.3;gap:8px}
+  .split-row span:first-child{flex:1;min-width:0}
+  .split-row b{color:#fff;font-weight:800}
+  .split-num{font-family:'JetBrains Mono',monospace;font-weight:900;color:var(--orange);font-size:14px;flex-shrink:0}
+  .split-note{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.12);font-size:10.5px;color:rgba(255,255,255,.6);line-height:1.4;font-weight:500}
+  .split-note b{color:#fff;font-weight:700}
+
+  /* V3 big 90% (Alternative — smaller when in combo) */
+  .big-percent{padding:16px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(255,159,28,.16),rgba(255,159,28,.02));border:1px solid rgba(255,159,28,.35);margin-bottom:14px;text-align:center}
+  .bp-num{font-family:'JetBrains Mono',monospace;font-size:44px;font-weight:900;color:var(--orange);line-height:1;text-shadow:0 0 30px rgba(255,159,28,.5)}
+  .bp-label{font-size:10.5px;font-weight:900;color:#fff;letter-spacing:1.8px;text-transform:uppercase;margin-top:4px}
+  .bp-sub{font-size:11px;color:rgba(255,255,255,.72);line-height:1.5;margin-top:6px;font-weight:500}
+  .bp-sub b{color:#fff;font-weight:800}
+
+  /* Roadmap · shared */
+  .roadmap{margin-bottom:14px;padding:12px 14px;border-radius:12px;background:rgba(0,212,188,.05);border:1px solid rgba(0,212,188,.22)}
+  .roadmap-eyebrow{font-size:9px;font-weight:900;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+  .roadmap-row{display:flex;gap:8px;align-items:flex-start;font-size:11px;color:rgba(255,255,255,.82);line-height:1.4;padding:5px 0;font-weight:500}
+  .roadmap-row .num{font-family:'JetBrains Mono',monospace;font-weight:900;color:var(--orange);flex-shrink:0;width:26px;letter-spacing:.2px}
+  .roadmap-row b{color:#fff;font-weight:800}
+
+  /* Founding-Member bloc */
+  .founder-bloc{margin-bottom:14px;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(255,159,28,.12),rgba(255,159,28,.02));border:1px solid rgba(255,159,28,.32)}
+  .fb-eyebrow{font-size:9px;font-weight:900;color:var(--orange);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+  .fb-title{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:15px;color:#fff;line-height:1.2;margin-bottom:6px}
+  .fb-body{font-size:11.5px;color:rgba(255,255,255,.82);line-height:1.5;font-weight:500}
+  .fb-body b{color:#fff;font-weight:800}
+  .fb-body .o{color:var(--orange);font-weight:800}
+
+  /* Values */
+  .values-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+  .val{padding:11px 6px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-align:center}
+  .val-em{font-size:20px;filter:grayscale(1) brightness(1.3);opacity:.75}
+  .val-t{font-size:10px;font-weight:900;color:#fff;letter-spacing:.5px;text-transform:uppercase;margin-top:4px}
+  .val-s{font-size:8.5px;color:rgba(255,255,255,.5);line-height:1.35;margin-top:2px;font-weight:500}
+
+  /* CTA */
+  .cta{margin-top:auto;padding:15px 20px;border-radius:16px;background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;font-size:14px;font-weight:800;letter-spacing:.2px;display:flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(255,159,28,.35)}
+  .cta svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .cta-eyebrow{text-align:center;font-size:10.5px;font-weight:800;color:rgba(255,255,255,.65);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+
+  .note{max-width:1720px;margin:36px auto 0;padding:18px 24px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);color:rgba(255,255,255,.75);font-size:13px;line-height:1.6;text-align:center}
+  .note b.teal{color:var(--teal)}
+  .note b.orange{color:var(--orange)}
+</style>
+</head>
+<body>
+
+<div class="page-title">
+  <h1>„Your seat is open" · 3 Kombinationen · V4-Story-Basis</h1>
+  <p>Basis: V4 Story („Together we move Sri Lanka") · dazu gemischt V1 Old-vs-New Stack und/oder V3 90%-Split.</p>
+  <div class="hint">A: Story + V1 Split · B: Story + V3 Zahlen · C: Story + V1 + V3 alles</div>
+</div>
+
+<div class="grid">
+
+  <!-- ══════════════════════════════════════════════════════
+       V1 · REVOLUTION (die allererste Variante — „die neue Welt")
+       ══════════════════════════════════════════════════════ -->
+  <div class="col">
+    <div class="col-header">
+      <span class="no">V1 · REVOLUTION</span>
+      <div class="name">Die neue Welt · Original</div>
+      <div class="desc">Die allererste Variante. „Die alte Logistik stirbt hier." Zum Vergleichen.</div>
+    </div>
+    <div class="phone"><div class="screen">
+      <div class="eyebrow-caps">Your seat is open</div>
+      <h1 class="title inter">The old logistics<br><em>dies here.</em></h1>
+
+      <div class="lede">
+        For decades, shipping in Sri Lanka meant one thing: <b>corporations from outside</b> taking a cut of every parcel you send. <span class="strike">Foreign trucks. Foreign warehouses. Foreign shareholders.</span><br><br>
+        <span class="o">That world is dying.</span> <span class="brand">HUBI<span class="brand-x">X</span></span> is what comes next.
+      </div>
+
+      <div class="stacks">
+        <div class="stack old">
+          <div class="stack-e">Old world</div>
+          <div class="stack-l">Foreign trucks<br>Foreign warehouses<br>Middlemen skim</div>
+        </div>
+        <div class="stack new">
+          <div class="stack-e">HUBIX 3.3</div>
+          <div class="stack-l">Corner shops<br>Drivers<br>90% stays here</div>
+        </div>
+      </div>
+
+      <div class="roadmap">
+        <div class="roadmap-eyebrow">Reaching everywhere</div>
+        <div class="roadmap-row"><span class="num">01</span><span><b>Galle</b> — August 2026 pilot launch</span></div>
+        <div class="roadmap-row"><span class="num">02</span><span><b>South &amp; Southwest Sri Lanka</b> — first six months</span></div>
+        <div class="roadmap-row"><span class="num">03</span><span><b>Every corner of the island</b> — 12 months out</span></div>
+      </div>
+
+      <div class="founder-bloc">
+        <div class="fb-eyebrow">Founding Members</div>
+        <div class="fb-title">You were here <span style="color:var(--orange)">before</span> HUBIX moved a single package.</div>
+        <div class="fb-body">Everyone who joins before launch is a <b>Founding Member on the record — for life</b>. Priority routes. Founder-line access. <span class="o">No cap. No cost. Just word.</span></div>
+      </div>
+
+      <div class="values-row">
+        <div class="val"><div class="val-em">🤝</div><div class="val-t">Fair</div><div class="val-s">90% to workers</div></div>
+        <div class="val"><div class="val-em">🌱</div><div class="val-t">Built here</div><div class="val-s">Owned here</div></div>
+        <div class="val"><div class="val-em">🚫</div><div class="val-t">No middlemen</div><div class="val-s">No corp tax</div></div>
+      </div>
+
+      <div class="cta-eyebrow">Claim your place</div>
+      <button class="cta">Save my spot <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+    </div></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       KOMBI A · V4 Story + V1 Old-vs-New
+       ══════════════════════════════════════════════════════ -->
+  <div class="col">
+    <div class="col-header">
+      <span class="no">KOMBI A · CLEAN ★</span>
+      <div class="name">Die überarbeitete Version</div>
+      <div class="desc">Redundanz raus · ein klarer Bogen · „The new way" · mit Founder-Signatur.</div>
+    </div>
+    <div class="phone"><div class="screen">
+      <div class="eyebrow-caps">Your seat is open</div>
+      <h1 class="title">The new Logistics<br>Network in <em>Sri Lanka.</em></h1>
+      <div class="title-sub">Together we move Sri Lanka.</div>
+
+      <div class="flow-copy">
+        <p class="dies-here"><b>The old logistics dies here.</b></p>
+        <p>The pieces are already in place:</p>
+        <ul class="sl-stats">
+          <li><b>22 million</b> people</li>
+          <li><b>8.5 million</b> vehicles</li>
+          <li><b>275,000</b> shops</li>
+          <li><b>32 million</b> mobile connections</li>
+        </ul>
+        <p><span class="brand">HUBI<span class="brand-x">X</span></span> connects them so cleverly that <span class="o">we create something new</span> — a <b>new logistics network that connects them all.</b></p>
+        <p>Shops become <b>Hubs</b>. Drivers become <b>Connectors</b>. <span class="o">Everyone moves. Everyone earns.</span></p>
+      </div>
+
+      <div class="promise">
+        <div class="promise-body">At <span class="brand">HUBI<span class="brand-x">X</span></span> we understand: <span class="o">we can't go alone.</span><br><span class="o">We are all one.</span><br>We grow with Sri Lanka. Sri Lanka grows with us.</div>
+        <div class="promise-tag">— The <span class="brand">HUBI<span class="brand-x">X</span></span> way</div>
+      </div>
+
+      <div class="stacks">
+        <div class="stack old">
+          <div class="stack-e">The old way</div>
+          <div class="stack-l">Foreign trucks<br>Foreign warehouses<br>Middlemen skim</div>
+        </div>
+        <div class="stack new">
+          <div class="stack-e">The new way</div>
+          <div class="stack-l">Corner shops<br>Drivers<br>90% stays here</div>
+        </div>
+      </div>
+
+      <div class="roadmap">
+        <div class="roadmap-eyebrow">Together we grow</div>
+        <div class="roadmap-row"><span class="num">01</span><span><b>Galle first</b> — where the first hubs and connectors join hands</span></div>
+        <div class="roadmap-row"><span class="num">02</span><span><b>South &amp; Southwest</b> — reaching the villages others don't</span></div>
+        <div class="roadmap-row"><span class="num">03</span><span><b>Every corner</b> — because every corner deserves the same access</span></div>
+      </div>
+
+      <div class="founder-bloc">
+        <div class="fb-eyebrow">Founding Members</div>
+        <div class="fb-title">Come in early. Grow with us.</div>
+        <div class="fb-body">Anyone who joins <b>before launch</b> is a Founding Member — <span class="o">no counter, no rush</span>. A network built together doesn't need to shut people out.</div>
+      </div>
+
+      <div class="founder-sign">
+        <div class="sign-line"><b>Built in Galle.</b> By a German founder who came here <span class="sign-o">to make Sri Lanka better.</span></div>
+        <img class="sign-img" src="sig_founder.png" alt="Korbinian Elias — signature" width="230" height="142" loading="lazy">
+        <div class="sign-role">Founder</div>
+        <details class="founder-story">
+          <summary>One man and a brand <span class="story-arrow">›</span></summary>
+          <div class="story-body">
+            <p>I came from Germany to Sri Lanka — and stayed. Not for the beaches. <b>For the people.</b></p>
+            <p>I saw an island full of energy: shops on every corner, drivers on every road, phones in every hand. Everything was there — <b>except the network connecting it.</b></p>
+            <p>So I started building one. Not <i>for</i> Sri Lanka — <span class="sign-o"><i>with</i> Sri Lanka.</span></p>
+            <p>One man and a brand. And from launch day on: <b>all of us.</b></p>
+          </div>
+        </details>
+      </div>
+
+      <div class="cta-eyebrow">Join the movement</div>
+      <button class="cta">Save my spot <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+    </div></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       KOMBI B · V4 Story + V3 90% Split
+       ══════════════════════════════════════════════════════ -->
+  <div class="col">
+    <div class="col-header">
+      <span class="no">KOMBI B · STORY + 90%</span>
+      <div class="name">V4 Story + V3 Zahlen</div>
+      <div class="desc">Community-Story mit ökonomischer Klarheit. Wo jede LKR hingeht.</div>
+    </div>
+    <div class="phone"><div class="screen">
+      <div class="eyebrow-caps">Your seat is open</div>
+      <h1 class="title">Together<br>we move <em>Sri Lanka.</em></h1>
+
+      <div class="flow-copy">
+        <p>Sri Lanka has <b>22 million people</b>. <b>27 million phones</b>. One shared road system. And a <span class="t">legendary generosity</span>.</p>
+        <p><span class="brand">HUBI<span class="brand-x">X</span></span> is what happens when you connect all four.</p>
+        <p>Shops become <b>Hubs</b>. Neighbors become <b>Connectors</b>. <span class="o">Everyone moves. Everyone earns.</span></p>
+      </div>
+
+      <div class="big-percent">
+        <div class="bp-num">90%</div>
+        <div class="bp-label">Stays with the people</div>
+        <div class="bp-sub">Every LKR spent on a shipment goes <b>first</b> to the Connectors and Hubs who moved it.</div>
+      </div>
+
+      <div class="split">
+        <div class="split-e">Where every LKR goes</div>
+        <div class="split-row"><span>To the <b>Connector</b> · driving, delivering</span><span class="split-num">55%</span></div>
+        <div class="split-row"><span>To the <b>Hub</b> · storage &amp; hand-off</span><span class="split-num">35%</span></div>
+        <div class="split-row"><span>To <span class="brand">HUBI<span class="brand-x">X</span></span> · keeping it alive</span><span class="split-num">10%</span></div>
+        <div class="split-note">No middlemen. No corporate tax. <b>Zero foreign shareholders.</b></div>
+      </div>
+
+      <div class="roadmap">
+        <div class="roadmap-eyebrow">Together we grow</div>
+        <div class="roadmap-row"><span class="num">01</span><span><b>Galle first</b> — first hubs + connectors join hands</span></div>
+        <div class="roadmap-row"><span class="num">02</span><span><b>South &amp; Southwest</b> — the villages Wow Express doesn't reach</span></div>
+        <div class="roadmap-row"><span class="num">03</span><span><b>Every corner</b> — same access, same fair split, for all</span></div>
+      </div>
+
+      <div class="founder-bloc">
+        <div class="fb-eyebrow">Founding Members</div>
+        <div class="fb-title">Come in early. Grow with us.</div>
+        <div class="fb-body">Anyone who joins <b>before launch</b> is a Founding Member — <span class="o">no counter, no rush</span>. Being early is the honor.</div>
+      </div>
+
+      <div class="cta-eyebrow">Join the movement</div>
+      <button class="cta">Save my spot <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+    </div></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       KOMBI C · V4 Story + V1 Stack + V3 90% (Full Combo)
+       ══════════════════════════════════════════════════════ -->
+  <div class="col">
+    <div class="col-header">
+      <span class="no">KOMBI C · FULL COMBO</span>
+      <div class="name">V4 + V1 + V3 · alles zusammen</div>
+      <div class="desc">Story + Bruch-Ansage + Zahlen. Der volle Pitch.</div>
+    </div>
+    <div class="phone"><div class="screen">
+      <div class="eyebrow-caps">Your seat is open</div>
+      <h1 class="title">Together<br>we move <em>Sri Lanka.</em></h1>
+
+      <div class="flow-copy">
+        <p>Sri Lanka has <b>22 million people</b>. <b>27 million phones</b>. One shared road system. And a <span class="t">legendary generosity</span>.</p>
+        <p><span class="brand">HUBI<span class="brand-x">X</span></span> is what happens when you connect all four. Shops become <b>Hubs</b>. Neighbors become <b>Connectors</b>. <span class="o">Everyone moves. Everyone earns.</span></p>
+      </div>
+
+      <div class="stacks">
+        <div class="stack old">
+          <div class="stack-e">Old world</div>
+          <div class="stack-l">Foreign trucks<br>Foreign warehouses<br>Middlemen skim</div>
+        </div>
+        <div class="stack new">
+          <div class="stack-e">HUBIX 3.3</div>
+          <div class="stack-l">Corner shops<br>Neighbors<br>90% stays here</div>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="split-e">Where every LKR goes</div>
+        <div class="split-row"><span>To the <b>Connector</b></span><span class="split-num">55%</span></div>
+        <div class="split-row"><span>To the <b>Hub</b></span><span class="split-num">35%</span></div>
+        <div class="split-row"><span>To <span class="brand">HUBI<span class="brand-x">X</span></span> · to keep it alive</span><span class="split-num">10%</span></div>
+        <div class="split-note">No middlemen. No corporate tax. <b>Zero foreign shareholders.</b></div>
+      </div>
+
+      <div class="roadmap">
+        <div class="roadmap-eyebrow">Together we grow</div>
+        <div class="roadmap-row"><span class="num">01</span><span><b>Galle first</b> — pilot launch September 2026</span></div>
+        <div class="roadmap-row"><span class="num">02</span><span><b>South &amp; Southwest</b> — first six months</span></div>
+        <div class="roadmap-row"><span class="num">03</span><span><b>Every corner of the island</b> — within 12 months</span></div>
+      </div>
+
+      <div class="founder-bloc">
+        <div class="fb-eyebrow">Founding Members</div>
+        <div class="fb-title">Come in early. Grow with us.</div>
+        <div class="fb-body">Anyone who joins <b>before launch</b> is a Founding Member for life — <span class="o">no cap, no counter</span>. Being here early is the honor.</div>
+      </div>
+
+      <div class="cta-eyebrow">Join the movement</div>
+      <button class="cta">Save my spot <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+    </div></div>
+  </div>
+
+</div>
+
+<div class="note">
+  <b class="teal">Alle 3:</b> V4 Story-Basis („Together we move Sri Lanka") · Roadmap Galle → South → Whole island · Founding-Bloc ohne Counter · Save-my-spot CTA.<br>
+  <b class="orange">Unterschied:</b> A = pur (Story + Bruch-Split, keine 90%-Zahlen) · B = ökonomisch (Story + 90%-Split-Diagramm) · C = full (Story + Bruch-Split + 90%-Split, längster Screen).<br>
+  Sag welche → integriere ich in den Master.
+</div>
+
+</body>
+</html>
