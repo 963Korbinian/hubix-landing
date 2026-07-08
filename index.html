@@ -743,6 +743,10 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 .share-btn:active{transform:scale(.97)}
 .share-btn svg{width:13px;height:13px}
 
+/* Trust-Ausklang am Form-Ende (ersetzt den zweiten Submit-Button, 08.07.) */
+.form-closing-line{margin:18px 0 10px;padding:12px 14px;text-align:center;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.55);line-height:1.6;border-top:1px solid rgba(255,255,255,.08)}
+.form-closing-line b{color:var(--orange)}
+
 /* ═══════════ STICKY CTA ═══════════ */
 .cta-zone{margin:22px 0 6px;padding:0 0 max(env(safe-area-inset-bottom),12px);display:flex;flex-direction:column;gap:8px}
 .cta{width:100%;padding:19px;border-radius:16px;background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;font-size:16.5px;font-weight:800;letter-spacing:.3px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 4px 12px rgba(255,122,0,.28),0 12px 32px rgba(255,122,0,.35),inset 0 1px 0 rgba(255,255,255,.28);transition:transform .18s cubic-bezier(.22,.9,.32,1),box-shadow .18s ease;position:relative;overflow:hidden}
@@ -870,7 +874,7 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
         </div>
 
         <div class="h4a-manifest">
-          <div class="h4a-manifest-eyebrow"><span class="brand">HUBI<span class="brand-x">X</span></span> 3.3 — a world first</div>
+          <div class="h4a-manifest-eyebrow"><span class="brand">HUBI<span class="brand-x">X</span></span> — a world first</div>
           <div class="h4a-manifest-line"><span class="brand">HUBI<span class="brand-x">X</span></span> doesn't need <b>more trucks</b>.</div>
           <div class="h4a-manifest-line"><span class="brand">HUBI<span class="brand-x">X</span></span> doesn't need <b>new warehouses</b>.</div>
           <div class="h4a-manifest-line"><b>No trucks. No warehouses.</b> Just <span class="o">building connections</span> — not blocks.</div>
@@ -1194,31 +1198,59 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
           <label for="f-city">City / District</label>
           <select id="f-city" name="city" class="city-select" required>
             <option value="">-- Where do you live / operate? --</option>
-            <option value="Colombo">Colombo</option>
-            <option value="Gampaha">Gampaha</option>
-            <option value="Kandy">Kandy</option>
-            <option value="Galle">Galle</option>
-            <option value="Matara">Matara</option>
-            <option value="Hambantota">Hambantota</option>
-            <option value="Kurunegala">Kurunegala</option>
-            <option value="Ratnapura">Ratnapura</option>
-            <option value="Negombo">Negombo</option>
-            <option value="Kalutara">Kalutara</option>
-            <option value="Kegalle">Kegalle</option>
-            <option value="Anuradhapura">Anuradhapura</option>
-            <option value="Polonnaruwa">Polonnaruwa</option>
-            <option value="Nuwara Eliya">Nuwara Eliya</option>
-            <option value="Badulla">Badulla</option>
-            <option value="Monaragala">Monaragala</option>
-            <option value="Puttalam">Puttalam</option>
-            <option value="Jaffna">Jaffna</option>
-            <option value="Batticaloa">Batticaloa</option>
-            <option value="Trincomalee">Trincomalee</option>
-            <option value="Ampara">Ampara</option>
-            <option value="Vavuniya">Vavuniya</option>
-            <option value="Mannar">Mannar</option>
-            <option value="Kilinochchi">Kilinochchi</option>
-            <option value="Mullaitivu">Mullaitivu</option>
+            <!-- Pilot-Feinmaschung Süd/Südwest: 15-Min-Hub-Dichte (Founder 08.07. ·
+                 Küstenkette Balapitiya→Tangalle Nord→Süd + Landesinneres) -->
+            <optgroup label="🌊 South-West Coast · Pilot region">
+              <option value="Balapitiya">Balapitiya</option>
+              <option value="Ambalangoda">Ambalangoda</option>
+              <option value="Hikkaduwa">Hikkaduwa</option>
+              <option value="Dodanduwa">Dodanduwa</option>
+              <option value="Galle">Galle</option>
+              <option value="Unawatuna">Unawatuna</option>
+              <option value="Habaraduwa">Habaraduwa</option>
+              <option value="Koggala">Koggala</option>
+              <option value="Ahangama">Ahangama</option>
+              <option value="Midigama">Midigama</option>
+              <option value="Weligama">Weligama</option>
+              <option value="Mirissa">Mirissa</option>
+              <option value="Matara">Matara</option>
+              <option value="Dickwella">Dickwella</option>
+              <option value="Tangalle">Tangalle</option>
+            </optgroup>
+            <optgroup label="🌴 South · Inland">
+              <option value="Elpitiya">Elpitiya</option>
+              <option value="Baddegama">Baddegama</option>
+              <option value="Udugama">Udugama</option>
+              <option value="Imaduwa">Imaduwa</option>
+              <option value="Akuressa">Akuressa</option>
+              <option value="Hakmana">Hakmana</option>
+              <option value="Deniyaya">Deniyaya</option>
+            </optgroup>
+            <optgroup label="🇱🇰 All Sri Lanka · Districts">
+              <option value="Colombo">Colombo</option>
+              <option value="Gampaha">Gampaha</option>
+              <option value="Kandy">Kandy</option>
+              <option value="Hambantota">Hambantota</option>
+              <option value="Kurunegala">Kurunegala</option>
+              <option value="Ratnapura">Ratnapura</option>
+              <option value="Negombo">Negombo</option>
+              <option value="Kalutara">Kalutara</option>
+              <option value="Kegalle">Kegalle</option>
+              <option value="Anuradhapura">Anuradhapura</option>
+              <option value="Polonnaruwa">Polonnaruwa</option>
+              <option value="Nuwara Eliya">Nuwara Eliya</option>
+              <option value="Badulla">Badulla</option>
+              <option value="Monaragala">Monaragala</option>
+              <option value="Puttalam">Puttalam</option>
+              <option value="Jaffna">Jaffna</option>
+              <option value="Batticaloa">Batticaloa</option>
+              <option value="Trincomalee">Trincomalee</option>
+              <option value="Ampara">Ampara</option>
+              <option value="Vavuniya">Vavuniya</option>
+              <option value="Mannar">Mannar</option>
+              <option value="Kilinochchi">Kilinochchi</option>
+              <option value="Mullaitivu">Mullaitivu</option>
+            </optgroup>
             <option value="Other">Other · not listed</option>
           </select>
           <div class="fld-hint">So we know <b>where the network is growing</b> — helps us open your area first.</div>
@@ -1236,10 +1268,11 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
         </div>
       </form>
 
-      <!-- Join CTA — placed right after consent, BEFORE Quick Answers (2026-07-07) -->
-      <button class="cta cta-inline" id="submitBtnInline" form="signupForm" type="submit">
-        <span>Join the network</span>
-        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+      <!-- EIN Submit-CTA (Founder 08.07.: „Save my spot" raus, Join the network
+           in voller Größe) — trägt jetzt die submitBtn-IDs für submitForm() -->
+      <button class="cta cta-inline" id="submitBtn" form="signupForm" type="submit">
+        <span id="submitText">Join the network</span>
+        <svg id="submitArrow" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
       </button>
 
       <div class="mini-faq">
@@ -1262,13 +1295,9 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
         </details>
       </div>
 
-      <!-- Sticky bottom CTA — always visible, glows when scrolled to bottom -->
-      <div class="cta-zone">
-        <button class="cta" id="submitBtn" form="signupForm" type="submit">
-          <span id="submitText">Save my spot</span>
-          <svg id="submitArrow" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
-      </div>
+      <!-- Abschluss-Zeile statt zweitem Button (fe2-Vorschlag 08.07.):
+           ruhiger Trust-Ausklang unter den Quick Answers, keine konkurrierende CTA -->
+      <div class="form-closing-line">🏆 Founding-Member badge for life · Free forever · <b>Launch September 2026</b></div>
     </section>
 
     <!-- ━━━━━━━━ SCREEN 7 · SUCCESS · V3-FINAL (Founder brief + Founding-Member badge) ━━━━━━━━ -->
