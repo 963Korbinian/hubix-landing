@@ -292,6 +292,9 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 /* ═══════════ SCREEN 3 — ROLE DETAIL ═══════════ */
 #s-detail{padding-top:80px}
 /* Detail-hero — UNIFIED PURPLE BG for all roles (2026-07-07) — same look as Screen 3 role-cards. */
+.dtl-mode{display:flex;gap:8px;margin:0 0 18px}
+.dtl-mode-btn{flex:1;padding:12px 8px;border-radius:13px;border:1.5px solid var(--w-faint);background:rgba(255,255,255,.04);color:var(--w-muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:border-color .15s,background .15s,color .15s}
+.dtl-mode-btn.on{border-color:var(--orange);background:rgba(255,159,28,.1);color:#fff}
 .dtl-hero,
 .dtl-hero.sender,
 .dtl-hero.shop,
@@ -690,6 +693,8 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 .fm-badge-eyebrow{font-family:'Playfair Display',serif;font-style:italic;font-size:10.5px;font-weight:800;color:var(--orange);letter-spacing:.2px;margin-bottom:3px}
 .fm-badge-num{font-family:'JetBrains Mono',monospace;font-size:52px;font-weight:900;color:#fff;line-height:1;text-shadow:0 0 22px rgba(255,159,28,.5)}
 .fm-badge-hash{font-size:22px;font-weight:900;color:var(--orange);vertical-align:top;margin-right:3px}
+.fm-badge-check{width:56px;height:56px;margin:2px auto 3px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange-2));display:flex;align-items:center;justify-content:center;box-shadow:0 0 26px rgba(255,159,28,.55),0 8px 20px rgba(255,122,0,.4)}
+.fm-badge-check svg{width:30px;height:30px;stroke:#fff;stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .fm-badge-label{font-size:8.5px;font-weight:900;color:rgba(255,255,255,.65);letter-spacing:1.8px;text-transform:uppercase;margin-top:5px}
 .fm-badge-label .brand-x{color:var(--teal)}
 @keyframes badgeSpin{to{transform:rotate(360deg)}}
@@ -967,6 +972,13 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
       <div class="fol"></div>
       <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot on"></span><span class="dot"></span></div>
       <div class="eyebrow" id="dtlEyebrow">உங்கள் role</div>
+
+      <!-- Private/Business-Umschalter — nur für die Send&Receive-Familie sichtbar.
+           Shop-Content (80%-Zielgruppe) war sonst nur per ?role=shop erreichbar. -->
+      <div class="dtl-mode" id="dtlMode" style="display:none">
+        <button class="dtl-mode-btn" id="dtlModePrivate" type="button" onclick="setSenderMode('sender')">👤 தனிநபர்</button>
+        <button class="dtl-mode-btn" id="dtlModeBusiness" type="button" onclick="setSenderMode('shop')">🏢 வணிகம்</button>
+      </div>
 
       <div class="dtl-hero">
         <div class="dtl-hero-top">
@@ -1314,7 +1326,10 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
         <div class="fm-badge-ring"></div>
         <div class="fm-badge-inner">
           <div class="fm-badge-eyebrow">Founding Member</div>
-          <div class="fm-badge-num"><span class="fm-badge-hash">#</span><span id="foundingNum">—</span></div>
+          <!-- Bewusst keine Nummer: ohne Backend-Zähler wäre sie geräte-lokal (jeder
+               sieht #001). Echte founding_badge_number kommt in der App aus der DB.
+               Hier ehrliches Bestätigungs-✓ (Founder-Entscheid 08.07.). -->
+          <div class="fm-badge-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
           <div class="fm-badge-label"><span class="brand">HUBI<span class="brand-x">X</span></span> · 2026</div>
         </div>
       </div>
@@ -1677,8 +1692,24 @@ function pickRole(role){
   goto("detail");
 }
 
+function setSenderMode(mode){
+  // 'sender' (Private) ↔ 'shop' (Business) — swap detail content + tracked role
+  state.role = mode;
+  saveState();
+  renderDetail();
+}
+
 function renderDetail(){
   const r = ROLES[state.role] || ROLES.sender;
+  // Private/Business-Umschalter nur für die Send&Receive-Familie
+  const mode = document.getElementById("dtlMode");
+  if (state.role === "sender" || state.role === "shop"){
+    mode.style.display = "flex";
+    document.getElementById("dtlModePrivate").classList.toggle("on", state.role === "sender");
+    document.getElementById("dtlModeBusiness").classList.toggle("on", state.role === "shop");
+  } else {
+    mode.style.display = "none";
+  }
   const hero = document.querySelector(".dtl-hero");
   hero.classList.remove("sender","shop","hub","conn");
   const cls = state.role === "connector" ? "conn" : state.role;
@@ -1802,10 +1833,8 @@ async function submitForm(ev){
 function genRefCode(phoneRaw){ const tail = phoneRaw.slice(-3) || "000"; return "HX" + tail; }
 
 function renderSuccess(payload){
-  // Founding number — sequential guess based on local leads count
-  const num = String((state.leads?.length || 1)).padStart(3, "0");
-  const foundingEl = document.getElementById("foundingNum");
-  if (foundingEl) foundingEl.textContent = String(num).padStart(3, "0");
+  // Founding badge is a confirmation ✓ — no client-side number (would be device-local).
+  // Real founding_badge_number is assigned server-side at launch (feedback_founding_status_not_margin).
 
   // Plain share link — no referral code (user feedback 2026-07-07: "being early is the honor, no code needed")
   const link = CONFIG.PUBLIC_URL;
