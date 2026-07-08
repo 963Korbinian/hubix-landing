@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+<!-- SINHALA-Variante (V6.1-basiert, generiert 08.07., fe2). DRAFT ~80% — Native-Review ZWINGEND. Quelle: index.html (unangetastet). -->
 <html lang="si">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#1a0a3e">
-<title>HUBIX — ශ්‍රී ලංකාවේ පළමු ජනතා-බල පාර්සල් ජාලය</title>
+<title>HUBIX — ශ්‍රී ලංකාවේ පළමු ජන බලයෙන් ක්‍රියාත්මක logistics ජාලය</title>
 <link rel="icon" href="logo3.png">
 <link rel="apple-touch-icon" href="logo3.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800;900&family=Playfair+Display:ital,wght@1,800;1,900&family=Noto+Sans+Sinhala:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <!--
 ═══════════════════════════════════════════════════════════════════════════════
-HUBIX — Network Recruit Mini-App  ·  V4  ·  Big-Statement Hero
+<span class="brand">HUBI<span class="brand-x">X</span></span> — Network Recruit Mini-App  ·  V4  ·  Big-Statement Hero
 ═══════════════════════════════════════════════════════════════════════════════
 STORY ARC (revised V4 per user feedback):
   1. HERO        — MASSIVE statement. No clickable-looking boxes.
@@ -42,18 +43,14 @@ Background V5 = Cinematic Spotlight (radial orange glow on dark purple).
   --w-faint:rgba(255,255,255,.14);
 }
 html,body{height:100%;background:var(--bg);font-family:'Noto Sans Sinhala','Inter',sans-serif;color:var(--white);overflow:hidden}
-/* Sinhala text gets slightly tighter line-height for readability */
-.hero-mega, .hero-sub, .hero-body, .net-title, .net-sub, .pick-title, .pick-sub, .dtl-task, .dtl-hero-t, .dtl-hero-sub, .why-title, .why-body, .why-strong, .form-title, .form-sub, .success-t, .success-s, .req-txt, .step-s, .step-t, .hero-pillar-body, .net-question-t, .net-question-s, .earn-headline, .earn-note, .ben, .bigpick-t, .bigpick-s{font-family:'Noto Sans Sinhala','Inter',sans-serif;line-height:1.4}
-.hero-mega{line-height:1.05}
-.hero-eyebrow, .why-eyebrow{font-family:'Noto Sans Sinhala','Playfair Display',serif}
-.hero-brand-name, .hdr-name, .hero-brand-tag, .hdr-eyebrow, .hdr-pre{font-family:'Inter',sans-serif}
-.hdr-pre{display:none}
-.lang-switch{position:absolute;top:max(env(safe-area-inset-top),14px);right:18px;z-index:51;display:flex;gap:2px;background:rgba(255,255,255,.07);border:1px solid var(--w-faint);border-radius:8px;padding:3px;backdrop-filter:blur(8px)}
-.lang-switch a{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;color:var(--w-muted);padding:4px 7px;border-radius:5px;text-decoration:none;letter-spacing:.5px;transition:all .15s}
-.lang-switch a.on{background:var(--orange);color:#1a0a3e}
-.lang-switch a:hover{color:#fff}
 body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:center;background:linear-gradient(155deg,#130a2e 0%,#0c0f26 50%,#081820 100%)}
 .app{width:100%;max-width:480px;height:100%;position:relative;overflow:hidden;background:var(--bg)}
+/* HUBIX Wordmark — GLOBAL STANDARD (per Memory-Rule 2026-07-07):
+   `.brand` = white, `.brand-x` = teal. Applies everywhere unless a container explicitly restyles the mega/hero variant. */
+.brand{color:#fff;font-weight:900}
+.brand-x{color:var(--teal)}
+/* CSS-only header hide when hero is active — belt-and-suspenders alongside render() JS toggle */
+.app:has(#s-hero.on) > .hdr{display:none!important}
 
 /* ═══════════ HEADER ═══════════ */
 .hdr{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:50;display:flex;align-items:center;padding:max(env(safe-area-inset-top),14px) 18px 12px;gap:10px;background:linear-gradient(180deg,rgba(13,10,30,.92) 0%,rgba(13,10,30,.7) 70%,transparent 100%);backdrop-filter:blur(8px)}
@@ -70,29 +67,52 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 
 /* ═══════════ SCREENS ═══════════ */
 .screens{position:absolute;inset:0;overflow:hidden}
-.screen{position:absolute;inset:0;display:flex;flex-direction:column;padding:78px 22px max(env(safe-area-inset-bottom),22px);overflow-y:auto;overflow-x:hidden;opacity:0;pointer-events:none;transform:translateX(40px);transition:opacity .35s ease,transform .35s ease;scrollbar-width:none}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;padding:78px 22px max(env(safe-area-inset-bottom),22px);overflow-y:auto;overflow-x:hidden;opacity:0;pointer-events:none;transform:translateX(40px);transition:opacity .38s cubic-bezier(.22,.9,.32,1),transform .38s cubic-bezier(.22,.9,.32,1);scrollbar-width:none;background:radial-gradient(ellipse at 70% 12%,rgba(255,159,28,.13),transparent 48%),radial-gradient(ellipse at 15% 85%,rgba(0,212,188,.08),transparent 52%),radial-gradient(ellipse at 90% 60%,rgba(139,92,246,.06),transparent 55%),linear-gradient(160deg,#150a30 0%,#0b0d24 55%,#050c1c 100%)}
 .screen::-webkit-scrollbar{display:none}
 .screen.on{opacity:1;pointer-events:auto;transform:translateX(0)}
 
-.fol{position:absolute;inset:0;opacity:.06;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='10' fill='none' stroke='%23fff' stroke-width='0.6'/%3E%3Ccircle cx='20' cy='10' r='10' fill='none' stroke='%23fff' stroke-width='0.6'/%3E%3Ccircle cx='20' cy='30' r='10' fill='none' stroke='%23fff' stroke-width='0.6'/%3E%3C/svg%3E");background-size:40px 40px}
+.fol{position:absolute;inset:0;opacity:.045;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='52' viewBox='0 0 30 52'%3E%3Cg fill='none' stroke='%23fff' stroke-width='0.35'%3E%3Ccircle cx='0' cy='0' r='30'/%3E%3Ccircle cx='30' cy='0' r='30'/%3E%3Ccircle cx='-15' cy='26' r='30'/%3E%3Ccircle cx='15' cy='26' r='30'/%3E%3Ccircle cx='45' cy='26' r='30'/%3E%3Ccircle cx='0' cy='52' r='30'/%3E%3Ccircle cx='30' cy='52' r='30'/%3E%3C/g%3E%3C/svg%3E");background-size:30px 52px}
 .eyebrow{font-size:10px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:8px;margin-bottom:14px;position:relative;z-index:1}
 .eyebrow::before{content:'';display:block;width:18px;height:1px;background:var(--teal)}
 
 /* ═══════════ SCREEN 1 — HERO (BIG STATEMENT) ═══════════ */
 #s-hero{justify-content:flex-start;background:radial-gradient(ellipse at 75% 35%,rgba(255,159,28,.18),transparent 55%),radial-gradient(ellipse at 20% 85%,rgba(0,212,188,.08),transparent 60%),linear-gradient(155deg,#130a2e 0%,#0c0f26 60%,#081820 100%)}
-.lion-wm{position:absolute;top:8%;left:50%;transform:translate(-50%,0);width:420px;height:420px;opacity:.18;z-index:0;pointer-events:none}
-.lion-wm img{width:100%;height:100%;object-fit:contain}
+.lion-wm{position:absolute;top:5%;left:50%;transform:translate(-50%,0);width:380px;height:380px;opacity:.32;z-index:0;pointer-events:none;filter:drop-shadow(0 6px 24px rgba(0,0,0,.45)) contrast(1.25) saturate(1.15) brightness(1.04)}
+.lion-wm img{width:100%;height:100%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;mask-image:radial-gradient(ellipse at center,#000 55%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse at center,#000 55%,transparent 100%)}
 
 .hero-content{position:relative;z-index:2;display:flex;flex-direction:column;flex:1}
-.hero-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:8px;background:rgba(0,212,188,.1);border:1px solid rgba(0,212,188,.3);font-size:9.5px;font-weight:800;color:var(--teal);letter-spacing:1.8px;text-transform:uppercase;align-self:flex-start;margin-bottom:22px}
+.invited-by{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 8px;border-radius:20px;background:linear-gradient(135deg,rgba(255,159,28,.16),rgba(255,159,28,.04));border:1px solid rgba(255,159,28,.32);align-self:flex-start;margin-bottom:14px}
+.invited-em{font-size:14px;line-height:1}
+.invited-txt{font-size:11px;font-weight:600;color:rgba(255,255,255,.78);letter-spacing:.2px}
+.invited-txt b{color:var(--orange);font-weight:800}
+.hero-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:99px;background:linear-gradient(135deg,rgba(0,212,188,.12),rgba(0,212,188,.04));border:1px solid rgba(0,212,188,.32);font-size:9.5px;font-weight:800;color:var(--teal);letter-spacing:2px;text-transform:uppercase;align-self:flex-start;margin-bottom:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
 .hero-chip b{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(0,212,188,.7);animation:pulseDot 1.6s ease infinite}
 @keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(0,212,188,.7)}80%{box-shadow:0 0 0 6px rgba(0,212,188,0)}}
 
-.hero-eyebrow{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:17px;color:var(--orange);letter-spacing:.2px;margin-bottom:14px;line-height:1.2}
+.hero-welcome{position:relative;display:block;padding:18px 16px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(255,159,28,.10),rgba(0,212,188,.04));border:1px solid rgba(255,159,28,.35);box-shadow:0 6px 22px rgba(255,159,28,.08),inset 0 1px 0 rgba(255,255,255,.05);margin-bottom:22px;max-width:440px;flex-shrink:0;overflow:hidden}
+.hero-welcome::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--orange),var(--teal))}
+.hero-welcome-em{font-size:24px;line-height:1;margin-bottom:8px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
+.hero-welcome-lead{font-size:22px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.1;margin-bottom:8px}
+.hero-welcome-lead .o{color:var(--orange);text-shadow:0 0 22px rgba(255,159,28,.4)}
+.hero-welcome-line{font-size:13px;color:rgba(255,255,255,.82);line-height:1.5;font-weight:500;margin-bottom:10px}
+.hero-welcome-sign{display:inline-block;font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:14px;color:var(--teal);letter-spacing:.3px;padding-top:6px;border-top:1px solid rgba(255,255,255,.08)}
+.hero-eyebrow-world{display:block;font-family:'Inter',sans-serif;font-style:normal;font-weight:800;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:1.6px;text-transform:uppercase;margin-top:4px}
+.hero-thanks-inline{display:inline;color:var(--orange);font-weight:800;text-shadow:0 0 16px rgba(255,159,28,.35);white-space:normal}
+.hero-thanks{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:13px;background:linear-gradient(135deg,rgba(0,212,188,.10),rgba(255,159,28,.05));border:1px solid rgba(0,212,188,.28);margin:18px 0 8px;flex-shrink:0}
+.hero-thanks-em{font-size:24px;line-height:1;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
+.hero-thanks-body{flex:1;min-width:0}
+.hero-thanks-lead{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:16px;color:var(--teal);line-height:1.15;letter-spacing:.1px}
+.hero-thanks-line{font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.4;font-weight:500;margin-top:3px}
+.hero-eyebrow{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:18px;color:var(--orange);letter-spacing:.2px;margin-bottom:18px;line-height:1.25}
 
-.hero-mega{font-size:50px;font-weight:900;line-height:.94;letter-spacing:-2.2px;color:#fff;margin-bottom:18px}
+.hero-mega{font-size:50px;font-weight:900;line-height:.94;letter-spacing:-2.2px;color:#fff;margin-bottom:18px;display:flex;flex-direction:column;gap:14px}
 .hero-mega .o{color:var(--orange);text-shadow:0 0 60px rgba(255,159,28,.55),0 2px 12px rgba(255,159,28,.3)}
 .hero-mega .caps{text-transform:uppercase;letter-spacing:-1.4px}
+.hero-mega .hero-sub-line{font-size:24px;font-weight:800;line-height:1.05;letter-spacing:-.6px;color:#fff;text-shadow:none}
+.hero-body .brand,.net-sub .brand,.net-question-eyebrow .brand{color:#fff;font-weight:800}
+.hero-body .brand-x,.net-sub .brand-x,.net-question-eyebrow .brand-x{color:var(--teal)}
+.conductor-label .conductor-x{color:var(--teal)}
+.net-question-t .o{color:var(--orange)}
 
 .hero-sub{font-size:17px;font-weight:700;color:#fff;line-height:1.35;margin-bottom:18px;letter-spacing:-.3px}
 .hero-sub .t{color:var(--teal)}
@@ -114,41 +134,196 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 .hero-brand-name span{color:var(--teal)}
 .hero-brand-tag{font-size:9px;font-weight:700;letter-spacing:2.5px;color:var(--w-muted);text-transform:uppercase;margin-top:-4px}
 
-.hero-cta-zone{position:sticky;bottom:0;margin-left:-22px;margin-right:-22px;padding:16px 22px max(env(safe-area-inset-bottom),18px);background:linear-gradient(0deg,#0d0a1e 70%,transparent);z-index:5}
+/* CTA-zones — no longer sticky-bottom (2026-07-07 user feedback: „not fixed to bottom") */
+.hero-cta-zone{margin:22px 0 6px;padding:0 0 max(env(safe-area-inset-bottom),12px)}
+
+/* ═══════════ V4-A HERO (final · 2026-07-07) — namespaced .h4a-* ═══════════ */
+#s-hero .lion-wm{width:min(360px,88vw);height:min(360px,88vw);opacity:.13;top:29%}
+#s-hero .lion-wm img{filter:brightness(1.35) contrast(1.1) drop-shadow(0 0 24px rgba(255,159,28,.25))}
+.h4a-content{position:relative;z-index:2;display:flex;flex-direction:column;flex:1;text-align:center}
+.h4a-chip{
+  display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:99px;
+  background:linear-gradient(135deg,rgba(0,212,188,.10),rgba(0,212,188,.03));
+  border:1px solid rgba(0,212,188,.28);font-size:9.5px;font-weight:800;
+  color:var(--teal);letter-spacing:1.6px;text-transform:uppercase;align-self:center;
+  margin-bottom:14px;
+}
+.h4a-chip b{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulseDot 1.6s ease infinite}
+.h4a-header{margin-bottom:18px}
+.h4a-hubix-mega{
+  font-family:'Inter',sans-serif;font-weight:900;
+  font-size:98px;line-height:.86;letter-spacing:-5.4px;color:#fff;
+  text-shadow:0 4px 26px rgba(0,0,0,.5);margin-bottom:6px;
+}
+.h4a-hubix-mega .brand-x{color:var(--teal);text-shadow:0 0 50px rgba(0,212,188,.6),0 0 100px rgba(0,212,188,.3)}
+.h4a-tagline{display:flex;flex-direction:column;gap:2px}
+.h4a-tagline-lanka{font-family:'Inter',sans-serif;font-weight:800;font-size:22px;color:#fff;letter-spacing:-.4px;line-height:1.15}
+.h4a-tagline-net{
+  font-family:'Inter',sans-serif;font-weight:900;font-size:30px;color:var(--orange);letter-spacing:-.9px;line-height:1.05;
+  text-shadow:0 0 34px rgba(255,159,28,.5),0 2px 12px rgba(255,159,28,.25);
+}
+.h4a-stanza{
+  text-align:left;padding:12px 12px 12px 14px;
+  border-left:3px solid var(--orange);background:rgba(255,159,28,.05);
+  border-radius:0 12px 12px 0;font-size:12.5px;line-height:1.55;
+  color:rgba(255,255,255,.85);font-weight:500;margin-bottom:16px;
+}
+.h4a-stanza b{color:#fff;font-weight:800}
+.h4a-stanza .o{color:var(--orange);font-weight:800}
+.h4a-slogan{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:0 0 16px;padding:14px 8px;border-radius:14px;
+  background:rgba(0,0,0,.28);border:1px solid rgba(255,159,28,.28);
+}
+.h4a-slogan .word{
+  font-family:'Inter',sans-serif;font-weight:900;font-size:19px;
+  color:var(--orange);letter-spacing:-.5px;text-transform:uppercase;
+  text-shadow:0 0 22px rgba(255,159,28,.5);
+}
+.h4a-slogan .sep{color:rgba(255,255,255,.32);font-size:16px}
+.h4a-manifest{
+  display:flex;flex-direction:column;gap:6px;margin-bottom:16px;
+  padding:12px 14px;border-radius:12px;
+  background:rgba(0,0,0,.28);border:1px solid rgba(255,159,28,.18);
+  text-align:left;
+}
+.h4a-manifest-eyebrow{font-size:9px;font-weight:900;color:var(--orange);letter-spacing:2px;text-transform:uppercase;margin-bottom:2px}
+.h4a-manifest-line{font-size:11.5px;color:rgba(255,255,255,.85);line-height:1.5;font-weight:500;padding-left:14px;position:relative}
+.h4a-manifest-line::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 8px rgba(255,159,28,.6)}
+.h4a-manifest-line b{color:#fff;font-weight:800}
+.h4a-manifest-line .o{color:var(--orange);font-weight:800}
+.h4a-manifest-final{text-align:center;margin-top:6px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08);font-size:11.5px;font-weight:800;color:#fff;letter-spacing:.2px;font-style:italic}
+.h4a-values{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px}
+.h4a-value{display:flex;flex-direction:column;align-items:center;gap:5px;padding:11px 6px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-align:center}
+.h4a-value-em{font-size:22px;line-height:1;filter:grayscale(1) brightness(1.3) contrast(.9);opacity:.7}
+.h4a-value-t{font-size:10.5px;font-weight:800;color:rgba(255,255,255,.85);letter-spacing:.5px;text-transform:uppercase}
+.h4a-value-s{font-size:8.5px;color:rgba(255,255,255,.45);line-height:1.35;font-weight:500}
+.h4a-cta-eyebrow{text-align:center;font-size:11px;font-weight:800;color:rgba(255,255,255,.65);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
 
 /* ═══════════ SCREEN 2 — PICK ROLE ═══════════ */
 #s-pick{padding-top:80px}
-.pick-title{font-size:36px;font-weight:900;line-height:1;letter-spacing:-1.2px;color:#fff;margin-bottom:10px}
-.pick-title .o{color:var(--orange)}
-.pick-sub{font-size:15px;line-height:1.55;color:var(--w-soft);margin-bottom:28px;max-width:380px}
+.pick-caps{
+  text-align:center;font-size:16px;font-weight:900;color:#fff;
+  letter-spacing:3px;text-transform:uppercase;line-height:1.2;margin-bottom:6px;
+}
+.pick-caps .o{color:var(--orange);text-shadow:0 0 24px rgba(255,159,28,.5)}
+.pick-brand-row{
+  text-align:center;font-size:28px;font-weight:900;color:#fff;letter-spacing:-.8px;margin-bottom:14px;
+}
+.pick-brand-row .brand{color:#fff;font-weight:900}
+.pick-brand-row .brand-x{color:var(--teal);text-shadow:0 0 24px rgba(0,212,188,.55)}
+.pick-title{font-size:38px;font-weight:900;line-height:1;letter-spacing:-1.3px;color:#fff;margin-bottom:12px;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+.pick-title .o{color:var(--orange);text-shadow:0 0 32px rgba(255,159,28,.45),0 2px 8px rgba(255,159,28,.2)}
+.pick-sub{font-size:14px;line-height:1.6;color:var(--w-soft);margin-bottom:20px;letter-spacing:.05px;text-align:center}
 .pick-sub b{color:#fff;font-weight:700}
+.pick-sub .t{color:var(--teal);font-weight:800}
+/* Definition-mini card — explains Hub + Connector inline */
+.pick-defs{
+  display:flex;flex-direction:column;gap:6px;margin-bottom:22px;
+  padding:12px 14px;border-radius:12px;background:rgba(0,212,188,.05);
+  border:1px solid rgba(0,212,188,.20);
+}
+.pick-def{font-size:11.5px;line-height:1.45;color:rgba(255,255,255,.82);font-weight:500}
+.pick-def b{color:var(--teal);font-weight:800}
+/* "Be part of it" — orange bold call at the bottom */
+.pick-outro{
+  text-align:center;font-size:16px;font-weight:900;color:var(--orange);
+  padding:14px 12px;margin-top:6px;
+  text-shadow:0 0 24px rgba(255,159,28,.5);
+  letter-spacing:-.2px;
+}
+.pick-outro .em{font-size:20px;margin-right:8px;vertical-align:-2px}
+/* Sub-caption inside card (Private · Business) */
+.bigpick-tsub{
+  display:block;font-family:'Playfair Display',serif;font-style:italic;
+  font-weight:700;font-size:11.5px;color:var(--teal);
+  margin-top:2px;letter-spacing:.2px;
+}
 
-/* Big tap cards — no rectangular box feel, more like editorial tiles */
-.bigpick{display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
-.bigpick-card{position:relative;display:flex;align-items:flex-start;gap:14px;padding:20px 16px 22px;border-radius:20px;background:linear-gradient(135deg,rgba(86,37,162,.35) 0%,rgba(26,10,62,.55) 100%);border:1px solid rgba(255,159,28,.22);cursor:pointer;overflow:hidden;transition:all .18s ease}
-.bigpick-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 15%,rgba(255,159,28,.18),transparent 55%);pointer-events:none;opacity:.85}
-.bigpick-card:hover{border-color:rgba(255,159,28,.5);transform:translateY(-2px)}
+/* Big tap cards — 4 vertical tiles (Mobile-First) */
+.bigpick{display:flex;flex-direction:column;gap:11px;margin-bottom:18px}
+.bigpick-card{position:relative;display:flex;align-items:flex-start;gap:12px;padding:17px 15px 19px;border-radius:20px;background:linear-gradient(155deg,rgba(86,37,162,.38) 0%,rgba(26,10,62,.58) 100%);border:1px solid rgba(255,255,255,.11);cursor:pointer;overflow:hidden;transition:all .22s cubic-bezier(.22,.9,.32,1);box-shadow:0 6px 24px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.06)}
+.bigpick-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.1)}
+/* UNIFIED — all role cards use the same purple background + orange stripe left + orange arrow.
+   Requested 2026-07-06: visual parity across sender/shop/hub/connector. */
+.bigpick-card.sender,
+.bigpick-card.shop,
+.bigpick-card.hub,
+.bigpick-card.conn{border-color:rgba(255,159,28,.32)}
+.bigpick-card.sender::after,
+.bigpick-card.shop::after,
+.bigpick-card.hub::after,
+.bigpick-card.conn::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 15%,rgba(255,159,28,.22),transparent 55%);pointer-events:none;opacity:.9}
+.bigpick-card.sender::before,
+.bigpick-card.shop::before,
+.bigpick-card.hub::before,
+.bigpick-card.conn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--orange),var(--orange-2));box-shadow:0 0 14px rgba(255,159,28,.4)}
+.bigpick-card.sender:hover,
+.bigpick-card.shop:hover,
+.bigpick-card.hub:hover,
+.bigpick-card.conn:hover{border-color:rgba(255,159,28,.6);transform:translateY(-2px)}
+.bigpick-card .bigpick-arrow{color:var(--orange)}
+.bigpick-card .bigpick-arrow svg{stroke:var(--orange)}
+.bigpick-card .bigpick-t{color:#fff}
 .bigpick-card:active{transform:scale(.98)}
-.bigpick-em{flex-shrink:0;font-size:48px;line-height:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3));position:relative;z-index:2}
-.bigpick-body{flex:1;min-width:0;position:relative;z-index:2}
-.bigpick-t{font-size:22px;font-weight:900;color:#fff;letter-spacing:-.6px;line-height:1;margin-bottom:6px}
-.bigpick-s{font-size:12.5px;color:var(--w-soft);line-height:1.5;font-weight:500}
+.bigpick-em{flex-shrink:0;font-size:38px;line-height:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3));position:relative;z-index:2}
+.bigpick-body{flex:1;min-width:0;position:relative;z-index:2;padding-right:60px}
+.bigpick-t{font-size:18px;font-weight:900;color:#fff;letter-spacing:-.4px;line-height:1;margin-bottom:5px}
+.bigpick-s{font-size:11.5px;color:var(--w-soft);line-height:1.45;font-weight:500}
 .bigpick-s b{color:#fff;font-weight:700}
-.bigpick-icons{margin-top:10px;margin-bottom:24px;font-size:18px;letter-spacing:6px;opacity:.85;line-height:1;max-width:75%}
-.bigpick-arrow{position:absolute;bottom:14px;right:16px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;z-index:2;display:flex;align-items:center;gap:5px}
-.bigpick-arrow svg{width:11px;height:11px;stroke:var(--orange);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bigpick-icons{margin-top:8px;font-size:15px;letter-spacing:5px;opacity:.85;line-height:1;max-width:80%}
+.bigpick-arrow{position:absolute;bottom:12px;right:14px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;z-index:2;display:flex;align-items:center;gap:4px}
+.bigpick-arrow svg{width:10px;height:10px;stroke:var(--orange);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+/* Animated hint when user has scrolled — DOMINANT invitation to tap any of the 3 cards */
+#s-pick.hint-on .bigpick-arrow{animation:pickHintPulse 1.2s ease infinite;font-size:13px;letter-spacing:1.4px;padding:5px 9px;border-radius:20px;background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;box-shadow:0 4px 14px rgba(255,159,28,.55);text-shadow:none}
+#s-pick.hint-on .bigpick-arrow svg{animation:pickHintArrow .9s ease infinite;stroke:#fff;width:12px;height:12px}
+#s-pick.hint-on .bigpick-card::before{animation:pickHintStripe 1.4s ease infinite;width:6px}
+#s-pick.hint-on .bigpick-card{transform:scale(1);animation:pickCardBreathe 2.6s ease infinite}
+@keyframes pickHintPulse{0%,100%{transform:scale(1);box-shadow:0 4px 14px rgba(255,159,28,.55)}50%{transform:scale(1.08);box-shadow:0 6px 22px rgba(255,159,28,.85),0 0 30px rgba(255,159,28,.45)}}
+@keyframes pickHintArrow{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+@keyframes pickHintStripe{0%,100%{box-shadow:0 0 16px rgba(255,159,28,.55),0 0 32px rgba(255,159,28,.25)}50%{box-shadow:0 0 28px rgba(255,159,28,1),0 0 56px rgba(255,159,28,.5)}}
+@keyframes pickCardBreathe{0%,100%{border-color:rgba(255,159,28,.32)}50%{border-color:rgba(255,159,28,.75)}}
+/* Sticky bottom hint bar when scrolled — "👉 Tap one to continue" */
+.pick-hint-bar{position:sticky;bottom:0;margin:6px -22px 0;padding:14px 22px max(env(safe-area-inset-bottom),16px);background:linear-gradient(0deg,#0d0a1e 60%,rgba(13,10,30,.4));z-index:5;display:none;text-align:center;font-size:13px;font-weight:800;letter-spacing:.5px;color:var(--orange);text-shadow:0 0 14px rgba(255,159,28,.55)}
+.pick-hint-bar .em{font-size:16px;margin-right:8px;vertical-align:-2px}
+#s-pick.hint-on .pick-hint-bar{display:block;animation:pickHintBar 2s ease infinite}
+@keyframes pickHintBar{0%,100%{opacity:.75}50%{opacity:1}}
 
 /* ═══════════ SCREEN 3 — ROLE DETAIL ═══════════ */
 #s-detail{padding-top:80px}
-.dtl-hero{padding:24px 22px 24px;border-radius:20px;background:linear-gradient(135deg,rgba(255,159,28,.22),rgba(255,122,0,.05));border:1px solid rgba(255,159,28,.4);margin-bottom:26px;display:block;position:relative;overflow:hidden;flex-shrink:0}
+/* Detail-hero — UNIFIED PURPLE BG for all roles (2026-07-07) — same look as Screen 3 role-cards. */
+.dtl-hero,
+.dtl-hero.sender,
+.dtl-hero.shop,
+.dtl-hero.hub,
+.dtl-hero.conn{
+  padding:26px 22px 26px;border-radius:22px;
+  background:linear-gradient(155deg,rgba(86,37,162,.42) 0%,rgba(26,10,62,.6) 100%);
+  border:1px solid rgba(139,92,246,.42);
+  margin-bottom:26px;display:block;position:relative;overflow:hidden;flex-shrink:0;
+  box-shadow:0 8px 32px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.dtl-hero::after,
+.dtl-hero.sender::after,
+.dtl-hero.shop::after,
+.dtl-hero.hub::after,
+.dtl-hero.conn::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 85% 15%,rgba(139,92,246,.28),transparent 60%),radial-gradient(ellipse at 15% 85%,rgba(255,159,28,.08),transparent 55%);
+  pointer-events:none;
+}
+.dtl-hero .dtl-hero-pre,
+.dtl-hero.sender .dtl-hero-pre,
+.dtl-hero.shop .dtl-hero-pre,
+.dtl-hero.hub .dtl-hero-pre,
+.dtl-hero.conn .dtl-hero-pre{color:#B794F6}
 .dtl-hero > .dtl-hero-sub{margin-top:16px}
 .dtl-hero > .dtl-hero-icons{margin-top:14px}
-.dtl-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 85% 15%,rgba(255,159,28,.28),transparent 60%),radial-gradient(ellipse at 15% 85%,rgba(0,212,188,.1),transparent 55%);pointer-events:none}
 .dtl-hero-top{display:flex;align-items:center;gap:20px;position:relative;z-index:1}
 .dtl-hero-em{flex-shrink:0;font-size:62px;line-height:1;filter:drop-shadow(0 6px 16px rgba(0,0,0,.4))}
 .dtl-hero-body{flex:1;min-width:0}
 .dtl-hero-pre{font-size:10px;font-weight:800;color:var(--orange);letter-spacing:2.2px;text-transform:uppercase;margin-bottom:6px}
-.dtl-hero-t{font-size:32px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1}
+.dtl-hero-t{font-size:32px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.35)}
 .dtl-hero-sub{font-size:13px;font-weight:600;color:var(--w-soft);line-height:1.55;position:relative;z-index:1}
 .dtl-hero-icons{font-size:20px;letter-spacing:4px;opacity:.92;line-height:1.4;position:relative;z-index:1;text-align:center;padding:6px 0;border-top:1px solid rgba(255,255,255,.08);padding-top:14px}
 
@@ -183,8 +358,30 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 #s-network{padding-top:80px}
 .net-title{font-size:32px;font-weight:900;line-height:1.02;letter-spacing:-1.1px;color:#fff;margin-bottom:10px}
 .net-title .o{color:var(--orange)}
-.net-sub{font-size:14.5px;line-height:1.55;color:var(--w-soft);margin-bottom:22px}
+.net-sub{font-size:14.5px;line-height:1.55;color:var(--w-soft);margin-bottom:12px}
 .net-sub b{color:#fff;font-weight:700}
+.net-sub .net-teal{color:var(--teal);font-weight:800}
+/* Standalone HUBIX line — centered, its own row */
+.net-hubix-line{
+  text-align:center;font-size:16px;font-weight:700;color:#fff;
+  padding:10px 12px;margin:0 0 12px;line-height:1.3;
+  background:rgba(0,212,188,.05);border-radius:12px;
+  border:1px solid rgba(0,212,188,.18);
+}
+.net-hubix-line .brand{color:#fff;font-weight:900;font-size:19px;letter-spacing:-.4px;text-shadow:0 0 24px rgba(0,212,188,.25)}
+.net-hubix-line .brand-x{color:var(--teal);text-shadow:0 0 20px rgba(0,212,188,.55)}
+/* "And YOU become part of it." line */
+.net-you-line{
+  text-align:center;font-size:16px;font-weight:700;color:#fff;
+  margin-bottom:22px;line-height:1.3;
+}
+.net-you{
+  font-size:26px;font-weight:900;color:var(--orange);
+  letter-spacing:-.5px;
+  text-shadow:0 0 30px rgba(255,159,28,.6),0 2px 8px rgba(255,159,28,.3);
+  vertical-align:baseline;
+}
+.net-part{color:var(--orange);font-weight:900}
 
 /* V5 Cinematic Spotlight Background + Conductor Layout */
 .flow-stage{position:relative;width:100%;height:240px;min-height:240px;flex-shrink:0;border-radius:18px;background:radial-gradient(ellipse at 70% 30%,rgba(255,159,28,.32),transparent 55%),radial-gradient(ellipse at 15% 75%,rgba(0,212,188,.18),transparent 55%),linear-gradient(135deg,#1a0a3e 0%,#2d1060 60%,#1a0a3e 100%);border:1px solid rgba(255,159,28,.28);overflow:hidden;margin-bottom:24px;box-shadow:0 12px 32px rgba(255,122,0,.18),inset 0 1px 0 rgba(255,255,255,.08)}
@@ -195,7 +392,10 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 .conductor-orb{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#7e3fd6,#1a0a3e);border:2px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.45),0 0 0 0 rgba(255,159,28,.5);animation:conductorPulse 2.4s ease infinite}
 .conductor-orb img{width:100%;height:100%;object-fit:cover}
 @keyframes conductorPulse{0%,100%{box-shadow:0 6px 18px rgba(0,0,0,.45),0 0 0 0 rgba(255,159,28,.55)}50%{box-shadow:0 6px 18px rgba(0,0,0,.45),0 0 0 12px rgba(255,159,28,0)}}
-.conductor-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:800;color:var(--orange);letter-spacing:1.4px;text-transform:uppercase;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.conductor-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:800;color:#fff;letter-spacing:1.4px;text-transform:uppercase;text-shadow:0 1px 2px rgba(0,0,0,.6);display:inline-flex;align-items:center;gap:5px}
+.conductor-label .brand{color:#fff;font-weight:800}
+.conductor-label .brand-x{color:var(--teal);text-shadow:0 0 8px rgba(0,212,188,.55)}
+.conductor-label .coord{color:var(--orange)}
 
 /* Lines from conductor to each node — pulse in sequence */
 .flow-lines{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
@@ -216,7 +416,7 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 .flow-label{font-size:8.5px;font-weight:800;letter-spacing:1.3px;color:rgba(255,255,255,.88);text-transform:uppercase}
 .flow-node.you .flow-label{color:#FFD89E}
 
-.pkg-mover{position:absolute;top:74%;left:9%;transform:translateY(-50%);font-size:27px;animation:moveAcross 8s cubic-bezier(.65,0,.35,1) infinite;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));z-index:4}
+.pkg-mover{position:absolute;top:74%;left:9%;transform:translateY(-50%);font-size:27px;animation:moveAcross 8s cubic-bezier(.65,0,.35,1) infinite,pkgGlow 2.4s ease infinite;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4)) drop-shadow(0 0 10px rgba(255,159,28,.7)) drop-shadow(0 0 22px rgba(255,159,28,.4));z-index:4}
 @keyframes moveAcross{
   0%{left:9%;transform:translateY(-50%) scale(1)}
   10%{left:9%;transform:translateY(-50%) scale(1.15)}
@@ -228,6 +428,12 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
   85%{left:71%;transform:translateY(-50%) scale(1.15)}
   100%{left:91%;transform:translateY(-50%) scale(1)}
 }
+@keyframes pkgGlow{
+  0%,100%{filter:drop-shadow(0 4px 12px rgba(0,0,0,.4)) drop-shadow(0 0 8px rgba(255,159,28,.55)) drop-shadow(0 0 18px rgba(255,159,28,.28))}
+  50%{filter:drop-shadow(0 4px 12px rgba(0,0,0,.4)) drop-shadow(0 0 16px rgba(255,159,28,.95)) drop-shadow(0 0 34px rgba(255,159,28,.55))}
+}
+/* Emphasise ALL flow-node emojis at rest with a soft warm glow */
+.flow-emoji-bg{filter:drop-shadow(0 0 6px rgba(255,159,28,.28))}
 
 .steps{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
 .step{display:flex;gap:12px;padding:13px 14px;border-radius:13px;background:rgba(255,255,255,.03);border:1px solid var(--w-faint)}
@@ -237,14 +443,82 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 .step-t .em{font-size:17px}
 .step-s{font-size:12.5px;color:var(--w-soft);line-height:1.5;margin-top:3px}
 
-.net-question{margin-top:8px;margin-bottom:18px;padding:20px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(255,159,28,.16),rgba(255,122,0,.04));border:1px solid rgba(255,159,28,.35);text-align:left;position:relative;overflow:hidden}
+/* Mini values-cards after steps (Sender + Connector motivation) */
+.net-mini-card{display:flex;flex-direction:column;gap:6px;padding:13px 14px;border-radius:13px;margin-bottom:10px;text-align:left;position:relative;overflow:hidden}
+.net-mini-card.sender-values{background:linear-gradient(135deg,rgba(255,159,28,.10),rgba(255,159,28,.02));border:1px solid rgba(255,159,28,.30)}
+.net-mini-card.connector-trust{background:linear-gradient(135deg,rgba(0,212,188,.08),rgba(0,212,188,.02));border:1px solid rgba(0,212,188,.25)}
+.net-mini-eyebrow{font-size:10px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:6px}
+.net-mini-eyebrow .em{font-size:14px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.net-mini-card.sender-values .net-mini-eyebrow{color:var(--orange)}
+.net-mini-card.connector-trust .net-mini-eyebrow{color:var(--teal)}
+.net-mini-body{font-size:11.5px;line-height:1.5;color:rgba(255,255,255,.82);font-weight:500}
+.net-mini-body b{color:#fff;font-weight:800}
+.net-mini-body .o{color:var(--orange);font-weight:800}
+.net-mini-body .t{color:var(--teal);font-weight:800}
+.net-question{margin-top:8px;margin-bottom:18px;padding:20px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(255,159,28,.16),rgba(255,122,0,.04));border:1px solid rgba(255,159,28,.35);text-align:left;position:relative;overflow:hidden;flex-shrink:0;display:block}
 .net-question::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 90% 30%,rgba(255,159,28,.18),transparent 60%);pointer-events:none}
 .net-question-eyebrow{font-size:9.5px;font-weight:800;letter-spacing:2.2px;color:var(--orange);text-transform:uppercase;margin-bottom:6px;position:relative}
 .net-question-t{font-size:24px;font-weight:900;color:#fff;line-height:1.05;letter-spacing:-.7px;margin-bottom:6px;position:relative}
 .net-question-s{font-size:13px;color:var(--w-soft);line-height:1.5;position:relative}
 
-/* ═══════════ SCREEN 5 — WHY NOW ═══════════ */
+/* ═══════════ SCREEN 5 — WHY NOW (Kombi A Clean · merged 2026-07-07) ═══════════ */
 #s-why{padding-top:80px}
+.mtv-title{font-family:'Playfair Display',serif;font-weight:900;font-size:34px;line-height:1;letter-spacing:-.9px;color:#fff;margin-bottom:8px}
+.mtv-title em{font-style:italic;color:var(--orange);text-shadow:0 0 30px rgba(255,159,28,.4)}
+.mtv-title-sub{font-family:'Inter',sans-serif;font-weight:700;font-size:15px;line-height:1.3;color:rgba(255,255,255,.8);letter-spacing:-.1px;margin-bottom:16px}
+.mtv-flow{padding:14px 16px;border-radius:14px;background:rgba(0,212,188,.05);border:1px solid rgba(0,212,188,.22);margin-bottom:14px}
+.mtv-flow p{font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.85);font-weight:500;margin-bottom:8px}
+.mtv-flow p:last-child{margin-bottom:0}
+.mtv-flow b{color:#fff;font-weight:800}
+.mtv-flow .o{color:var(--orange);font-weight:800}
+.mtv-flow p.dies-here{font-size:16px;line-height:1.2;margin-bottom:12px}
+.mtv-flow p.dies-here b{color:var(--orange);font-weight:900;text-shadow:0 0 24px rgba(255,159,28,.45)}
+.sl-stats{list-style:none;padding:6px 0 8px;margin:0}
+.sl-stats li{position:relative;padding:4px 0 4px 20px;font-size:13px;line-height:1.4;color:rgba(255,255,255,.88);font-weight:500}
+.sl-stats li::before{content:'';position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px rgba(255,159,28,.55)}
+.sl-stats li b{color:var(--orange);font-family:'JetBrains Mono',monospace;font-weight:900;letter-spacing:.3px}
+.promise{padding:16px 18px 16px 22px;border-radius:14px;background:linear-gradient(135deg,rgba(255,159,28,.14),rgba(0,212,188,.06));border:1px solid rgba(255,159,28,.36);margin-bottom:14px;position:relative;border-left:4px solid var(--orange);display:block}
+.promise-body{font-family:'Playfair Display',serif;font-weight:800;font-size:16px;line-height:1.4;color:#fff;letter-spacing:-.1px;display:block;margin-bottom:10px}
+.promise-body .o{color:var(--orange);font-style:italic}
+.promise-tag{font-family:'Inter',sans-serif;font-weight:800;font-size:10px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;padding-top:8px;border-top:1px solid rgba(255,255,255,.10);display:block}
+.stacks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.stack{padding:10px 10px;border-radius:11px;text-align:center}
+.stack.old{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1)}
+.stack.new{background:linear-gradient(135deg,rgba(255,159,28,.14),rgba(255,159,28,.04));border:1px solid rgba(255,159,28,.35)}
+.stack-e{font-size:8.5px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.stack.old .stack-e{color:rgba(255,255,255,.4)}
+.stack.new .stack-e{color:var(--orange)}
+.stack-l{font-size:11px;color:rgba(255,255,255,.75);line-height:1.4;font-weight:600}
+.stack.new .stack-l{color:#fff}
+.stack.old .stack-l{text-decoration:line-through;text-decoration-color:rgba(255,159,28,.6);text-decoration-thickness:1.5px}
+.roadmap{margin-bottom:14px;padding:12px 14px;border-radius:12px;background:rgba(0,212,188,.05);border:1px solid rgba(0,212,188,.22)}
+.roadmap-eyebrow{font-size:9px;font-weight:900;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.roadmap-row{display:flex;gap:8px;align-items:flex-start;font-size:11px;color:rgba(255,255,255,.82);line-height:1.4;padding:5px 0;font-weight:500}
+.roadmap-row .num{font-family:'JetBrains Mono',monospace;font-weight:900;color:var(--orange);flex-shrink:0;width:26px;letter-spacing:.2px}
+.roadmap-row b{color:#fff;font-weight:800}
+.founder-bloc{margin-bottom:14px;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(255,159,28,.12),rgba(255,159,28,.02));border:1px solid rgba(255,159,28,.32)}
+.fb-eyebrow{font-size:9px;font-weight:900;color:var(--orange);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.fb-title{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:15px;color:#fff;line-height:1.2;margin-bottom:6px}
+.fb-body{font-size:11.5px;color:rgba(255,255,255,.82);line-height:1.5;font-weight:500}
+.fb-body b{color:#fff;font-weight:800}
+.fb-body .o{color:var(--orange);font-weight:800}
+.founder-sign{margin-bottom:14px;padding:16px 16px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(0,212,188,.06),rgba(255,159,28,.04));border:1px solid rgba(0,212,188,.22);text-align:center}
+.founder-sign .sign-line{font-size:11.5px;color:rgba(255,255,255,.75);line-height:1.4;font-weight:600;margin-bottom:12px}
+.founder-sign .sign-line b{color:#fff;font-weight:800}
+.founder-sign .sign-line .sign-o{color:var(--orange);font-weight:800}
+.founder-sign .sign-img{display:block;margin:2px auto 0;width:230px;height:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
+.founder-sign .sign-role{font-size:9.5px;font-weight:800;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-top:8px}
+.founder-story{margin-top:14px;text-align:left;border-top:1px solid rgba(255,255,255,.10);padding-top:12px}
+.founder-story summary{list-style:none;cursor:pointer;font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:13.5px;color:var(--orange);text-align:center;letter-spacing:.2px}
+.founder-story summary::-webkit-details-marker{display:none}
+.founder-story .story-arrow{display:inline-block;transition:transform .2s;margin-left:4px;font-style:normal}
+.founder-story[open] .story-arrow{transform:rotate(90deg)}
+.story-body{margin-top:12px}
+.story-body p{font-size:11.5px;line-height:1.6;color:rgba(255,255,255,.82);font-weight:500;margin-bottom:8px}
+.story-body p:last-child{margin-bottom:0}
+.story-body b{color:#fff;font-weight:800}
+.story-body i{font-style:italic}
+.mtv-cta-eyebrow{text-align:center;font-size:10.5px;font-weight:800;color:rgba(255,255,255,.65);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
 .why-eyebrow{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:16px;color:var(--orange);margin-bottom:12px}
 .why-title{font-size:38px;font-weight:900;line-height:1;letter-spacing:-1.4px;color:#fff;margin-bottom:14px}
 .why-title .o{color:var(--orange)}
@@ -255,6 +529,35 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 
 .why-strong{font-size:17px;font-weight:800;color:#fff;line-height:1.4;letter-spacing:-.3px;padding:16px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(255,159,28,.18),rgba(255,122,0,.04));border:1px solid rgba(255,159,28,.35);margin:18px 0 22px}
 .why-strong .accent{color:var(--orange)}
+.why-strong .brand{color:#fff;font-weight:900}
+.why-strong .brand-x{color:var(--teal)}
+.why-bullets{display:flex;flex-direction:column;gap:10px;margin:18px 0 18px}
+.scarcity-lock{display:block;flex-shrink:0;margin:0 0 18px;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(255,159,28,.16),rgba(255,122,0,.04));border:1px solid rgba(255,159,28,.4);position:relative;overflow:hidden}
+.scarcity-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.scarcity-eyebrow{font-size:10.5px;font-weight:800;letter-spacing:1.4px;color:var(--orange);text-transform:uppercase}
+.scarcity-count{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:var(--w-soft)}
+.scarcity-count b{color:#fff;font-weight:900;font-size:15px}
+.scarcity-bar{width:100%;height:6px;border-radius:4px;background:rgba(255,255,255,.06);overflow:hidden;margin-bottom:10px}
+.scarcity-bar-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-2));border-radius:4px;box-shadow:0 0 12px rgba(255,159,28,.5);animation:scarcityPulse 2.4s ease infinite}
+@keyframes scarcityPulse{0%,100%{box-shadow:0 0 12px rgba(255,159,28,.5)}50%{box-shadow:0 0 20px rgba(255,159,28,.85)}}
+.scarcity-note{font-size:12.5px;color:var(--w-soft);line-height:1.55}
+.scarcity-note b{color:#fff;font-weight:700}
+.scarcity-note b.o{color:var(--orange)}
+
+.why-vision{margin:0 0 18px;padding:14px 16px;border-left:3px solid var(--teal);background:rgba(0,212,188,.06)}
+.why-vision-eyebrow{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:15px;color:var(--teal);letter-spacing:.2px;margin-bottom:6px;line-height:1.2}
+.why-vision-body{font-size:13.5px;color:var(--w-soft);line-height:1.55}
+.why-vision-body b{color:#fff;font-weight:700}
+.why-tagline{display:block;margin-top:10px;font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:18px;color:#fff;letter-spacing:-.2px;line-height:1.2}
+.why-tagline .o{color:var(--orange)}
+.why-tagline-line{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:22px;color:#fff;letter-spacing:-.4px;line-height:1.15;margin:6px 0 18px;text-align:center}
+.why-tagline-line .o{color:var(--orange);text-shadow:0 0 22px rgba(255,159,28,.35)}
+.why-body .accent{color:var(--orange);font-weight:700}
+.why-body .accent .brand{color:#fff;font-weight:800}
+.why-body .accent .brand-x{color:var(--teal)}
+.why-bullet{display:flex;align-items:center;gap:14px;font-size:14.5px;color:var(--w-soft);line-height:1.4}
+.why-bullet b{color:#fff;font-weight:800}
+.why-bullet-em{font-size:22px;line-height:1;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
 
 /* ═══════════ SCREEN 6 — FORM ═══════════ */
 #s-form{padding-top:80px}
@@ -263,7 +566,54 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 .form-sub{font-size:14px;line-height:1.55;color:var(--w-soft);margin-bottom:22px}
 .form-sub b{color:#fff;font-weight:700}
 
-.role-confirm{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:13px;background:rgba(255,159,28,.1);border:1px solid rgba(255,159,28,.32);margin-bottom:20px}
+.founder-note{display:block;flex-shrink:0;padding:18px 18px 16px;border-radius:18px;background:linear-gradient(155deg,rgba(86,37,162,.28),rgba(26,10,62,.55));border:1px solid rgba(255,255,255,.11);margin-bottom:14px;position:relative;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.06)}
+.founder-note::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--teal),var(--orange))}
+.founder-eyebrow{font-size:9.5px;font-weight:800;letter-spacing:2.5px;color:var(--teal);text-transform:uppercase;margin-bottom:12px}
+.founder-loc{font-size:10.5px;font-weight:700;color:var(--w-muted);letter-spacing:.5px;margin-top:2px}
+.founder-quote p{margin:0 0 9px}
+.founder-quote p:last-child{margin-bottom:0}
+.founder-quote b{color:#fff;font-weight:700;font-style:normal}
+.founder-eyebrow{font-size:9px;font-weight:800;letter-spacing:1.8px;color:var(--teal);text-transform:uppercase;margin-bottom:10px}
+.founder-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.founder-avatar{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FF9F1C,#FF7A00);display:flex;align-items:center;justify-content:center;color:#1a0a3e;font-weight:900;font-size:18px;letter-spacing:-.5px;box-shadow:0 4px 14px rgba(255,122,0,.35),inset 0 1px 0 rgba(255,255,255,.3)}
+.founder-body{flex:1;min-width:0}
+.founder-name{font-size:13.5px;font-weight:800;color:#fff;letter-spacing:-.2px}
+.founder-tag{font-weight:500;color:var(--w-muted);font-size:11.5px;letter-spacing:0}
+.founder-x{color:var(--teal);font-weight:800}
+.founder-quote{font-size:12.5px;color:var(--w-soft);line-height:1.5;font-style:italic;margin-top:6px}
+.founder-wa{display:flex;align-items:center;justify-content:center;gap:7px;padding:10px;border-radius:10px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.4);color:#fff;font-size:12.5px;font-weight:800;text-decoration:none;letter-spacing:.2px}
+.founder-wa svg{width:14px;height:14px}
+
+.live-counter{flex-shrink:0;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--w-faint);margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.live-counter-eyebrow{font-size:10px;font-weight:800;letter-spacing:1.4px;color:rgba(255,255,255,.55);text-transform:uppercase;display:flex;align-items:center;gap:5px}
+.live-counter-eyebrow::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(0,212,188,.7);animation:pulseDot 1.6s ease infinite;margin-left:3px}
+.live-counter-row{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;color:var(--w-soft);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.live-counter-row b{color:var(--orange);font-weight:900;font-size:13px}
+.lc-sep{color:rgba(255,255,255,.2)}
+
+/* App-preview mini-card at top of form (shows what the user will get on WhatsApp in Sep) */
+.app-preview{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,rgba(0,212,188,.08),rgba(0,212,188,.02));border:1px solid rgba(0,212,188,.28);margin-bottom:16px}
+.app-preview-icon{flex-shrink:0;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#7e3fd6,#1a0a3e);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.app-preview-icon img{width:100%;height:100%;object-fit:cover}
+.app-preview-body{flex:1;min-width:0}
+.app-preview-eyebrow{font-size:9px;font-weight:900;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px}
+.app-preview-name{font-size:15px;font-weight:900;color:#fff;letter-spacing:-.3px;line-height:1.1;margin-bottom:1px}
+.app-preview-tag{font-size:10.5px;color:var(--w-soft);line-height:1.35;font-weight:500}
+.app-preview-tag b{color:var(--orange);font-weight:800}
+/* Role-confirm — always orange regardless of picked role (2026-07-07) */
+.role-confirm,
+.role-confirm.conn,
+.role-confirm.sender,
+.role-confirm.shop,
+.role-confirm.hub{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:13px;background:rgba(255,159,28,.1);border:1px solid rgba(255,159,28,.32);margin-bottom:20px}
+.role-confirm .role-confirm-t,
+.role-confirm.conn .role-confirm-t,
+.role-confirm.sender .role-confirm-t,
+.role-confirm.shop .role-confirm-t{color:var(--orange)}
+.role-confirm .role-confirm-edit,
+.role-confirm.conn .role-confirm-edit,
+.role-confirm.sender .role-confirm-edit,
+.role-confirm.shop .role-confirm-edit{color:var(--orange)}
 .role-confirm-em{font-size:26px;line-height:1}
 .role-confirm-body{flex:1}
 .role-confirm-t{font-size:9px;font-weight:800;letter-spacing:1.5px;color:var(--orange);text-transform:uppercase}
@@ -273,10 +623,25 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 .form{display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
 .fld{display:flex;flex-direction:column;gap:8px}
 .fld label{font-size:10.5px;font-weight:800;letter-spacing:1.6px;color:var(--w-muted);text-transform:uppercase}
+.fld-optional{font-size:9.5px;font-weight:700;color:var(--w-faint);letter-spacing:1px;text-transform:none;margin-left:6px}
+/* Input text ORANGE (2026-07-07) */
+.fld > input[type=text],.fld > input[type=email]{background:rgba(255,255,255,.04);border:1.5px solid var(--w-faint);border-radius:13px;padding:15px 16px;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--orange);outline:none;width:100%;-webkit-appearance:none;transition:border-color .18s ease}
+.fld > input[type=text]::placeholder,.fld > input[type=email]::placeholder{color:rgba(255,255,255,.22);font-weight:500}
+.fld > input[type=text]:focus,.fld > input[type=email]:focus{border-color:var(--orange)}
+.fld-hint{font-size:10.5px;color:var(--w-soft);line-height:1.4;padding-left:2px}
+.fld-hint b{color:var(--orange);font-weight:700}
 .phone-row{display:flex;gap:10px}
-.phone-row .code{flex:0 0 78px;font-family:'JetBrains Mono',monospace;font-size:16px;text-align:center;background:rgba(255,159,28,.08);border:1.5px solid rgba(255,159,28,.32);border-radius:13px;color:var(--orange);font-weight:800;padding:16px 0;display:flex;align-items:center;justify-content:center}
-.phone-row input{flex:1;background:rgba(255,255,255,.04);border:1.5px solid var(--w-faint);border-radius:13px;padding:16px 16px;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:#fff;outline:none;letter-spacing:1px;width:100%;-webkit-appearance:none}
-.phone-row input::placeholder{color:rgba(255,255,255,.22)}
+/* Country-code SELECT — multi-country dropdown */
+.phone-row .code-select{flex:0 0 92px;font-family:'JetBrains Mono',monospace;font-size:15px;text-align:center;background:rgba(255,159,28,.08);border:1.5px solid rgba(255,159,28,.32);border-radius:13px;color:var(--orange);font-weight:800;padding:16px 6px;-webkit-appearance:none;appearance:none;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF9F1C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 8px center;background-size:14px;padding-right:22px}
+.phone-row .code-select:focus{outline:none;border-color:var(--orange)}
+.phone-row .code-select option{background:#1a0a3e;color:var(--orange);font-family:'JetBrains Mono',monospace;font-weight:800}
+/* City / District dropdown (Sri Lanka locations) */
+.fld > select.city-select{width:100%;background:rgba(255,255,255,.04);border:1.5px solid var(--w-faint);border-radius:13px;padding:15px 42px 15px 16px;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--orange);outline:none;-webkit-appearance:none;appearance:none;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF9F1C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;transition:border-color .18s ease}
+.fld > select.city-select:focus{border-color:var(--orange)}
+.fld > select.city-select option{background:#1a0a3e;color:#fff;font-family:'Inter',sans-serif;font-weight:600}
+.fld > select.city-select option:first-child{color:rgba(255,255,255,.4)}
+.phone-row input{flex:1;background:rgba(255,255,255,.04);border:1.5px solid var(--w-faint);border-radius:13px;padding:16px 16px;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--orange);outline:none;letter-spacing:1px;width:100%;-webkit-appearance:none}
+.phone-row input::placeholder{color:rgba(255,255,255,.22);font-weight:500}
 .phone-row input:focus{border-color:var(--orange)}
 
 .consent{display:flex;gap:11px;align-items:flex-start;padding:13px;border-radius:12px;background:rgba(255,255,255,.02);border:1px solid var(--w-faint)}
@@ -284,20 +649,92 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 .consent label{font-size:12px;color:var(--w-soft);line-height:1.5;cursor:pointer}
 .consent label b{color:#fff;font-weight:700}
 
+/* Inline "Join the network" CTA — sits directly under consent, before Quick Answers.
+   Bigger (2026-07-07 user feedback: taller for better tap target + visual weight). */
+/* Founder 08.07.: Haupt-CTA nochmal größer. Doppel-Klasse nötig — die
+   Basis-.cta-Regel steht später im Stylesheet und gewann sonst (Alt-Bug:
+   deshalb wirkte .cta-inline nie). */
+.cta.cta-inline{width:100%;margin:22px 0 26px;padding:26px 28px;font-size:19px;font-weight:900;letter-spacing:.4px;border-radius:18px;box-shadow:0 12px 36px rgba(255,159,28,.5),0 4px 14px rgba(255,122,0,.35)}
+.cta.cta-inline svg{width:21px;height:21px}
+.mini-faq{margin:18px 0 6px;display:flex;flex-direction:column;gap:6px}
+.mini-faq-title{font-size:10.5px;font-weight:800;letter-spacing:1.8px;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
+.faq-item{border:1px solid var(--w-faint);border-radius:11px;background:rgba(255,255,255,.02);padding:0;overflow:hidden}
+.faq-item summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;font-weight:700;color:#fff}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item .faq-arrow{font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--orange);font-weight:800;transition:transform .2s}
+.faq-item[open] .faq-arrow{transform:rotate(45deg)}
+.faq-a{padding:0 14px 13px;font-size:12.5px;color:var(--w-soft);line-height:1.55}
+.faq-a b{color:#fff;font-weight:700}
+
+.referral-tracker{margin-top:12px;display:flex;align-items:center;gap:10px}
+.referral-row{display:flex;gap:6px}
+.referral-dot{width:14px;height:14px;border-radius:50%;border:1.5px dashed rgba(255,159,28,.5);background:rgba(255,159,28,.06)}
+.referral-dot.on{background:linear-gradient(135deg,var(--orange),var(--orange-2));border-style:solid;border-color:#fff;box-shadow:0 2px 8px rgba(255,159,28,.4)}
+.referral-status{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--orange);letter-spacing:.4px}
+
 /* ═══════════ SCREEN 7 — SUCCESS ═══════════ */
 #s-success{padding-top:80px;align-items:center;text-align:center}
-.success-icon{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-deep));margin:24px auto 18px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(0,212,188,.4),0 0 0 8px rgba(0,212,188,.1);animation:pop .5s cubic-bezier(.18,.89,.32,1.28)}
-.success-icon svg{width:42px;height:42px;stroke:#fff;stroke-width:3.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.success-icon{width:92px;height:92px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-deep));margin:26px auto 20px;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 48px rgba(0,212,188,.45),0 4px 16px rgba(0,212,188,.3),0 0 0 10px rgba(0,212,188,.08),inset 0 2px 0 rgba(255,255,255,.28);animation:pop .55s cubic-bezier(.18,.89,.32,1.28);position:relative}
+.success-icon::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(0,212,188,.2);animation:pulseRing 2.4s ease-in-out infinite}
+.success-icon svg{width:44px;height:44px;stroke:#fff;stroke-width:3.8;fill:none;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2))}
+@keyframes pulseRing{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.08);opacity:0}}
 @keyframes pop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}
-.success-pre{font-size:10px;font-weight:800;color:var(--teal);letter-spacing:2.5px;margin-bottom:14px;text-transform:uppercase}
-.success-t{font-size:32px;font-weight:900;line-height:1.05;letter-spacing:-1px;color:#fff;margin-bottom:8px}
-.success-t .o{color:var(--orange)}
-.success-s{font-size:14px;color:var(--w-soft);line-height:1.55;max-width:380px;margin:0 auto 22px}
+.success-pre{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;font-weight:800;color:var(--orange);text-align:center;margin-bottom:6px}
+.success-t{font-family:'Playfair Display',serif;font-size:34px;font-weight:900;line-height:1.05;letter-spacing:-.8px;color:#fff;margin-bottom:6px;text-shadow:0 2px 24px rgba(0,0,0,.35);text-align:center}
+.success-t .o{color:var(--orange);font-style:italic;text-shadow:0 0 36px rgba(255,159,28,.5),0 2px 10px rgba(255,159,28,.25)}
+.success-thank{font-size:13px;color:rgba(255,255,255,.75);text-align:center;margin-bottom:20px;font-weight:500}
+/* Founding-Member Badge (from V2 preview) */
+.fm-badge{margin:12px auto 18px;width:180px;height:180px;position:relative;flex-shrink:0}
+.fm-badge-ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,var(--orange),#ff6b00,var(--orange),#ffb84d,var(--orange));animation:badgeSpin 12s linear infinite;filter:drop-shadow(0 0 24px rgba(255,159,28,.55))}
+.fm-badge-inner{position:absolute;inset:5px;border-radius:50%;background:linear-gradient(135deg,#1a0a3e,#0a0518);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.fm-badge-eyebrow{font-family:'Playfair Display',serif;font-style:italic;font-size:10.5px;font-weight:800;color:var(--orange);letter-spacing:.2px;margin-bottom:3px}
+.fm-badge-num{font-family:'JetBrains Mono',monospace;font-size:52px;font-weight:900;color:#fff;line-height:1;text-shadow:0 0 22px rgba(255,159,28,.5)}
+.fm-badge-hash{font-size:22px;font-weight:900;color:var(--orange);vertical-align:top;margin-right:3px}
+.fm-badge-label{font-size:8.5px;font-weight:900;color:rgba(255,255,255,.65);letter-spacing:1.8px;text-transform:uppercase;margin-top:5px}
+.fm-badge-label .brand-x{color:var(--teal)}
+@keyframes badgeSpin{to{transform:rotate(360deg)}}
+/* Founder message + launch strip + share-clean (V3-Final) */
+.founder-msg{width:100%;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.10);margin-bottom:12px}
+.founder-msg p{font-size:12.5px;line-height:1.65;color:rgba(255,255,255,.85);font-weight:500;margin-bottom:8px}
+.founder-msg p:last-of-type{margin-bottom:0}
+.founder-msg b{color:#fff;font-weight:800}
+.founder-msg .o{color:var(--orange);font-weight:800}
+.founder-msg-sign{margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08);font-family:'Playfair Display',serif;font-style:italic;font-size:13px;font-weight:800;color:var(--teal);text-align:right}
+.launch-strip{width:100%;margin-bottom:12px;padding:12px 14px;border-radius:12px;background:linear-gradient(135deg,rgba(255,159,28,.10),rgba(255,159,28,.02));border:1px solid rgba(255,159,28,.28);text-align:center}
+.launch-eyebrow{font-size:9px;font-weight:900;color:var(--orange);letter-spacing:2px;text-transform:uppercase;margin-bottom:3px}
+.launch-text{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;color:#fff}
+.launch-text .o{color:var(--orange)}
+.share-clean{width:100%;padding:16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.10);margin-bottom:14px;text-align:center}
+.share-clean-t{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:16px;color:#fff;margin-bottom:6px}
+.share-clean-s{font-size:11.5px;color:rgba(255,255,255,.72);line-height:1.5;margin-bottom:12px;font-weight:500}
+.share-clean-s b{color:var(--orange);font-weight:800}
+.success-s{font-size:14px;color:var(--w-soft);line-height:1.55;max-width:380px;margin:0 auto 12px}
 .success-s b{color:#fff;font-weight:700}
+.founding-preview{font-size:11px;color:var(--w-muted);line-height:1.5;max-width:380px;margin:0 auto 22px;padding:9px 14px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid var(--w-faint);font-family:'JetBrains Mono',monospace;letter-spacing:.2px}
+.founding-preview b{color:var(--orange);font-weight:800}
 
-.next-card{width:100%;padding:16px;border-radius:16px;background:linear-gradient(135deg,rgba(37,211,102,.16),rgba(37,211,102,.04));border:1px solid rgba(37,211,102,.35);margin-bottom:12px;text-align:left}
-.next-card-eyebrow{font-size:9px;font-weight:800;letter-spacing:1.8px;color:#25D366;text-transform:uppercase;margin-bottom:4px}
-.next-card-t{font-size:14.5px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:10px}
+.next-card{width:100%;padding:16px;border-radius:16px;background:linear-gradient(135deg,rgba(139,92,246,.14),rgba(86,37,162,.04));border:1px solid rgba(139,92,246,.32);margin-bottom:12px;text-align:left}
+.next-card-eyebrow{font-size:9px;font-weight:800;letter-spacing:1.8px;color:#B794F6;text-transform:uppercase;margin-bottom:4px}
+.next-card-t{font-size:14.5px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:12px}
+.next-card-body{display:flex;flex-direction:column;gap:9px}
+.waiting-row{display:flex;align-items:flex-start;gap:10px;font-size:12.5px;color:var(--w-soft);line-height:1.45}
+.waiting-row b{color:#fff;font-weight:700}
+.waiting-em{flex-shrink:0;font-size:16px;line-height:1.2}
+.contact-card{width:100%;padding:14px;border-radius:14px;background:rgba(0,212,188,.06);border:1px solid rgba(0,212,188,.28);margin-bottom:12px;text-align:left;display:flex;align-items:center;gap:12px}
+.contact-em{flex-shrink:0;font-size:24px;line-height:1}
+.contact-body{flex:1;min-width:0}
+.contact-t{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;margin-bottom:3px}
+.contact-a{font-size:13px;color:#fff;font-weight:600;line-height:1.35;word-break:break-all}
+.contact-a b{color:var(--teal);font-weight:700}
+.share-card-simple{width:100%;padding:16px;border-radius:16px;background:rgba(255,159,28,.07);border:1px solid rgba(255,159,28,.28);margin-bottom:18px;text-align:left}
+.share-simple-t{font-size:13.5px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:5px}
+.share-simple-s{font-size:11.5px;color:var(--w-soft);line-height:1.5;margin-bottom:12px}
+.share-simple-s b{color:var(--orange);font-weight:700}
+.ref-link-box{padding:11px 13px;border-radius:11px;background:rgba(0,0,0,.28);border:1px dashed rgba(255,159,28,.35);margin-bottom:12px}
+.ref-code-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ref-code-label{font-size:9px;font-weight:800;letter-spacing:1.5px;color:var(--w-muted);text-transform:uppercase}
+.ref-code-value{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:var(--orange);letter-spacing:1px}
+.ref-link-display{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--w-soft);letter-spacing:.3px;word-break:break-all;padding-top:5px;border-top:1px solid rgba(255,159,28,.15)}
 
 .share-card{width:100%;padding:16px;border-radius:16px;background:rgba(255,159,28,.07);border:1px solid rgba(255,159,28,.3);margin-bottom:18px;text-align:left}
 .share-eyebrow{font-size:9px;font-weight:800;letter-spacing:1.8px;color:var(--orange);text-transform:uppercase;margin-bottom:6px}
@@ -310,11 +747,27 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 .share-btn:active{transform:scale(.97)}
 .share-btn svg{width:13px;height:13px}
 
+/* Trust-Ausklang am Form-Ende (ersetzt den zweiten Submit-Button, 08.07.) */
+.form-closing-line{margin:18px 0 10px;padding:12px 14px;text-align:center;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.55);line-height:1.6;border-top:1px solid rgba(255,255,255,.08)}
+.form-closing-line b{color:var(--orange)}
+
 /* ═══════════ STICKY CTA ═══════════ */
-.cta-zone{position:sticky;bottom:0;margin-left:-22px;margin-right:-22px;padding:14px 22px max(env(safe-area-inset-bottom),18px);background:linear-gradient(0deg,#0d0a1e 60%,transparent);z-index:5;display:flex;flex-direction:column;gap:8px}
-.cta{width:100%;padding:18px;border-radius:14px;background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;font-size:16px;font-weight:800;letter-spacing:.2px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 24px rgba(255,122,0,.4);transition:transform .15s}
+.cta-zone{margin:22px 0 6px;padding:0 0 max(env(safe-area-inset-bottom),12px);display:flex;flex-direction:column;gap:8px}
+.cta{width:100%;padding:19px;border-radius:16px;background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;font-size:16.5px;font-weight:800;letter-spacing:.3px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 4px 12px rgba(255,122,0,.28),0 12px 32px rgba(255,122,0,.35),inset 0 1px 0 rgba(255,255,255,.28);transition:transform .18s cubic-bezier(.22,.9,.32,1),box-shadow .18s ease;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 50%);pointer-events:none;border-radius:16px}
+.cta:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(255,122,0,.35),0 16px 40px rgba(255,122,0,.45),inset 0 1px 0 rgba(255,255,255,.35)}
 .cta:active{transform:scale(.98)}
 .cta[disabled]{opacity:.4;background:#3a3a4a;box-shadow:none;cursor:not-allowed}
+/* Network-Screen CTA lifecycle: idle while user is still reading, attention when they reach the bottom */
+/* Global sticky CTA lifecycle — idle while user is reading, attention pulse when scrolled to bottom */
+.cta{transition:transform .18s cubic-bezier(.22,.9,.32,1),box-shadow .35s ease,opacity .35s ease,filter .35s ease}
+.cta.idle{opacity:.55;filter:saturate(.6);box-shadow:0 4px 12px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.15)}
+.cta.idle::before{opacity:.4}
+.cta.attention{animation:ctaAttention 2s ease infinite}
+@keyframes ctaAttention{
+  0%,100%{box-shadow:0 4px 12px rgba(255,122,0,.35),0 16px 44px rgba(255,122,0,.55),inset 0 1px 0 rgba(255,255,255,.35),0 0 0 0 rgba(255,159,28,.55)}
+  50%{box-shadow:0 6px 18px rgba(255,122,0,.45),0 20px 52px rgba(255,122,0,.7),inset 0 1px 0 rgba(255,255,255,.4),0 0 0 10px rgba(255,159,28,0)}
+}
 .cta.wa{background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 8px 24px rgba(37,211,102,.35);text-decoration:none}
 .cta svg{width:16px;height:16px;stroke:#fff;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .cta-sec{width:100%;padding:14px;border-radius:13px;background:transparent;color:var(--w-soft);font-size:13px;font-weight:700;border:1px solid var(--w-faint);cursor:pointer;text-decoration:none;text-align:center}
@@ -325,6 +778,47 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 
 .spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+.hdr-pre{display:none}
+.lang-switch{position:absolute;top:max(env(safe-area-inset-top),14px);right:18px;z-index:51;display:flex;gap:2px;background:rgba(255,255,255,.07);border:1px solid var(--w-faint);border-radius:8px;padding:3px;backdrop-filter:blur(8px)}
+.lang-switch a{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;color:var(--w-muted);padding:4px 7px;border-radius:5px;text-decoration:none;letter-spacing:.5px;transition:all .15s}
+.lang-switch a.on{background:var(--orange);color:#1a0a3e}
+.lang-switch a:hover{color:#fff}
+
+/* ═══════════ SCREEN QR — PRINT VIEW ═══════════ */
+#s-qr{padding:32px 22px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+#s-qr.on{background:#fff}
+.qr-print{width:100%;max-width:600px;color:#1a0a3e;display:flex;flex-direction:column;align-items:center;gap:22px}
+.qr-brand{display:flex;align-items:center;gap:14px;width:100%;padding-bottom:18px;border-bottom:2px solid rgba(86,37,162,.15)}
+.qr-brand-logo{width:56px;height:56px;border-radius:14px;background:#5625a2;display:flex;align-items:center;justify-content:center;padding:6px;overflow:hidden;flex-shrink:0}
+.qr-brand-logo img{width:100%;height:100%;object-fit:contain}
+.qr-brand-name{font-size:24px;font-weight:900;color:#1a0a3e;letter-spacing:-.8px;line-height:1}
+.qr-brand-name span{color:#00D4BC}
+.qr-brand-tag{font-size:11px;font-weight:600;color:#5625a2;letter-spacing:.3px;margin-top:3px}
+.qr-hero{text-align:center;padding:0 12px}
+.qr-eyebrow{font-size:11px;font-weight:800;letter-spacing:2.5px;color:#00a89a;text-transform:uppercase;margin-bottom:10px}
+.qr-title{font-size:34px;font-weight:900;line-height:1.05;letter-spacing:-1.1px;color:#1a0a3e;margin:0 0 10px}
+.qr-title .o{color:#FF7A00}
+.qr-sub{font-size:14px;color:#5b5570;line-height:1.55;margin:0}
+.qr-sub b{color:#1a0a3e;font-weight:800}
+.qr-code-wrap{padding:20px;border-radius:20px;background:#fff;border:3px solid #1a0a3e;box-shadow:0 12px 40px rgba(26,10,62,.18),0 0 0 6px rgba(0,212,188,.08);text-align:center}
+.qr-code-wrap img{display:block;margin:0 auto;width:300px;height:300px}
+.qr-fallback{font-family:'JetBrains Mono',monospace;font-size:12px;color:#5b5570;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(26,10,62,.2)}
+.qr-fallback b{color:#FF7A00;font-weight:800}
+.qr-perks{display:flex;flex-direction:column;gap:8px;width:100%;padding:16px;border-radius:14px;background:linear-gradient(135deg,rgba(255,159,28,.08),rgba(0,212,188,.06));border:1px solid rgba(86,37,162,.15)}
+.qr-perk{display:flex;align-items:center;gap:12px;font-size:13px;color:#1a0a3e;line-height:1.5}
+.qr-perk > span:first-child{font-size:20px;flex-shrink:0}
+.qr-perk b{font-weight:800;color:#FF7A00}
+.qr-footer{width:100%;padding-top:16px;border-top:2px solid rgba(86,37,162,.15);text-align:center}
+.qr-footer-t{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#00a89a;letter-spacing:.3px}
+.qr-footer-s{font-size:11px;color:#5b5570;margin-top:3px}
+/* Print-Media-Query — sauber für A4-Handzettel */
+@media print{
+  body,html,.app,.screens{background:#fff!important}
+  .screen{padding:20px!important;position:static!important;overflow:visible!important;background:#fff!important;opacity:1!important;pointer-events:auto!important;transform:none!important;height:auto!important}
+  .screen:not(#s-qr){display:none!important}
+  .hdr,.top-zone,.lang-switch,.fol,.lion-wm,.hdr-back,.dots,.cta-zone{display:none!important}
+  .qr-print{max-width:100%!important}
+}
 </style>
 </head>
 <body>
@@ -332,53 +826,77 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 
   <!-- Language Switcher -->
   <div class="lang-switch" aria-label="Language">
-    <a href="HUBIX_Network_Recruit.html">EN</a>
+    <a href="index.html">EN</a>
     <a class="on" href="HUBIX_Network_Recruit_SI.html">සිං</a>
+    <a href="HUBIX_Network_Recruit_TA.html">த</a>
   </div>
 
   <!-- ═══════════ HEADER ═══════════ -->
   <div class="hdr">
-    <button class="hdr-back" id="backBtn" onclick="goBack()" aria-label="ආපසු"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="hdr-back" id="backBtn" onclick="goBack()" aria-label="Back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
     <div class="hdr-logo"><img src="logo3.png" alt="HUBIX"></div>
     <div class="hdr-meta">
       <div class="hdr-name">HUBI<span>X</span></div>
-      <div class="hdr-eyebrow">ජනතාවගේ ජාලය</div>
+      <div class="hdr-eyebrow">Logistics ජාලය</div>
     </div>
-    <div class="hdr-pre">පූර්ව-ආරම්භය</div>
+    <div class="hdr-pre">Pre-Launch</div>
   </div>
 
   <div class="screens">
 
-    <!-- ━━━━━━━━ SCREEN 1 · HERO (BIG STATEMENT) ━━━━━━━━ -->
+    <!-- ━━━━━━━━ SCREEN 1 · HERO (V4-A · final 2026-07-07) ━━━━━━━━ -->
     <section class="screen on" id="s-hero">
+      <div class="fol" aria-hidden="true"></div>
       <div class="lion-wm"><img src="logo4.png" alt=""></div>
 
-      <div class="hero-content">
-        <span class="hero-chip"><b></b> පාරදෘශ්‍ය · විමධ්‍යගත · පූර්ව-ආරම්භය</span>
-
-        <div class="hero-eyebrow">ශ්‍රී ලංකාවේ පළමුවැන්න.</div>
-
-        <h1 class="hero-mega"><span class="caps">ලොජිස්ටික් ජාලයක්</span> <span class="o">ජනතාව විසින් සාදන ලද.</span></h1>
-
-        <p class="hero-sub">එක්ව ගොඩනඟමු. එක්ව හිමිකරගමු. <span class="t">ඔබත් කොටසක් වන්න.</span></p>
-
-        <p class="hero-body">HUBIX යනු <b>පාරදෘශ්‍ය, විමධ්‍යගත පාර්සල් ජාලයකි</b>. එය <b>ස්ථම්භ දෙකක්</b> මත පදනම් වේ:</p>
-
-        <div class="hero-pillars">
-          <div class="hero-pillar"><span class="hero-pillar-em">🏠</span><span class="hero-pillar-body"><b>Hubs</b> — ගබඩා ඉඩ බෙදාගත හැකි කඩ, ගබඩා සහ ව්‍යාපාර.</span></div>
-          <div class="hero-pillar"><span class="hero-pillar-em">🛺</span><span class="hero-pillar-body"><b>Connectors</b> — වාහනයෙන් හෝ පයින් පාර්සල් රැගෙන යන ජංගම පුද්ගලයින්.</span></div>
+      <div class="h4a-content">
+        <div class="invited-by" id="invitedBy" style="display:none">
+          <span class="invited-em">🤝</span>
+          <span class="invited-txt">ආරාධනා කළේ: <b id="invitedByName">Founding Member කෙනෙක්</b></span>
         </div>
 
-        <p class="hero-body" style="margin-top:18px">කාර්යය ඔබගේය. ආදායම ඔබගේය. ජාලය අපගේය — <b>අප සියලු දෙනාගේය.</b></p>
+        <span class="h4a-chip"><b></b> Pre-Launch · ශ්‍රී ලංකාව</span>
 
-        <div class="hero-brand" aria-hidden="true">
-          <div class="hero-brand-icon"><img src="logo4.png" alt=""></div>
-          <div class="hero-brand-name">HUBI<span>X</span></div>
-          <div class="hero-brand-tag">ශ්‍රී ලංකාවේ සාදන ලද</div>
+        <div class="h4a-header">
+          <div class="h4a-hubix-mega"><span class="brand">HUBI<span class="brand-x">X</span></span></div>
+          <div class="h4a-tagline">
+            <span class="h4a-tagline-lanka">ශ්‍රී ලංකාවේ</span>
+            <span class="h4a-tagline-net">Logistics ජාලය</span>
+          </div>
         </div>
+
+        <div class="h4a-stanza">
+          <b>ශ්‍රී ලංකාවේ ජන බලයෙන් ක්‍රියාත්මක logistics ජාලය.</b> කඩ <b>Hub</b> බවට පත් වේ. අසල්වැසියන් <b>Connector</b> බවට පත් වේ. <span class="o">හැමෝම ගෙන යනවා — හැමෝම උපයනවා.</span><br><br>
+          අපි — <span class="brand">HUBI<span class="brand-x">X</span></span> — සියල්ල එකට ගෙනැවිත්, බුද්ධිමත්ව සම්බන්ධ කර, හැමෝටම වැඩි <span class="o">සතුටක්</span> ගෙන එනවා.
+        </div>
+
+        <div class="h4a-slogan">
+          <span class="word">Connect</span>
+          <span class="sep">·</span>
+          <span class="word">Build</span>
+          <span class="sep">·</span>
+          <span class="word">Happiness</span>
+        </div>
+
+        <div class="h4a-manifest">
+          <div class="h4a-manifest-eyebrow"><span class="brand">HUBI<span class="brand-x">X</span></span> — ලෝකයේ පළමු වතාව</div>
+          <div class="h4a-manifest-line"><span class="brand">HUBI<span class="brand-x">X</span></span>ට <b>තව ලොරි</b> අවශ්‍ය නැහැ.</div>
+          <div class="h4a-manifest-line"><span class="brand">HUBI<span class="brand-x">X</span></span>ට <b>අලුත් ගබඩා</b> අවශ්‍ය නැහැ.</div>
+          <div class="h4a-manifest-line"><b>ලොරි නැහැ. ගබඩා නැහැ.</b> අපි <span class="o">සම්බන්ධතා ගොඩනඟනවා</span> — ගොඩනැගිලි නොවේ.</div>
+          <div class="h4a-manifest-line">Connect ever. <b>Connect clever.</b> ලංකාවේ දැනටමත් තියෙන දේ එක්ක සම්බන්ධ වෙනවා.</div>
+          <div class="h4a-manifest-final">— මේ විදිහට කවදාවත් කරලා නැහැ.</div>
+        </div>
+
+        <div class="h4a-values">
+          <div class="h4a-value"><div class="h4a-value-em">🤝</div><div class="h4a-value-t">සාධාරණයි</div><div class="h4a-value-s">90% මිනිසුන් ළඟම</div></div>
+          <div class="h4a-value"><div class="h4a-value-em">🌱</div><div class="h4a-value-t">මෙහෙ හැදුවා</div><div class="h4a-value-s">මෙහෙ අයිතියි</div></div>
+          <div class="h4a-value"><div class="h4a-value-em">🚫</div><div class="h4a-value-t">අතරමැදියන් නැහැ</div><div class="h4a-value-s">සමාගම් බද්දක් නැහැ</div></div>
+        </div>
+
+        <div class="h4a-cta-eyebrow">කොහොමද වැඩ කරන්නේ කියලා බලන්න</div>
 
         <div class="hero-cta-zone">
-          <button class="cta" onclick="goto('network')">මෙය ක්‍රියා කරන ආකාරය බලන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+          <button class="cta" onclick="goto('network')">සංචාරය කරන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
         </div>
       </div>
     </section>
@@ -387,47 +905,74 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
     <section class="screen" id="s-pick">
       <div class="fol"></div>
       <div class="dots"><span class="dot"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
-      <div class="eyebrow">ඔබගේ භූමිකාව තෝරන්න</div>
+      <div class="eyebrow">ඔබේ role එක තෝරන්න</div>
 
-      <h2 class="pick-title">Hub හෝ <span class="o">Connector?</span></h2>
-      <p class="pick-sub">HUBIX හි කොටසක් වීමට ක්‍රම දෙකක් ඇත. <b>ඔබට ගැළපෙන එක තෝරන්න</b> — එහි අර්ථය හරියටම අපි පෙන්වමු.</p>
+      <div class="pick-caps">ඔබ <span class="o">භාවිත කර &amp; එකතු වන</span> ආකාරය</div>
+      <div class="pick-brand-row"><span class="brand">HUBI<span class="brand-x">X</span></span> ජාලය</div>
+
+      <p class="pick-sub"><b>ලෝකයේ පළමු ජනතාවට අයත් logistics ජාලය.</b> ඔබේ ජීවිතයට ගැළපෙන එක තෝරන්න.</p>
+
+      <div class="pick-defs">
+        <div class="pick-def"><b>Hub</b> — <span class="brand">HUBI<span class="brand-x">X</span></span> ජාලයේ ලියාපදිංචි කඩයක්. නිශ්චිත වේලාවන්. අසල්වැසි ප්‍රදේශයේ drop-off &amp; pickup ලිපිනය.</div>
+        <div class="pick-def"><b>Connector</b> — Hub එකකින් Hub එකකට පාර්සල් ගෙන යන කෙනෙක්. ත්‍රීවීල්, බයික්, වෑන්, බස්, දුම්රිය හෝ පයින්.</div>
+      </div>
 
       <div class="bigpick">
 
-        <div class="bigpick-card" onclick="pickRole('hub')" role="button" tabindex="0">
-          <div class="bigpick-em">🏠</div>
+        <div class="bigpick-card sender" onclick="pickRole('sender')" role="button" tabindex="0">
+          <div class="bigpick-em">📦</div>
           <div class="bigpick-body">
-            <div class="bigpick-t">Hub</div>
-            <div class="bigpick-s">ඔබගේ <b>කඩය, කඩ ඉදිරිපස, ගබඩාව</b> හෝ <b>ගබඩා ඉඩ ඇති ඕනෑම ව්‍යාපාරයක්</b> පාර්සල් ස්ථානයක් වේ. හසුරුවන සෑම පාර්සලයකින්ම ඉපැයීම.</div>
-            <div class="bigpick-icons">🏪 🏬 🏦 🏢 🏭</div>
+            <div class="bigpick-t">යවන්න &amp; ලබා ගන්න
+              <span class="bigpick-tsub">(පෞද්ගලික · ව්‍යාපාර)</span>
+            </div>
+            <div class="bigpick-s"><b>පෞද්ගලිකව</b> හෝ <b>කඩයක්, online ව්‍යාපාරයක් හෝ අවන්හලක්</b> ලෙස යවන්න සහ ලබා ගන්න. එදිනෙදා <span class="brand">HUBI<span class="brand-x">X</span></span> පරිශීලකයා — පවුල, යාළුවෝ, online ඇණවුම්, නැත්නම් ඔබේ කඩෙන් pickup කරන Connector කෙනෙක්.</div>
+            <div class="bigpick-icons">👨‍👩‍👧 🎁 🏪 🛒</div>
           </div>
-          <div class="bigpick-arrow">බලන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
+          <div class="bigpick-arrow">බලන්න ඔබන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
         </div>
 
-        <div class="bigpick-card" onclick="pickRole('connector')" role="button" tabindex="0">
+        <div class="bigpick-card hub" onclick="pickRole('hub')" role="button" tabindex="0">
+          <div class="bigpick-em">🏠</div>
+          <div class="bigpick-body">
+            <div class="bigpick-t">Hub
+              <span class="bigpick-tsub">ඔබේ කඩය ජාලයට එකතු වේ</span>
+            </div>
+            <div class="bigpick-s">ඔබේ ගබඩා ඉඩ <b>පාර්සල් ස්ථානයක්</b> බවට පත් වේ — drop-off, ගබඩාව, pickup. හසුරුවන හැම පාර්සලයකටම උපයන්න. හරහා යන හැම පාර්සලයක්ම කඩයට එන තවත් ගනුදෙනුකරුවෙක්.</div>
+            <div class="bigpick-icons">🏪 🏬 🏦 🏢</div>
+          </div>
+          <div class="bigpick-arrow">බලන්න ඔබන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
+        </div>
+
+        <div class="bigpick-card conn" onclick="pickRole('connector')" role="button" tabindex="0">
           <div class="bigpick-em">🛺</div>
           <div class="bigpick-body">
-            <div class="bigpick-t">Connector</div>
-            <div class="bigpick-s">ඔබ ගමන් කරන ආකාරය කුමක් වුවත් — <b>ට්‍රයිෂෝ, බයිසිකලය, වෑන්, රථය, බස්, දුම්රිය, හෝ පයින්</b> — ඔබ Hubs අතර පාර්සල් රැගෙන යයි. සෑම බෙදාහැරීමකටම ඉපැයීම.</div>
-            <div class="bigpick-icons">🛺 🚲 🛵 🚗 🚐 🚌 🚆 🚶</div>
+            <div class="bigpick-t">Connector
+              <span class="bigpick-tsub">පාර්සල් ගෙන යන්න · ලංකාව ගෙන යන්න</span>
+            </div>
+            <div class="bigpick-s">ත්‍රීවීල්, බයික්, වෑන්, බස්, දුම්රිය හෝ පයින් — <b>කොහොම ගියත්, උපයනවා</b>. ඔබේ සුපුරුදු මාර්ගයේ ඉඳහිට trip එකකින් පටන් ගන්න. <span class="brand">HUBI<span class="brand-x">X</span></span> වැඩෙද්දී, දිනපතා ස්ථිර මාර්ග විවෘත වේ.</div>
+            <div class="bigpick-icons">🛺 🚲 🚗 🚌 🚆</div>
           </div>
-          <div class="bigpick-arrow">බලන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
+          <div class="bigpick-arrow">බලන්න ඔබන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
         </div>
 
       </div>
+
+      <div class="pick-outro"><span class="em">🙌</span>මේකේ <b>කොටසක් වන්න.</b></div>
+
+      <div class="pick-hint-bar"><span class="em">👉</span>ඉදිරියට යාමට එකක් ඔබන්න</div>
     </section>
 
     <!-- ━━━━━━━━ SCREEN 3 · ROLE DETAIL ━━━━━━━━ -->
     <section class="screen" id="s-detail">
       <div class="fol"></div>
       <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot on"></span><span class="dot"></span></div>
-      <div class="eyebrow" id="dtlEyebrow">ඔබගේ භූමිකාව</div>
+      <div class="eyebrow" id="dtlEyebrow">ඔබේ role එක</div>
 
       <div class="dtl-hero">
         <div class="dtl-hero-top">
           <div class="dtl-hero-em" id="dtlEm">🏠</div>
           <div class="dtl-hero-body">
-            <div class="dtl-hero-pre">ඔබ වන්නේ</div>
+            <div class="dtl-hero-pre">ඔබ වන්නේ:</div>
             <div class="dtl-hero-t" id="dtlT">Hub</div>
           </div>
         </div>
@@ -436,7 +981,7 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
       </div>
 
       <div class="dtl-section">
-        <div class="dtl-section-title">ඔබගේ කාර්යය</div>
+        <div class="dtl-section-title">ඔබේ කාර්යය</div>
         <div class="dtl-task" id="dtlTask"></div>
       </div>
 
@@ -446,26 +991,21 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
       </div>
 
       <div class="dtl-section">
-        <div class="dtl-section-title">ඔබගේ ඉපැයීම්</div>
+        <div class="dtl-section-title">ඔබේ ආදායම</div>
         <div class="earn-card">
-          <div class="earn-pre">ජාල බලයෙන් ආදායම</div>
-          <div class="earn-headline">ඔබගේ ඉපැයීම් <span class="o">ජාලය සමඟ වර්ධනය වේ.</span></div>
-          <div class="earn-note">HUBIX ශක්තිමත් වන තරමට, සෑම සාමාජිකයෙකුම වැඩියෙන් ඉපැයේ. තවත් Hubs සහ Connectors එක්වන විට, පද්ධතිය හරහා වැඩි බෙදාහැරීම් ගලා යයි — ඔබගේ ආදායමද ඒ සමඟය. <b>අපි එක්ව වර්ධනය වෙමු.</b></div>
+          <div class="earn-pre">ජාල බලයෙන් ලැබෙන ආදායම</div>
+          <div class="earn-headline" id="dtlEarnHeadline">ඔබේ ආදායම <span class="o">ජාලය සමඟ වැඩෙයි.</span></div>
+          <div class="earn-note" id="dtlEarnNote"><span class="brand">HUBI<span class="brand-x">X</span></span> ශක්තිමත් වන තරමට, හැම සාමාජිකයෙක්ම වැඩිපුර උපයයි.</div>
         </div>
       </div>
 
       <div class="dtl-section">
-        <div class="dtl-section-title">ඔබගේ ප්‍රතිලාභ</div>
-        <div class="ben-list">
-          <div class="ben"><span class="ben-em">💰</span><span><b>90%ක්</b> සෑම බෙදාහැරීමකින්ම — සෘජුවම ඔබට</span></div>
-          <div class="ben"><span class="ben-em">🏆</span><span>ආයු කාලීන ආරම්භක-සාමාජික ලාංඡනය</span></div>
-          <div class="ben"><span class="ben-em">📱</span><span>යෙදුම ආරම්භ වන විට පෞද්ගලික හඳුන්වාදීම</span></div>
-          <div class="ben"><span class="ben-em">🤝</span><span>සෘජු WhatsApp ප්‍රජාව + සහාය</span></div>
-        </div>
+        <div class="dtl-section-title">ඔබේ වාසි</div>
+        <div class="ben-list" id="dtlBenefits"></div>
       </div>
 
       <div class="cta-zone">
-        <button class="cta" onclick="goto('why')">දැන් ඇයි එක්වන්නේ <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+        <button class="cta" onclick="goto('why')">ඇයි දැන්ම එකතු වෙන්නේ <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
       </div>
     </section>
 
@@ -473,16 +1013,18 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
     <section class="screen" id="s-network">
       <div class="fol"></div>
       <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-      <div class="eyebrow">ජාලය ක්‍රියා කරන ආකාරය</div>
+      <div class="eyebrow">ජාලය ගමන් කරන ආකාරය</div>
 
-      <h2 class="net-title">එක් පාර්සලයක්. <span class="o">අවම ස්පර්ශ ස්ථාන පහක්.</span></h2>
-      <p class="net-sub">සෑම පාර්සලයක්ම අවම වශයෙන් <b>ස්පර්ශ ස්ථාන පහක්</b> හරහා ගමන් කරයි — එක් එක් ස්පර්ශ ස්ථානයක් සැබෑ පුද්ගලයෙකි. <b>HUBIX ලොජිස්ටික් යෙදුම සියල්ල සම්බන්ධීකරණය කරයි</b>, ආරම්භයේ සිට අවසානය දක්වා. ඔබත් ඒ අතර කෙනෙක් වන්න.</p>
+      <h2 class="net-title">එක පාර්සලයක්. <span class="o">මිනිසාගෙන් මිනිසාට.</span></h2>
+      <p class="net-sub">හැම පාර්සලයක්ම <span class="net-teal">Hub</span> (ටිකක් ගබඩා ඉඩ තියෙන කඩ) සහ <span class="net-teal">Connector</span> හරහා ගමන් කරයි.</p>
+      <div class="net-hubix-line"><span class="brand">HUBI<span class="brand-x">X</span></span> පමණයි සියල්ල සම්බන්ධ කර සම්බන්ධීකරණය කරන්නේ.</div>
+      <p class="net-you-line">ඒ වගේම <span class="net-you">ඔබ</span> <b class="net-part">මේකේ කොටසක් වේ.</b></p>
 
-      <div class="flow-stage" aria-label="HUBIX මඟින් සම්බන්ධීකරණය කරන පාර්සල් ගලනය">
+      <div class="flow-stage" aria-label="Animated package flow coordinated by HUBIX">
         <!-- CONDUCTOR — HUBIX coordinates the whole flow -->
         <div class="flow-conductor">
           <div class="conductor-orb"><img src="logo4.png" alt="HUBIX"></div>
-          <div class="conductor-label">HUBIX සම්බන්ධීකරණය</div>
+          <div class="conductor-label"><span class="brand">HUBI<span class="brand-x">X</span></span> <span class="coord">සම්බන්ධීකරණය කරයි</span></div>
         </div>
 
         <!-- Lines from conductor to each node -->
@@ -496,69 +1038,121 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 
         <div class="flow-track"></div>
         <div class="flow-nodes">
-          <div class="flow-node"><div class="flow-emoji-bg">👤</div><div class="flow-label">යවන්නා</div></div>
+          <div class="flow-node" id="flowSender"><div class="flow-emoji-bg">👤</div><div class="flow-label">යවන්නා</div></div>
           <div class="flow-node you" id="flowHub1"><div class="flow-emoji-bg">🏠</div><div class="flow-label">Hub</div></div>
           <div class="flow-node you" id="flowConn"><div class="flow-emoji-bg">🛺</div><div class="flow-label">Connector</div></div>
           <div class="flow-node you" id="flowHub2"><div class="flow-emoji-bg">🏠</div><div class="flow-label">Hub</div></div>
-          <div class="flow-node"><div class="flow-emoji-bg">👤</div><div class="flow-label">ලබන්නා</div></div>
+          <div class="flow-node" id="flowRecipient"><div class="flow-emoji-bg">👤</div><div class="flow-label">ලබන්නා</div></div>
         </div>
         <div class="pkg-mover">📦</div>
       </div>
 
       <div class="steps">
-        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-t"><span class="em">👤</span> යවන්නා පාර්සලය බහා තබයි</div><div class="step-s">පාරිභෝගිකයෙක් සමීපතම Hub වෙත පාර්සලයක් රැගෙන එයි — දේශීය කඩයක් හෝ ගබඩා ස්ථානයක්.</div></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-t"><span class="em">🏠</span> Hub ලැබුම්කර ගබඩා කරයි</div><div class="step-s">Hub එක QR කේතය ස්කෑන් කර, පාර්සලය ආරක්ෂිතව ගබඩා කර, ඉපැයේ.</div></div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-t"><span class="em">🛺</span> Connector රැගෙන යයි</div><div class="step-s">රියදුරෙකුට ඔහුගේ දුරකථනයේ රැකියාව ලැබී, පාර්සලය ගමනාන්ත Hub වෙත රැගෙන යයි.</div></div></div>
-        <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-t"><span class="em">🏠</span> ගමනාන්ත Hub</div><div class="step-s">ලැබුම්කරන Hub එක පාර්සලය ගබඩා කර, ලබන්නාට WhatsApp මඟින් දන්වයි.</div></div></div>
-        <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-t"><span class="em">👤</span> ලබන්නා ලබා ගනී</div><div class="step-s">Hub හිදී ඉක්මන් QR-ස්කෑන් එකකි. පාර්සලය බාර දෙන ලදී. දාමයේ සියලු දෙනා ඉපැයූහ.</div></div></div>
-      </div>
-
-      <div class="net-question">
-        <div class="net-question-eyebrow">දැන් ඔබ</div>
-        <div class="net-question-t">ඔබ කුමන භූමිකාව ගන්නවාද?</div>
-        <div class="net-question-s">Hub හෝ Connector — ඔබගේ ජීවිතයට ගැළපෙන එක තෝරන්න.</div>
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-t"><span class="em">👤</span> යවන්නා භාර දෙයි</div><div class="step-s">ගනුදෙනුකරුවා ළඟම <span class="brand">HUBI<span class="brand-x">X</span></span> කඩයට පාර්සලය ගෙනත් දෙයි — ප්‍රදේශයේ කඩයක් හෝ ගබඩා ස්ථානයක්.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-t"><span class="em">🏠</span> Hub භාර ගෙන ගබඩා කරයි</div><div class="step-s"><b>Hub</b> කියන්නේ <span class="brand">HUBI<span class="brand-x">X</span></span> හි ලියාපදිංචි ප්‍රදේශයේ කඩයක්. නිශ්චිත විවෘත වේලාවන්. අසල්වැසි ප්‍රදේශයේ drop-off සහ pickup ලිපිනය.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-t"><span class="em">🛺</span> Connector රැගෙන යයි</div><div class="step-s">රියදුරාට phone එකට වැඩේ ලැබෙනවා, පාර්සලය ඉලක්ක Hub එකට ගෙන යනවා. <b>කිසිවක් නැති වෙන්නේ නැහැ</b> — හැම භාරදීමක්ම QR + ඡායාරූප සටහන සමඟ දෙපැත්තේ handshake එකක්. <span class="o">විශ්වාසයෙන්.</span></div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-t"><span class="em">🏠</span> ඉලක්ක Hub එක</div><div class="step-s">ලබන Hub එක පාර්සලය ගබඩා කර ලබන්නාට දන්වයි — තවම ලියාපදිංචි නැත්නම් <b>WhatsApp හරහා</b>, ලියාපදිංචි නම් වැඩි ආරක්ෂාවට <b><span class="brand">HUBI<span class="brand-x">X</span></span> app + QR code හරහා</b>.</div></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-t"><span class="em">👤</span> ලබන්නා ලබා ගනී</div><div class="step-s">Hub එකේදී ඉක්මන් QR-scan එකක්. පාර්සලය delivered. <b>හැම යැවීමකදීම මුදලින් 90% වැඩ කරන මිනිසුන්ට යනවා</b> — Connector සහ Hub අයට. <span class="o">හැම යැවීමක්ම ලංකාවට හොඳ දෙයක්.</span></div></div></div>
       </div>
 
       <div class="cta-zone">
-        <button class="cta" onclick="goto('pick')">මගේ භූමිකාව තෝරන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+        <button class="cta" onclick="goto('pick')">මගේ role එක තෝරන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
       </div>
     </section>
 
-    <!-- ━━━━━━━━ SCREEN 5 · WHY NOW (Motivation) ━━━━━━━━ -->
+    <!-- ━━━━━━━━ SCREEN 5 · WHY NOW (Kombi A Clean · merged 2026-07-07) ━━━━━━━━ -->
     <section class="screen" id="s-why">
       <div class="fol"></div>
       <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot on"></span></div>
-      <div class="why-eyebrow">මෙය පළමුවැන්නයි.</div>
+      <div class="why-eyebrow">ඔබේ තැන විවෘතයි</div>
 
-      <h2 class="why-title">සියලු දෙනා <span class="o">සඳහා අවස්ථාවක්.</span></h2>
+      <h2 class="mtv-title">අලුත් Logistics<br>ජාලය <em>ශ්‍රී ලංකාවේ.</em></h2>
+      <div class="mtv-title-sub">එකට අපි ලංකාව ගෙන යනවා.</div>
 
-      <p class="why-body">HUBIX යනු ශ්‍රී ලංකාවේ <b>පළමු peer-to-peer පාර්සල් ජාලයයි</b>. පාර්සල් ගෙන යන මිනිසුන්ම <b>ජාලයේ හිමිකරුවන්</b> වන පළමු අවස්ථාව. ලොජිස්ටික් වලින් ලැබෙන ධනය මෙහි රැඳී සිටින පළමු වරයි — බෙදී, සාධාරණව, හවුලේ.</p>
-
-      <p class="why-body">විදේශීය මැදිහත්කරුවන් නැත. Silicon Valley වෙතින් උකහා ගැනීමක් නැත. <b>ශ්‍රී ලාංකිකයන් විසින්, ශ්‍රී ලංකාව සඳහා</b> ගොඩනඟන ලද ජාලයක් — එක් කඩයක්, එක් ට්‍රයිෂෝවක්, එක් බෙදාහැරීමක් වශයෙන්.</p>
-
-      <div class="why-strong">
-        <span class="accent">පළමු සාමාජිකයන් HUBIX බවට පත්වන දේ සකස් කරයි.</span><br>එම ආසනය විවෘතය — ඔබට, අද.
+      <div class="mtv-flow">
+        <p class="dies-here"><b>පරණ logistics මෙතැනින් අවසන්.</b></p>
+        <p>කෑලි දැනටමත් තැනට ඇවිත්:</p>
+        <ul class="sl-stats">
+          <li>ජනතාව <b>මිලියන 22</b>ක්</li>
+          <li>වාහන <b>මිලියන 8.5</b>ක්</li>
+          <li>කඩ <b>275,000</b>ක්</li>
+          <li>ජංගම සම්බන්ධතා <b>මිලියන 32</b>ක්</li>
+        </ul>
+        <p><span class="brand">HUBI<span class="brand-x">X</span></span> ඒවා ඉතා බුද්ධිමත්ව සම්බන්ධ කරන නිසා <span class="o">අලුත් දෙයක් නිර්මාණය වෙනවා</span> — <b>ඒ සියල්ල සම්බන්ධ කරන අලුත් logistics ජාලයක්.</b></p>
+        <p>කඩ <b>Hub</b> බවට පත් වේ. රියදුරන් <b>Connector</b> බවට පත් වේ. <span class="o">හැමෝම ගෙන යනවා. හැමෝම උපයනවා.</span></p>
       </div>
 
-      <p class="why-body">ආරම්භක සාමාජිකයන්ට <b>ස්ථිර ලාංඡනයක්</b>, ආරම්භයේදී <b>සෘජු පෞද්ගලික හඳුන්වාදීමක්</b>, සහ මෙම ජාලය වර්ධනය වන ආකාරය පිළිබඳ <b>ප්‍රමුඛ හඬක්</b> ලැබේ.</p>
+      <div class="promise">
+        <div class="promise-body"><span class="brand">HUBI<span class="brand-x">X</span></span> අපි තේරුම් ගෙන ඉන්නවා: <span class="o">තනියම යන්න බැහැ.</span><br><span class="o">අපි හැමෝම එකයි.</span><br>අපි ලංකාව සමඟ වැඩෙනවා. ලංකාව අප සමඟ වැඩෙනවා.</div>
+        <div class="promise-tag">— <span class="brand">HUBI<span class="brand-x">X</span></span> ක්‍රමය</div>
+      </div>
 
+      <div class="stacks">
+        <div class="stack old">
+          <div class="stack-e">පරණ ක්‍රමය</div>
+          <div class="stack-l">පිටරට ලොරි<br>පිටරට ගබඩා<br>අතරමැදියෝ කොටස ගනී</div>
+        </div>
+        <div class="stack new">
+          <div class="stack-e">අලුත් ක්‍රමය</div>
+          <div class="stack-l">කෝනර් කඩ<br>රියදුරෝ<br>90% මෙහෙම ඉතිරි වේ</div>
+        </div>
+      </div>
+
+      <div class="roadmap">
+        <div class="roadmap-eyebrow">එකට අපි වැඩෙනවා</div>
+        <div class="roadmap-row"><span class="num">01</span><span><b>මුලින්ම ගාල්ල</b> — පළමු hub සහ connector අත්වැල් බැඳගන්නා තැන</span></div>
+        <div class="roadmap-row"><span class="num">02</span><span><b>දකුණ &amp; නිරිතදිග</b> — අනිත් අය නොයන ගම්වලට ළඟා වෙමින්</span></div>
+        <div class="roadmap-row"><span class="num">03</span><span><b>හැම කොනක්ම</b> — හැම කොනකටම එකම ප්‍රවේශය හිමි නිසා</span></div>
+      </div>
+
+      <div class="founder-bloc">
+        <div class="fb-eyebrow">Founding Members</div>
+        <div class="fb-title">කලින් එන්න. අප සමඟ වැඩෙන්න.</div>
+        <div class="fb-body"><b>Launch එකට කලින්</b> එකතු වන ඕනෑම කෙනෙක් Founding Member කෙනෙක් — <span class="o">ගණන් කිරීමක් නැහැ, හදිසියක් නැහැ</span>. එකට ගොඩනඟන ජාලයකට මිනිසුන් අයින් කරන්න අවශ්‍ය නැහැ.</div>
+      </div>
+
+      <div class="founder-sign">
+        <div class="sign-line"><b>ගාල්ලේ හැදුවා.</b> ලංකාව වඩා හොඳ කරන්න මෙහෙ ආපු <span class="sign-o">ජර්මන් නිර්මාතෘවරයෙක් අතින්.</span></div>
+        <img class="sign-img" src="sig_founder.png" alt="Korbinian Elias — signature" width="230" height="142" loading="lazy">
+        <div class="sign-role">නිර්මාතෘ</div>
+        <details class="founder-story">
+          <summary>එක මිනිහෙක් සහ brand එකක් <span class="story-arrow">›</span></summary>
+          <div class="story-body">
+            <p>මම ජර්මනියේ ඉඳන් ලංකාවට ආවා — නතර වුණා. වෙරළ නිසා නෙවෙයි. <b>මිනිසුන් නිසා.</b></p>
+            <p>ශක්තියෙන් පිරුණු දිවයිනක් මම දැක්කා: හැම කොනකම කඩ, හැම පාරකම රියදුරෝ, හැම අතකම phone. සියල්ල තිබුණා — <b>ඒවා සම්බන්ධ කරන ජාලය හැර.</b></p>
+            <p>ඒ නිසා මම එකක් හදන්න පටන් ගත්තා. ලංකාව <i>වෙනුවෙන්</i> නෙවෙයි — <span class="sign-o">ලංකාව <i>එක්ක</i>.</span></p>
+            <p>එක මිනිහෙක් සහ brand එකක්. Launch දවසේ ඉඳන්: <b>අපි හැමෝම.</b></p>
+          </div>
+        </details>
+      </div>
+
+      <div class="mtv-cta-eyebrow">ව්‍යාපාරයට එකතු වන්න</div>
       <div class="cta-zone">
-        <button class="cta" onclick="goto('form')">මගේ ස්ථානය වෙන්කරගන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+        <button class="cta" onclick="goto('form')">මගේ තැන වෙන් කරන්න <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
       </div>
     </section>
 
     <!-- ━━━━━━━━ SCREEN 6 · FORM ━━━━━━━━ -->
     <section class="screen" id="s-form">
       <div class="fol"></div>
-      <div class="eyebrow">ඔබගේ ස්ථානය වෙන්කරගන්න</div>
+      <div class="eyebrow">ඔබේ තැන වෙන් කරන්න</div>
 
-      <h2 class="form-title">ස්පර්ශ දෙකයි. <span class="o">ඔබ ඇතුළත්.</span></h2>
-      <p class="form-sub">ඔබගේ <b>WhatsApp අංකය</b> පමණයි. අපි ඔබව ආරම්භක-ජාල කණ්ඩායමට එකතු කර, යෙදුම ආරම්භ වන දින දැනුම් දෙන්නෙමු.</p>
+      <h2 class="form-title">කොටු තුනයි. <span class="o">ඔබ ඇතුළේ.</span></h2>
+      <p class="form-sub"><b>September 2026 දී WhatsApp මගින්</b> app download link එක එවනවා. ඊට කලින් කිසිවක් නැහැ. ඊට පස්සෙත් නැහැ — launch වෙනකම්.</p>
+
+      <div class="app-preview">
+        <div class="app-preview-icon"><img src="logo3.png" alt="HUBIX app icon"></div>
+        <div class="app-preview-body">
+          <div class="app-preview-eyebrow">ඔබේ phone එකට එනවා</div>
+          <div class="app-preview-name"><span class="brand">HUBI<span class="brand-x">X</span></span></div>
+          <div class="app-preview-tag">Logistics ජාලය — <b>WhatsApp download link · September 2026</b></div>
+        </div>
+      </div>
 
       <div class="role-confirm" id="roleConfirm">
         <div class="role-confirm-em" id="rcEm">🏠</div>
         <div class="role-confirm-body">
-          <div class="role-confirm-t">ඔබ එක්වන්නේ</div>
+          <div class="role-confirm-t">ඔබ එකතු වන්නේ:</div>
           <div class="role-confirm-v" id="rcV">Hub</div>
         </div>
         <span class="role-confirm-edit" onclick="goto('pick')">වෙනස් කරන්න</span>
@@ -566,53 +1160,195 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 
       <form class="form" id="signupForm" onsubmit="return submitForm(event)" novalidate>
         <div class="fld">
+          <label for="f-name">ඔබේ නම</label>
+          <input type="text" id="f-name" name="name" placeholder="මුල් නම (නැත්නම් අපි ඔබට කතා කරන විදිහ)" required autocomplete="given-name" maxlength="60">
+        </div>
+
+        <div class="fld">
           <label for="f-phone">WhatsApp අංකය</label>
           <div class="phone-row">
-            <div class="code" aria-label="Country code">+94</div>
+            <select id="f-code" name="country_code" class="code-select" aria-label="Country code">
+              <option value="+94" selected>🇱🇰 +94</option>
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+971">🇦🇪 +971</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+65">🇸🇬 +65</option>
+              <option value="+974">🇶🇦 +974</option>
+              <option value="+966">🇸🇦 +966</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+39">🇮🇹 +39</option>
+              <option value="+34">🇪🇸 +34</option>
+              <option value="+41">🇨🇭 +41</option>
+              <option value="+43">🇦🇹 +43</option>
+              <option value="+31">🇳🇱 +31</option>
+              <option value="+7">🇷🇺 +7</option>
+              <option value="+81">🇯🇵 +81</option>
+              <option value="+82">🇰🇷 +82</option>
+              <option value="+86">🇨🇳 +86</option>
+              <option value="+60">🇲🇾 +60</option>
+              <option value="+66">🇹🇭 +66</option>
+              <option value="+880">🇧🇩 +880</option>
+              <option value="+92">🇵🇰 +92</option>
+              <option value="+27">🇿🇦 +27</option>
+            </select>
             <input type="tel" id="f-phone" name="phone" placeholder="77 123 4567" required autocomplete="tel-national" inputmode="numeric" pattern="[0-9 ]{7,12}">
           </div>
+          <div class="fld-hint">Launch දවසේ විතරයි මෙතැනට message කරන්නේ.</div>
+        </div>
+
+        <div class="fld">
+          <label for="f-city">නගරය / දිස්ත්‍රික්කය</label>
+          <select id="f-city" name="city" class="city-select" required>
+            <option value="">-- ඔබ ජීවත් වන / වැඩ කරන තැන? --</option>
+            <!-- Pilot-Feinmaschung Süd/Südwest: 15-Min-Hub-Dichte (Founder 08.07. ·
+                 Küstenkette Balapitiya→Tangalle Nord→Süd + Landesinneres) -->
+            <optgroup label="🌊 නිරිතදිග වෙරළ · Pilot ප්‍රදේශය">
+              <option value="Balapitiya">Balapitiya</option>
+              <option value="Ambalangoda">Ambalangoda</option>
+              <option value="Hikkaduwa">Hikkaduwa</option>
+              <option value="Dodanduwa">Dodanduwa</option>
+              <option value="Galle">Galle</option>
+              <option value="Unawatuna">Unawatuna</option>
+              <option value="Habaraduwa">Habaraduwa</option>
+              <option value="Koggala">Koggala</option>
+              <option value="Ahangama">Ahangama</option>
+              <option value="Midigama">Midigama</option>
+              <option value="Weligama">Weligama</option>
+              <option value="Mirissa">Mirissa</option>
+              <option value="Matara">Matara</option>
+              <option value="Dickwella">Dickwella</option>
+              <option value="Tangalle">Tangalle</option>
+            </optgroup>
+            <optgroup label="🌴 දකුණ · ඇතුළත ප්‍රදේශ">
+              <option value="Elpitiya">Elpitiya</option>
+              <option value="Baddegama">Baddegama</option>
+              <option value="Udugama">Udugama</option>
+              <option value="Imaduwa">Imaduwa</option>
+              <option value="Akuressa">Akuressa</option>
+              <option value="Hakmana">Hakmana</option>
+              <option value="Deniyaya">Deniyaya</option>
+            </optgroup>
+            <optgroup label="🇱🇰 මුළු ශ්‍රී ලංකාව · දිස්ත්‍රික්ක">
+              <option value="Colombo">Colombo</option>
+              <option value="Gampaha">Gampaha</option>
+              <option value="Kandy">Kandy</option>
+              <option value="Hambantota">Hambantota</option>
+              <option value="Kurunegala">Kurunegala</option>
+              <option value="Ratnapura">Ratnapura</option>
+              <option value="Negombo">Negombo</option>
+              <option value="Kalutara">Kalutara</option>
+              <option value="Kegalle">Kegalle</option>
+              <option value="Anuradhapura">Anuradhapura</option>
+              <option value="Polonnaruwa">Polonnaruwa</option>
+              <option value="Nuwara Eliya">Nuwara Eliya</option>
+              <option value="Badulla">Badulla</option>
+              <option value="Monaragala">Monaragala</option>
+              <option value="Puttalam">Puttalam</option>
+              <option value="Jaffna">Jaffna</option>
+              <option value="Batticaloa">Batticaloa</option>
+              <option value="Trincomalee">Trincomalee</option>
+              <option value="Ampara">Ampara</option>
+              <option value="Vavuniya">Vavuniya</option>
+              <option value="Mannar">Mannar</option>
+              <option value="Kilinochchi">Kilinochchi</option>
+              <option value="Mullaitivu">Mullaitivu</option>
+            </optgroup>
+            <option value="Other">වෙනත් · ලැයිස්තුවේ නැත</option>
+          </select>
+          <div class="fld-hint"><b>ජාලය වැඩෙන තැන</b> දැන ගන්න — ඔබේ ප්‍රදේශය මුලින්ම විවෘත කරන්න උදව් වේ.</div>
+        </div>
+
+        <div class="fld">
+          <label for="f-email">Email <span class="fld-optional">(අත්‍යවශ්‍ය නැත)</span></label>
+          <input type="email" id="f-email" name="email" placeholder="launch එකට කලින් ප්‍රශ්නවලට" autocomplete="email" maxlength="120">
+          <div class="fld-hint"><b>hallo@hubixlogistics.com</b> ට ඔබ ලිව්වොත් විතරයි භාවිත වන්නේ.</div>
         </div>
 
         <div class="consent">
           <input type="checkbox" id="f-consent" name="consent" required>
-          <label for="f-consent">ආරම්භයේදී <b>දැනුම් දීමට</b> සහ <b>HUBIX ආරම්භක-ජාල WhatsApp කණ්ඩායමට</b> එක්වීමට මට අවශ්‍යයි. මගේ අංකය HUBIX සඳහා පමණක් භාවිතා වේ.</label>
+          <label for="f-consent">Launch ගැන <b>September 2026</b> දී <span class="brand">HUBI<span class="brand-x">X</span></span> මාව සම්බන්ධ කර ගැනීමට එකඟ වෙමි. වෙනත් messages නැහැ. මගේ දත්ත ලංකාවේම ඉතිරි වේ.</label>
         </div>
       </form>
 
-      <div class="cta-zone">
-        <button class="cta" id="submitBtn" form="signupForm" type="submit">
-          <span id="submitText">මගේ ස්ථානය වෙන්කරගන්න</span>
-          <svg id="submitArrow" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
+      <!-- EIN Submit-CTA (Founder 08.07.: „Save my spot" raus, Join the network
+           in voller Größe) — trägt jetzt die submitBtn-IDs für submitForm() -->
+      <button class="cta cta-inline" id="submitBtn" form="signupForm" type="submit">
+        <span id="submitText">ජාලයට එකතු වන්න</span>
+        <svg id="submitArrow" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+
+      <div class="mini-faq">
+        <div class="mini-faq-title">ඉක්මන් පිළිතුරු</div>
+        <details class="faq-item">
+          <summary><span>මට යමක් වැය වෙනවද?</span><span class="faq-arrow">+</span></summary>
+          <div class="faq-a"><b>නැහැ.</b> Founding Members ලට එකතු වීම නොමිලේ — සදහටම නොමිලේ. ඔබ උපයාගත්තට පස්සේ, delivery එකකට 10% විතරයි අපි ගන්නේ.</div>
+        </details>
+        <details class="faq-item">
+          <summary><span>මොකුත් වුණේ නැත්නම්?</span><span class="faq-arrow">+</span></summary>
+          <div class="faq-a">ඔබට කිසිවක් නැති වෙන්නේ නැහැ. කලින් ගෙවීම් නැහැ, ගිවිසුම් නැහැ. පාර්සල් ඔබ හරහා ගමන් කරද්දී විතරයි උපයන්නේ.</div>
+        </details>
+        <details class="faq-item">
+          <summary><span>මට ගෙවන්නේ කොහොමද?</span><span class="faq-arrow">+</span></summary>
+          <div class="faq-a">කෙලින්ම ඔබේ phone එකට <span class="brand">HUBI<span class="brand-x">X</span></span> app හරහා — හැම ඉරිදාම, ස්වයංක්‍රීයව. <b>Bank transfer හෝ ඔබ කැමති cash app හරහා online payout.</b> Hub එකට යන්න අවශ්‍ය නැහැ.</div>
+        </details>
+        <details class="faq-item">
+          <summary><span>මගේ දත්ත ආරක්ෂිතද?</span><span class="faq-arrow">+</span></summary>
+          <div class="faq-a">ඔව්. ඔබේ අංකය ලංකාවේම ඉතිරි වේ. අපි කවදාවත් විකුණන්නේ නැහැ, බෙදා ගන්නේ නැහැ, spam කරන්නේ නැහැ.</div>
+        </details>
       </div>
+
+      <!-- Abschluss-Zeile statt zweitem Button (fe2-Vorschlag 08.07.):
+           ruhiger Trust-Ausklang unter den Quick Answers, keine konkurrierende CTA -->
+      <div class="form-closing-line">🏆 Founding-Member badge ජීවිත කාලයටම · සදහටම නොමිලේ · <b>Launch September 2026</b></div>
     </section>
 
-    <!-- ━━━━━━━━ SCREEN 7 · SUCCESS ━━━━━━━━ -->
+    <!-- ━━━━━━━━ SCREEN 7 · SUCCESS · V3-FINAL (Founder brief + Founding-Member badge) ━━━━━━━━ -->
     <section class="screen" id="s-success">
       <div class="fol"></div>
-      <div class="success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <div class="success-pre">ඔබ ආරම්භක සාමාජිකයෙකි</div>
-      <h2 class="success-t"><span class="o">HUBIX</span> වෙත සාදරයෙන් පිළිගනිමු.</h2>
-      <p class="success-s">ඔබ ආරම්භක ලැයිස්තුවේ සිටී. අපි සූදානම් වූ විට පෞද්ගලිකව <b>WhatsApp මඟින් ඔබව සම්බන්ධ කරගන්නෙමු</b>. ආරම්භක-ජාල කණ්ඩායමට එක්වන්න — සියල්ල සිදුවන්නේ එහිය.</p>
 
-      <div class="next-card">
-        <div class="next-card-eyebrow">පියවර 1 / 2</div>
-        <div class="next-card-t">HUBIX ආරම්භක-ජාල WhatsApp කණ්ඩායමට එක්වන්න</div>
-        <a class="cta wa" id="waBtn" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M20.5 3.5A12 12 0 003.6 19.4L2 22l2.7-1.5A12 12 0 1020.5 3.5zm-8.5 18.2a10.2 10.2 0 01-5.2-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a10.2 10.2 0 1117 7.6 10.2 10.2 0 01-8.5 0z"/><path d="M17.4 14.4c-.3-.1-1.7-.8-1.9-.9s-.4-.1-.6.2-.7.9-.8 1.1-.3.2-.5 0c-1.4-.7-2.4-1.3-3.3-2.9-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.9-2c-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.4.1-.6.4-.2.3-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.4.6 2 .7 2.7.6.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.3-.1-.5-.2z"/></svg>
-          WhatsApp කණ්ඩායම විවෘත කරන්න
-        </a>
+      <!-- Founding-Member badge (from V2) -->
+      <div class="fm-badge">
+        <div class="fm-badge-ring"></div>
+        <div class="fm-badge-inner">
+          <div class="fm-badge-eyebrow">Founding Member</div>
+          <div class="fm-badge-num"><span class="fm-badge-hash">#</span><span id="foundingNum">—</span></div>
+          <div class="fm-badge-label"><span class="brand">HUBI<span class="brand-x">X</span></span> · 2026</div>
+        </div>
       </div>
 
-      <div class="share-card">
-        <div class="share-eyebrow">පියවර 2 / 2 — තවත් එක්කෙනෙක්</div>
-        <div class="share-t">Hub හෝ Connector ලෙස හොඳට ගැළපෙන කඩ හිමියෙකු හෝ ට්‍රයිෂෝ රියදුරෙකු දන්නවාද? ඔබගේ සබැඳිය බෙදාගන්න.</div>
-        <div class="share-link" id="refLink" onclick="copyLink()">
-          <span id="refLinkText">hubix.lk/join?ref=...</span>
-          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      <div class="success-pre">නිර්මාතෘගේ සටහනක්</div>
+      <h2 class="success-t">ඔබ <span class="o">මේකේ කොටසක්.</span></h2>
+      <p class="success-thank">මෙහෙ ඉන්නවාට ස්තුතියි.</p>
+
+      <div class="founder-msg">
+        <p><b>Launch එකට කලින් ඇතුළේ ඉන්න එක</b> — ඒකයි ගෞරවය. බෙදන්න code එකක් නැහැ, පස්සෙන් යන rank එකක් නැහැ, උපක්‍රමයක් නැහැ.</p>
+        <p><span class="o">කලින්ම විශ්වාස කරන්න</span> තීරණය කළ ටික දෙනෙකුගේ පොඩි ලැයිස්තුවක ඔබේ නම — ඒ විතරයි.</p>
+        <p><b>September 2026</b> දී launch වෙද්දී, app link එක සමඟ WhatsApp එක ලැබෙනවා. මුලින්ම ගෙන යන. මුලින්ම උපයන.</p>
+        <div class="founder-msg-sign">— Launch එකේදී හමුවෙමු. K.</div>
+      </div>
+
+      <div class="launch-strip">
+        <div class="launch-eyebrow">Launch දවස</div>
+        <div class="launch-text"><span class="o">September 2026</span> · ගාල්ල, ශ්‍රී ලංකාව</div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-em">✉️</div>
+        <div class="contact-body">
+          <div class="contact-t">Launch එකට කලින් ප්‍රශ්න?</div>
+          <div class="contact-a"><b>hallo@hubixlogistics.com</b> ට ලියන්න</div>
         </div>
+      </div>
+
+      <!-- Share — no referral code, just spread the word -->
+      <div class="share-clean">
+        <div class="share-clean-t">තව කෙනෙකුට මේක පෙන්නන්න.</div>
+        <div class="share-clean-s">ජාලය වැඩෙන්නේ <b>කටින් කට</b>. ඔබ කියන හැම කෙනෙක්ම ලංකාව තව පියවරක් ළං කරයි.</div>
         <div class="share-row">
-          <a class="share-btn" id="shareWa" href="#" target="_blank" rel="noopener">
+          <a class="share-btn wa" id="shareWa" href="#" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="#25D366"><path d="M20.5 3.5A12 12 0 003.6 19.4L2 22l2.7-1.5A12 12 0 1020.5 3.5z"/></svg>
             WhatsApp
           </a>
@@ -622,12 +1358,48 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
           </a>
           <a class="share-btn" id="shareCopy" href="#" onclick="event.preventDefault();copyLink()">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-            Copy
+            Link එක copy කරන්න
           </a>
         </div>
       </div>
 
-      <button class="cta-sec" onclick="restart()">තවත් අයෙකුට පෙන්වන්න</button>
+      <button class="cta-sec" onclick="restart()">තව කෙනෙකුට පෙන්නන්න</button>
+    </section>
+
+    <!-- ━━━━━━━━ SCREEN QR · PRINT VIEW ━━━━━━━━ -->
+    <!-- Opens via URL ?view=qr — Cold-Visit-print-ready large QR code. Hidden from normal flow. -->
+    <section class="screen" id="s-qr">
+      <div class="qr-print">
+        <div class="qr-brand">
+          <div class="qr-brand-logo"><img src="logo3.png" alt="HUBIX"></div>
+          <div class="qr-brand-text">
+            <div class="qr-brand-name">HUBI<span>X</span></div>
+            <div class="qr-brand-tag">ශ්‍රී ලංකාවේ ජන බලයෙන් ක්‍රියාත්මක පාර්සල් ජාලය</div>
+          </div>
+        </div>
+
+        <div class="qr-hero">
+          <div class="qr-eyebrow">ඔබේ තැන වෙන් කරන්න</div>
+          <h2 class="qr-title"><span class="o">Founding 100</span> ට එකතු වන්න.</h2>
+          <p class="qr-sub">Launch <b>September 2026</b>. වියදමක් නැහැ. බැඳීමක් නැහැ. පහළින් scan කරන්න.</p>
+        </div>
+
+        <div class="qr-code-wrap" id="qrCodeWrap">
+          <img id="qrCodeImg" alt="QR code — scan to reserve your HUBIX founding spot" width="300" height="300">
+          <div class="qr-fallback">නැත්නම් type කරන්න: <b id="qrUrlText">hubix-network.pages.dev</b></div>
+        </div>
+
+        <div class="qr-perks">
+          <div class="qr-perk"><span>📦</span><span>ලංකාවේ <b>හැම කොනකටම</b> යවන්න</span></div>
+          <div class="qr-perk"><span>🏆</span><span>Founding-Member badge <b>ජීවිත කාලයටම</b></span></div>
+          <div class="qr-perk"><span>🇱🇰</span><span><b>මෙහෙ</b> හැදුවා, <b>මෙහෙ</b> අයිතියි</span></div>
+        </div>
+
+        <div class="qr-footer">
+          <div class="qr-footer-t">hallo@hubixlogistics.com</div>
+          <div class="qr-footer-s">ප්‍රශ්න? කෙලින්ම email කරන්න.</div>
+        </div>
+      </div>
     </section>
 
   </div>
@@ -635,42 +1407,107 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 
 <script>
 const CONFIG = {
-  SHEET_WEBHOOK_URL: "",
-  WHATSAPP_GROUP_URL: "https://chat.whatsapp.com/PLACEHOLDER_REPLACE_ME",
-  HUBIX_PHONE: "94771234567",
-  PUBLIC_URL: "https://hubix.lk/join",
+  SHEET_WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbyQZ6q2OTBkwnrJ7DTaq5NjBRILeM1pG0kCRuzsLJkvIfhVXk03b781gxdNdemVkIPXAw/exec",
+  CONTACT_EMAIL: "hallo@hubixlogistics.com",   // Cloudflare-forwarded — professionelle Custom-Adresse
+  LAUNCH_DATE: "September 2026",               // Pilot launch — no specific day promised, month only
+  FOUNDING_TOTAL: 100,                         // Target for founding-member counter
+  PUBLIC_URL: "https://hubixlogistics.com",
 };
 
 /* ═══════════════════════════════════════════════════════════════════════════
    ROLE DATA
    ═══════════════════════════════════════════════════════════════════════════ */
 const ROLES = {
+  sender: {
+    em: "📦",
+    title: "යවන්නා / ලබන්නා",
+    sub: 'පවුලට, යාළුවන්ට යවන හෝ online ඇණවුම් ලබන ඕනෑම කෙනෙක්. <b>එදිනෙදා <span class="brand">HUBI<span class="brand-x">X</span></span> පරිශීලකයා.</b>',
+    icons: "👨‍👩‍👧 🎁 📱 🏠 💌",
+    eyebrow: "ඔබේ role එක · යවන්නා / ලබන්නා",
+    task: 'ඔබ ළඟ Hub එකකට — ඔබ දැනටමත් දන්නා ප්‍රදේශයේ කඩයකට — පාර්සලය භාර දෙනවා. Connector කෙනෙක් ඒක අරගෙන, ඉලක්ක Hub එකට ගෙනිහින්, ඔබේ ලබන්නාට ලැබෙනවා. <b>හැම භාරදීමක්ම ඡායාරූපයෙන් තහවුරු වේ.</b> හැම පියවරකදීම ඔබේ පාර්සලය ඔබට පේනවා — කිසිවක් නැති වෙන්නේ නැහැ, මාරු වෙන්නේ නැහැ.',
+    reqs: [
+      "<b>දුරකථන අංකයක්</b> — ලියාපදිංචියට ඒ විතරයි.",
+      "<b>යවන්න පාර්සලයක්</b> අවශ්‍ය වූ විට — නංගිට සාරියක්, සහකරුට ලියකියවිලි, තෑග්ගක්.",
+      '<b>ළඟ Hub එකක්</b> — <span class="brand">HUBI<span class="brand-x">X</span></span> සිතියමේ ළඟම එක පෙන්වයි. සාමාන්‍යයෙන් ඔබ දැනටමත් විශ්වාස කරන කඩයක්.',
+      '<b><span class="brand">HUBI<span class="brand-x">X</span></span> app</b> එක ඔබේ phone එකේ (Android හෝ iOS, නොමිලේ) — launch වුණාට පස්සේ.',
+    ],
+    earnHeadline: '<span class="o">විශ්වාසයෙන් සහ විනිවිදභාවයෙන්</span> යවන්න.',
+    earnNote: '<span class="brand">HUBI<span class="brand-x">X</span></span> <b>ඔබේ පාර්සලයේ හැම ස්පර්ශක ලක්ෂ්‍යයක්ම</b> පෙන්වයි — හැම භාරදීමකදීම ඡායාරූපයක්, ඔබේ Hub එකේ ඉඳන් Connector හරහා ඉලක්කය දක්වා. ඔබේ පාර්සලය කා ළඟද, කොහෙද කියලා හැමවිටම දන්නවා. <span class="brand">HUBI<span class="brand-x">X</span></span> <b>ලංකාවේ හැම කොනකටම</b> ළඟා වේ — Wow Express හෝ DHL නොයන ගම් ඇතුළුව. දුර සහ ප්‍රමාණය මත සාධාරණ, විනිවිද මිල.',
+    benefits: [
+      { em: "📸", t: "හැම පියවරකදීම <b>ඡායාරූප-තහවුරු භාරදීම්</b> — ඔබේ පාර්සලය හැමවිටම පේනවා" },
+      { em: "🇱🇰", t: "ලංකාවේ <b>හැම තැනකටම</b> ළඟා වේ — කොළඹ ඉඳන් ඔබේ ගම දක්වා" },
+      { em: "🤝", t: "හැම ස්පර්ශක ලක්ෂ්‍යයකදීම <b>දෙපැත්තේ handshake</b> — යවන්නා, Hub, Connector, Hub, ලබන්නා" },
+      { em: "📱", t: "<b>සරල app</b> — install කරන්න, අංකය තහවුරු කරන්න, යවන්න. කාර්යාල නැහැ, කඩදාසි නැහැ" },
+      { em: "🏆", t: "Founding-Member badge ජීවිත කාලයටම + launch එකේදී priority support" },
+    ],
+  },
+  shop: {
+    em: "🏪",
+    title: "කඩය / ව්‍යාපාරය",
+    sub: "කඩ, online ව්‍යාපාර, අවන්හල් සඳහා — මාසෙකට <b>පාර්සල් 5+</b> යවන ඕනෑම කෙනෙකුට. කඩෙන් පිට නොවී ඔබේ සීමාව වඩන්න.",
+    icons: "🌶️ 🧵 💊 🛒 🎨",
+    eyebrow: "ඔබේ role එක · කඩය / ව්‍යාපාරය",
+    task: 'ඔබේ business dashboard එකෙන් යැවීම් හදනවා, Connector කෙනෙක් <b>ඔබේ කඩයටම ඇවිත්</b> අරගෙන යනවා, <span class="brand">HUBI<span class="brand-x">X</span></span> ලංකාව පුරා ඔබේ ගනුදෙනුකරුවන්ට බෙදා දෙනවා. <b>තැපැල් කන්තෝරු ගමන් නැහැ</b>, පෝලිම් නැහැ, කාලය නාස්ති නැහැ.',
+    reqs: [
+      "<b>කඩයක්, online ව්‍යාපාරයක් හෝ විකුණන්න භාණ්ඩයක්</b> — ගනුදෙනුකරුවන්ට නිතිපතා යවන (මාසෙකට පාර්සල් 5+).",
+      "<b>Pickup ස්ථානයක්</b> — ඔබේ කඩය, කාර්යාලය, ගෙදර workshop එක. Connector එතැනට එනවා.",
+      "<b>මූලික packaging</b> — Connector එද්දී සූදානම්: පෙට්ටිය, tape, ලිපින label (templates වලින් අපි උදව් කරනවා).",
+      '<b>Smartphone එකක්</b> — <span class="brand">HUBI<span class="brand-x">X</span></span> business dashboard එක සමඟ.',
+    ],
+    earnHeadline: 'වැඩෙද්දී <span class="o">කාලයයි මුදලයි දෙකම ඉතිරි වේ.</span>',
+    earnNote: 'මාසික ප්‍රමාණය වැඩෙද්දී <b>Volume tier වට්ටම්</b> — shipping එකෙන් -20% දක්වා (මාසෙකට පාර්සල් 50 / 150 / 500). Connector ඔබේ කඩෙන්ම pickup කරයි — ඔබ ව්‍යාපාරයෙන් පිට වෙන්නේම නැහැ. Business dashboard එක හැම යැවීමක්ම නිරීක්ෂණය කර, ගනුදෙනුකරු delivery තත්ත්වය සජීවීව පෙන්වයි.',
+    benefits: [
+      { em: "💰", t: "<b>Volume වට්ටම්</b> — වැඩෙද්දී shipping එකෙන් -20% දක්වා (50/150/500 pkg/මාසය)" },
+      { em: "🛺", t: "<b>ඔබේ කඩෙන්ම pickup</b> — Connector ඔබ ළඟට එනවා, තැපැල් පෝලිම් නැහැ" },
+      { em: "📊", t: "<b>Business dashboard</b> — හැම යැවීමක්ම, delivery අනුපාතය, ගනුදෙනුකරු ස්ථාන" },
+      { em: "🇱🇰", t: "<b>රට පුරාම</b> — ලංකාවේ හැම ගමකට, නගරයකට, hub එකකට යවන්න" },
+      { em: "🏆", t: "Founding-Business badge ජීවිත කාලයටම + launch එකේදී priority routing" },
+    ],
+  },
   hub: {
     em: "🏠",
     title: "Hub",
-    sub: "ඔබගේ ප්‍රජාවේ පාර්සල් ස්ථානයක් — ඔබගේ කඩය, කඩ ඉදිරිපස, ගබඩාව, හෝ ගබඩා ඉඩ ඇති ඕනෑම ව්‍යාපාරයක්.",
+    sub: "ඔබේ කඩය, storefront එක, ගබඩාව හෝ ගබඩා ඉඩ තියෙන ඕනෑම ව්‍යාපාරයක් <b>ඔබේ ප්‍රජාවේ පාර්සල් ස්ථානයක්</b> බවට පත් වේ.",
     icons: "🏪 🏬 🏦 🏢 🏭",
-    eyebrow: "ඔබගේ භූමිකාව · Hub",
-    task: 'ඔබ යවන්නන්ගෙන් පාර්සල් <b>ලබා ගනී</b>, HUBIX යෙදුමෙන් <b>ස්කෑන් කරයි</b>, ආරක්ෂිතව <b>ගබඩා කරයි</b>, සහ Connectors හෝ ලබන්නන්ට <b>භාර දෙයි</b>. එපමණයි.',
+    eyebrow: "ඔබේ role එක · Hub",
+    task: 'යවන්නන්ගෙන් පාර්සල් <b>භාර ගන්නවා</b>, <span class="brand">HUBI<span class="brand-x">X</span></span> app එකෙන් <b>scan කරනවා</b>, රාක්කයේ ආරක්ෂිතව <b>ගබඩා කරනවා</b>, පසුව Connector ලට හෝ ලබන්නන්ට <b>භාර දෙනවා</b>. <span class="o">හසුරුවන හැම පාර්සලයකින්ම උපයනවා</span> — අලුත් සේවකයෝ නැහැ, අලුත් ක්‍රියාවලි නැහැ.',
     reqs: [
-      "<b>කඩයක්, කඩ ඉදිරිපසක්, ගබඩාවක්,</b> හෝ <b>ගබඩා ඉඩ බෙදාගත හැකි</b> ඕනෑම ව්‍යාපාරයක් — සිල්ලර කඩය, ෆාමසිය, සන්නිවේදන කඩය, කාර්යාලය, ඩිපෝව, ආරක්ෂිත හා ළඟාවිය හැකි ඕනෑම ස්ථානයක්.",
-      "මිනිසුන්ට ඔබව සම්බන්ධ කරගත හැකි <b>නිතිපතා විවෘත වේලාවන්</b> — සතියකට අවම වශයෙන් දින 6ක්, දිනකට පැය 8ක් පමණ.",
-      "ඕනෑම වේලාවක පාර්සල් කිහිපයක් ආරක්ෂිතව ගබඩා කිරීමට <b>ප්‍රමාණවත් ඉඩ</b>.",
-      "HUBIX යෙදුම සහිත <b>ස්මාට්ෆෝන්</b> එකක් (Android හෝ iOS, නොමිලේ).",
+      "<b>කඩයක්, storefront එකක්, ගබඩාවක්</b> හෝ <b>බෙදා ගන්න ගබඩා ඉඩක් තියෙන</b> ඕනෑම ව්‍යාපාරයක් — සිල්ලර, ෆාමසි, communication කඩයක්, කාර්යාලයක්, depot එකක් — ආරක්ෂිත සහ ළඟා විය හැකි නම් ඇති.",
+      "<b>නිශ්චිත විවෘත වේලාවන්</b> — මිනිසුන්ට ඔබ ළඟට එන්න පුළුවන් වෙන්න: අවම වශයෙන් සතියකට දවස් 6ක්, දවසකට පැය 8ක් පමණ.",
+      "<b>ප්‍රමාණවත් ඉඩක්</b> — ඕනෑම වේලාවක පාර්සල් කිහිපයක් ආරක්ෂිතව තියන්න.",
+      '<b>Smartphone එකක්</b> — <span class="brand">HUBI<span class="brand-x">X</span></span> app එක සමඟ (Android හෝ iOS, නොමිලේ).',
+    ],
+    earnHeadline: 'හසුරුවන හැම පාර්සලයක් සමඟම <span class="o">ඔබේ ආදායම වැඩෙයි.</span>',
+    earnNote: 'භාර ගන්නා, ගබඩා කරන, භාර දෙන <b>හැම පාර්සලයකටම සාධාරණ ගාස්තුවක්</b> උපයනවා. ඔබේ ප්‍රදේශයේ ප්‍රමාණය සමඟ වැඩෙන ස්ථිර දෛනික ආදායමක්. ඔබේ කඩය හරහා පාර්සල් වැඩිපුර ගමන් කරන තරමට, වැඩිපුර උපයනවා — ඒ වගේම අලුත් ගනුදෙනුකරුවෝ වැඩිපුර කඩේට එනවා.',
+    benefits: [
+      { em: "💰", t: "<b>හැම පාර්සලයකටම සාධාරණ ගාස්තුවක්</b> — තියෙන ඉඩෙන් ස්ථිර ආදායමක්" },
+      { em: "🚶", t: "<b>අලුත් foot-traffic</b> — drop-off &amp; pickup එන අය බොහෝවිට ඔබෙන් බඩුත් ගන්නවා" },
+      { em: "📦", t: "කඩයේ ඉඩ වඩා හොඳින් — තියෙන ඉඩ දෙගුණයක් උපයන්න පටන් ගනී" },
+      { em: "🤝", t: "සාර්ථක හැම භාරදීමකින්ම trust badge — ඔබේ විශ්වසනීයත්වය වැඩෙයි" },
+      { em: "🏆", t: "Founding-Member badge ජීවිත කාලයටම + launch එකේදී පෞද්ගලික onboarding" },
     ],
   },
   connector: {
     em: "🛺",
     title: "Connector",
-    sub: "ඔබ ශ්‍රී ලංකාව හරහා ගමන් කරන ආකාරය කුමක් වුවත් — වාහනයකින් හෝ පයින් — ඔබට පාර්සල් ඔබ සමඟ රැගෙන යා හැක.",
+    sub: "ලංකාවේ ඔබ කොහොම ගමන් කළත් — වාහනයකින් හෝ පයින්, දැනටමත් යන මාර්ගයක හෝ අපි එකට හදන එකක — <b>පාර්සල් ගෙන ගොස් උපයනවා</b>.",
     icons: "🛺 🚲 🛵 🚗 🚐 🚌 🚆 🚶",
-    eyebrow: "ඔබගේ භූමිකාව · Connector",
-    task: 'ඔබට ඔබගේ දුරකථනයේ බෙදාහැරීමේ රැකියාවක් ලැබේ, එක් Hub එකකින් පාර්සල් <b>රැගෙන</b>, ඊළඟ Hub වෙත <b>ගෙන යයි</b>, සහ <b>සෑම ගමනකටම ඉපැයේ</b>. ඔබ ඔබගේ වේලාවන්, මාර්ග, සහ ක්‍රියාකාරිත්වයේ මට්ටම තෝරාගනී.',
+    eyebrow: "ඔබේ role එක · Connector",
+    task: 'ඔබේ phone එකට delivery වැඩක් ලැබෙනවා — Hub එකකින් පාර්සල් <b>අරගෙන</b>, ඔබේ මාර්ගයේ ඊළඟ Hub එකට <b>ගෙනිහින්</b>, <b>හැම trip එකකටම</b> උපයනවා. කැමති වෙලාවට යන්න — නැත්නම් අපි වැඩෙද්දී දිනපතා ස්ථිර මාර්ගයකට එකතු වන්න.',
     reqs: [
-      "<b>ගමන් කිරීමට ක්‍රමයක්</b> — ට්‍රයිෂෝ, මෝටර්බයික්, බයිසිකලය, රථය, වෑන්, නිතිපතා බස් / දුම්රිය ගමන, හෝ <b>ඔබගේ අසල්වැසි ප්‍රදේශය හරහා ඇවිදීම</b>.",
-      "ඔබ ගමන් කරන විට පාර්සල් රැගෙන යාමට <b>ආරක්ෂිත ක්‍රමයක්</b> — බෑගයක්, කූඩයක්, පෙට්ටියක්, හෝ ඔබගේ වාහනයේ ගබඩා ඉඩ.",
-      "ඔබ වාහනය පදවන්නේ නම් <b>වලංගු බලපත්‍රයක්</b> (සහ පිරිසිදු වාර්තාවක්).",
-      "GPS සහ HUBIX යෙදුම සහිත <b>ස්මාට්ෆෝන්</b> එකක්.",
+      "<b>ගමන් කරන්න ක්‍රමයක්</b> — ත්‍රීවීල්, යතුරුපැදිය, බයිසිකලය, කාර්, වෑන්, නිත්‍ය බස් / දුම්රිය ගමනක්, නැත්නම් සරලවම <b>ඔබේ ප්‍රදේශයේ ඇවිදීම</b>.",
+      "<b>පාර්සල් ආරක්ෂිතව ගෙන යන්න</b> — බෑගයක්, කූඩයක්, පෙට්ටියක්, නැත්නම් වාහනයේ ඉඩක්.",
+      "<b>වලංගු license එකක්</b> — ඔබ රියදුරෙක් නම් (පිරිසිදු record එකක් සමඟ).",
+      '<b>Smartphone එකක්</b> — GPS සහ <span class="brand">HUBI<span class="brand-x">X</span></span> app එක සමඟ.',
+    ],
+    earnHeadline: 'බෙදා දෙන හැම පාර්සලයක් සමඟම <span class="o">ඔබේ ආදායම වැඩෙයි.</span>',
+    earnNote: '<b>හැම delivery එකකටම සාධාරණ ගාස්තුවක්.</b> දැනටමත් යන මාර්ගවල ඉඳහිට trip එකකින් පටන් ගන්න. <span class="brand">HUBI<span class="brand-x">X</span></span> වැඩෙද්දී <b>දිනපතා ස්ථිර මාර්ග</b> විවෘත කරනවා — කොළඹ-ගාල්ල, මහනුවර-මීගමුව — එහිදී Connector ලට ස්ථිර දෛනික ආදායමක් උපයන්න පුළුවන්, කැමති නම් පූර්ණ කාලීනවත්.',
+    benefits: [
+      { em: "💰", t: "<b>හැම delivery එකකටම සාධාරණ ගාස්තුවක්</b> — හැම ඉරිදාම කෙලින්ම ඔබේ phone එකට" },
+      { em: "📈", t: "ආදායම <b>දෛනික ප්‍රමාණය සමඟ වැඩෙයි</b> — වැඩි පාර්සල්, වැඩි ආදායම" },
+      { em: "🚂", t: "<b>බස් &amp; දුම්රිය මගීන්ට සාදරයෙන්</b> — දැනටමත් යන ගමන්වලින් උපයන්න" },
+      { em: "🚀", t: 'දිගුකාලීනව: <b>පූර්ණ කාලීන <span class="brand">HUBI<span class="brand-x">X</span></span> රියදුරෙක්</b> වන මාවත — විශ්වාසනීය දෛනික ආදායමක් සමඟ ස්ථිර මාර්ග' },
+      { em: "🏆", t: "Founding-Member badge ජීවිත කාලයටම + launch එකේදී පෞද්ගලික onboarding" },
     ],
   },
 };
@@ -683,11 +1520,35 @@ const state = loadState();
 function loadState(){ try { const r = localStorage.getItem(STORAGE_KEY); if(r) return JSON.parse(r); } catch(e){} return { role:null, leads:[], referrer:getRefFromUrl(), myRefCode:null }; }
 function saveState(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){} }
 function getRefFromUrl(){ try { return new URLSearchParams(location.search).get("ref"); } catch(e){ return null; } }
+function getUrlParams(){
+  try {
+    const p = new URLSearchParams(location.search);
+    return {
+      ref: p.get("ref") || "",
+      name: p.get("name") || "",
+      utm_source: p.get("utm_source") || "",
+      utm_medium: p.get("utm_medium") || "",
+      utm_campaign: p.get("utm_campaign") || "",
+      utm_content: p.get("utm_content") || "",
+    };
+  } catch(e){ return {}; }
+}
+function applyInvitedBy(){
+  const p = getUrlParams();
+  if (!p.ref && !p.name) return;
+  const el = document.getElementById("invitedBy");
+  const nm = document.getElementById("invitedByName");
+  if (!el || !nm) return;
+  // Display priority: ?name=Korbinian > ?ref=KS_001
+  const displayName = p.name ? decodeURIComponent(p.name) : p.ref;
+  nm.textContent = displayName;
+  el.style.display = "inline-flex";
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    NAV
    ═══════════════════════════════════════════════════════════════════════════ */
-const SCREENS = ["hero","network","pick","detail","why","form","success"];
+const SCREENS = ["hero","network","pick","detail","why","form","success","qr"];
 const stack = ["hero"];
 
 function goto(name){
@@ -706,11 +1567,106 @@ function render(){
   const el = document.getElementById("s-"+current);
   el.classList.add("on");
   el.scrollTop = 0;
-  document.getElementById("backBtn").classList.toggle("show", stack.length > 1 && current !== "success");
+  document.getElementById("backBtn").classList.toggle("show", stack.length > 1 && current !== "success" && current !== "qr");
+
+  // Hide header on QR print view + on hero (Screen 1 — mega HUBIX is its own headline)
+  const isQr = current === "qr";
+  const hideHdr = isQr || current === "hero";
+  document.querySelector(".hdr")?.style.setProperty("display", hideHdr ? "none" : "flex");
+  document.querySelector(".top-zone")?.style.setProperty("display", isQr ? "none" : "block");
+  document.querySelector(".lang-switch")?.style.setProperty("display", isQr ? "none" : "flex");
 
   if (current === "detail") renderDetail();
   if (current === "form")   renderRoleConfirm();
+  // Global sticky-CTA idle→attention behavior on every screen that has one
+  setupCtaLifecycle("s-" + current);
+  if (current === "pick") setupPickHint();
 }
+
+/* Screen 3 (Pick role): once the user has scrolled past the first fold, animate the "TAP TO SEE" arrows on all cards
+   + reveal a sticky bottom hint bar ("👉 Tap one to continue"). Idempotent. */
+function setupPickHint(){
+  const screen = document.getElementById("s-pick");
+  if (!screen) return;
+  const update = () => {
+    // Show hint once user has scrolled ~30% down (i.e. is past the intro/definitions block)
+    const scrolled = screen.scrollTop > 120;
+    screen.classList.toggle("hint-on", scrolled);
+  };
+  if (!screen._pickHintHooked){
+    screen.addEventListener("scroll", update, {passive:true});
+    screen._pickHintHooked = true;
+  }
+  screen.classList.remove("hint-on");
+  requestAnimationFrame(update);
+}
+
+/* Any screen with a sticky CTA: starts idle, glows-attention when user has read to the bottom.
+   Idempotent, hooked once per screen. */
+function setupCtaLifecycle(screenId){
+  const screen = document.getElementById(screenId);
+  if (!screen) return;
+  const cta = screen.querySelector(".cta-zone .cta, .hero-cta-zone .cta");
+  if (!cta) return;
+  cta.classList.add("idle");
+  cta.classList.remove("attention");
+  const update = () => {
+    const distanceToBottom = screen.scrollHeight - (screen.scrollTop + screen.clientHeight);
+    if (distanceToBottom <= 24){
+      cta.classList.remove("idle");
+      cta.classList.add("attention");
+    } else {
+      cta.classList.add("idle");
+      cta.classList.remove("attention");
+    }
+  };
+  if (!screen._ctaScrollHooked){
+    screen.addEventListener("scroll", update, {passive:true});
+    screen._ctaScrollHooked = true;
+  }
+  requestAnimationFrame(update);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE SWIPE NAVIGATION
+   Swipe left  → next screen in the intro flow (hero→network→pick)
+   Swipe right → goBack() (works from any screen with history)
+   Horizontal-only, ignores vertical scrolls so the step list still scrolls freely.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const SWIPE_NEXT = { hero: "network", network: "pick" };
+(function initSwipe(){
+  let startX = 0, startY = 0, startT = 0, tracking = false;
+  const SWIPE_MIN_X = 60;    // px horizontal
+  const SWIPE_MAX_Y = 45;    // px vertical (else it's a scroll)
+  const SWIPE_MAX_T = 700;   // ms — anything slower is a drag, not a swipe
+  document.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) { tracking = false; return; }
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    startT = Date.now();
+    tracking = true;
+  }, { passive: true });
+  document.addEventListener("touchend", (e) => {
+    if (!tracking) return;
+    tracking = false;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+    const dt = Date.now() - startT;
+    if (dt > SWIPE_MAX_T) return;
+    if (Math.abs(dy) > SWIPE_MAX_Y) return;
+    if (Math.abs(dx) < SWIPE_MIN_X) return;
+    const current = stack[stack.length - 1];
+    if (dx < 0) {
+      // swipe left → forward
+      const next = SWIPE_NEXT[current];
+      if (next) goto(next);
+    } else {
+      // swipe right → back
+      goBack();
+    }
+  }, { passive: true });
+})();
 
 /* ═══════════════════════════════════════════════════════════════════════════
    ROLE PICK + DETAIL
@@ -722,11 +1678,15 @@ function pickRole(role){
 }
 
 function renderDetail(){
-  const r = ROLES[state.role] || ROLES.hub;
+  const r = ROLES[state.role] || ROLES.sender;
+  const hero = document.querySelector(".dtl-hero");
+  hero.classList.remove("sender","shop","hub","conn");
+  const cls = state.role === "connector" ? "conn" : state.role;
+  hero.classList.add(cls);
   document.getElementById("dtlEyebrow").textContent = r.eyebrow;
   document.getElementById("dtlEm").textContent = r.em;
   document.getElementById("dtlT").textContent = r.title;
-  document.getElementById("dtlSub").textContent = r.sub;
+  document.getElementById("dtlSub").innerHTML = r.sub;
   const iconsEl = document.getElementById("dtlIcons");
   if (r.icons) { iconsEl.textContent = r.icons; iconsEl.style.display = "block"; }
   else { iconsEl.style.display = "none"; }
@@ -737,20 +1697,30 @@ function renderDetail(){
       <div class="req-txt">${req}</div>
     </div>
   `).join("");
+  document.getElementById("dtlEarnHeadline").innerHTML = r.earnHeadline;
+  document.getElementById("dtlEarnNote").innerHTML = r.earnNote;
+  document.getElementById("dtlBenefits").innerHTML = r.benefits.map(b => `
+    <div class="ben"><span class="ben-em">${b.em}</span><span>${b.t}</span></div>
+  `).join("");
 
-  // Highlight chosen role node in the network animation
-  const isHub = state.role === "hub";
+  // Highlight chosen role node(s) in the network animation
   document.querySelectorAll("#s-network .flow-node").forEach(n => n.classList.remove("you"));
-  if (isHub) {
-    document.getElementById("flowHub1").classList.add("you");
-    document.getElementById("flowHub2").classList.add("you");
-  } else {
-    document.getElementById("flowConn").classList.add("you");
-  }
+  const highlightIds = {
+    sender:    ["flowSender","flowRecipient"],
+    shop:      ["flowSender"],
+    hub:       ["flowHub1","flowHub2"],
+    connector: ["flowConn"],
+  }[state.role] || [];
+  highlightIds.forEach(id => document.getElementById(id)?.classList.add("you"));
 }
 
 function renderRoleConfirm(){
-  const r = ROLES[state.role] || ROLES.hub;
+  const r = ROLES[state.role] || ROLES.sender;
+  const el = document.querySelector(".role-confirm");
+  // Clear all role-specific classes, then apply the current one
+  el.classList.remove("sender","shop","hub","conn");
+  const cls = state.role === "connector" ? "conn" : state.role;
+  el.classList.add(cls);
   document.getElementById("rcEm").textContent = r.em;
   document.getElementById("rcV").textContent = r.title;
 }
@@ -764,37 +1734,54 @@ async function submitForm(ev){
   const txt = document.getElementById("submitText");
   const arr = document.getElementById("submitArrow");
 
+  const nameRaw  = (document.getElementById("f-name")?.value || "").trim();
   const phoneRaw = document.getElementById("f-phone").value.replace(/\D/g,"");
-  const consent = document.getElementById("f-consent").checked;
-  const role = state.role;
+  const emailRaw = (document.getElementById("f-email")?.value || "").trim();
+  const cityRaw  = (document.getElementById("f-city")?.value || "").trim();
+  const consent  = document.getElementById("f-consent").checked;
+  const role     = state.role;
 
   if (!role) { goto("pick"); return false; }
-  if (phoneRaw.length < 7 || !consent) {
+  if (nameRaw.length < 1 || phoneRaw.length < 7 || !cityRaw || !consent) {
     btn.animate([{transform:"translateX(-4px)"},{transform:"translateX(4px)"},{transform:"translateX(0)"}],{duration:220});
     return false;
   }
 
   btn.disabled = true;
   arr.style.display = "none";
-  txt.innerHTML = '<span class="spin"></span>&nbsp;&nbsp;Saving…';
+  txt.innerHTML = '<span class="spin"></span>&nbsp;&nbsp;සුරකිමින්…';
 
-  const phoneFull = "+94" + phoneRaw.replace(/^0/,"");
+  const codeSel = document.getElementById("f-code");
+  const countryCode = codeSel ? codeSel.value : "+94";
+  const phoneFull = countryCode + phoneRaw.replace(/^0/,"");
+  const urlP = getUrlParams();
   const myRefCode = genRefCode(phoneRaw);
 
+  // v2 payload — 7 base columns matching feedback_prelaunch_tool v2 sheet spec
+  // + referrer/refCode as source-embedded for Sheet-clean while enabling referral tracking
+  const referrerCode = state.referrer || urlP.ref || "";
+  const sourceValue = referrerCode
+    ? `ref-${referrerCode}`
+    : urlP.utm_source
+      ? `utm-${urlP.utm_source}`
+      : "web";
   const payload = {
     timestamp: new Date().toISOString(),
-    phone: phoneFull, role,
-    referrer: state.referrer || "",
+    name: nameRaw,
+    phone: phoneFull,
+    role,
+    city: cityRaw,
+    email: emailRaw,
+    source: sourceValue,
+    user_agent: navigator.userAgent.substring(0,120),
+    referrer: referrerCode,
     refCode: myRefCode,
-    source: "recruit_app_v4",
-    userAgent: navigator.userAgent.substring(0,120),
   };
 
   state.leads.push(payload);
   state.myRefCode = myRefCode;
   saveState();
 
-  let backendOK = false;
   if (CONFIG.SHEET_WEBHOOK_URL) {
     try {
       await fetch(CONFIG.SHEET_WEBHOOK_URL, {
@@ -802,13 +1789,9 @@ async function submitForm(ev){
         headers:{"Content-Type":"text/plain;charset=utf-8"},
         body: JSON.stringify(payload),
       });
-      backendOK = true;
-    } catch(e) { console.warn("Webhook failed", e); }
-  }
-
-  if (!backendOK && CONFIG.HUBIX_PHONE) {
-    const msg = `🆕 HUBIX Founding Lead\n\nPhone: ${phoneFull}\nRole: ${role}\nReferrer: ${state.referrer || "direct"}\nRef-Code: ${myRefCode}`;
-    setTimeout(() => { window.open(`https://wa.me/${CONFIG.HUBIX_PHONE}?text=${encodeURIComponent(msg)}`, "_blank", "noopener"); }, 250);
+    } catch(e) { console.warn("Webhook failed — lead saved locally only", e); }
+  } else {
+    console.info("SHEET_WEBHOOK_URL not configured — lead saved locally only");
   }
 
   renderSuccess(payload);
@@ -819,22 +1802,29 @@ async function submitForm(ev){
 function genRefCode(phoneRaw){ const tail = phoneRaw.slice(-3) || "000"; return "HX" + tail; }
 
 function renderSuccess(payload){
-  document.getElementById("waBtn").href = CONFIG.WHATSAPP_GROUP_URL;
-  const link = `${CONFIG.PUBLIC_URL}?ref=${payload.refCode}`;
-  document.getElementById("refLinkText").textContent = link.replace(/^https?:\/\//,"");
-  const msg = `I just joined HUBIX — Sri Lanka's first people-powered parcel network. The people who do the work get the money. Founding members get permanent recognition. Join before launch:\n\n${link}`;
-  document.getElementById("shareWa").href = `https://wa.me/?text=${encodeURIComponent(msg)}`;
-  document.getElementById("shareSms").href = `sms:?&body=${encodeURIComponent(msg)}`;
+  // Founding number — sequential guess based on local leads count
+  const num = String((state.leads?.length || 1)).padStart(3, "0");
+  const foundingEl = document.getElementById("foundingNum");
+  if (foundingEl) foundingEl.textContent = String(num).padStart(3, "0");
+
+  // Plain share link — no referral code (user feedback 2026-07-07: "being early is the honor, no code needed")
+  const link = CONFIG.PUBLIC_URL;
+
+  const msg = `මම දැන් HUBIX ට එකතු වුණා — ශ්‍රී ලංකාවේ පළමු ජන බලයෙන් ක්‍රියාත්මක Logistics ජාලය. September 2026 දී launch. ඔබත් එන්න:\n\n${link}`;
+  const waBtn = document.getElementById("shareWa");
+  const smsBtn = document.getElementById("shareSms");
+  if (waBtn) waBtn.href = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+  if (smsBtn) smsBtn.href = `sms:?&body=${encodeURIComponent(msg)}`;
 }
 
 function copyLink(){
-  const text = document.getElementById("refLinkText").textContent;
-  const url = text.startsWith("http") ? text : "https://" + text;
+  const url = CONFIG.PUBLIC_URL;
   navigator.clipboard?.writeText(url).then(() => {
-    const el = document.getElementById("refLinkText");
-    const old = el.textContent;
-    el.textContent = "Copied! ✓";
-    setTimeout(() => { el.textContent = old; }, 1400);
+    const btn = document.getElementById("shareCopy");
+    if (!btn) return;
+    const oldHtml = btn.innerHTML;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#00D4BC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copy වුණා!';
+    setTimeout(() => { btn.innerHTML = oldHtml; }, 1400);
   });
 }
 
@@ -847,11 +1837,28 @@ function restart(){
   render();
 }
 
+function renderQrView(){
+  const url = CONFIG.PUBLIC_URL;
+  const encoded = encodeURIComponent(url);
+  const img = document.getElementById("qrCodeImg");
+  if (img) {
+    // Public QR-Server API — reliable, free, no dependencies
+    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&data=${encoded}`;
+    img.onerror = () => { img.style.display = "none"; };
+  }
+  const urlText = document.getElementById("qrUrlText");
+  if (urlText) urlText.textContent = url.replace(/^https?:\/\//,"");
+}
+
 (function init(){
   try {
-    const r = new URLSearchParams(location.search).get("role");
-    if (r === "hub" || r === "connector") pickRole(r);
+    const p = new URLSearchParams(location.search);
+    const r = p.get("role");
+    if (["sender","shop","hub","connector"].includes(r)) pickRole(r);
+    const view = p.get("view");
+    if (view === "qr") { renderQrView(); goto("qr"); return; }
   } catch(e){}
+  applyInvitedBy();
   render();
 })();
 </script>
