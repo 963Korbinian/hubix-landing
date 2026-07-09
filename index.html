@@ -291,9 +291,12 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
 /* ═══════════ SCREEN 3 — ROLE DETAIL ═══════════ */
 #s-detail{padding-top:80px}
 /* Detail-hero — UNIFIED PURPLE BG for all roles (2026-07-07) — same look as Screen 3 role-cards. */
-.dtl-mode{display:flex;gap:8px;margin:0 0 18px}
-.dtl-mode-btn{flex:1;padding:12px 8px;border-radius:13px;border:1.5px solid var(--w-faint);background:rgba(255,255,255,.04);color:var(--w-muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:border-color .15s,background .15s,color .15s}
-.dtl-mode-btn.on{border-color:var(--orange);background:rgba(255,159,28,.1);color:#fff}
+.dtl-mode{display:flex;gap:9px;margin:0 0 18px}
+.dtl-mode-btn{flex:1;padding:14px 8px;border-radius:13px;border:1.5px solid var(--w-faint);background:rgba(255,255,255,.04);color:var(--w-muted);font-family:'Inter',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:border-color .15s,background .15s,color .15s,transform .15s}
+.dtl-mode-btn.on{border-color:var(--orange);background:rgba(255,159,28,.14);color:#fff;box-shadow:0 4px 16px rgba(255,159,28,.22)}
+.dtl-mode.pulse .dtl-mode-btn{animation:dtlTogglePulse .62s ease 2}
+@keyframes dtlTogglePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06);border-color:var(--orange);color:#fff}}
+@media (prefers-reduced-motion:reduce){.dtl-mode.pulse .dtl-mode-btn{animation:none}}
 .dtl-hero,
 .dtl-hero.sender,
 .dtl-hero.shop,
@@ -1695,10 +1698,10 @@ function setSenderMode(mode){
   // 'sender' (Private) ↔ 'shop' (Business) — swap detail content + tracked role
   state.role = mode;
   saveState();
-  renderDetail();
+  renderDetail(true);
 }
 
-function renderDetail(){
+function renderDetail(skipPulse){
   const r = ROLES[state.role] || ROLES.sender;
   // Private/Business-Umschalter nur für die Send&Receive-Familie
   const mode = document.getElementById("dtlMode");
@@ -1706,6 +1709,7 @@ function renderDetail(){
     mode.style.display = "flex";
     document.getElementById("dtlModePrivate").classList.toggle("on", state.role === "sender");
     document.getElementById("dtlModeBusiness").classList.toggle("on", state.role === "shop");
+    if (!skipPulse){ mode.classList.remove("pulse"); void mode.offsetWidth; mode.classList.add("pulse"); }
   } else {
     mode.style.display = "none";
   }
