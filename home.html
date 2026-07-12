@@ -3,399 +3,296 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0d0a1e">
+<meta name="theme-color" content="#5625a2">
 <title>HUBIX — Sri Lanka's People-Powered Logistics Network</title>
 <meta name="description" content="Shops become Hubs. Neighbors become Connectors. Everyone moves — everyone earns. Join the founding network. Pilot Q4 2026 · Galle.">
 <link rel="icon" href="logo3.png">
 <link rel="apple-touch-icon" href="logo3.png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&family=Playfair+Display:ital,wght@1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
 <!--
 ═══════════════════════════════════════════════════════════════════════════════
-  HUBIX — Marketing Website · HOME V1  ·  Chat 8 (web:)  ·  2026-07-12
-  Structure: 🅱 Trust-First-Hybrid (CHAT8_WEBSITE_LANE §2)
-  DNA: V6-Landing evolution — dark-immersive premium. Token-architected → light fast-follow.
-  Brand: Orange #FF9F1C · Purple #5625a2 · Teal #00D4BC · Wordmark HUBI+X(teal) · Lion logo3.png
-  Copy rules: Q4 2026 soft target · Founding-100 status (no countdown/discount) · no volume promises
-              · Hook → Problem → Story → Payoff
+  HUBIX — Marketing Website · HOME · built strictly in HUBIX app DNA (CLAUDE.md §1–6, §15)
+  3-zone skeleton: Lila header (#5625a2 + Flower-of-Life) → Dark-violet hero → Light content.
+  Brand: Orange #FF9F1C · Purple #5625a2 · Teal #00D4BC · Wordmark HUBI+X(teal) · Lion logo3.png.
+  Copy: Q4 2026 soft target · Founding-100 (no discount/countdown) · no volume promises.
 ═══════════════════════════════════════════════════════════════════════════════
 -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
-
-/* ═══════════ THEME TOKENS ═══════════
-   Dark is the live default (brand continuity). A light theme is a token-flip fast-follow:
-   set data-theme="light" on <html> and override this block. Header/hero stay theme-neutral. */
 :root{
   --orange:#FF9F1C; --orange-2:#FF7A00;
   --purple:#5625a2; --purple-deep:#1a0a3e; --purple-glow:#2d1060;
   --teal:#00D4BC; --teal-deep:#00a89a;
-
-  --bg:#0b0817;
-  --bg-2:#0d0a1e;
-  --surface:rgba(255,255,255,.045);
-  --surface-2:rgba(255,255,255,.03);
-  --border:rgba(255,255,255,.10);
-  --border-strong:rgba(255,255,255,.16);
-  --text:#ffffff;
-  --text-2:rgba(255,255,255,.72);
-  --text-3:rgba(255,255,255,.45);
-  --text-faint:rgba(255,255,255,.30);
-
-  --shadow-card:0 18px 44px rgba(0,0,0,.34);
-  --maxw:1180px;
-  --gutter:clamp(20px,5vw,64px);
+  /* light content DNA */
+  --ink:#1a1033; --ink-2:#6B7280; --ink-3:#9089a6;
+  --card:#ffffff; --card-border:#F0EAFB; --label:#5625a2;
+  --maxw:1180px; --gutter:clamp(20px,5vw,60px);
 }
 html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);
-  line-height:1.5;
-  background-image:
-    radial-gradient(ellipse 70% 50% at 78% -5%,rgba(255,159,28,.16),transparent 60%),
-    radial-gradient(ellipse 60% 45% at 10% 8%,rgba(0,212,188,.09),transparent 62%),
-    radial-gradient(ellipse 80% 60% at 50% 108%,rgba(86,37,162,.22),transparent 70%),
-    linear-gradient(170deg,#120a2c 0%,#0b0817 46%,#070a1a 100%);
-}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#F5F7FF;line-height:1.5}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter);width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);width:100%}
+.brand{font-weight:900;color:#fff}.brand-x{color:var(--teal)}
+/* Flower-of-Life texture */
+.fol{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='52' viewBox='0 0 30 52'%3E%3Cg fill='none' stroke='%23fff' stroke-width='0.35'%3E%3Ccircle cx='0' cy='0' r='30'/%3E%3Ccircle cx='30' cy='0' r='30'/%3E%3Ccircle cx='-15' cy='26' r='30'/%3E%3Ccircle cx='15' cy='26' r='30'/%3E%3Ccircle cx='45' cy='26' r='30'/%3E%3Ccircle cx='0' cy='52' r='30'/%3E%3Ccircle cx='30' cy='52' r='30'/%3E%3C/g%3E%3C/svg%3E");background-size:30px 52px}
 
-/* Brand wordmark — GLOBAL STANDARD: HUBI white, X teal */
-.brand{font-weight:900;color:#fff;letter-spacing:-.3px}
-.brand-x{color:var(--teal)}
-
-.fol{position:absolute;inset:0;opacity:.04;pointer-events:none;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='52' viewBox='0 0 30 52'%3E%3Cg fill='none' stroke='%23fff' stroke-width='0.35'%3E%3Ccircle cx='0' cy='0' r='30'/%3E%3Ccircle cx='30' cy='0' r='30'/%3E%3Ccircle cx='-15' cy='26' r='30'/%3E%3Ccircle cx='15' cy='26' r='30'/%3E%3Ccircle cx='45' cy='26' r='30'/%3E%3Ccircle cx='0' cy='52' r='30'/%3E%3Ccircle cx='30' cy='52' r='30'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:30px 52px}
-
-/* ═══════════ NAV ═══════════ */
-.nav{position:sticky;top:0;z-index:100;
-  background:linear-gradient(180deg,rgba(11,8,23,.86),rgba(11,8,23,.55) 74%,transparent);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-inner{display:flex;align-items:center;gap:16px;height:66px}
+/* ═══════════ ZONE 1 · LILA HEADER / NAV (#5625a2) ═══════════ */
+.nav{position:sticky;top:0;z-index:100;background:var(--purple);box-shadow:0 2px 20px rgba(26,10,62,.28)}
+.nav .fol{opacity:.06}
+.nav-inner{position:relative;z-index:1;display:flex;align-items:center;gap:14px;height:66px}
 .nav-brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
-.nav-logo{width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.nav-logo img{width:100%;height:100%;object-fit:cover}
-.nav-word{font-size:19px;font-weight:900;letter-spacing:-.4px;line-height:1}
-.nav-word span{color:var(--teal)}
-.nav-links{display:none;margin-left:auto;align-items:center;gap:30px}
-.nav-links a{font-size:13.5px;font-weight:600;color:var(--text-2);transition:color .16s}
+.logo-box{width:42px;height:42px;border-radius:13px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.logo-box img{width:100%;height:100%;object-fit:cover}
+.nav-word{line-height:1.05}
+.nav-word .ht{display:block;font-size:17px;font-weight:800;color:#fff;letter-spacing:-.2px}
+.nav-word .ht span{color:var(--teal)}
+.nav-word .hs{display:block;font-size:9px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:1px}
+.nav-links{display:none;margin-left:auto;align-items:center;gap:28px}
+.nav-links a{font-size:13.5px;font-weight:600;color:rgba(255,255,255,.78);transition:color .15s}
 .nav-links a:hover{color:#fff}
-.nav-cta{display:none;align-items:center;gap:7px;padding:10px 18px;border-radius:11px;white-space:nowrap;
+.nav-cta{display:none;align-items:center;gap:7px;padding:10px 18px;border-radius:12px;white-space:nowrap;
   background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;font-size:13px;font-weight:800;
   box-shadow:0 8px 20px rgba(255,159,28,.32);transition:transform .15s,box-shadow .2s}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(255,159,28,.42)}
-.nav-burger{margin-left:auto;width:42px;height:42px;border-radius:11px;border:1px solid var(--border);
-  background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
-.nav-burger span{width:18px;height:2px;border-radius:2px;background:#fff;transition:.22s}
-.nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.nav-mobile{display:none;flex-direction:column;gap:2px;padding:8px 0 18px}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(255,159,28,.44)}
+.nav-cta svg{width:15px;height:15px;stroke:#fff;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.burger{margin-left:auto;width:42px;height:42px;border-radius:11px;border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
+.burger span{width:18px;height:2px;border-radius:2px;background:#fff;transition:.22s}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.nav-mobile{position:relative;z-index:1;display:none;flex-direction:column;padding:6px 0 16px}
 .nav-mobile.open{display:flex}
-.nav-mobile a{padding:13px 4px;font-size:15px;font-weight:600;color:var(--text-2);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-mobile .nav-mobile-cta{margin-top:12px;border:none;text-align:center;border-radius:12px;
-  background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;font-weight:800;
-  box-shadow:0 8px 20px rgba(255,159,28,.3)}
+.nav-mobile a{padding:13px 2px;font-size:15px;font-weight:600;color:rgba(255,255,255,.82);border-bottom:1px solid rgba(255,255,255,.1)}
+.nav-mobile .m-cta{margin-top:12px;text-align:center;border:none;border-radius:12px;padding:14px;
+  background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;font-weight:800;box-shadow:0 8px 20px rgba(255,159,28,.3)}
 
-/* ═══════════ SHARED SECTION PRIMITIVES ═══════════ */
-section{position:relative;z-index:1}
-.sec{padding:clamp(52px,7vw,90px) 0}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:2.6px;
+/* ═══════════ ZONE 2 · DARK-VIOLET HERO ═══════════ */
+.hero{position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 70% 60% at 78% 12%,rgba(255,159,28,.22),transparent 58%),
+    linear-gradient(135deg,#1a0a3e 0%,#2d1060 60%,#1a0a3e 100%)}
+.hero-lion{position:absolute;top:8%;right:-6%;width:min(460px,52vw);opacity:.10;z-index:0;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 50%,transparent 100%);mask-image:radial-gradient(ellipse at center,#000 50%,transparent 100%)}
+.hero-inner{position:relative;z-index:2;padding:clamp(46px,7vw,88px) 0 clamp(52px,8vw,96px);max-width:780px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:2.5px;
   text-transform:uppercase;color:var(--teal);margin-bottom:18px}
 .eyebrow::before{content:'';width:22px;height:1px;background:var(--teal)}
-.eyebrow.o{color:var(--orange)}
-.eyebrow.o::before{background:var(--orange)}
-.h2{font-size:clamp(30px,5.2vw,50px);font-weight:900;letter-spacing:-1.4px;line-height:1.04;color:#fff}
-.h2 .o{color:var(--orange);text-shadow:0 0 44px rgba(255,159,28,.45)}
-.h2 .t{color:var(--teal)}
-.lead{font-size:clamp(16px,2.1vw,19px);line-height:1.6;color:var(--text-2);max-width:56ch}
-.lead b{color:#fff;font-weight:700}
-.center{text-align:center}
-.center .eyebrow{justify-content:center}
-.center .lead{margin-left:auto;margin-right:auto}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;cursor:pointer;
-  border:none;transition:transform .15s,box-shadow .2s,background .2s}
-.btn svg{width:17px;height:17px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.btn-primary{padding:16px 28px;border-radius:14px;font-size:15px;color:#fff;
-  background:linear-gradient(135deg,var(--orange),var(--orange-2));box-shadow:0 12px 30px rgba(255,159,28,.38)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(255,159,28,.5)}
-.btn-ghost{padding:16px 26px;border-radius:14px;font-size:15px;color:#fff;
-  background:rgba(255,255,255,.05);border:1.5px solid var(--border-strong)}
-.btn-ghost:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.28)}
-
-/* ═══════════ HERO · LIVING NETWORK ═══════════ */
-.hero{position:relative;min-height:92vh;display:flex;align-items:center;
-  padding:clamp(40px,6vw,76px) 0 clamp(44px,6vw,72px);overflow:hidden}
-/* interactive network canvas — the hero IS the network */
-.hero-net{position:absolute;inset:0;z-index:0;pointer-events:none}
-.hero-net canvas{width:100%;height:100%;display:block}
-/* readability vignette over the network */
-.hero-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse 90% 80% at 22% 45%,rgba(11,8,23,.82),rgba(11,8,23,.30) 55%,transparent 78%)}
-.hero-lion{position:absolute;top:6%;right:-8%;width:min(520px,58vw);opacity:.07;z-index:0;pointer-events:none;
-  filter:brightness(1.3) contrast(1.08) drop-shadow(0 0 40px rgba(255,159,28,.28));
-  -webkit-mask-image:radial-gradient(ellipse at center,#000 52%,transparent 100%);
-  mask-image:radial-gradient(ellipse at center,#000 52%,transparent 100%)}
-/* cursor glow — subtle premium pointer light (desktop only) */
-.cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;z-index:2;pointer-events:none;
-  transform:translate(-50%,-50%);opacity:0;transition:opacity .4s ease;
-  background:radial-gradient(circle,rgba(255,159,28,.10),rgba(0,212,188,.05) 40%,transparent 66%);mix-blend-mode:screen}
-/* Madar-style hotspots over the network (desktop only) */
-.hero-hotspots{position:absolute;inset:0;z-index:2;pointer-events:none}
-.hotspot{position:absolute;display:flex;align-items:center;gap:11px}
-.hotspot .hs-dot{width:13px;height:13px;border-radius:50%;position:relative;flex-shrink:0;background:currentColor;
-  box-shadow:0 0 14px currentColor,0 0 4px currentColor}
-.hotspot .hs-dot::before{content:'';position:absolute;inset:-7px;border-radius:50%;border:1px solid currentColor;opacity:.5;animation:hsPulse 2.4s ease infinite}
-@keyframes hsPulse{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.9);opacity:0}}
-.hotspot .hs-label{font-size:11px;font-weight:700;letter-spacing:.4px;color:rgba(255,255,255,.9);white-space:nowrap;
-  background:rgba(11,8,23,.55);backdrop-filter:blur(4px);padding:5px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.12)}
-.hotspot.teal{color:var(--teal)} .hotspot.orange{color:var(--orange)} .hotspot.purple{color:#a078ff}
-@media(max-width:900px){.hero-hotspots{display:none}}
-.hero-inner{position:relative;z-index:2;max-width:820px}
-.hero-chip{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:99px;
-  background:linear-gradient(135deg,rgba(0,212,188,.13),rgba(0,212,188,.03));border:1px solid rgba(0,212,188,.30);
-  font-size:10.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--teal);margin-bottom:26px}
-.hero-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 1.7s ease infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,212,188,.6)}80%{box-shadow:0 0 0 7px rgba(0,212,188,0)}}
-.hero-h1{font-size:clamp(44px,8.2vw,88px);font-weight:900;letter-spacing:-3px;line-height:.96;color:#fff;margin-bottom:22px}
-.hero-h1 .o{color:var(--orange);text-shadow:0 0 70px rgba(255,159,28,.5),0 3px 14px rgba(255,159,28,.28)}
-.hero-sub{font-size:clamp(16px,2.4vw,21px);line-height:1.55;color:var(--text-2);font-weight:500;max-width:60ch;margin-bottom:34px}
+.hero-h1{font-size:clamp(40px,7.4vw,80px);font-weight:900;letter-spacing:-2.6px;line-height:.98;color:#fff;margin-bottom:20px}
+.hero-h1 .o{color:var(--orange);text-shadow:0 0 40px rgba(255,159,28,.55),0 2px 8px rgba(255,159,28,.25)}
+.hero-sub{font-size:clamp(16px,2.2vw,20px);line-height:1.55;color:rgba(255,255,255,.72);font-weight:500;max-width:58ch;margin-bottom:30px}
 .hero-sub b{color:#fff;font-weight:700}
-
-/* 3 role doors */
 .doors{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:30px;max-width:640px}
-.door{display:flex;align-items:center;gap:15px;padding:17px 18px;border-radius:16px;
-  background:var(--surface);border:1px solid var(--border);transition:transform .16s,border-color .16s,background .16s;cursor:pointer}
-.door:hover{transform:translateY(-2px);background:rgba(255,255,255,.07);border-color:var(--border-strong)}
+.door{display:flex;align-items:center;gap:15px;padding:16px 18px;border-radius:16px;cursor:pointer;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:transform .16s,background .16s,border-color .16s}
+.door:hover{transform:translateY(-2px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22)}
 .door-em{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:23px;flex-shrink:0}
-.door.send .door-em{background:linear-gradient(135deg,rgba(255,159,28,.18),rgba(255,159,28,.05));border:1px solid rgba(255,159,28,.3)}
-.door.hub .door-em{background:linear-gradient(135deg,rgba(0,212,188,.16),rgba(0,212,188,.04));border:1px solid rgba(0,212,188,.3)}
-.door.conn .door-em{background:linear-gradient(135deg,rgba(160,120,255,.18),rgba(160,120,255,.05));border:1px solid rgba(160,120,255,.32)}
+.door.send .door-em{background:linear-gradient(135deg,rgba(255,159,28,.2),rgba(255,159,28,.05));border:1px solid rgba(255,159,28,.32)}
+.door.hub .door-em{background:linear-gradient(135deg,rgba(0,212,188,.18),rgba(0,212,188,.04));border:1px solid rgba(0,212,188,.32)}
+.door.conn .door-em{background:linear-gradient(135deg,rgba(160,120,255,.2),rgba(160,120,255,.05));border:1px solid rgba(160,120,255,.34)}
 .door-txt{flex:1;min-width:0}
 .door-t{display:block;font-size:15.5px;font-weight:800;color:#fff;letter-spacing:-.2px}
-.door-d{display:block;font-size:12.5px;color:var(--text-3);margin-top:3px}
-.door-arrow{color:var(--text-faint);flex-shrink:0}
-.door:hover .door-arrow{color:var(--orange)}
-.door-arrow svg{width:18px;height:18px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.door-d{display:block;font-size:12.5px;color:rgba(255,255,255,.5);margin-top:3px}
+.door-arrow svg{width:18px;height:18px;stroke:rgba(255,255,255,.4);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.door:hover .door-arrow svg{stroke:var(--orange)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:13px;align-items:center;margin-bottom:26px}
+.hero-trust{display:flex;flex-wrap:wrap;gap:9px 18px}
+.hero-trust span{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.5)}
+.hero-trust .tk{width:17px;height:17px;border-radius:50%;background:rgba(0,212,188,.14);border:1px solid rgba(0,212,188,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-trust .tk svg{width:9px;height:9px;stroke:var(--teal);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-.hero-actions{display:flex;flex-wrap:wrap;gap:13px;align-items:center;margin-bottom:30px}
-.hero-trust{display:flex;flex-wrap:wrap;gap:9px 18px;align-items:center}
-.hero-trust-item{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--text-3)}
-.hero-trust-item .tick{width:17px;height:17px;border-radius:50%;background:rgba(0,212,188,.14);
-  border:1px solid rgba(0,212,188,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.hero-trust-item .tick svg{width:9px;height:9px;stroke:var(--teal);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+/* ═══════════ CTA (§15 B5) ═══════════ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:800;cursor:pointer;border:none;transition:transform .15s,box-shadow .2s,background .2s}
+.btn svg{width:17px;height:17px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.btn-primary{padding:15px 26px;border-radius:14px;font-size:14.5px;color:#fff;font-weight:900;letter-spacing:.3px;
+  background:linear-gradient(135deg,var(--orange),var(--orange-2));box-shadow:0 10px 26px rgba(255,159,28,.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(255,159,28,.5)}
+.btn-ghost{padding:15px 24px;border-radius:14px;font-size:14.5px;color:#fff;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.2)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-purple{padding:15px 26px;border-radius:14px;font-size:14px;color:var(--purple);font-weight:800;background:transparent;border:1.5px solid rgba(86,37,162,.3)}
+.btn-purple:hover{background:rgba(86,37,162,.06);border-color:rgba(86,37,162,.5)}
 
-/* ═══════════ PROBLEM → OUTCOME ═══════════ */
-.po-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:44px}
-.po-card{padding:28px 26px;border-radius:20px;position:relative;overflow:hidden}
-.po-card.problem{background:linear-gradient(160deg,rgba(255,90,60,.09),rgba(255,255,255,.02));border:1px solid rgba(255,120,90,.22)}
-.po-card.outcome{background:linear-gradient(160deg,rgba(0,212,188,.10),rgba(86,37,162,.10));border:1px solid rgba(0,212,188,.24)}
-.po-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:14px}
-.po-card.problem .po-tag{color:#ff9b7a}
-.po-card.outcome .po-tag{color:var(--teal)}
-.po-card h3{font-size:22px;font-weight:900;letter-spacing:-.6px;color:#fff;margin-bottom:12px;line-height:1.15}
-.po-card p{font-size:14.5px;line-height:1.6;color:var(--text-2)}
-.po-card p b{color:#fff;font-weight:700}
-.po-arrow{display:flex;align-items:center;justify-content:center;color:var(--orange);margin:2px 0}
+/* ═══════════ ZONE 3 · LIGHT CONTENT ═══════════ */
+.light{background:linear-gradient(180deg,#F7F4FF 0%,#F5F7FF 55%,#F0FDFB 100%);position:relative}
+.sec{padding:clamp(56px,8vw,100px) 0;position:relative}
+.sec-label{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--label);margin-bottom:16px}
+.sec-label::before{content:'';width:22px;height:1px;background:var(--label)}
+.sec-label.o{color:var(--orange)}.sec-label.o::before{background:var(--orange)}
+.sec-label.t{color:var(--teal-deep)}.sec-label.t::before{background:var(--teal-deep)}
+.h2{font-size:clamp(28px,4.8vw,46px);font-weight:900;letter-spacing:-1.3px;line-height:1.05;color:var(--ink)}
+.h2 .o{color:var(--orange)}.h2 .t{color:var(--teal-deep)}.h2 .p{color:var(--purple)}
+.lead{font-size:clamp(15px,1.9vw,18px);line-height:1.6;color:var(--ink-2);max-width:58ch}
+.lead b{color:var(--ink);font-weight:700}
+.center{text-align:center}.center .sec-label{justify-content:center}.center .lead{margin-left:auto;margin-right:auto}
+
+/* problem → outcome */
+.po{display:grid;grid-template-columns:1fr;gap:16px;margin-top:40px}
+.po-card{background:var(--card);border:1px solid var(--card-border);border-radius:20px;padding:28px 26px;box-shadow:0 14px 40px rgba(86,37,162,.06)}
+.po-card.problem{border-color:#FBE1D8}
+.po-card.outcome{border-color:rgba(0,212,188,.32);background:linear-gradient(160deg,#fff,#F0FDFB)}
+.po-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:12px}
+.po-card.problem .po-tag{color:#E8663A}
+.po-card.outcome .po-tag{color:var(--teal-deep)}
+.po-card h3{font-size:21px;font-weight:900;letter-spacing:-.5px;color:var(--ink);margin-bottom:10px}
+.po-card p{font-size:14.5px;line-height:1.6;color:var(--ink-2)}
+.po-card p b{color:var(--ink);font-weight:700}
+.po-arrow{display:flex;align-items:center;justify-content:center;color:var(--orange)}
 .po-arrow svg{width:26px;height:26px;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-/* ═══════════ MECHANIC · 5-NODE FLOW ═══════════ */
-.flow{margin-top:52px;padding:38px clamp(16px,4vw,44px);border-radius:24px;
-  background:linear-gradient(160deg,var(--purple-deep),var(--purple-glow) 55%,var(--purple-deep));
-  border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden}
-.flow-track{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:6px;z-index:2}
-.flow-line{position:absolute;top:33px;left:9%;right:9%;height:2px;
-  background:repeating-linear-gradient(90deg,rgba(255,159,28,.5) 0 8px,transparent 8px 16px);z-index:1}
-.flow-parcel{position:absolute;top:22px;left:9%;font-size:22px;z-index:3;
-  animation:parcelRun 6s cubic-bezier(.55,.05,.45,.95) infinite;filter:drop-shadow(0 3px 8px rgba(0,0,0,.4))}
-@keyframes parcelRun{0%{left:9%}20%{left:9%}40%{left:31.5%}55%{left:50%}72%{left:68.5%}90%{left:88%}100%{left:88%}}
+/* flow — 5 nodes (dark-violet band inside light, app hero DNA) */
+.flow{margin-top:44px;padding:40px clamp(16px,4vw,44px);border-radius:24px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#1a0a3e 0%,#2d1060 60%,#1a0a3e 100%)}
+.flow-track{position:relative;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
+.flow-line{position:absolute;top:33px;left:9%;right:9%;height:2px;background:repeating-linear-gradient(90deg,rgba(255,159,28,.5) 0 8px,transparent 8px 16px)}
 .node{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:9px;flex:1;min-width:0}
-.node-dot{width:66px;height:66px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:28px;
-  background:linear-gradient(135deg,rgba(255,159,28,.18),rgba(255,159,28,.06));border:1.5px solid rgba(255,159,28,.4);
-  box-shadow:0 8px 22px rgba(0,0,0,.3)}
-.node.you .node-dot{background:linear-gradient(135deg,rgba(0,212,188,.2),rgba(0,212,188,.06));border-color:rgba(0,212,188,.45)}
-.node-t{font-size:12px;font-weight:800;color:#fff;text-align:center;letter-spacing:-.1px}
-.node-d{font-size:10px;color:var(--text-3);text-align:center;line-height:1.3;display:none}
-.flow-caption{margin-top:30px;text-align:center;font-size:14px;color:var(--text-2);max-width:60ch;margin-left:auto;margin-right:auto}
-.flow-caption b{color:#fff}
+.node-dot{width:64px;height:64px;border-radius:19px;display:flex;align-items:center;justify-content:center;font-size:27px;
+  background:linear-gradient(135deg,rgba(255,159,28,.18),rgba(255,159,28,.05));border:1.5px solid rgba(255,159,28,.4)}
+.node.you .node-dot{background:linear-gradient(135deg,rgba(0,212,188,.2),rgba(0,212,188,.05));border-color:rgba(0,212,188,.45)}
+.node-t{font-size:12px;font-weight:800;color:#fff}
+.node-d{font-size:10px;color:rgba(255,255,255,.5);text-align:center;line-height:1.3;display:none}
+.flow-cap{position:relative;z-index:2;margin-top:28px;text-align:center;font-size:14px;color:rgba(255,255,255,.72);max-width:60ch;margin-left:auto;margin-right:auto}
+.flow-cap b{color:#fff}
 
-/* ═══════════ STAT STRIP (honest facts, animated counters) ═══════════ */
-.stat-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:44px;
-  background:var(--border);border:1px solid var(--border);border-radius:22px;overflow:hidden}
-.stat-cell{background:linear-gradient(160deg,rgba(20,14,42,.9),rgba(11,8,23,.9));padding:30px 20px;text-align:center;
-  position:relative;transition:background .25s}
-.stat-cell:hover{background:linear-gradient(160deg,rgba(30,20,60,.95),rgba(15,11,32,.95))}
-.stat-num{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:clamp(30px,5vw,46px);
-  letter-spacing:-1px;line-height:1;color:#fff;margin-bottom:8px}
-.stat-cell:nth-child(1) .stat-num{color:var(--teal)}
-.stat-cell:nth-child(2) .stat-num{color:var(--orange)}
-.stat-cell:nth-child(3) .stat-num{color:#b38cff}
-.stat-cell:nth-child(4) .stat-num{color:var(--teal)}
-.stat-num .sfx{opacity:.85}
-.stat-lbl{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--text-3)}
-.stat-foot{margin-top:22px;text-align:center;font-size:14.5px;color:var(--text-2);max-width:60ch;margin-left:auto;margin-right:auto}
-.stat-foot b{color:#fff}
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
+.stat{background:var(--card);border:1px solid var(--card-border);border-radius:18px;padding:26px 20px;text-align:center;box-shadow:0 12px 34px rgba(86,37,162,.06)}
+.stat .num{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:clamp(28px,4.4vw,42px);letter-spacing:-1px;line-height:1;margin-bottom:8px}
+.stat:nth-child(1) .num{color:var(--teal-deep)}.stat:nth-child(2) .num{color:var(--orange)}
+.stat:nth-child(3) .num{color:var(--purple)}.stat:nth-child(4) .num{color:var(--teal-deep)}
+.stat .lbl{font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-3)}
+.stat-foot{margin-top:22px;text-align:center;font-size:14.5px;color:var(--ink-2);max-width:60ch;margin-left:auto;margin-right:auto}
+.stat-foot b{color:var(--ink)}
 
-/* ═══════════ TRUST LAYER (heart) ═══════════ */
-.trust{position:relative}
-.trust::before{content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(0,212,188,.10),transparent 60%);pointer-events:none}
-.trust-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:46px}
-.tcard{padding:26px 24px;border-radius:20px;background:var(--surface);border:1px solid var(--border);
-  transition:transform .18s,border-color .18s;position:relative;overflow:hidden}
-.tcard:hover{transform:translateY(-3px);border-color:var(--border-strong)}
-.tcard-ic{width:52px;height:52px;border-radius:15px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;
-  background:linear-gradient(135deg,rgba(0,212,188,.16),rgba(0,212,188,.04));border:1px solid rgba(0,212,188,.3)}
-.tcard-ic svg{width:25px;height:25px;stroke:var(--teal);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.tcard.o .tcard-ic{background:linear-gradient(135deg,rgba(255,159,28,.16),rgba(255,159,28,.04));border-color:rgba(255,159,28,.32)}
+/* trust cards */
+.tgrid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:42px}
+.tcard{background:var(--card);border:1px solid var(--card-border);border-radius:20px;padding:26px 24px;box-shadow:0 14px 40px rgba(86,37,162,.06);transition:transform .16s,box-shadow .2s}
+.tcard:hover{transform:translateY(-3px);box-shadow:0 22px 50px rgba(86,37,162,.1)}
+.tcard-ic{width:52px;height:52px;border-radius:15px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(0,212,188,.14),rgba(0,212,188,.04));border:1px solid rgba(0,212,188,.28)}
+.tcard-ic svg{width:25px;height:25px;stroke:var(--teal-deep);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.tcard.o .tcard-ic{background:linear-gradient(135deg,rgba(255,159,28,.14),rgba(255,159,28,.04));border-color:rgba(255,159,28,.3)}
 .tcard.o .tcard-ic svg{stroke:var(--orange)}
-.tcard h3{font-size:17px;font-weight:800;color:#fff;letter-spacing:-.3px;margin-bottom:8px}
-.tcard p{font-size:13.5px;line-height:1.55;color:var(--text-2)}
-.tcard .stat{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:800;color:var(--teal);
-  letter-spacing:-.5px;margin-bottom:6px;display:block}
-.tcard.o .stat{color:var(--orange)}
+.tcard .stat-num{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:800;color:var(--teal-deep);display:block;margin-bottom:6px;letter-spacing:-.5px}
+.tcard.o .stat-num{color:var(--orange)}
+.tcard h3{font-size:16.5px;font-weight:800;color:var(--ink);margin-bottom:8px}
+.tcard p{font-size:13.5px;line-height:1.55;color:var(--ink-2)}
+.tcard p b{color:var(--ink);font-weight:700}
 
-/* ═══════════ BILATERAL VALUE ═══════════ */
-.bival{display:grid;grid-template-columns:1fr;gap:18px;margin-top:46px}
-.bcol{padding:32px 28px;border-radius:22px;position:relative;overflow:hidden;border:1px solid var(--border)}
-.bcol.senders{background:linear-gradient(165deg,rgba(255,159,28,.10),rgba(255,255,255,.015))}
-.bcol.network{background:linear-gradient(165deg,rgba(0,212,188,.10),rgba(160,120,255,.07))}
-.bcol-tag{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:1.8px;
-  text-transform:uppercase;margin-bottom:8px}
-.bcol.senders .bcol-tag{color:var(--orange)}
-.bcol.network .bcol-tag{color:var(--teal)}
-.bcol h3{font-size:24px;font-weight:900;letter-spacing:-.7px;color:#fff;margin-bottom:20px;line-height:1.1}
-.blist{display:flex;flex-direction:column;gap:14px}
-.bitem{display:flex;gap:13px;align-items:flex-start}
-.bitem .bick{width:26px;height:26px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
-.bcol.senders .bick{background:rgba(255,159,28,.14);border:1px solid rgba(255,159,28,.3)}
-.bcol.network .bick{background:rgba(0,212,188,.14);border:1px solid rgba(0,212,188,.3)}
-.bitem .bick svg{width:13px;height:13px;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.bcol.senders .bick svg{stroke:var(--orange)}
-.bcol.network .bick svg{stroke:var(--teal)}
-.bitem-txt{font-size:14px;line-height:1.45;color:var(--text-2)}
-.bitem-txt b{color:#fff;font-weight:700}
+/* bilateral value */
+.bival{display:grid;grid-template-columns:1fr;gap:16px;margin-top:42px}
+.bcol{border-radius:22px;padding:30px 28px;border:1px solid var(--card-border);background:var(--card);box-shadow:0 14px 40px rgba(86,37,162,.06)}
+.bcol.senders{background:linear-gradient(165deg,#fff,#FFF7EC);border-color:#FBEAD2}
+.bcol.network{background:linear-gradient(165deg,#fff,#F0FDFB);border-color:rgba(0,212,188,.28)}
+.bcol-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:6px}
+.bcol.senders .bcol-tag{color:var(--orange)}.bcol.network .bcol-tag{color:var(--teal-deep)}
+.bcol h3{font-size:22px;font-weight:900;letter-spacing:-.6px;color:var(--ink);margin-bottom:18px;line-height:1.12}
+.blist{display:flex;flex-direction:column;gap:13px}
+.bitem{display:flex;gap:12px;align-items:flex-start}
+.bick{width:24px;height:24px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.bcol.senders .bick{background:rgba(255,159,28,.12);border:1px solid rgba(255,159,28,.3)}
+.bcol.network .bick{background:rgba(0,212,188,.12);border:1px solid rgba(0,212,188,.3)}
+.bick svg{width:12px;height:12px;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bcol.senders .bick svg{stroke:var(--orange)}.bcol.network .bick svg{stroke:var(--teal-deep)}
+.bitem-txt{font-size:14px;line-height:1.45;color:var(--ink-2)}
+.bitem-txt b{color:var(--ink);font-weight:700}
 
-/* ═══════════ BUILT BY THE NEIGHBORHOOD (honest, pre-launch — no fake testimonials) ═══════════ */
-.hood-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:44px}
-.hcard{padding:26px 24px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border);position:relative}
-.hcard-role{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:800;letter-spacing:1.4px;
-  text-transform:uppercase;color:var(--text-3);margin-bottom:14px}
+/* neighborhood */
+.hood{display:grid;grid-template-columns:1fr;gap:16px;margin-top:40px}
+.hcard{background:var(--card);border:1px solid var(--card-border);border-radius:20px;padding:26px 24px;box-shadow:0 12px 34px rgba(86,37,162,.06)}
+.hcard-role{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
 .hcard-role .rd{width:8px;height:8px;border-radius:50%}
-.hcard.a .rd{background:var(--orange)}.hcard.b .rd{background:var(--teal)}.hcard.c .rd{background:#a078ff}
-.hcard p{font-family:'Playfair Display',serif;font-style:italic;font-size:19px;line-height:1.4;color:#fff;font-weight:700;margin-bottom:14px}
-.hcard .who{font-size:12.5px;color:var(--text-3);font-weight:600}
-.hcard .who b{color:var(--text-2)}
-.hood-note{margin-top:26px;text-align:center;font-size:12.5px;color:var(--text-faint);font-style:italic}
+.hcard.a .rd{background:var(--orange)}.hcard.b .rd{background:var(--teal-deep)}.hcard.c .rd{background:var(--purple)}
+.hcard p{font-size:17px;line-height:1.45;color:var(--ink);font-weight:700;margin-bottom:12px;letter-spacing:-.2px}
+.hcard .who{font-size:12.5px;color:var(--ink-3);font-weight:600}.hcard .who b{color:var(--ink-2)}
+.hood-note{margin-top:24px;text-align:center;font-size:12.5px;color:var(--ink-3)}
 
-/* ═══════════ FOUNDER + WE ARE ONE ═══════════ */
-.founder{position:relative}
-.founder-card{margin-top:40px;padding:clamp(28px,5vw,52px);border-radius:26px;
-  background:linear-gradient(160deg,var(--purple-deep),var(--purple-glow) 60%,var(--purple-deep));
-  border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden}
-.founder-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
-.founder-story p{font-size:15px;line-height:1.7;color:var(--text-2);margin-bottom:14px}
-.founder-story p b{color:#fff;font-weight:700}
-.founder-story p:last-child{margin-bottom:0}
-.founder-lead{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;
-  font-size:clamp(21px,3.2vw,28px)!important;line-height:1.3!important;color:#fff!important;margin-bottom:20px!important}
+/* ═══════════ FOUNDER (dark-violet band) ═══════════ */
+.founder{position:relative;overflow:hidden;background:linear-gradient(135deg,#1a0a3e 0%,#2d1060 60%,#1a0a3e 100%)}
+.founder .fol{opacity:.04}
+.founder-inner{position:relative;z-index:2;padding:clamp(52px,8vw,96px) 0}
+.founder-inner .sec-label{color:var(--orange)}.founder-inner .sec-label::before{background:var(--orange)}
+.founder-inner .h2{color:#fff}
+.founder-grid{display:grid;grid-template-columns:1fr;gap:26px;margin-top:36px}
+.founder-story p{font-size:15px;line-height:1.7;color:rgba(255,255,255,.75);margin-bottom:13px}
+.founder-story p b{color:#fff;font-weight:700}.founder-story p:last-child{margin-bottom:0}
+.founder-lead{font-size:clamp(19px,2.6vw,24px)!important;font-weight:800;line-height:1.35!important;color:#fff!important;margin-bottom:16px!important}
 .founder-lead .t{color:var(--teal)}
-.founder-sign{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:16px}
-.founder-sign img{height:52px;width:auto;opacity:.95;filter:brightness(1.6)}
-.founder-sign-meta{font-size:12.5px;color:var(--text-3);line-height:1.4}
-.founder-sign-meta b{color:#fff;font-weight:700;display:block;font-size:13.5px}
-
-.oneline{margin-top:46px;text-align:center}
-.oneline .big{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;
-  font-size:clamp(26px,4.6vw,42px);line-height:1.18;color:#fff;letter-spacing:-.4px}
+.founder-sign{margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:15px}
+.founder-sign img{height:48px;width:auto;filter:brightness(1.7)}
+.founder-sign .m{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.4}
+.founder-sign .m b{color:#fff;display:block;font-size:13.5px}
+.oneline{position:relative;z-index:2;text-align:center;padding-bottom:clamp(40px,6vw,72px)}
+.oneline .big{font-size:clamp(22px,3.6vw,34px);font-weight:900;line-height:1.2;color:#fff;letter-spacing:-.6px}
 .oneline .big .o{color:var(--orange)}.oneline .big .t{color:var(--teal)}
-.oneline .sub{margin-top:16px;font-size:14px;color:var(--text-3);letter-spacing:1px}
+.oneline .sub{margin-top:14px;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase}
 
 /* ═══════════ JOIN (Founding-100) ═══════════ */
-.join{position:relative}
-.join-card{padding:clamp(36px,6vw,64px) clamp(24px,5vw,56px);border-radius:28px;text-align:center;position:relative;overflow:hidden;
-  background:linear-gradient(160deg,rgba(86,37,162,.4),rgba(26,10,62,.6));border:1px solid rgba(255,159,28,.24);
-  box-shadow:0 30px 70px rgba(0,0,0,.4)}
-.join-badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:99px;margin-bottom:22px;
+.join{background:linear-gradient(180deg,#F0FDFB,#F5F7FF)}
+.join-card{position:relative;overflow:hidden;border-radius:26px;text-align:center;padding:clamp(38px,6vw,68px) clamp(24px,5vw,56px);
+  background:linear-gradient(135deg,#1a0a3e 0%,#2d1060 60%,#1a0a3e 100%);box-shadow:0 30px 70px rgba(26,10,62,.28)}
+.join-card .fol{opacity:.04}
+.join-in{position:relative;z-index:2}
+.join-badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:99px;margin-bottom:20px;
   background:linear-gradient(135deg,rgba(255,159,28,.18),rgba(255,159,28,.05));border:1px solid rgba(255,159,28,.4)}
-.join-badge .num{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:12px;color:var(--orange);letter-spacing:.5px}
-.join-badge .lbl{font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--text-2)}
-.join-card h2{font-size:clamp(30px,5.4vw,52px);font-weight:900;letter-spacing:-1.6px;line-height:1.02;color:#fff;margin-bottom:18px}
-.join-card h2 .o{color:var(--orange);text-shadow:0 0 50px rgba(255,159,28,.45)}
-.join-card p{font-size:clamp(15px,2vw,18px);line-height:1.6;color:var(--text-2);max-width:54ch;margin:0 auto 32px}
+.join-badge .num{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:12px;color:var(--orange)}
+.join-badge .lbl{font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.join-card h2{font-size:clamp(28px,5vw,50px);font-weight:900;letter-spacing:-1.4px;line-height:1.03;color:#fff;margin-bottom:16px}
+.join-card h2 .o{color:var(--orange);text-shadow:0 0 40px rgba(255,159,28,.5)}
+.join-card p{font-size:clamp(15px,2vw,18px);line-height:1.6;color:rgba(255,255,255,.72);max-width:54ch;margin:0 auto 30px}
 .join-card p b{color:#fff;font-weight:700}
 .join-actions{display:flex;flex-wrap:wrap;gap:13px;justify-content:center}
-.join-fine{margin-top:24px;font-size:12px;color:var(--text-faint)}
+.join-actions .btn-ghost{color:#fff}
+.join-fine{margin-top:22px;font-size:12px;color:rgba(255,255,255,.4)}
 
-/* ═══════════ FOOTER ═══════════ */
-.footer{border-top:1px solid rgba(255,255,255,.07);padding:56px 0 40px;margin-top:20px;position:relative;z-index:1}
-.footer-top{display:grid;grid-template-columns:1fr;gap:34px;margin-bottom:40px}
-.footer-brand .nav-brand{margin-bottom:16px}
-.footer-brand p{font-size:13.5px;line-height:1.6;color:var(--text-3);max-width:38ch}
-.footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.fcol h4{font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px}
-.fcol a{display:block;font-size:13.5px;color:var(--text-2);padding:6px 0;transition:color .15s}
-.fcol a:hover{color:#fff}
-.footer-bot{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
-  padding-top:26px;border-top:1px solid rgba(255,255,255,.06)}
-.footer-bot .copy{font-size:12.5px;color:var(--text-faint)}
-.footer-bot .made{font-size:12.5px;color:var(--text-3);font-weight:600}
-.footer-bot .made b{color:var(--orange)}
-.footer-langs{display:flex;gap:8px;flex-wrap:wrap}
-.footer-langs span{font-size:11px;font-weight:700;padding:5px 11px;border-radius:8px;background:rgba(255,255,255,.05);
-  border:1px solid var(--border);color:var(--text-3)}
-.footer-langs span.on{color:var(--teal);border-color:rgba(0,212,188,.35);background:rgba(0,212,188,.08)}
+/* ═══════════ FOOTER (lila) ═══════════ */
+.footer{background:var(--purple);position:relative;overflow:hidden}
+.footer .fol{opacity:.05}
+.footer-inner{position:relative;z-index:1;padding:52px 0 36px}
+.footer-top{display:grid;grid-template-columns:1fr;gap:32px;margin-bottom:36px}
+.footer-brand p{font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.6);max-width:38ch;margin-top:14px}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.fcol h4{font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:13px}
+.fcol a{display:block;font-size:13.5px;color:rgba(255,255,255,.75);padding:6px 0}.fcol a:hover{color:#fff}
+.footer-bot{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
+.footer-bot .copy{font-size:12.5px;color:rgba(255,255,255,.45)}
+.footer-bot .made{font-size:12.5px;color:rgba(255,255,255,.6);font-weight:600}.footer-bot .made b{color:var(--orange)}
+.footer-langs{display:flex;gap:8px}
+.footer-langs span{font-size:11px;font-weight:700;padding:5px 11px;border-radius:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+.footer-langs span.on{color:var(--teal);background:rgba(0,212,188,.14)}
 
-/* reveal-on-scroll — only hidden when JS is active (.js on <html>); no-JS shows everything.
-   When GSAP is active (.gsap on <html>) it owns the animation, so the CSS transition is off to avoid conflict. */
+/* reveal */
 .js .reveal{opacity:0;transform:translateY(22px)}
 .js:not(.gsap) .reveal{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
 .js:not(.gsap) .reveal.in{opacity:1;transform:none}
 
-/* ═══════════ RESPONSIVE ═══════════ */
-@media(min-width:600px){
-  .doors{grid-template-columns:1fr}
-  .node-d{display:block}
-  .hood-grid{grid-template-columns:repeat(3,1fr)}
-}
+/* responsive */
+@media(min-width:600px){.doors{grid-template-columns:1fr}.node-d{display:block}.hood{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:820px){
-  .nav-links{display:flex}
-  .nav-cta{display:inline-flex}
-  .nav-burger{display:none}
+  .nav-links{display:flex}.nav-cta{display:inline-flex}.burger{display:none}
   .doors{grid-template-columns:repeat(3,1fr)}
-  .door{flex-direction:column;align-items:flex-start;gap:12px;padding:20px}
-  .door-arrow{display:none}
-  .po-grid{grid-template-columns:1fr auto 1fr;align-items:stretch}
-  .po-arrow{transform:rotate(-90deg);align-items:center}
-  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .door{flex-direction:column;align-items:flex-start;gap:12px;padding:20px}.door-arrow{display:none}
+  .po{grid-template-columns:1fr auto 1fr;align-items:center}.po-arrow{transform:rotate(-90deg)}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .tgrid{grid-template-columns:repeat(2,1fr)}
   .bival{grid-template-columns:1fr 1fr}
-  .founder-inner{grid-template-columns:1.3fr 1fr}
-  .footer-top{grid-template-columns:1.4fr 1fr}
-  .footer-cols{grid-template-columns:repeat(3,1fr)}
+  .founder-grid{grid-template-columns:1.3fr 1fr}
+  .footer-top{grid-template-columns:1.4fr 1fr}.footer-cols{grid-template-columns:repeat(3,1fr)}
 }
-@media(min-width:1000px){
-  .trust-grid{grid-template-columns:repeat(4,1fr)}
-}
-@media(prefers-reduced-motion:reduce){
-  .flow-parcel{animation:none;left:50%}
-  .hero-chip .dot{animation:none}
-  .reveal{opacity:1;transform:none;transition:none}
-  html{scroll-behavior:auto}
-}
+@media(min-width:1000px){.tgrid{grid-template-columns:repeat(4,1fr)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none}}
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
 
-<!-- ═══════════ NAV ═══════════ -->
+<!-- ZONE 1 · LILA HEADER / NAV -->
 <nav class="nav">
+  <div class="fol"></div>
   <div class="wrap nav-inner">
     <a href="#top" class="nav-brand">
-      <span class="nav-logo"><img src="logo3.png" alt="HUBIX lion"></span>
-      <span class="nav-word">HUBI<span>X</span></span>
+      <span class="logo-box"><img src="logo3.png" alt="HUBIX lion"></span>
+      <span class="nav-word"><span class="ht">HUBI<span>X</span></span><span class="hs">Logistics Network</span></span>
     </a>
     <div class="nav-links">
       <a href="#how">How it works</a>
@@ -403,274 +300,181 @@ section{position:relative;z-index:1}
       <a href="#value">For hubs &amp; connectors</a>
       <a href="#founder">Our story</a>
     </div>
-    <a href="index.html" class="nav-cta">Join the network
-      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
-    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a href="index.html" class="nav-cta">Join the network <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="wrap nav-mobile" id="navMobile">
-    <a href="#how">How it works</a>
-    <a href="#trust">Trust</a>
-    <a href="#value">For hubs &amp; connectors</a>
-    <a href="#founder">Our story</a>
-    <a href="index.html" class="nav-mobile-cta">Join the network</a>
+    <a href="#how">How it works</a><a href="#trust">Trust</a><a href="#value">For hubs &amp; connectors</a><a href="#founder">Our story</a>
+    <a href="index.html" class="m-cta">Join the network</a>
   </div>
 </nav>
-
-<div class="cursor-glow" id="cursorGlow"></div>
 <span id="top"></span>
 
-<!-- ═══════════ HERO ═══════════ -->
+<!-- ZONE 2 · DARK-VIOLET HERO -->
 <header class="hero">
-  <div class="hero-net"><canvas id="netCanvas"></canvas></div>
-  <div class="hero-veil"></div>
-  <div class="hero-hotspots" aria-hidden="true">
-    <div class="hotspot teal" style="top:23%;right:16%"><span class="hs-dot"></span><span class="hs-label">Hub</span></div>
-    <div class="hotspot orange" style="top:48%;right:7%"><span class="hs-dot"></span><span class="hs-label">Connector</span></div>
-    <div class="hotspot purple" style="top:70%;right:19%"><span class="hs-dot"></span><span class="hs-label">Two-way handshake</span></div>
-  </div>
   <div class="fol"></div>
   <div class="hero-lion"><img src="logo3.png" alt=""></div>
   <div class="wrap">
     <div class="hero-inner">
-      <div class="hero-chip"><span class="dot"></span>Pre-Launch · Sri Lanka · Pilot Q4 2026 · Galle</div>
+      <div class="eyebrow">People-powered · Pilot Q4 2026 · Galle</div>
       <h1 class="hero-h1">Together we move <span class="o">Sri Lanka.</span></h1>
       <p class="hero-sub">Sri Lanka's people-powered logistics network. <b>Shops become Hubs. Neighbors become Connectors.</b> A parcel travels through hands you already trust — and everyone along the way earns.</p>
-
       <div class="doors">
-        <a href="index.html" class="door send">
-          <span class="door-em">📦</span>
-          <span class="door-txt"><span class="door-t">Send a package</span><span class="door-d">Drop at a hub near you</span></span>
-          <span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>
-        </a>
-        <a href="index.html" class="door hub">
-          <span class="door-em">🏠</span>
-          <span class="door-txt"><span class="door-t">Become a Hub</span><span class="door-d">Turn your shop into a node</span></span>
-          <span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>
-        </a>
-        <a href="index.html" class="door conn">
-          <span class="door-em">🛺</span>
-          <span class="door-txt"><span class="door-t">Become a Connector</span><span class="door-d">Earn on roads you already ride</span></span>
-          <span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>
-        </a>
+        <a href="index.html" class="door send"><span class="door-em">📦</span><span class="door-txt"><span class="door-t">Send a package</span><span class="door-d">Drop at a hub near you</span></span><span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span></a>
+        <a href="index.html" class="door hub"><span class="door-em">🏠</span><span class="door-txt"><span class="door-t">Become a Hub</span><span class="door-d">Turn your shop into a node</span></span><span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span></a>
+        <a href="index.html" class="door conn"><span class="door-em">🛺</span><span class="door-txt"><span class="door-t">Become a Connector</span><span class="door-d">Earn on roads you already ride</span></span><span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span></a>
       </div>
-
       <div class="hero-actions">
-        <a href="index.html" class="btn btn-primary">Join the founding network
-          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
+        <a href="index.html" class="btn btn-primary">Join the founding network <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
         <a href="#how" class="btn btn-ghost">See how it works</a>
       </div>
-
       <div class="hero-trust">
-        <span class="hero-trust-item"><span class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Two-way handshake</span>
-        <span class="hero-trust-item"><span class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Photo at every step</span>
-        <span class="hero-trust-item"><span class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Nothing moves unconfirmed</span>
+        <span><span class="tk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Two-way handshake</span>
+        <span><span class="tk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Photo at every step</span>
+        <span><span class="tk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Nothing moves unconfirmed</span>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ═══════════ PROBLEM → OUTCOME ═══════════ -->
-<section class="sec" id="why">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="eyebrow o">The problem</span>
-      <h2 class="h2">Sending a parcel in the South<br>shouldn't be a <span class="o">gamble.</span></h2>
-    </div>
-    <div class="po-grid">
-      <div class="po-card problem reveal">
-        <span class="po-tag">● Today</span>
-        <h3>Ad-hoc, unproven, unseen</h3>
-        <p>You hand your parcel to whoever's driving that way. <b>No photo, no tracking, no proof.</b> Sometimes it arrives. Sometimes it doesn't — and no one is accountable.</p>
-      </div>
-      <div class="po-arrow reveal"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-      <div class="po-card outcome reveal">
-        <span class="po-tag">● With HUBIX</span>
-        <h3>The neighborhood, connected</h3>
-        <p>The shop on your corner becomes a <b>Hub</b>. The driver on your road becomes a <b>Connector</b>. Your parcel moves through people you already know — with a <b>photo and a handshake at every step.</b></p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ZONE 3 · LIGHT CONTENT -->
+<main class="light">
 
-<!-- ═══════════ MECHANIC · 5-NODE FLOW ═══════════ -->
-<section class="sec" id="how">
-  <div class="wrap">
-    <div class="center reveal">
-      <span class="eyebrow">How it works</span>
-      <h2 class="h2">One parcel. <span class="t">Five trusted hands.</span></h2>
-    </div>
-    <div class="flow reveal">
-      <div class="fol"></div>
-      <div class="flow-track">
-        <div class="flow-line"></div>
-        <div class="flow-parcel">📦</div>
-        <div class="node"><div class="node-dot">👤</div><div class="node-t">Sender</div><div class="node-d">Drops the parcel at a nearby hub</div></div>
-        <div class="node you"><div class="node-dot">🏠</div><div class="node-t">Hub A</div><div class="node-d">A local shop holds it, safe</div></div>
-        <div class="node you"><div class="node-dot">🛺</div><div class="node-t">Connector</div><div class="node-d">A neighbor carries it down the road</div></div>
-        <div class="node you"><div class="node-dot">🏠</div><div class="node-t">Hub B</div><div class="node-d">The hub near the recipient</div></div>
-        <div class="node"><div class="node-dot">📥</div><div class="node-t">Recipient</div><div class="node-d">Picks it up — journey complete</div></div>
+  <!-- PROBLEM → OUTCOME -->
+  <section class="sec" id="why">
+    <div class="wrap">
+      <div class="reveal"><span class="sec-label o">The problem</span><h2 class="h2">Sending a parcel in the South<br>shouldn't be a <span class="o">gamble.</span></h2></div>
+      <div class="po">
+        <div class="po-card problem reveal"><span class="po-tag">● Today</span><h3>Ad-hoc, unproven, unseen</h3><p>You hand your parcel to whoever's driving that way. <b>No photo, no tracking, no proof.</b> Sometimes it arrives. Sometimes it doesn't — and no one is accountable.</p></div>
+        <div class="po-arrow reveal"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="po-card outcome reveal"><span class="po-tag">● With HUBIX</span><h3>The neighborhood, connected</h3><p>The shop on your corner becomes a <b>Hub</b>. The driver on your road becomes a <b>Connector</b>. Your parcel moves through people you already know — with a <b>photo and a handshake at every step.</b></p></div>
       </div>
-      <p class="flow-caption">No new trucks. No warehouses. <b>HUBIX connects what Sri Lanka already has</b> — and coordinates every step so a parcel never moves without a confirmed handover.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══════════ STAT STRIP · the pieces are already here ═══════════ -->
-<section class="sec">
-  <div class="wrap">
-    <div class="center reveal">
-      <span class="eyebrow">The pieces are already here</span>
-      <h2 class="h2">We don't build trucks.<br>We connect <span class="t">what exists.</span></h2>
-    </div>
-    <div class="stat-strip">
-      <div class="stat-cell reveal"><div class="stat-num"><span data-count="22">0</span><span class="sfx">M</span></div><div class="stat-lbl">People</div></div>
-      <div class="stat-cell reveal"><div class="stat-num"><span data-count="275000">0</span></div><div class="stat-lbl">Shops · potential hubs</div></div>
-      <div class="stat-cell reveal"><div class="stat-num"><span data-count="8">0</span><span class="sfx">M+</span></div><div class="stat-lbl">Vehicles · potential connectors</div></div>
-      <div class="stat-cell reveal"><div class="stat-num"><span data-count="32">0</span><span class="sfx">M</span></div><div class="stat-lbl">Mobile connections</div></div>
-    </div>
-    <p class="stat-foot reveal">Everything is already on this island — the shops, the roads, the phones. <b>HUBIX is the network that connects them.</b></p>
-  </div>
-</section>
-
-<!-- ═══════════ TRUST LAYER (heart) ═══════════ -->
-<section class="sec trust" id="trust">
-  <div class="wrap">
-    <div class="center reveal">
-      <span class="eyebrow">The trust layer</span>
-      <h2 class="h2">Trust isn't a promise.<br>It's built into <span class="t">every step.</span></h2>
-      <p class="lead center" style="margin-top:16px">A people-powered network only works if trust is engineered in — not hoped for. So we built it into the mechanics.</p>
-    </div>
-    <div class="trust-grid">
-      <div class="tcard reveal">
-        <div class="tcard-ic"><svg viewBox="0 0 24 24"><path d="M8 11V7a4 4 0 018 0v4"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg></div>
-        <h3>Two-way handshake</h3>
-        <p>Every handover is confirmed by <b>both</b> people — giver and receiver. Nothing moves on one person's word alone.</p>
-      </div>
-      <div class="tcard o reveal">
-        <div class="tcard-ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.4"/><path d="M8 6l1.4-2.2h5.2L16 6"/></svg></div>
-        <h3>Photo at every step</h3>
-        <p>Each transfer is photographed. A complete visual trail follows the parcel from the first hub to the last hand.</p>
-      </div>
-      <div class="tcard reveal">
-        <span class="stat">0 lost</span>
-        <h3>Accountable, always</h3>
-        <p>Every parcel is tied to a hub, a connector and a timestamp. If a step is missed, the system knows — and so do you.</p>
-      </div>
-      <div class="tcard o reveal">
-        <span class="stat">Insured</span>
-        <h3>Covered over LKR 5,000</h3>
-        <p>Higher-value parcels are insured, and every member carries a reliability score they earn — and keep — by doing it right.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ BILATERAL VALUE ═══════════ -->
-<section class="sec" id="value">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="eyebrow o">Everyone earns</span>
-      <h2 class="h2">Built to work<br>for <span class="o">both sides.</span></h2>
-    </div>
-    <div class="bival">
-      <div class="bcol senders reveal">
-        <span class="bcol-tag">● For shops &amp; senders</span>
-        <h3>Reliable reach, without the runaround</h3>
-        <div class="blist">
-          <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Drop close to home</b> — a hub within reach, no depot trips.</span></div>
-          <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>See where it is</b> — a photo trail and status at every handover.</span></div>
-          <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Pay your way</b> — online or cash at the hub.</span></div>
-          <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Shops ship without a warehouse</b> — the connector comes to your counter.</span></div>
+  <!-- HOW IT WORKS -->
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="center reveal"><span class="sec-label t">How it works</span><h2 class="h2">One parcel. <span class="t">Five trusted hands.</span></h2></div>
+      <div class="flow reveal">
+        <div class="fol"></div>
+        <div class="flow-track">
+          <div class="flow-line"></div>
+          <div class="node"><div class="node-dot">👤</div><div class="node-t">Sender</div><div class="node-d">Drops at a nearby hub</div></div>
+          <div class="node you"><div class="node-dot">🏠</div><div class="node-t">Hub A</div><div class="node-d">A local shop holds it, safe</div></div>
+          <div class="node you"><div class="node-dot">🛺</div><div class="node-t">Connector</div><div class="node-d">A neighbor carries it</div></div>
+          <div class="node you"><div class="node-dot">🏠</div><div class="node-t">Hub B</div><div class="node-d">The hub near the recipient</div></div>
+          <div class="node"><div class="node-dot">📥</div><div class="node-t">Recipient</div><div class="node-d">Picks it up — done</div></div>
         </div>
-      </div>
-      <div class="bcol network reveal">
-        <span class="bcol-tag">● For hubs &amp; connectors</span>
-        <h3>Earn from what you already have</h3>
-        <div class="blist">
-          <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Your shop, now a hub</b> — earn on parcels held and handed on, with the footfall that follows.</span></div>
-          <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Your route, now income</b> — carry parcels on roads you already ride.</span></div>
-          <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>90% stays with people</b> — no foreign trucks, no middlemen skimming.</span></div>
-          <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Weekly, transparent payouts</b> — you see what you earned and when.</span></div>
-        </div>
+        <p class="flow-cap">No new trucks. No warehouses. <b>HUBIX connects what Sri Lanka already has</b> — and coordinates every step so a parcel never moves without a confirmed handover.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══════════ BUILT BY THE NEIGHBORHOOD (honest, pre-launch) ═══════════ -->
-<section class="sec">
-  <div class="wrap">
-    <div class="center reveal">
-      <span class="eyebrow">Who HUBIX is for</span>
-      <h2 class="h2">A network built <span class="t">by the neighborhood.</span></h2>
-      <p class="lead center" style="margin-top:16px">HUBIX isn't live yet. This is who we're building it with — and the seats we're saving for the first hundred.</p>
+  <!-- STAT STRIP -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="center reveal"><span class="sec-label">The pieces are already here</span><h2 class="h2">We don't build trucks.<br>We connect <span class="t">what exists.</span></h2></div>
+      <div class="stats">
+        <div class="stat reveal"><div class="num"><span data-count="22">0</span>M</div><div class="lbl">People</div></div>
+        <div class="stat reveal"><div class="num"><span data-count="275000">0</span></div><div class="lbl">Shops · hubs</div></div>
+        <div class="stat reveal"><div class="num"><span data-count="8">0</span>M+</div><div class="lbl">Vehicles · connectors</div></div>
+        <div class="stat reveal"><div class="num"><span data-count="32">0</span>M</div><div class="lbl">Mobile connections</div></div>
+      </div>
+      <p class="stat-foot reveal">Everything is already on this island — the shops, the roads, the phones. <b>HUBIX is the network that connects them.</b></p>
     </div>
-    <div class="hood-grid">
-      <div class="hcard a reveal">
-        <span class="hcard-role"><span class="rd"></span>The spice shop · Galle</span>
-        <p>“I already have the counter and the customers. Now the counter earns while I serve them.”</p>
-        <span class="who">A corner shop becoming a <b>Hub</b></span>
-      </div>
-      <div class="hcard b reveal">
-        <span class="hcard-role"><span class="rd"></span>The tuk driver · A2 coast</span>
-        <p>“Same road, same day — now the trip pays twice.”</p>
-        <span class="who">A neighbor becoming a <b>Connector</b></span>
-      </div>
-      <div class="hcard c reveal">
-        <span class="hcard-role"><span class="rd"></span>The online seller · Matara</span>
-        <p>“No warehouse, no depot line. The parcel gets picked up from me.”</p>
-        <span class="who">A small business becoming a <b>Sender</b></span>
-      </div>
-    </div>
-    <p class="hood-note">Illustrative of the roles HUBIX is built for. Real member stories come after launch — we never fake trust.</p>
-  </div>
-</section>
+  </section>
 
-<!-- ═══════════ FOUNDER + WE ARE ONE ═══════════ -->
-<section class="sec founder" id="founder">
-  <div class="wrap">
-    <div class="center reveal">
-      <span class="eyebrow o">Our story</span>
-      <h2 class="h2">One man and a brand.<br>From launch day — <span class="o">all of us.</span></h2>
+  <!-- TRUST -->
+  <section class="sec" id="trust">
+    <div class="wrap">
+      <div class="center reveal"><span class="sec-label t">The trust layer</span><h2 class="h2">Trust isn't a promise.<br>It's built into <span class="t">every step.</span></h2><p class="lead center" style="margin-top:14px">A people-powered network only works if trust is engineered in — not hoped for. So we built it into the mechanics.</p></div>
+      <div class="tgrid">
+        <div class="tcard reveal"><div class="tcard-ic"><svg viewBox="0 0 24 24"><path d="M8 11V7a4 4 0 018 0v4"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg></div><h3>Two-way handshake</h3><p>Every handover is confirmed by <b>both</b> people — giver and receiver. Nothing moves on one person's word alone.</p></div>
+        <div class="tcard o reveal"><div class="tcard-ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.4"/><path d="M8 6l1.4-2.2h5.2L16 6"/></svg></div><h3>Photo at every step</h3><p>Each transfer is photographed. A complete visual trail follows the parcel from the first hub to the last hand.</p></div>
+        <div class="tcard reveal"><span class="stat-num">0 lost</span><h3>Accountable, always</h3><p>Every parcel is tied to a hub, a connector and a timestamp. If a step is missed, the system knows — and so do you.</p></div>
+        <div class="tcard o reveal"><span class="stat-num">Insured</span><h3>Covered over LKR 5,000</h3><p>Higher-value parcels are insured, and every member carries a reliability score they earn — and keep — by doing it right.</p></div>
+      </div>
     </div>
-    <div class="founder-card reveal">
-      <div class="fol"></div>
-      <div class="founder-inner">
-        <div class="founder-story">
-          <p class="founder-lead">I came from Germany to Sri Lanka — and stayed. <span class="t">Not for the beaches. For the people.</span></p>
-          <p>I saw an island full of energy: shops on every corner, drivers on every road, phones in every hand. Everything was already here — <b>except the network connecting it.</b></p>
-          <p>So I started building one. Not <i>for</i> Sri Lanka — <b>with</b> Sri Lanka. Corner shops become hubs. Drivers become connectors. The value stays where the work happens.</p>
-          <div class="founder-sign">
-            <img src="sig_founder.png" alt="Founder signature">
-            <div class="founder-sign-meta"><b>The founder</b>Built in Galle 🇱🇰</div>
+  </section>
+
+  <!-- BILATERAL VALUE -->
+  <section class="sec" id="value">
+    <div class="wrap">
+      <div class="reveal"><span class="sec-label o">Everyone earns</span><h2 class="h2">Built to work<br>for <span class="o">both sides.</span></h2></div>
+      <div class="bival">
+        <div class="bcol senders reveal">
+          <span class="bcol-tag">● For shops &amp; senders</span><h3>Reliable reach, without the runaround</h3>
+          <div class="blist">
+            <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Drop close to home</b> — a hub within reach, no depot trips.</span></div>
+            <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>See where it is</b> — a photo trail and status at every handover.</span></div>
+            <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Pay your way</b> — online or cash at the hub.</span></div>
+            <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Shops ship without a warehouse</b> — the connector comes to your counter.</span></div>
           </div>
         </div>
-        <div class="founder-story">
-          <p><b>The old way:</b> foreign trucks, foreign warehouses, middlemen who skim.</p>
-          <p><b>The <span class="brand">HUBI<span class="brand-x">X</span></span> way:</b> the shops, the drivers and the phones Sri Lanka already has — connected so cleverly they become something new.</p>
-          <p>We can't go alone. <b>We are all one.</b> We grow with Sri Lanka. Sri Lanka grows with us.</p>
+        <div class="bcol network reveal">
+          <span class="bcol-tag">● For hubs &amp; connectors</span><h3>Earn from what you already have</h3>
+          <div class="blist">
+            <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Your shop, now a hub</b> — earn on parcels held and handed on, with the footfall that follows.</span></div>
+            <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Your route, now income</b> — carry parcels on roads you already ride.</span></div>
+            <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>90% stays with people</b> — no foreign trucks, no middlemen skimming.</span></div>
+            <div class="bitem"><span class="bick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="bitem-txt"><b>Weekly, transparent payouts</b> — you see what you earned and when.</span></div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="oneline reveal">
-      <div class="big">Connect ever. Connect clever.<br><span class="o">Connect</span> with what Sri Lanka <span class="t">already has.</span></div>
-      <div class="sub">CONNECT · BUILD · HAPPINESS</div>
+  </section>
+
+  <!-- NEIGHBORHOOD -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="center reveal"><span class="sec-label t">Who HUBIX is for</span><h2 class="h2">A network built <span class="t">by the neighborhood.</span></h2><p class="lead center" style="margin-top:14px">HUBIX isn't live yet. This is who we're building it with — and the seats we're saving for the first hundred.</p></div>
+      <div class="hood">
+        <div class="hcard a reveal"><span class="hcard-role"><span class="rd"></span>The spice shop · Galle</span><p>“I already have the counter and the customers. Now the counter earns while I serve them.”</p><span class="who">A corner shop becoming a <b>Hub</b></span></div>
+        <div class="hcard b reveal"><span class="hcard-role"><span class="rd"></span>The tuk driver · A2 coast</span><p>“Same road, same day — now the trip pays twice.”</p><span class="who">A neighbor becoming a <b>Connector</b></span></div>
+        <div class="hcard c reveal"><span class="hcard-role"><span class="rd"></span>The online seller · Matara</span><p>“No warehouse, no depot line. The parcel gets picked up from me.”</p><span class="who">A small business becoming a <b>Sender</b></span></div>
+      </div>
+      <p class="hood-note">Illustrative of the roles HUBIX is built for. Real member stories come after launch — we never fake trust.</p>
     </div>
+  </section>
+</main>
+
+<!-- FOUNDER (dark-violet) -->
+<section class="founder" id="founder">
+  <div class="fol"></div>
+  <div class="wrap founder-inner">
+    <div class="center reveal"><span class="sec-label">Our story</span><h2 class="h2">One man and a brand.<br>From launch day — <span style="color:var(--orange)">all of us.</span></h2></div>
+    <div class="founder-grid">
+      <div class="founder-story reveal">
+        <p class="founder-lead">I came from Germany to Sri Lanka — and stayed. <span class="t">Not for the beaches. For the people.</span></p>
+        <p>I saw an island full of energy: shops on every corner, drivers on every road, phones in every hand. Everything was already here — <b>except the network connecting it.</b></p>
+        <p>So I started building one. Not <i>for</i> Sri Lanka — <b>with</b> Sri Lanka. Corner shops become hubs. Drivers become connectors. The value stays where the work happens.</p>
+        <div class="founder-sign"><img src="sig_founder.png" alt="Founder signature"><div class="m"><b>The founder</b>Built in Galle 🇱🇰</div></div>
+      </div>
+      <div class="founder-story reveal">
+        <p><b>The old way:</b> foreign trucks, foreign warehouses, middlemen who skim.</p>
+        <p><b>The <span class="brand">HUBI<span class="brand-x">X</span></span> way:</b> the shops, the drivers and the phones Sri Lanka already has — connected so cleverly they become something new.</p>
+        <p>We can't go alone. <b>We are all one.</b> We grow with Sri Lanka. Sri Lanka grows with us.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap oneline reveal">
+    <div class="big">Connect ever. Connect clever.<br><span class="o">Connect</span> with what Sri Lanka <span class="t">already has.</span></div>
+    <div class="sub">Connect · Build · Happiness</div>
   </div>
 </section>
 
-<!-- ═══════════ JOIN (Founding-100) ═══════════ -->
-<section class="sec join">
-  <div class="wrap">
+<!-- JOIN -->
+<section class="join">
+  <div class="sec wrap">
     <div class="join-card reveal">
       <div class="fol"></div>
-      <div style="position:relative;z-index:2">
+      <div class="join-in">
         <div class="join-badge"><span class="num">#001–#100</span><span class="lbl">Founding Members</span></div>
         <h2>Come in early.<br><span class="o">Grow with us.</span></h2>
         <p>Everyone who joins before launch is a <b>Founding Member</b> — a founding number, priority in your area, and a direct line to the founder. <b>No discount, no countdown.</b> A network built together doesn't shut people out.</p>
         <div class="join-actions">
-          <a href="index.html" class="btn btn-primary">Claim your founding spot
-            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
+          <a href="index.html" class="btn btn-primary">Claim your founding spot <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
           <a href="#how" class="btn btn-ghost">See how it works</a>
         </div>
         <p class="join-fine">Pilot begins Q4 2026 in Galle · then across the South &amp; Southwest.</p>
@@ -679,41 +483,28 @@ section{position:relative;z-index:1}
   </div>
 </section>
 
-<!-- ═══════════ FOOTER ═══════════ -->
+<!-- FOOTER (lila) -->
 <footer class="footer">
-  <div class="wrap">
+  <div class="fol"></div>
+  <div class="wrap footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="nav-brand">
-          <span class="nav-logo"><img src="logo3.png" alt="HUBIX lion"></span>
-          <span class="nav-word">HUBI<span>X</span></span>
-        </div>
+        <a href="#top" class="nav-brand">
+          <span class="logo-box"><img src="logo3.png" alt="HUBIX lion"></span>
+          <span class="nav-word"><span class="ht">HUBI<span>X</span></span><span class="hs">Logistics Network</span></span>
+        </a>
         <p>Sri Lanka's people-powered logistics network. Shops become hubs. Neighbors become connectors. Everyone moves — everyone earns.</p>
       </div>
       <div class="footer-cols">
-        <div class="fcol">
-          <h4>Network</h4>
-          <a href="#how">How it works</a>
-          <a href="#trust">Trust</a>
-          <a href="#value">For hubs &amp; connectors</a>
-        </div>
-        <div class="fcol">
-          <h4>Join</h4>
-          <a href="index.html">Send a package</a>
-          <a href="index.html">Become a Hub</a>
-          <a href="index.html">Become a Connector</a>
-        </div>
-        <div class="fcol">
-          <h4>Company</h4>
-          <a href="#founder">Our story</a>
-          <a href="index.html">Founding Members</a>
-        </div>
+        <div class="fcol"><h4>Network</h4><a href="#how">How it works</a><a href="#trust">Trust</a><a href="#value">For hubs &amp; connectors</a></div>
+        <div class="fcol"><h4>Join</h4><a href="index.html">Send a package</a><a href="index.html">Become a Hub</a><a href="index.html">Become a Connector</a></div>
+        <div class="fcol"><h4>Company</h4><a href="#founder">Our story</a><a href="index.html">Founding Members</a></div>
       </div>
     </div>
     <div class="footer-bot">
       <span class="copy">© 2026 HUBIX Logistics · Pilot Q4 2026 · Galle</span>
       <span class="made">Built in Sri Lanka <b>🇱🇰</b> · people help people</span>
-      <div class="footer-langs"><span class="on">EN</span><span>සිංහල</span><span>தமிழ்</span></div>
+      <div class="footer-langs"><span class="on">EN</span><span>සිංහල</span><span>தமிழ්</span></div>
     </div>
   </div>
 </footer>
@@ -721,299 +512,38 @@ section{position:relative;z-index:1}
 <script src="js/vendor/gsap.min.js"></script>
 <script src="js/vendor/ScrollTrigger.min.js"></script>
 <script>
-// Mobile nav toggle
-(function(){
-  var burger = document.getElementById('burger');
-  var menu = document.getElementById('navMobile');
-  burger.addEventListener('click', function(){
-    burger.classList.toggle('open');
-    menu.classList.toggle('open');
-  });
-  menu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ burger.classList.remove('open'); menu.classList.remove('open'); });
-  });
-})();
+// mobile nav
+(function(){var b=document.getElementById('burger'),m=document.getElementById('navMobile');
+  b.addEventListener('click',function(){b.classList.toggle('open');m.classList.toggle('open');});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('open');m.classList.remove('open');});});})();
 
-// ═══ SCROLL CHOREOGRAPHY (GSAP ScrollTrigger, native scroll — mobile-clean) ═══
+// scroll reveals (GSAP, fail-safe)
 (function(){
   var els=document.querySelectorAll('.reveal');
-  function showAll(){ els.forEach(function(e){e.classList.add('in');}); }
+  function showAll(){els.forEach(function(e){e.classList.add('in');});}
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if(window.gsap && window.ScrollTrigger && !reduce){
-    document.documentElement.classList.add('gsap');
-    gsap.registerPlugin(ScrollTrigger);
-    // cinematic reveal per element
-    els.forEach(function(el){
-      gsap.set(el,{opacity:0,y:28});
-      gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',
-        scrollTrigger:{trigger:el,start:'top 90%',once:true}});
-    });
-    // hero entrance (fail-safe: force-visible after 1.6s no matter what the ticker does)
-    var heroSel='.hero-chip,.hero-h1,.hero-sub,.doors .door,.hero-actions>*,.hero-trust';
-    gsap.from(heroSel,{opacity:0,y:26,duration:.9,ease:'power3.out',stagger:.07,delay:.12});
-    setTimeout(function(){ gsap.set(heroSel,{clearProps:'opacity,transform'}); }, 1600);
-    // BULLETPROOF: if rAF/ticker never runs (frozen/stalled tab), force ALL content visible so nothing can stay hidden
-    setTimeout(function(){ if(gsap.ticker.frame===0){ gsap.set('.reveal',{clearProps:'opacity,transform'}); gsap.set(heroSel,{clearProps:'opacity,transform'}); } }, 2600);
+  if(window.gsap&&window.ScrollTrigger&&!reduce){
+    document.documentElement.classList.add('gsap'); gsap.registerPlugin(ScrollTrigger);
+    els.forEach(function(el){gsap.set(el,{opacity:0,y:26});
+      gsap.to(el,{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%',once:true}});});
+    setTimeout(function(){if(gsap.ticker.frame===0)gsap.set('.reveal',{clearProps:'opacity,transform'});},2600);
   } else if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -6% 0px'});
     els.forEach(function(e){io.observe(e);}); setTimeout(showAll,3000);
   } else showAll();
 })();
 
-// ═══ ANIMATED COUNTERS (honest Sri-Lanka facts, no invented metrics) ═══
+// animated counters (honest facts)
 (function(){
-  var counters=document.querySelectorAll('[data-count]'); if(!counters.length) return;
+  var cs=document.querySelectorAll('[data-count]'); if(!cs.length) return;
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function fmt(n){ return n.toLocaleString('en-US'); }
-  function run(el){
-    var target=parseFloat(el.getAttribute('data-count')), suf=el.getAttribute('data-suffix')||'';
-    if(reduce){ el.textContent=fmt(target)+suf; return; }
-    var start=null,dur=1700;
-    function tick(ts){ if(!start)start=ts; var p=Math.min((ts-start)/dur,1),e=1-Math.pow(1-p,3);
-      el.textContent=fmt(Math.round(target*e))+suf; if(p<1) requestAnimationFrame(tick); }
-    requestAnimationFrame(tick);
-  }
-  if(window.gsap && window.ScrollTrigger){
-    counters.forEach(function(el){ ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:function(){run(el);}}); });
-  } else if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.5});
-    counters.forEach(function(el){io.observe(el);});
-  } else counters.forEach(run);
-})();
-
-// ═══ MAGNETIC BUTTONS (desktop) ═══
-(function(){
-  if(matchMedia('(hover:none)').matches) return;
-  document.querySelectorAll('.btn-primary,.nav-cta').forEach(function(b){
-    b.addEventListener('mousemove',function(e){ var r=b.getBoundingClientRect();
-      var mx=e.clientX-r.left-r.width/2, my=e.clientY-r.top-r.height/2;
-      b.style.transform='translate('+(mx*0.22).toFixed(1)+'px,'+(my*0.32).toFixed(1)+'px)'; });
-    b.addEventListener('mouseleave',function(){ b.style.transform=''; });
-  });
-})();
-
-// ═══ GLOWING ROUTES — Madar-style hero (perspective light-roads to a horizon + hubs + parcel) ═══
-(function(){
-  var canvas=document.getElementById('netCanvas'); if(!canvas) return;
-  var ctx=canvas.getContext('2d'); var hero=document.querySelector('.hero');
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var W=0,H=0,DPR=Math.min(window.devicePixelRatio||1,2);
-  var vp={x:0,y:0}, roads=[], hubs=[], parcelRoad=2, raf;
-  var mouse={x:.5,y:.5,tx:.5,ty:.5};
-  var COLORS=['255,159,28','0,212,188','160,120,255','255,209,102','0,212,188','255,159,28','120,180,255'];
-
-  function qbez(p0,p1,p2,t){ var u=1-t; return {x:u*u*p0.x+2*u*t*p1.x+t*t*p2.x, y:u*u*p0.y+2*u*t*p1.y+t*t*p2.y}; }
-  function size(){
-    var r=hero.getBoundingClientRect(); W=r.width; H=r.height;
-    canvas.width=Math.round(W*DPR); canvas.height=Math.round(H*DPR);
-    ctx.setTransform(DPR,0,0,DPR,0,0); build();
-  }
-  function build(){
-    vp={x:W*0.72,y:H*0.36}; roads=[]; hubs=[];
-    var n=W<620?5:7;
-    for(var i=0;i<n;i++){
-      var frac=n===1?0.5:i/(n-1), end;
-      if(frac<0.58){ end={x:W*(-0.08+frac*1.75), y:H*1.06}; }        // fan across bottom
-      else { end={x:W*(-0.08), y:H*(0.42+(frac-0.58)*1.15)}; }        // sweep off the left edge
-      var mx=(vp.x+end.x)/2 + (i-n/2)*W*0.03, my=(vp.y+end.y)/2 + H*0.05;
-      var pulses=[]; var pc=1+(i%2);
-      for(var k=0;k<pc;k++) pulses.push({t:(i*0.13+k*0.5)%1, speed:0.0018+((i*7+k*3)%5)*0.0006, len:0.07+((i*5)%4)*0.02});
-      roads.push({p0:{x:vp.x,y:vp.y}, p1:{x:mx,y:my}, p2:end, color:COLORS[i%COLORS.length], pulses:pulses});
-      // a hub node partway down each road
-      hubs.push({road:i, at:0.34+(i%3)*0.16, color:COLORS[i%COLORS.length], r:i%3===0?3.4:2.4});
-    }
-    // parcel = a dedicated bright pulse on a central road
-    parcelRoad=Math.min(2,n-1);
-    roads[parcelRoad].parcel={t:0, speed:0.006};
-  }
-  function drawPulse(p0,p1,p2,color,pu){
-    var t1=pu.t; if(t1<=0.01) return; var t0=Math.max(0,t1-pu.len), samples=8;
-    ctx.beginPath();
-    for(var s=0;s<=samples;s++){ var t=t0+(t1-t0)*(s/samples), pt=qbez(p0,p1,p2,t); if(s===0)ctx.moveTo(pt.x,pt.y); else ctx.lineTo(pt.x,pt.y); }
-    ctx.strokeStyle='rgba('+color+',0.95)'; ctx.lineCap='round'; ctx.lineWidth=1+t1*3.6;
-    ctx.shadowColor='rgba('+color+',0.9)'; ctx.shadowBlur=8+t1*24; ctx.stroke(); ctx.shadowBlur=0;
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    var ox=(mouse.x-.5)*26, oy=(mouse.y-.5)*16;
-    // horizon glow at vanishing point
-    var gx=vp.x+ox*1.4, gy=vp.y+oy*1.4;
-    var g=ctx.createRadialGradient(gx,gy,0,gx,gy,H*0.62);
-    g.addColorStop(0,'rgba(255,159,28,0.12)'); g.addColorStop(0.35,'rgba(0,212,188,0.05)'); g.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-    for(var i=0;i<roads.length;i++){
-      var r=roads[i], p0={x:r.p0.x+ox*.3,y:r.p0.y+oy*.3}, p1={x:r.p1.x+ox*.7,y:r.p1.y+oy*.7}, p2={x:r.p2.x+ox,y:r.p2.y+oy};
-      ctx.beginPath(); ctx.moveTo(p0.x,p0.y); ctx.quadraticCurveTo(p1.x,p1.y,p2.x,p2.y);
-      ctx.strokeStyle='rgba('+r.color+',0.10)'; ctx.lineWidth=1.1; ctx.stroke();
-      for(var q=0;q<r.pulses.length;q++) drawPulse(p0,p1,p2,r.color,r.pulses[q]);
-      if(r.parcel){ // the parcel — a bright orange token with soft aura
-        var pp=qbez(p0,p1,p2,r.parcel.t), sz=3+r.parcel.t*4;
-        ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,0.20)'; ctx.arc(pp.x,pp.y,sz*3,0,6.2832); ctx.fill();
-        ctx.beginPath(); ctx.fillStyle='rgba(255,209,102,1)'; ctx.shadowColor='rgba(255,159,28,0.95)'; ctx.shadowBlur=16; ctx.arc(pp.x,pp.y,sz,0,6.2832); ctx.fill(); ctx.shadowBlur=0;
-      }
-    }
-    // hub nodes
-    for(var h=0;h<hubs.length;h++){
-      var hb=hubs[h], rd=roads[hb.road], pt=qbez({x:rd.p0.x+ox*.3,y:rd.p0.y+oy*.3},{x:rd.p1.x+ox*.7,y:rd.p1.y+oy*.7},{x:rd.p2.x+ox,y:rd.p2.y+oy},hb.at);
-      ctx.beginPath(); ctx.fillStyle='rgba('+hb.color+',0.13)'; ctx.arc(pt.x,pt.y,hb.r*3.2,0,6.2832); ctx.fill();
-      ctx.beginPath(); ctx.fillStyle='rgba('+hb.color+',0.95)'; ctx.shadowColor='rgba('+hb.color+',0.9)'; ctx.shadowBlur=12; ctx.arc(pt.x,pt.y,hb.r,0,6.2832); ctx.fill(); ctx.shadowBlur=0;
-    }
-  }
-  function step(){
-    mouse.x+=(mouse.tx-mouse.x)*0.06; mouse.y+=(mouse.ty-mouse.y)*0.06;
-    for(var i=0;i<roads.length;i++){ var r=roads[i];
-      for(var q=0;q<r.pulses.length;q++){ r.pulses[q].t+=r.pulses[q].speed; if(r.pulses[q].t>1.05) r.pulses[q].t=-r.pulses[q].len; }
-      if(r.parcel){ r.parcel.t+=r.parcel.speed; if(r.parcel.t>1.05) r.parcel.t=0; }
-    }
-    draw(); raf=requestAnimationFrame(step);
-  }
-  size();
-  window.addEventListener('resize', size);
-  window.addEventListener('mousemove', function(e){ var r=hero.getBoundingClientRect();
-    if(e.clientY>=r.top&&e.clientY<=r.bottom){ mouse.tx=(e.clientX-r.left)/W; mouse.ty=(e.clientY-r.top)/H; } });
-  if(reduce) draw(); else step();
-})();
-
-// ═══ CURSOR GLOW (desktop) ═══
-(function(){
-  var g=document.getElementById('cursorGlow'); if(!g||matchMedia('(hover:none)').matches) return;
-  window.addEventListener('mousemove', function(e){ g.style.left=e.clientX+'px'; g.style.top=e.clientY+'px'; g.style.opacity='1'; });
-  document.addEventListener('mouseleave', function(){ g.style.opacity='0'; });
-})();
-</script>
-
-<!-- ═══════════ DAY-1 · APPLY CAPTURE (ops 2026-07-12 · Landing V1.5 §1) ═══════════
-     Fängt alle „→ index.html"-CTAs ab → natives Founding-Capture → SELBES Google Sheet (V6-Schema).
-     Regelkonform: Sheet-Capture (feedback_prelaunch_tool) · KEINE Founder-Handynummer, nur optionaler
-     Gruppen-Link (WHATSAPP_GROUP_URL) · Founding-Status ohne Rabatt/Countdown. -->
-<div class="apply-overlay" id="applyModal" hidden>
-  <div class="apply-card" role="dialog" aria-modal="true" aria-labelledby="applyTitle">
-    <button class="apply-x" id="applyClose" aria-label="Close">&times;</button>
-    <form class="apply-form" id="applyForm" novalidate>
-      <div class="apply-eyebrow">JOIN THE FOUNDING NETWORK</div>
-      <h3 class="apply-h" id="applyTitle">Claim your founding spot.</h3>
-      <p class="apply-sub">A <b>Founding Member</b> gets a founding number, priority in your area, and a direct line to the founder. <b>No discount, no countdown.</b></p>
-      <label class="apply-lbl">I want to…</label>
-      <div class="apply-roles" id="applyRoles">
-        <button type="button" class="apply-role" data-role="send"><span>📦</span>Send parcels</button>
-        <button type="button" class="apply-role" data-role="hub"><span>🏠</span>Become a Hub</button>
-        <button type="button" class="apply-role" data-role="conn"><span>🛺</span>Be a Connector</button>
-      </div>
-      <label class="apply-lbl" for="apName">Your name</label>
-      <input class="apply-in" id="apName" type="text" autocomplete="name" placeholder="e.g. Nuwan Perera" required>
-      <label class="apply-lbl" for="apPhone">WhatsApp number</label>
-      <div class="apply-phone">
-        <span class="apply-cc">+94</span>
-        <input class="apply-in" id="apPhone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="77 123 4567" required>
-      </div>
-      <label class="apply-lbl" for="apCity">Town / area <span class="apply-opt">(optional)</span></label>
-      <input class="apply-in" id="apCity" type="text" autocomplete="address-level2" placeholder="e.g. Galle">
-      <button class="btn btn-primary apply-submit" id="applySubmit" type="submit">Claim my founding spot</button>
-      <p class="apply-err" id="applyErr" aria-live="polite"></p>
-      <p class="apply-fine">We'll reach you on WhatsApp. Your number stays private — never shared.</p>
-    </form>
-    <div class="apply-done" id="applyDone" hidden>
-      <div class="apply-check">✓</div>
-      <h3 class="apply-h">You're in. 🎉</h3>
-      <p class="apply-sub" id="applyDoneSub"></p>
-      <a class="btn btn-primary" id="applyGroup" href="#" target="_blank" rel="noopener" hidden>Join our WhatsApp community</a>
-      <button class="btn btn-ghost" id="applyDoneClose" type="button">Done</button>
-    </div>
-  </div>
-</div>
-<style>
-.apply-overlay{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(6,4,14,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .2s}
-.apply-overlay.open{opacity:1}
-.apply-overlay[hidden]{display:none}
-.apply-card{position:relative;width:100%;max-width:440px;max-height:92vh;overflow-y:auto;background:linear-gradient(160deg,#161033,#0e0a22);border:1px solid var(--border-strong);border-radius:22px;padding:30px 26px;box-shadow:0 30px 80px rgba(0,0,0,.6);transform:translateY(12px) scale(.98);transition:transform .25s}
-.apply-overlay.open .apply-card{transform:none}
-.apply-x{position:absolute;top:13px;right:15px;width:34px;height:34px;border:none;border-radius:50%;background:var(--surface);color:var(--text-2);font-size:22px;line-height:1;cursor:pointer;transition:.15s}
-.apply-x:hover{background:var(--surface-2);color:var(--text)}
-.apply-eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--teal);margin-bottom:8px}
-.apply-h{font-size:24px;font-weight:900;color:var(--text);margin-bottom:8px;letter-spacing:-.5px;line-height:1.1}
-.apply-sub{font-size:13.5px;line-height:1.5;color:var(--text-2);margin-bottom:6px}
-.apply-lbl{display:block;font-size:12px;font-weight:700;color:var(--text-2);margin:15px 0 7px}
-.apply-opt{font-weight:500;opacity:.6}
-.apply-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.apply-role{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 4px;border:1.5px solid var(--border);border-radius:13px;background:var(--surface);color:var(--text-2);font-size:11px;font-weight:700;font-family:inherit;cursor:pointer;transition:.15s}
-.apply-role span{font-size:20px}
-.apply-role:hover{border-color:var(--border-strong);color:var(--text)}
-.apply-role.on{border-color:var(--orange);background:rgba(255,159,28,.12);color:#fff;box-shadow:0 0 0 3px rgba(255,159,28,.14)}
-.apply-in{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:12px;background:var(--surface-2);color:var(--text);font-size:15px;font-family:inherit;outline:none;transition:.15s}
-.apply-in::placeholder{color:rgba(255,255,255,.32)}
-.apply-in:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,212,188,.14)}
-.apply-phone{display:flex;align-items:stretch;gap:8px}
-.apply-cc{display:flex;align-items:center;padding:0 14px;border:1.5px solid var(--border);border-radius:12px;background:var(--surface-2);color:var(--text);font-size:15px;font-weight:700;font-family:'JetBrains Mono',monospace}
-.apply-submit{width:100%;margin-top:20px;justify-content:center}
-.apply-submit[disabled]{opacity:.6;pointer-events:none}
-.apply-err{color:#ff8a8a;font-size:12.5px;text-align:center;margin:9px 0 0;min-height:1px}
-.apply-fine{font-size:11.5px;color:var(--text-2);opacity:.75;text-align:center;margin-top:10px;line-height:1.45}
-.apply-done{text-align:center;padding:8px 4px}
-.apply-check{width:66px;height:66px;margin:6px auto 16px;border-radius:50%;background:rgba(0,212,188,.14);border:2px solid var(--teal);color:var(--teal);font-size:32px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(0,212,188,.06)}
-.apply-done .btn{width:100%;justify-content:center;margin-top:10px}
-.spin{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:apspin .7s linear infinite;vertical-align:-2px;margin-right:7px}
-@keyframes apspin{to{transform:rotate(360deg)}}
-body.apply-lock{overflow:hidden}
-</style>
-<script>
-// ═══ DAY-1 APPLY CAPTURE · ops 2026-07-12 ═══
-(function(){
-  var CFG = {
-    // V6-Webhook (feedback_prelaunch_tool) — leitet ins bestehende Google Sheet. Founder: bei Bruch neu setzen.
-    SHEET_WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbyQZ6q2OTBkwnrJ7DTaq5NjBRILeM1pG0kCRuzsLJkvIfhVXk03b781gxdNdemVkIPXAw/exec",
-    // Optionaler WhatsApp-COMMUNITY-Gruppenlink (chat.whatsapp.com/...). Leer = Button versteckt.
-    // KEINE persönliche Founder-Handynummer (Memory-Regel).
-    WHATSAPP_GROUP_URL: ""
-  };
-  var ROLE_LABEL={send:"Send parcels",hub:"Become a Hub",conn:"Be a Connector"};
-  var modal=document.getElementById('applyModal'),form=document.getElementById('applyForm'),
-      doneV=document.getElementById('applyDone'),roles=document.getElementById('applyRoles'),
-      submitBtn=document.getElementById('applySubmit'),errEl=document.getElementById('applyErr');
-  if(!modal) return;
-  var current='send';
-  function setRole(r){ current=r; [].forEach.call(roles.querySelectorAll('.apply-role'),function(b){ b.classList.toggle('on',b.getAttribute('data-role')===r); }); }
-  function open(role){ setRole(role||'send'); form.hidden=false; doneV.hidden=true; errEl.textContent=''; modal.hidden=false; document.body.classList.add('apply-lock'); requestAnimationFrame(function(){ modal.classList.add('open'); }); var n=document.getElementById('apName'); setTimeout(function(){ try{n.focus();}catch(e){} },260); }
-  function close(){ modal.classList.remove('open'); document.body.classList.remove('apply-lock'); setTimeout(function(){ modal.hidden=true; },220); }
-  // Intercept every "→ index.html" CTA, open native modal instead (role inferred). No-JS keeps the href fallback.
-  [].forEach.call(document.querySelectorAll('a[href="index.html"]'),function(a){
-    var role='send', t=(a.textContent||'');
-    if(a.classList.contains('hub')||/\bhub\b/i.test(t)) role='hub';
-    else if(a.classList.contains('conn')||/connector/i.test(t)) role='conn';
-    a.addEventListener('click',function(e){ e.preventDefault(); open(role); });
-  });
-  roles.addEventListener('click',function(e){ var b=e.target.closest('.apply-role'); if(b) setRole(b.getAttribute('data-role')); });
-  document.getElementById('applyClose').addEventListener('click',close);
-  document.getElementById('applyDoneClose').addEventListener('click',close);
-  modal.addEventListener('click',function(e){ if(e.target===modal) close(); });
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!modal.hidden) close(); });
-  function refCode(p){ return "HX"+((p||'').replace(/\D/g,'').slice(-3)||'000'); }
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var name=document.getElementById('apName').value.trim();
-    var phoneRaw=document.getElementById('apPhone').value.replace(/\D/g,'').replace(/^0/,'');
-    var city=document.getElementById('apCity').value.trim();
-    errEl.textContent='';
-    if(name.length<2){ errEl.textContent='Please enter your name.'; return; }
-    if(phoneRaw.length<7){ errEl.textContent='Please enter a valid WhatsApp number.'; return; }
-    var params=new URLSearchParams(location.search);
-    var ref=params.get('ref')||'';
-    var payload={ timestamp:new Date().toISOString(), name:name, phone:"+94"+phoneRaw, role:current, city:city, email:"",
-      source: ref?("ref-"+ref):(params.get('utm_source')?("utm-"+params.get('utm_source')):"web-home"),
-      user_agent:navigator.userAgent.substring(0,120), referrer:ref, refCode:refCode(phoneRaw) };
-    try{ var L=JSON.parse(localStorage.getItem('hubix_leads')||'[]'); L.push(payload); localStorage.setItem('hubix_leads',JSON.stringify(L)); }catch(_){}
-    submitBtn.disabled=true; submitBtn.innerHTML='<span class="spin"></span>Saving…';
-    function finish(){
-      document.getElementById('applyDoneSub').innerHTML="You're a <b>Founding Member</b> ("+ROLE_LABEL[current]+"). We'll message you on WhatsApp as the network reaches "+(city?("<b>"+city.replace(/</g,'')+"</b>"):"your area")+".";
-      var grp=document.getElementById('applyGroup');
-      if(CFG.WHATSAPP_GROUP_URL){ grp.href=CFG.WHATSAPP_GROUP_URL; grp.hidden=false; } else { grp.hidden=true; }
-      form.hidden=true; doneV.hidden=false;
-      submitBtn.disabled=false; submitBtn.innerHTML='Claim my founding spot';
-    }
-    if(CFG.SHEET_WEBHOOK_URL){
-      fetch(CFG.SHEET_WEBHOOK_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)}).then(finish).catch(function(err){ console.warn("Webhook failed — saved locally",err); finish(); });
-    } else { finish(); }
-  });
+  function run(el){var t=parseFloat(el.getAttribute('data-count'));
+    if(reduce){el.textContent=t.toLocaleString('en-US');return;}
+    var s=null,d=1700; function tick(ts){if(!s)s=ts;var p=Math.min((ts-s)/d,1),e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(t*e).toLocaleString('en-US'); if(p<1)requestAnimationFrame(tick);} requestAnimationFrame(tick);}
+  if(window.gsap&&window.ScrollTrigger){cs.forEach(function(el){ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:function(){run(el);}});});}
+  else if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.5});cs.forEach(function(el){io.observe(el);});}
+  else cs.forEach(run);
 })();
 </script>
 </body>
