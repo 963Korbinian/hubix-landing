@@ -143,6 +143,17 @@ section{position:relative;z-index:1}
 .cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;z-index:2;pointer-events:none;
   transform:translate(-50%,-50%);opacity:0;transition:opacity .4s ease;
   background:radial-gradient(circle,rgba(255,159,28,.10),rgba(0,212,188,.05) 40%,transparent 66%);mix-blend-mode:screen}
+/* Madar-style hotspots over the network (desktop only) */
+.hero-hotspots{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hotspot{position:absolute;display:flex;align-items:center;gap:11px}
+.hotspot .hs-dot{width:13px;height:13px;border-radius:50%;position:relative;flex-shrink:0;background:currentColor;
+  box-shadow:0 0 14px currentColor,0 0 4px currentColor}
+.hotspot .hs-dot::before{content:'';position:absolute;inset:-7px;border-radius:50%;border:1px solid currentColor;opacity:.5;animation:hsPulse 2.4s ease infinite}
+@keyframes hsPulse{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.9);opacity:0}}
+.hotspot .hs-label{font-size:11px;font-weight:700;letter-spacing:.4px;color:rgba(255,255,255,.9);white-space:nowrap;
+  background:rgba(11,8,23,.55);backdrop-filter:blur(4px);padding:5px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.12)}
+.hotspot.teal{color:var(--teal)} .hotspot.orange{color:var(--orange)} .hotspot.purple{color:#a078ff}
+@media(max-width:900px){.hero-hotspots{display:none}}
 .hero-inner{position:relative;z-index:2;max-width:820px}
 .hero-chip{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:99px;
   background:linear-gradient(135deg,rgba(0,212,188,.13),rgba(0,212,188,.03));border:1px solid rgba(0,212,188,.30);
@@ -412,6 +423,11 @@ section{position:relative;z-index:1}
 <header class="hero">
   <div class="hero-net"><canvas id="netCanvas"></canvas></div>
   <div class="hero-veil"></div>
+  <div class="hero-hotspots" aria-hidden="true">
+    <div class="hotspot teal" style="top:23%;right:16%"><span class="hs-dot"></span><span class="hs-label">Hub</span></div>
+    <div class="hotspot orange" style="top:48%;right:7%"><span class="hs-dot"></span><span class="hs-label">Connector</span></div>
+    <div class="hotspot purple" style="top:70%;right:19%"><span class="hs-dot"></span><span class="hs-label">Two-way handshake</span></div>
+  </div>
   <div class="fol"></div>
   <div class="hero-lion"><img src="logo3.png" alt=""></div>
   <div class="wrap">
@@ -777,71 +793,85 @@ section{position:relative;z-index:1}
   });
 })();
 
-// ═══ LIVING NETWORK — interactive hero canvas (the hero IS the network) ═══
+// ═══ GLOWING ROUTES — Madar-style hero (perspective light-roads to a horizon + hubs + parcel) ═══
 (function(){
   var canvas=document.getElementById('netCanvas'); if(!canvas) return;
   var ctx=canvas.getContext('2d'); var hero=document.querySelector('.hero');
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var W=0,H=0,DPR=Math.min(window.devicePixelRatio||1,2);
-  var nodes=[],LINK=150,mouse={x:-9999,y:-9999,active:false};
-  var COL={teal:'0,212,188',orange:'255,159,28',purple:'160,120,255',white:'255,255,255'};
-  var parcel={from:0,to:1,t:0,speed:0.011,trail:[]};
+  var vp={x:0,y:0}, roads=[], hubs=[], parcelRoad=2, raf;
+  var mouse={x:.5,y:.5,tx:.5,ty:.5};
+  var COLORS=['255,159,28','0,212,188','160,120,255','255,209,102','0,212,188','255,159,28','120,180,255'];
 
+  function qbez(p0,p1,p2,t){ var u=1-t; return {x:u*u*p0.x+2*u*t*p1.x+t*t*p2.x, y:u*u*p0.y+2*u*t*p1.y+t*t*p2.y}; }
   function size(){
     var r=hero.getBoundingClientRect(); W=r.width; H=r.height;
     canvas.width=Math.round(W*DPR); canvas.height=Math.round(H*DPR);
     ctx.setTransform(DPR,0,0,DPR,0,0); build();
   }
   function build(){
-    var target=Math.min(72,Math.round(W*H/16000)); if(W<620) target=Math.min(38,target);
-    LINK=W<620?120:150; nodes=[];
-    for(var i=0;i<target;i++){
-      var t=Math.random(), kind=t<0.10?'orange':t<0.24?'teal':t<0.30?'purple':'white';
-      nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*0.22,vy:(Math.random()-.5)*0.22,
-        r:kind==='white'?(1.1+Math.random()*1.1):(2.2+Math.random()*1.7),kind:kind});
+    vp={x:W*0.72,y:H*0.36}; roads=[]; hubs=[];
+    var n=W<620?5:7;
+    for(var i=0;i<n;i++){
+      var frac=n===1?0.5:i/(n-1), end;
+      if(frac<0.58){ end={x:W*(-0.08+frac*1.75), y:H*1.06}; }        // fan across bottom
+      else { end={x:W*(-0.08), y:H*(0.42+(frac-0.58)*1.15)}; }        // sweep off the left edge
+      var mx=(vp.x+end.x)/2 + (i-n/2)*W*0.03, my=(vp.y+end.y)/2 + H*0.05;
+      var pulses=[]; var pc=1+(i%2);
+      for(var k=0;k<pc;k++) pulses.push({t:(i*0.13+k*0.5)%1, speed:0.0018+((i*7+k*3)%5)*0.0006, len:0.07+((i*5)%4)*0.02});
+      roads.push({p0:{x:vp.x,y:vp.y}, p1:{x:mx,y:my}, p2:end, color:COLORS[i%COLORS.length], pulses:pulses});
+      // a hub node partway down each road
+      hubs.push({road:i, at:0.34+(i%3)*0.16, color:COLORS[i%COLORS.length], r:i%3===0?3.4:2.4});
     }
-    parcel.from=0; parcel.to=Math.min(1,nodes.length-1); parcel.t=0; parcel.trail=[];
+    // parcel = a dedicated bright pulse on a central road
+    parcelRoad=Math.min(2,n-1);
+    roads[parcelRoad].parcel={t:0, speed:0.006};
   }
-  function pickNext(from){
-    var best=[],f=nodes[from];
-    for(var i=0;i<nodes.length;i++){ if(i===from) continue;
-      var dx=nodes[i].x-f.x,dy=nodes[i].y-f.y,d=dx*dx+dy*dy; if(d<LINK*LINK*2.4) best.push({i:i,d:d}); }
-    if(!best.length) return (from+1)%nodes.length;
-    best.sort(function(a,b){return a.d-b.d;});
-    return best[Math.floor(Math.random()*Math.min(4,best.length))].i;
+  function drawPulse(p0,p1,p2,color,pu){
+    var t1=pu.t; if(t1<=0.01) return; var t0=Math.max(0,t1-pu.len), samples=8;
+    ctx.beginPath();
+    for(var s=0;s<=samples;s++){ var t=t0+(t1-t0)*(s/samples), pt=qbez(p0,p1,p2,t); if(s===0)ctx.moveTo(pt.x,pt.y); else ctx.lineTo(pt.x,pt.y); }
+    ctx.strokeStyle='rgba('+color+',0.95)'; ctx.lineCap='round'; ctx.lineWidth=1+t1*3.6;
+    ctx.shadowColor='rgba('+color+',0.9)'; ctx.shadowBlur=8+t1*24; ctx.stroke(); ctx.shadowBlur=0;
   }
   function draw(){
     ctx.clearRect(0,0,W,H);
-    for(var i=0;i<nodes.length;i++){ var a=nodes[i];
-      for(var j=i+1;j<nodes.length;j++){ var b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<LINK){ var al=(1-d/LINK)*0.28; ctx.strokeStyle='rgba(0,212,188,'+al.toFixed(3)+')'; ctx.lineWidth=1;
-          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); } } }
-    for(var k=0;k<nodes.length;k++){ var n=nodes[k],c=COL[n.kind];
-      if(n.kind!=='white'){ ctx.beginPath(); ctx.fillStyle='rgba('+c+',0.13)'; ctx.arc(n.x,n.y,n.r*3.4,0,6.2832); ctx.fill(); }
-      ctx.beginPath(); ctx.fillStyle='rgba('+c+',0.9)'; ctx.arc(n.x,n.y,n.r,0,6.2832); ctx.fill(); }
-    for(var p=0;p<parcel.trail.length;p++){ var pt=parcel.trail[p],a2=(p/parcel.trail.length)*0.5;
-      ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,'+a2.toFixed(3)+')'; ctx.arc(pt.x,pt.y,2.3,0,6.2832); ctx.fill(); }
-    if(nodes.length>1){ var f=nodes[parcel.from],tn=nodes[parcel.to];
-      if(f&&tn){ var px=f.x+(tn.x-f.x)*parcel.t,py=f.y+(tn.y-f.y)*parcel.t;
-        ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,0.22)'; ctx.arc(px,py,10,0,6.2832); ctx.fill();
-        ctx.beginPath(); ctx.fillStyle='rgba(255,209,102,1)'; ctx.arc(px,py,3.6,0,6.2832); ctx.fill(); } }
+    var ox=(mouse.x-.5)*26, oy=(mouse.y-.5)*16;
+    // horizon glow at vanishing point
+    var gx=vp.x+ox*1.4, gy=vp.y+oy*1.4;
+    var g=ctx.createRadialGradient(gx,gy,0,gx,gy,H*0.62);
+    g.addColorStop(0,'rgba(255,159,28,0.12)'); g.addColorStop(0.35,'rgba(0,212,188,0.05)'); g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    for(var i=0;i<roads.length;i++){
+      var r=roads[i], p0={x:r.p0.x+ox*.3,y:r.p0.y+oy*.3}, p1={x:r.p1.x+ox*.7,y:r.p1.y+oy*.7}, p2={x:r.p2.x+ox,y:r.p2.y+oy};
+      ctx.beginPath(); ctx.moveTo(p0.x,p0.y); ctx.quadraticCurveTo(p1.x,p1.y,p2.x,p2.y);
+      ctx.strokeStyle='rgba('+r.color+',0.10)'; ctx.lineWidth=1.1; ctx.stroke();
+      for(var q=0;q<r.pulses.length;q++) drawPulse(p0,p1,p2,r.color,r.pulses[q]);
+      if(r.parcel){ // the parcel — a bright orange token with soft aura
+        var pp=qbez(p0,p1,p2,r.parcel.t), sz=3+r.parcel.t*4;
+        ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,0.20)'; ctx.arc(pp.x,pp.y,sz*3,0,6.2832); ctx.fill();
+        ctx.beginPath(); ctx.fillStyle='rgba(255,209,102,1)'; ctx.shadowColor='rgba(255,159,28,0.95)'; ctx.shadowBlur=16; ctx.arc(pp.x,pp.y,sz,0,6.2832); ctx.fill(); ctx.shadowBlur=0;
+      }
+    }
+    // hub nodes
+    for(var h=0;h<hubs.length;h++){
+      var hb=hubs[h], rd=roads[hb.road], pt=qbez({x:rd.p0.x+ox*.3,y:rd.p0.y+oy*.3},{x:rd.p1.x+ox*.7,y:rd.p1.y+oy*.7},{x:rd.p2.x+ox,y:rd.p2.y+oy},hb.at);
+      ctx.beginPath(); ctx.fillStyle='rgba('+hb.color+',0.13)'; ctx.arc(pt.x,pt.y,hb.r*3.2,0,6.2832); ctx.fill();
+      ctx.beginPath(); ctx.fillStyle='rgba('+hb.color+',0.95)'; ctx.shadowColor='rgba('+hb.color+',0.9)'; ctx.shadowBlur=12; ctx.arc(pt.x,pt.y,hb.r,0,6.2832); ctx.fill(); ctx.shadowBlur=0;
+    }
   }
   function step(){
-    if(parcel.from>=nodes.length||parcel.to>=nodes.length){ parcel.from=0; parcel.to=Math.min(1,nodes.length-1); parcel.t=0; parcel.trail=[]; }
-    for(var i=0;i<nodes.length;i++){ var n=nodes[i]; n.x+=n.vx; n.y+=n.vy;
-      if(n.x<0||n.x>W) n.vx*=-1; if(n.y<0||n.y>H) n.vy*=-1;
-      if(mouse.active){ var dx=n.x-mouse.x,dy=n.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<130&&d>0){ var force=(130-d)/130*0.9; n.x+=dx/d*force; n.y+=dy/d*force; } } }
-    parcel.t+=parcel.speed;
-    if(parcel.t>=1){ parcel.t=0; parcel.from=parcel.to; parcel.to=pickNext(parcel.from); }
-    var f=nodes[parcel.from],tn=nodes[parcel.to];
-    if(f&&tn){ parcel.trail.push({x:f.x+(tn.x-f.x)*parcel.t,y:f.y+(tn.y-f.y)*parcel.t}); if(parcel.trail.length>14) parcel.trail.shift(); }
+    mouse.x+=(mouse.tx-mouse.x)*0.06; mouse.y+=(mouse.ty-mouse.y)*0.06;
+    for(var i=0;i<roads.length;i++){ var r=roads[i];
+      for(var q=0;q<r.pulses.length;q++){ r.pulses[q].t+=r.pulses[q].speed; if(r.pulses[q].t>1.05) r.pulses[q].t=-r.pulses[q].len; }
+      if(r.parcel){ r.parcel.t+=r.parcel.speed; if(r.parcel.t>1.05) r.parcel.t=0; }
+    }
     draw(); raf=requestAnimationFrame(step);
   }
-  var raf; size();
+  size();
   window.addEventListener('resize', size);
   window.addEventListener('mousemove', function(e){ var r=hero.getBoundingClientRect();
-    if(e.clientY>=r.top&&e.clientY<=r.bottom){ mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.active=true; } else mouse.active=false; });
+    if(e.clientY>=r.top&&e.clientY<=r.bottom){ mouse.tx=(e.clientX-r.left)/W; mouse.ty=(e.clientY-r.top)/H; } });
   if(reduce) draw(); else step();
 })();
 
@@ -850,6 +880,140 @@ section{position:relative;z-index:1}
   var g=document.getElementById('cursorGlow'); if(!g||matchMedia('(hover:none)').matches) return;
   window.addEventListener('mousemove', function(e){ g.style.left=e.clientX+'px'; g.style.top=e.clientY+'px'; g.style.opacity='1'; });
   document.addEventListener('mouseleave', function(){ g.style.opacity='0'; });
+})();
+</script>
+
+<!-- ═══════════ DAY-1 · APPLY CAPTURE (ops 2026-07-12 · Landing V1.5 §1) ═══════════
+     Fängt alle „→ index.html"-CTAs ab → natives Founding-Capture → SELBES Google Sheet (V6-Schema).
+     Regelkonform: Sheet-Capture (feedback_prelaunch_tool) · KEINE Founder-Handynummer, nur optionaler
+     Gruppen-Link (WHATSAPP_GROUP_URL) · Founding-Status ohne Rabatt/Countdown. -->
+<div class="apply-overlay" id="applyModal" hidden>
+  <div class="apply-card" role="dialog" aria-modal="true" aria-labelledby="applyTitle">
+    <button class="apply-x" id="applyClose" aria-label="Close">&times;</button>
+    <form class="apply-form" id="applyForm" novalidate>
+      <div class="apply-eyebrow">JOIN THE FOUNDING NETWORK</div>
+      <h3 class="apply-h" id="applyTitle">Claim your founding spot.</h3>
+      <p class="apply-sub">A <b>Founding Member</b> gets a founding number, priority in your area, and a direct line to the founder. <b>No discount, no countdown.</b></p>
+      <label class="apply-lbl">I want to…</label>
+      <div class="apply-roles" id="applyRoles">
+        <button type="button" class="apply-role" data-role="send"><span>📦</span>Send parcels</button>
+        <button type="button" class="apply-role" data-role="hub"><span>🏠</span>Become a Hub</button>
+        <button type="button" class="apply-role" data-role="conn"><span>🛺</span>Be a Connector</button>
+      </div>
+      <label class="apply-lbl" for="apName">Your name</label>
+      <input class="apply-in" id="apName" type="text" autocomplete="name" placeholder="e.g. Nuwan Perera" required>
+      <label class="apply-lbl" for="apPhone">WhatsApp number</label>
+      <div class="apply-phone">
+        <span class="apply-cc">+94</span>
+        <input class="apply-in" id="apPhone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="77 123 4567" required>
+      </div>
+      <label class="apply-lbl" for="apCity">Town / area <span class="apply-opt">(optional)</span></label>
+      <input class="apply-in" id="apCity" type="text" autocomplete="address-level2" placeholder="e.g. Galle">
+      <button class="btn btn-primary apply-submit" id="applySubmit" type="submit">Claim my founding spot</button>
+      <p class="apply-err" id="applyErr" aria-live="polite"></p>
+      <p class="apply-fine">We'll reach you on WhatsApp. Your number stays private — never shared.</p>
+    </form>
+    <div class="apply-done" id="applyDone" hidden>
+      <div class="apply-check">✓</div>
+      <h3 class="apply-h">You're in. 🎉</h3>
+      <p class="apply-sub" id="applyDoneSub"></p>
+      <a class="btn btn-primary" id="applyGroup" href="#" target="_blank" rel="noopener" hidden>Join our WhatsApp community</a>
+      <button class="btn btn-ghost" id="applyDoneClose" type="button">Done</button>
+    </div>
+  </div>
+</div>
+<style>
+.apply-overlay{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(6,4,14,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .2s}
+.apply-overlay.open{opacity:1}
+.apply-overlay[hidden]{display:none}
+.apply-card{position:relative;width:100%;max-width:440px;max-height:92vh;overflow-y:auto;background:linear-gradient(160deg,#161033,#0e0a22);border:1px solid var(--border-strong);border-radius:22px;padding:30px 26px;box-shadow:0 30px 80px rgba(0,0,0,.6);transform:translateY(12px) scale(.98);transition:transform .25s}
+.apply-overlay.open .apply-card{transform:none}
+.apply-x{position:absolute;top:13px;right:15px;width:34px;height:34px;border:none;border-radius:50%;background:var(--surface);color:var(--text-2);font-size:22px;line-height:1;cursor:pointer;transition:.15s}
+.apply-x:hover{background:var(--surface-2);color:var(--text)}
+.apply-eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--teal);margin-bottom:8px}
+.apply-h{font-size:24px;font-weight:900;color:var(--text);margin-bottom:8px;letter-spacing:-.5px;line-height:1.1}
+.apply-sub{font-size:13.5px;line-height:1.5;color:var(--text-2);margin-bottom:6px}
+.apply-lbl{display:block;font-size:12px;font-weight:700;color:var(--text-2);margin:15px 0 7px}
+.apply-opt{font-weight:500;opacity:.6}
+.apply-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.apply-role{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 4px;border:1.5px solid var(--border);border-radius:13px;background:var(--surface);color:var(--text-2);font-size:11px;font-weight:700;font-family:inherit;cursor:pointer;transition:.15s}
+.apply-role span{font-size:20px}
+.apply-role:hover{border-color:var(--border-strong);color:var(--text)}
+.apply-role.on{border-color:var(--orange);background:rgba(255,159,28,.12);color:#fff;box-shadow:0 0 0 3px rgba(255,159,28,.14)}
+.apply-in{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:12px;background:var(--surface-2);color:var(--text);font-size:15px;font-family:inherit;outline:none;transition:.15s}
+.apply-in::placeholder{color:rgba(255,255,255,.32)}
+.apply-in:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,212,188,.14)}
+.apply-phone{display:flex;align-items:stretch;gap:8px}
+.apply-cc{display:flex;align-items:center;padding:0 14px;border:1.5px solid var(--border);border-radius:12px;background:var(--surface-2);color:var(--text);font-size:15px;font-weight:700;font-family:'JetBrains Mono',monospace}
+.apply-submit{width:100%;margin-top:20px;justify-content:center}
+.apply-submit[disabled]{opacity:.6;pointer-events:none}
+.apply-err{color:#ff8a8a;font-size:12.5px;text-align:center;margin:9px 0 0;min-height:1px}
+.apply-fine{font-size:11.5px;color:var(--text-2);opacity:.75;text-align:center;margin-top:10px;line-height:1.45}
+.apply-done{text-align:center;padding:8px 4px}
+.apply-check{width:66px;height:66px;margin:6px auto 16px;border-radius:50%;background:rgba(0,212,188,.14);border:2px solid var(--teal);color:var(--teal);font-size:32px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(0,212,188,.06)}
+.apply-done .btn{width:100%;justify-content:center;margin-top:10px}
+.spin{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:apspin .7s linear infinite;vertical-align:-2px;margin-right:7px}
+@keyframes apspin{to{transform:rotate(360deg)}}
+body.apply-lock{overflow:hidden}
+</style>
+<script>
+// ═══ DAY-1 APPLY CAPTURE · ops 2026-07-12 ═══
+(function(){
+  var CFG = {
+    // V6-Webhook (feedback_prelaunch_tool) — leitet ins bestehende Google Sheet. Founder: bei Bruch neu setzen.
+    SHEET_WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbyQZ6q2OTBkwnrJ7DTaq5NjBRILeM1pG0kCRuzsLJkvIfhVXk03b781gxdNdemVkIPXAw/exec",
+    // Optionaler WhatsApp-COMMUNITY-Gruppenlink (chat.whatsapp.com/...). Leer = Button versteckt.
+    // KEINE persönliche Founder-Handynummer (Memory-Regel).
+    WHATSAPP_GROUP_URL: ""
+  };
+  var ROLE_LABEL={send:"Send parcels",hub:"Become a Hub",conn:"Be a Connector"};
+  var modal=document.getElementById('applyModal'),form=document.getElementById('applyForm'),
+      doneV=document.getElementById('applyDone'),roles=document.getElementById('applyRoles'),
+      submitBtn=document.getElementById('applySubmit'),errEl=document.getElementById('applyErr');
+  if(!modal) return;
+  var current='send';
+  function setRole(r){ current=r; [].forEach.call(roles.querySelectorAll('.apply-role'),function(b){ b.classList.toggle('on',b.getAttribute('data-role')===r); }); }
+  function open(role){ setRole(role||'send'); form.hidden=false; doneV.hidden=true; errEl.textContent=''; modal.hidden=false; document.body.classList.add('apply-lock'); requestAnimationFrame(function(){ modal.classList.add('open'); }); var n=document.getElementById('apName'); setTimeout(function(){ try{n.focus();}catch(e){} },260); }
+  function close(){ modal.classList.remove('open'); document.body.classList.remove('apply-lock'); setTimeout(function(){ modal.hidden=true; },220); }
+  // Intercept every "→ index.html" CTA, open native modal instead (role inferred). No-JS keeps the href fallback.
+  [].forEach.call(document.querySelectorAll('a[href="index.html"]'),function(a){
+    var role='send', t=(a.textContent||'');
+    if(a.classList.contains('hub')||/\bhub\b/i.test(t)) role='hub';
+    else if(a.classList.contains('conn')||/connector/i.test(t)) role='conn';
+    a.addEventListener('click',function(e){ e.preventDefault(); open(role); });
+  });
+  roles.addEventListener('click',function(e){ var b=e.target.closest('.apply-role'); if(b) setRole(b.getAttribute('data-role')); });
+  document.getElementById('applyClose').addEventListener('click',close);
+  document.getElementById('applyDoneClose').addEventListener('click',close);
+  modal.addEventListener('click',function(e){ if(e.target===modal) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!modal.hidden) close(); });
+  function refCode(p){ return "HX"+((p||'').replace(/\D/g,'').slice(-3)||'000'); }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('apName').value.trim();
+    var phoneRaw=document.getElementById('apPhone').value.replace(/\D/g,'').replace(/^0/,'');
+    var city=document.getElementById('apCity').value.trim();
+    errEl.textContent='';
+    if(name.length<2){ errEl.textContent='Please enter your name.'; return; }
+    if(phoneRaw.length<7){ errEl.textContent='Please enter a valid WhatsApp number.'; return; }
+    var params=new URLSearchParams(location.search);
+    var ref=params.get('ref')||'';
+    var payload={ timestamp:new Date().toISOString(), name:name, phone:"+94"+phoneRaw, role:current, city:city, email:"",
+      source: ref?("ref-"+ref):(params.get('utm_source')?("utm-"+params.get('utm_source')):"web-home"),
+      user_agent:navigator.userAgent.substring(0,120), referrer:ref, refCode:refCode(phoneRaw) };
+    try{ var L=JSON.parse(localStorage.getItem('hubix_leads')||'[]'); L.push(payload); localStorage.setItem('hubix_leads',JSON.stringify(L)); }catch(_){}
+    submitBtn.disabled=true; submitBtn.innerHTML='<span class="spin"></span>Saving…';
+    function finish(){
+      document.getElementById('applyDoneSub').innerHTML="You're a <b>Founding Member</b> ("+ROLE_LABEL[current]+"). We'll message you on WhatsApp as the network reaches "+(city?("<b>"+city.replace(/</g,'')+"</b>"):"your area")+".";
+      var grp=document.getElementById('applyGroup');
+      if(CFG.WHATSAPP_GROUP_URL){ grp.href=CFG.WHATSAPP_GROUP_URL; grp.hidden=false; } else { grp.hidden=true; }
+      form.hidden=true; doneV.hidden=false;
+      submitBtn.disabled=false; submitBtn.innerHTML='Claim my founding spot';
+    }
+    if(CFG.SHEET_WEBHOOK_URL){
+      fetch(CFG.SHEET_WEBHOOK_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)}).then(finish).catch(function(err){ console.warn("Webhook failed — saved locally",err); finish(); });
+    } else { finish(); }
+  });
 })();
 </script>
 </body>
