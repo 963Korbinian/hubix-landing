@@ -126,12 +126,23 @@ section{position:relative;z-index:1}
   background:rgba(255,255,255,.05);border:1.5px solid var(--border-strong)}
 .btn-ghost:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.28)}
 
-/* ═══════════ HERO ═══════════ */
-.hero{position:relative;padding:clamp(40px,6vw,76px) 0 clamp(44px,6vw,72px);overflow:hidden}
-.hero-lion{position:absolute;top:2%;right:-6%;width:min(560px,62vw);opacity:.14;z-index:0;pointer-events:none;
+/* ═══════════ HERO · LIVING NETWORK ═══════════ */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;
+  padding:clamp(40px,6vw,76px) 0 clamp(44px,6vw,72px);overflow:hidden}
+/* interactive network canvas — the hero IS the network */
+.hero-net{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-net canvas{width:100%;height:100%;display:block}
+/* readability vignette over the network */
+.hero-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 90% 80% at 22% 45%,rgba(11,8,23,.82),rgba(11,8,23,.30) 55%,transparent 78%)}
+.hero-lion{position:absolute;top:6%;right:-8%;width:min(520px,58vw);opacity:.07;z-index:0;pointer-events:none;
   filter:brightness(1.3) contrast(1.08) drop-shadow(0 0 40px rgba(255,159,28,.28));
   -webkit-mask-image:radial-gradient(ellipse at center,#000 52%,transparent 100%);
   mask-image:radial-gradient(ellipse at center,#000 52%,transparent 100%)}
+/* cursor glow — subtle premium pointer light (desktop only) */
+.cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;z-index:2;pointer-events:none;
+  transform:translate(-50%,-50%);opacity:0;transition:opacity .4s ease;
+  background:radial-gradient(circle,rgba(255,159,28,.10),rgba(0,212,188,.05) 40%,transparent 66%);mix-blend-mode:screen}
 .hero-inner{position:relative;z-index:2;max-width:820px}
 .hero-chip{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:99px;
   background:linear-gradient(135deg,rgba(0,212,188,.13),rgba(0,212,188,.03));border:1px solid rgba(0,212,188,.30);
@@ -199,6 +210,23 @@ section{position:relative;z-index:1}
 .node-d{font-size:10px;color:var(--text-3);text-align:center;line-height:1.3;display:none}
 .flow-caption{margin-top:30px;text-align:center;font-size:14px;color:var(--text-2);max-width:60ch;margin-left:auto;margin-right:auto}
 .flow-caption b{color:#fff}
+
+/* ═══════════ STAT STRIP (honest facts, animated counters) ═══════════ */
+.stat-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:44px;
+  background:var(--border);border:1px solid var(--border);border-radius:22px;overflow:hidden}
+.stat-cell{background:linear-gradient(160deg,rgba(20,14,42,.9),rgba(11,8,23,.9));padding:30px 20px;text-align:center;
+  position:relative;transition:background .25s}
+.stat-cell:hover{background:linear-gradient(160deg,rgba(30,20,60,.95),rgba(15,11,32,.95))}
+.stat-num{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:clamp(30px,5vw,46px);
+  letter-spacing:-1px;line-height:1;color:#fff;margin-bottom:8px}
+.stat-cell:nth-child(1) .stat-num{color:var(--teal)}
+.stat-cell:nth-child(2) .stat-num{color:var(--orange)}
+.stat-cell:nth-child(3) .stat-num{color:#b38cff}
+.stat-cell:nth-child(4) .stat-num{color:var(--teal)}
+.stat-num .sfx{opacity:.85}
+.stat-lbl{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--text-3)}
+.stat-foot{margin-top:22px;text-align:center;font-size:14.5px;color:var(--text-2);max-width:60ch;margin-left:auto;margin-right:auto}
+.stat-foot b{color:#fff}
 
 /* ═══════════ TRUST LAYER (heart) ═══════════ */
 .trust{position:relative}
@@ -310,9 +338,11 @@ section{position:relative;z-index:1}
   border:1px solid var(--border);color:var(--text-3)}
 .footer-langs span.on{color:var(--teal);border-color:rgba(0,212,188,.35);background:rgba(0,212,188,.08)}
 
-/* reveal-on-scroll — only hidden when JS is active (.js on <html>); no-JS shows everything */
-.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
-.js .reveal.in{opacity:1;transform:none}
+/* reveal-on-scroll — only hidden when JS is active (.js on <html>); no-JS shows everything.
+   When GSAP is active (.gsap on <html>) it owns the animation, so the CSS transition is off to avoid conflict. */
+.js .reveal{opacity:0;transform:translateY(22px)}
+.js:not(.gsap) .reveal{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
+.js:not(.gsap) .reveal.in{opacity:1;transform:none}
 
 /* ═══════════ RESPONSIVE ═══════════ */
 @media(min-width:600px){
@@ -375,10 +405,13 @@ section{position:relative;z-index:1}
   </div>
 </nav>
 
+<div class="cursor-glow" id="cursorGlow"></div>
 <span id="top"></span>
 
 <!-- ═══════════ HERO ═══════════ -->
 <header class="hero">
+  <div class="hero-net"><canvas id="netCanvas"></canvas></div>
+  <div class="hero-veil"></div>
   <div class="fol"></div>
   <div class="hero-lion"><img src="logo3.png" alt=""></div>
   <div class="wrap">
@@ -463,6 +496,23 @@ section{position:relative;z-index:1}
       </div>
       <p class="flow-caption">No new trucks. No warehouses. <b>HUBIX connects what Sri Lanka already has</b> — and coordinates every step so a parcel never moves without a confirmed handover.</p>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════ STAT STRIP · the pieces are already here ═══════════ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">The pieces are already here</span>
+      <h2 class="h2">We don't build trucks.<br>We connect <span class="t">what exists.</span></h2>
+    </div>
+    <div class="stat-strip">
+      <div class="stat-cell reveal"><div class="stat-num"><span data-count="22">0</span><span class="sfx">M</span></div><div class="stat-lbl">People</div></div>
+      <div class="stat-cell reveal"><div class="stat-num"><span data-count="275000">0</span></div><div class="stat-lbl">Shops · potential hubs</div></div>
+      <div class="stat-cell reveal"><div class="stat-num"><span data-count="8">0</span><span class="sfx">M+</span></div><div class="stat-lbl">Vehicles · potential connectors</div></div>
+      <div class="stat-cell reveal"><div class="stat-num"><span data-count="32">0</span><span class="sfx">M</span></div><div class="stat-lbl">Mobile connections</div></div>
+    </div>
+    <p class="stat-foot reveal">Everything is already on this island — the shops, the roads, the phones. <b>HUBIX is the network that connects them.</b></p>
   </div>
 </section>
 
@@ -652,6 +702,8 @@ section{position:relative;z-index:1}
   </div>
 </footer>
 
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
 <script>
 // Mobile nav toggle
 (function(){
@@ -666,16 +718,138 @@ section{position:relative;z-index:1}
   });
 })();
 
-// Reveal-on-scroll (safety: everything reveals within 3s no matter what)
+// ═══ SCROLL CHOREOGRAPHY (GSAP ScrollTrigger, native scroll — mobile-clean) ═══
 (function(){
-  var els = document.querySelectorAll('.reveal');
+  var els=document.querySelectorAll('.reveal');
   function showAll(){ els.forEach(function(e){e.classList.add('in');}); }
-  if(!('IntersectionObserver' in window)){ showAll(); return; }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, {threshold:.08, rootMargin:'0px 0px -6% 0px'});
-  els.forEach(function(e){ io.observe(e); });
-  setTimeout(showAll, 3000);
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(window.gsap && window.ScrollTrigger && !reduce){
+    document.documentElement.classList.add('gsap');
+    gsap.registerPlugin(ScrollTrigger);
+    // cinematic reveal per element
+    els.forEach(function(el){
+      gsap.set(el,{opacity:0,y:28});
+      gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',
+        scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+    });
+    // hero entrance (fail-safe: force-visible after 1.6s no matter what the ticker does)
+    var heroSel='.hero-chip,.hero-h1,.hero-sub,.doors .door,.hero-actions>*,.hero-trust';
+    gsap.from(heroSel,{opacity:0,y:26,duration:.9,ease:'power3.out',stagger:.07,delay:.12});
+    setTimeout(function(){ gsap.set(heroSel,{clearProps:'opacity,transform'}); }, 1600);
+    // BULLETPROOF: if rAF/ticker never runs (frozen/stalled tab), force ALL content visible so nothing can stay hidden
+    setTimeout(function(){ if(gsap.ticker.frame===0){ gsap.set('.reveal',{clearProps:'opacity,transform'}); gsap.set(heroSel,{clearProps:'opacity,transform'}); } }, 2600);
+  } else if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(e){io.observe(e);}); setTimeout(showAll,3000);
+  } else showAll();
+})();
+
+// ═══ ANIMATED COUNTERS (honest Sri-Lanka facts, no invented metrics) ═══
+(function(){
+  var counters=document.querySelectorAll('[data-count]'); if(!counters.length) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fmt(n){ return n.toLocaleString('en-US'); }
+  function run(el){
+    var target=parseFloat(el.getAttribute('data-count')), suf=el.getAttribute('data-suffix')||'';
+    if(reduce){ el.textContent=fmt(target)+suf; return; }
+    var start=null,dur=1700;
+    function tick(ts){ if(!start)start=ts; var p=Math.min((ts-start)/dur,1),e=1-Math.pow(1-p,3);
+      el.textContent=fmt(Math.round(target*e))+suf; if(p<1) requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+  }
+  if(window.gsap && window.ScrollTrigger){
+    counters.forEach(function(el){ ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:function(){run(el);}}); });
+  } else if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.5});
+    counters.forEach(function(el){io.observe(el);});
+  } else counters.forEach(run);
+})();
+
+// ═══ MAGNETIC BUTTONS (desktop) ═══
+(function(){
+  if(matchMedia('(hover:none)').matches) return;
+  document.querySelectorAll('.btn-primary,.nav-cta').forEach(function(b){
+    b.addEventListener('mousemove',function(e){ var r=b.getBoundingClientRect();
+      var mx=e.clientX-r.left-r.width/2, my=e.clientY-r.top-r.height/2;
+      b.style.transform='translate('+(mx*0.22).toFixed(1)+'px,'+(my*0.32).toFixed(1)+'px)'; });
+    b.addEventListener('mouseleave',function(){ b.style.transform=''; });
+  });
+})();
+
+// ═══ LIVING NETWORK — interactive hero canvas (the hero IS the network) ═══
+(function(){
+  var canvas=document.getElementById('netCanvas'); if(!canvas) return;
+  var ctx=canvas.getContext('2d'); var hero=document.querySelector('.hero');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W=0,H=0,DPR=Math.min(window.devicePixelRatio||1,2);
+  var nodes=[],LINK=150,mouse={x:-9999,y:-9999,active:false};
+  var COL={teal:'0,212,188',orange:'255,159,28',purple:'160,120,255',white:'255,255,255'};
+  var parcel={from:0,to:1,t:0,speed:0.011,trail:[]};
+
+  function size(){
+    var r=hero.getBoundingClientRect(); W=r.width; H=r.height;
+    canvas.width=Math.round(W*DPR); canvas.height=Math.round(H*DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0); build();
+  }
+  function build(){
+    var target=Math.min(72,Math.round(W*H/16000)); if(W<620) target=Math.min(38,target);
+    LINK=W<620?120:150; nodes=[];
+    for(var i=0;i<target;i++){
+      var t=Math.random(), kind=t<0.10?'orange':t<0.24?'teal':t<0.30?'purple':'white';
+      nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*0.22,vy:(Math.random()-.5)*0.22,
+        r:kind==='white'?(1.1+Math.random()*1.1):(2.2+Math.random()*1.7),kind:kind});
+    }
+    parcel.from=0; parcel.to=Math.min(1,nodes.length-1); parcel.t=0; parcel.trail=[];
+  }
+  function pickNext(from){
+    var best=[],f=nodes[from];
+    for(var i=0;i<nodes.length;i++){ if(i===from) continue;
+      var dx=nodes[i].x-f.x,dy=nodes[i].y-f.y,d=dx*dx+dy*dy; if(d<LINK*LINK*2.4) best.push({i:i,d:d}); }
+    if(!best.length) return (from+1)%nodes.length;
+    best.sort(function(a,b){return a.d-b.d;});
+    return best[Math.floor(Math.random()*Math.min(4,best.length))].i;
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<nodes.length;i++){ var a=nodes[i];
+      for(var j=i+1;j<nodes.length;j++){ var b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<LINK){ var al=(1-d/LINK)*0.28; ctx.strokeStyle='rgba(0,212,188,'+al.toFixed(3)+')'; ctx.lineWidth=1;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); } } }
+    for(var k=0;k<nodes.length;k++){ var n=nodes[k],c=COL[n.kind];
+      if(n.kind!=='white'){ ctx.beginPath(); ctx.fillStyle='rgba('+c+',0.13)'; ctx.arc(n.x,n.y,n.r*3.4,0,6.2832); ctx.fill(); }
+      ctx.beginPath(); ctx.fillStyle='rgba('+c+',0.9)'; ctx.arc(n.x,n.y,n.r,0,6.2832); ctx.fill(); }
+    for(var p=0;p<parcel.trail.length;p++){ var pt=parcel.trail[p],a2=(p/parcel.trail.length)*0.5;
+      ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,'+a2.toFixed(3)+')'; ctx.arc(pt.x,pt.y,2.3,0,6.2832); ctx.fill(); }
+    if(nodes.length>1){ var f=nodes[parcel.from],tn=nodes[parcel.to];
+      if(f&&tn){ var px=f.x+(tn.x-f.x)*parcel.t,py=f.y+(tn.y-f.y)*parcel.t;
+        ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,0.22)'; ctx.arc(px,py,10,0,6.2832); ctx.fill();
+        ctx.beginPath(); ctx.fillStyle='rgba(255,209,102,1)'; ctx.arc(px,py,3.6,0,6.2832); ctx.fill(); } }
+  }
+  function step(){
+    if(parcel.from>=nodes.length||parcel.to>=nodes.length){ parcel.from=0; parcel.to=Math.min(1,nodes.length-1); parcel.t=0; parcel.trail=[]; }
+    for(var i=0;i<nodes.length;i++){ var n=nodes[i]; n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>W) n.vx*=-1; if(n.y<0||n.y>H) n.vy*=-1;
+      if(mouse.active){ var dx=n.x-mouse.x,dy=n.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<130&&d>0){ var force=(130-d)/130*0.9; n.x+=dx/d*force; n.y+=dy/d*force; } } }
+    parcel.t+=parcel.speed;
+    if(parcel.t>=1){ parcel.t=0; parcel.from=parcel.to; parcel.to=pickNext(parcel.from); }
+    var f=nodes[parcel.from],tn=nodes[parcel.to];
+    if(f&&tn){ parcel.trail.push({x:f.x+(tn.x-f.x)*parcel.t,y:f.y+(tn.y-f.y)*parcel.t}); if(parcel.trail.length>14) parcel.trail.shift(); }
+    draw(); raf=requestAnimationFrame(step);
+  }
+  var raf; size();
+  window.addEventListener('resize', size);
+  window.addEventListener('mousemove', function(e){ var r=hero.getBoundingClientRect();
+    if(e.clientY>=r.top&&e.clientY<=r.bottom){ mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.active=true; } else mouse.active=false; });
+  if(reduce) draw(); else step();
+})();
+
+// ═══ CURSOR GLOW (desktop) ═══
+(function(){
+  var g=document.getElementById('cursorGlow'); if(!g||matchMedia('(hover:none)').matches) return;
+  window.addEventListener('mousemove', function(e){ g.style.left=e.clientX+'px'; g.style.top=e.clientY+'px'; g.style.opacity='1'; });
+  document.addEventListener('mouseleave', function(){ g.style.opacity='0'; });
 })();
 </script>
 </body>
