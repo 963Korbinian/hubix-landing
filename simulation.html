@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b0817">
+<title>HUBIX — Sri Lanka, fully connected · The vision at scale</title>
+<link rel="icon" href="logo3.png">
+<link rel="stylesheet" href="js/vendor/leaflet.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+:root{--orange:#FF9F1C;--teal:#00D4BC;--purple:#5625a2;--purple-lt:#a678ff}
+html,body{height:100%}
+body{font-family:'Inter',sans-serif;background:#0b0817;color:#fff;overflow:hidden}
+#map{position:absolute;inset:0;background:#0b0817;z-index:1}
+/* tint the real map toward HUBIX purple-dark */
+.leaflet-tile-pane{filter:saturate(.7) brightness(1.35) contrast(1.25) hue-rotate(-8deg)}
+.map-tint{position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:soft-light;
+  background:radial-gradient(ellipse 55% 60% at 50% 45%,rgba(120,70,220,.45),transparent 64%),
+    radial-gradient(ellipse 40% 40% at 80% 14%,rgba(255,159,28,.18),transparent 60%),
+    radial-gradient(ellipse 45% 45% at 20% 90%,rgba(0,212,188,.20),transparent 62%)}
+.map-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(ellipse 70% 75% at 50% 50%,transparent 55%,rgba(8,6,18,.6))}
+#net{position:absolute;inset:0;z-index:3;pointer-events:none}
+.leaflet-control-attribution{background:rgba(11,8,23,.6)!important;color:rgba(255,255,255,.4)!important;font-size:9px!important}
+.leaflet-control-attribution a{color:rgba(0,212,188,.6)!important}
+.leaflet-control-zoom{border:none!important;box-shadow:none!important}
+.leaflet-control-zoom a{background:rgba(20,14,42,.85)!important;color:#fff!important;border:1px solid rgba(255,255,255,.12)!important}
+/* header */
+.hdr{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;align-items:center;gap:11px;padding:16px clamp(16px,4vw,40px);
+  background:linear-gradient(180deg,rgba(11,8,23,.7),transparent)}
+.logo{width:40px;height:40px;border-radius:12px;overflow:hidden;background:rgba(255,255,255,.1);flex-shrink:0}
+.logo img{width:100%;height:100%;object-fit:cover}
+.wd .ht{font-size:18px;font-weight:900;letter-spacing:-.3px}.wd .ht span{color:var(--teal)}
+.wd .hs{font-size:9px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.hdr .cta{margin-left:auto;padding:10px 20px;border-radius:12px;font-size:13px;font-weight:800;
+  background:linear-gradient(135deg,var(--orange),#FF7A00);color:#fff;box-shadow:0 8px 22px rgba(255,159,28,.34);text-decoration:none}
+/* panel */
+.panel{position:absolute;left:clamp(16px,4vw,48px);bottom:clamp(20px,5vh,54px);z-index:6;max-width:430px;
+  background:rgba(11,8,23,.42);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:24px 26px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.vbadge{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--purple-lt);background:rgba(160,120,255,.12);border:1px solid rgba(160,120,255,.3);padding:6px 12px;border-radius:99px;margin-bottom:16px}
+.vbadge .d{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:blink 1.6s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.panel h1{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-1.6px;line-height:1;margin-bottom:14px}
+.panel h1 .o{color:var(--orange);text-shadow:0 0 34px rgba(255,159,28,.5)}
+.panel h1 .t{color:var(--teal)}
+.panel p{font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.7)}
+.panel p b{color:#fff;font-weight:700}
+.readout{margin-top:22px;display:flex;gap:26px;flex-wrap:wrap}
+.readout .n{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:800;letter-spacing:-.5px;line-height:1}
+.readout .r:nth-child(1) .n{color:var(--teal)}.readout .r:nth-child(2) .n{color:var(--orange)}.readout .r:nth-child(3) .n{color:var(--purple-lt)}
+.readout .l{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:4px}
+.foot{position:absolute;bottom:14px;right:16px;z-index:6;font-size:11px;color:rgba(255,255,255,.34)}
+.legend{position:absolute;right:clamp(16px,4vw,40px);top:86px;z-index:6;display:flex;flex-direction:column;gap:9px;
+  background:rgba(11,8,23,.5);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 14px}
+.legend .li{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:600;color:rgba(255,255,255,.72)}
+.legend .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.legend .dot.t{background:var(--teal);box-shadow:0 0 8px var(--teal)}
+.legend .dot.o{background:var(--orange);box-shadow:0 0 8px var(--orange)}
+.legend .dot.p{width:16px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--purple-lt),var(--teal))}
+@media(max-width:760px){.legend{display:none}.panel{left:12px;right:12px;bottom:14px;max-width:none;padding:18px 20px}.panel h1{font-size:26px}.foot{display:none}}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div class="map-tint"></div>
+<div class="map-vignette"></div>
+<canvas id="net"></canvas>
+
+<div class="hdr">
+  <span class="logo"><img src="logo3.png" alt=""></span>
+  <span class="wd"><div class="ht">HUBI<span>X</span></div><div class="hs">Logistics Network</div></span>
+  <a href="index.html" class="cta">Join the network</a>
+</div>
+
+<div class="legend">
+  <div class="li"><span class="dot t"></span>Hub</div>
+  <div class="li"><span class="dot o"></span>Anchor hub</div>
+  <div class="li"><span class="dot p"></span>Bundle route</div>
+</div>
+
+<div class="panel">
+  <span class="vbadge"><span class="d"></span>The vision · HUBIX at scale</span>
+  <h1>Sri Lanka, <span class="t">fully connected.</span></h1>
+  <p>Every town a hub. Every road a route. <b>Bundles flow across the island, hub to hub</b> — no trucks, no warehouses. This is where we're going.</p>
+  <div class="readout">
+    <div class="r"><div class="n" id="cHubs">0</div><div class="l">Hubs</div></div>
+    <div class="r"><div class="n" id="cConn">0</div><div class="l">Connectors</div></div>
+    <div class="r"><div class="n" id="cDist">0</div><div class="l">Districts</div></div>
+  </div>
+</div>
+<div class="foot">Projected vision · not live data · Pilot begins Q4 2026 · Galle 🇱🇰</div>
+
+<script src="js/vendor/leaflet.js"></script>
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // ── real map ──
+  var map=L.map('map',{zoomControl:true,attributionControl:true,scrollWheelZoom:true,
+    minZoom:7,maxZoom:11,zoomSnap:.25}).setView([7.75,80.75],7.6);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19}).addTo(map);
+  map.fitBounds([[5.85,79.6],[9.88,81.95]],{padding:[10,10]});
+
+  // ── population centers (lat,lng,weight) — realistic island-wide coverage ──
+  var CITIES=[
+    [6.93,79.85,100,'COLOMBO'],[6.80,79.88,52,''],[7.21,79.84,42,'NEGOMBO'],[7.09,79.99,34,''],[6.71,79.90,26,''],
+    [6.58,79.96,30,'KALUTARA'],[6.03,80.22,58,'GALLE'],[5.95,80.54,42,'MATARA'],[6.02,80.79,20,'TANGALLE'],
+    [6.24,80.05,20,''],[6.12,81.12,26,'HAMBANTOTA'],[6.28,81.29,14,''],[6.68,80.40,32,'RATNAPURA'],
+    [6.34,80.85,18,''],[7.29,80.63,56,'KANDY'],[7.49,80.36,42,'KURUNEGALA'],[7.25,80.35,22,''],
+    [6.95,80.79,16,'NUWARA ELIYA'],[6.99,81.06,24,'BADULLA'],[6.83,80.99,14,''],[6.87,81.35,15,'MONARAGALA'],
+    [8.31,80.40,38,'ANURADHAPURA'],[7.94,81.00,24,'POLONNARUWA'],[7.86,80.65,18,'DAMBULLA'],[8.03,79.83,20,'PUTTALAM'],
+    [7.58,79.80,20,'CHILAW'],[8.75,80.50,18,'VAVUNIYA'],[8.57,81.23,32,'TRINCOMALEE'],[7.72,81.70,30,'BATTICALOA'],
+    [7.30,81.68,20,'AMPARA'],[7.41,81.83,16,''],[9.66,80.02,42,'JAFFNA'],[9.40,80.40,15,'KILINOCHCHI'],
+    [8.98,79.90,15,'MANNAR'],[9.82,80.23,10,'']
+  ];
+  // ── arteries (major routes as city-index chains) ──
+  var C=function(i){return [CITIES[i][0],CITIES[i][1]];};
+  var ARTERIES=[
+    [0,5,6,7,8].map(function(_,k){return C([0,5,6,7,10][k]);}),      // south coast Colombo→Galle→Matara→Hambantota
+    [C(0),C(16),C(14)],                                              // Colombo→Kandy
+    [C(0),C(15),C(21),C(26),C(32),C(31)],                           // A9 north →Jaffna
+    [C(14),C(23),C(22),C(28)],                                      // Kandy→Dambulla→Polonnaruwa→Batticaloa
+    [C(0),C(12),C(13),C(10)],                                       // Colombo→Ratnapura→Hambantota
+    [C(21),C(27)],                                                  // Anuradhapura→Trincomalee
+    [C(14),C(17),C(18),C(20)],                                      // Kandy→Nuwara Eliya→Badulla→Monaragala
+    [C(2),C(24),C(21)]                                              // Negombo→Puttalam→Anuradhapura
+  ];
+
+  var canvas=document.getElementById('net'), ctx=canvas.getContext('2d');
+  var DPR=Math.min(window.devicePixelRatio||1,2), hubs=[], anchors=[], bundles=[], flows=[];
+  function rndn(){return (Math.random()+Math.random()+Math.random()-1.5)/1.5;}
+
+  function build(){
+    hubs=[]; anchors=[];
+    var mob=window.innerWidth<760, mult=mob?1.6:3.2;
+    CITIES.forEach(function(c){
+      var n=Math.round(c[2]*mult), sd=0.02+c[2]/100*0.11;
+      for(var k=0;k<n;k++){ hubs.push([c[0]+rndn()*sd, c[1]+rndn()*sd*0.8]); }
+      anchors.push({ll:[c[0],c[1]],big:c[2]>=40,label:c[3]});
+    });
+    // bundles on arteries (orange) + teal flows
+    bundles=[]; for(var i=0;i<(mob?7:13);i++) bundles.push(mkTrav(0.0022+Math.random()*0.0026));
+    flows=[]; for(var j=0;j<(mob?12:26);j++) flows.push(mkTrav(0.004+Math.random()*0.004));
+    document.getElementById('cHubs').dataset.t=hubs.length;
+  }
+  function mkTrav(spd){ var ai=Math.floor(Math.random()*ARTERIES.length);
+    return {ai:ai, seg:Math.floor(Math.random()*(ARTERIES[ai].length-1)), t:Math.random(), spd:spd, trail:[]}; }
+  function travLL(tv){ var art=ARTERIES[tv.ai], a=art[tv.seg], b=art[tv.seg+1]||art[tv.seg];
+    return [a[0]+(b[0]-a[0])*tv.t, a[1]+(b[1]-a[1])*tv.t]; }
+  function advance(tv){ tv.t+=tv.spd; if(tv.t>=1){ tv.t=0; tv.seg++;
+    if(tv.seg>=ARTERIES[tv.ai].length-1){ tv.ai=Math.floor(Math.random()*ARTERIES.length); tv.seg=0; tv.trail=[]; } } }
+
+  function P(ll){ var p=map.latLngToContainerPoint(ll); return p; }
+  function resize(){ var s=map.getSize(); canvas.width=Math.round(s.x*DPR); canvas.height=Math.round(s.y*DPR);
+    canvas.style.width=s.x+'px'; canvas.style.height=s.y+'px'; ctx.setTransform(DPR,0,0,DPR,0,0); }
+
+  function draw(){
+    var s=map.getSize(); ctx.clearRect(0,0,s.x,s.y);
+    // arteries (faint purple→teal)
+    ARTERIES.forEach(function(art){ ctx.beginPath();
+      art.forEach(function(ll,i){ var p=P(ll); i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y); });
+      ctx.strokeStyle='rgba(160,120,255,.22)'; ctx.lineWidth=1.4; ctx.stroke(); });
+    // hubs (cheap teal dots)
+    ctx.fillStyle='rgba(0,212,188,.55)';
+    for(var i=0;i<hubs.length;i++){ var p=P(hubs[i]); ctx.fillRect(p.x-0.6,p.y-0.6,1.6,1.6); }
+    // anchors (orange glow)
+    anchors.forEach(function(a){ var p=P(a.ll), r=a.big?4:2.6;
+      ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,.16)'; ctx.arc(p.x,p.y,r*3,0,6.2832); ctx.fill();
+      ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,.95)'; ctx.shadowColor='rgba(255,159,28,.9)'; ctx.shadowBlur=a.big?12:6;
+      ctx.arc(p.x,p.y,r,0,6.2832); ctx.fill(); ctx.shadowBlur=0; });
+    // teal flows
+    flows.forEach(function(f){ var p=P(travLL(f));
+      ctx.beginPath(); ctx.fillStyle='rgba(0,212,188,.9)'; ctx.shadowColor='rgba(0,212,188,.8)'; ctx.shadowBlur=6;
+      ctx.arc(p.x,p.y,1.7,0,6.2832); ctx.fill(); ctx.shadowBlur=0; });
+    // orange bundles (bigger + trail)
+    bundles.forEach(function(b){ var ll=travLL(b), p=P(ll);
+      b.trail.push([p.x,p.y]); if(b.trail.length>10) b.trail.shift();
+      for(var k=0;k<b.trail.length;k++){ var tp=b.trail[k],al=(k/b.trail.length)*0.4;
+        ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,'+al.toFixed(2)+')'; ctx.arc(tp[0],tp[1],2,0,6.2832); ctx.fill(); }
+      ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,.2)'; ctx.arc(p.x,p.y,9,0,6.2832); ctx.fill();
+      ctx.beginPath(); ctx.fillStyle='#FFD166'; ctx.shadowColor='rgba(255,159,28,.95)'; ctx.shadowBlur=14; ctx.arc(p.x,p.y,4,0,6.2832); ctx.fill(); ctx.shadowBlur=0; });
+  }
+  var raf;
+  function step(){ flows.forEach(advance); bundles.forEach(advance); draw(); raf=requestAnimationFrame(step); }
+
+  // counters
+  var shown={cHubs:0,cConn:0,cDist:0}, targets={cHubs:14200,cConn:6500,cDist:25};
+  function counters(){ ['cHubs','cConn','cDist'].forEach(function(id){ var el=document.getElementById(id);
+    if(shown[id]<targets[id]){ shown[id]+=Math.ceil((targets[id]-shown[id])*0.045);
+      el.textContent=(id==='cHubs'?Math.round(shown[id]/100)/10+'k':Math.round(shown[id]).toLocaleString('en-US')); } });
+    if(shown.cHubs<targets.cHubs) requestAnimationFrame(counters);
+    else document.getElementById('cHubs').textContent='14k+'; }
+
+  build(); resize();
+  map.on('move zoom viewreset resize', draw);
+  window.addEventListener('resize', function(){ resize(); draw(); });
+  map.whenReady(function(){ resize(); draw(); if(!reduce){ step(); } counters(); });
+  if(reduce) draw();
+})();
+</script>
+</body>
+</html>
