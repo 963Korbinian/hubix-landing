@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0b0817">
-<title>HUBIX — Sri Lanka, fully connected · The vision at scale</title>
+<title>HUBIX — The island network · Sri Lanka at scale</title>
 <link rel="icon" href="logo3.png">
 <link rel="stylesheet" href="js/vendor/leaflet.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@ body{font-family:'Inter',sans-serif;background:#0b0817;color:#fff;overflow:hidde
 .panel p b{color:#fff;font-weight:700}
 .readout{margin-top:22px;display:flex;gap:26px;flex-wrap:wrap}
 .readout .n{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:800;letter-spacing:-.5px;line-height:1}
-.readout .r:nth-child(1) .n{color:var(--teal)}.readout .r:nth-child(2) .n{color:var(--orange)}.readout .r:nth-child(3) .n{color:var(--purple-lt)}
+.readout .r:nth-child(1) .n{color:var(--teal)}.readout .r:nth-child(2) .n{color:var(--purple-lt)}.readout .r:nth-child(3) .n{color:var(--orange)}
 .readout .l{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:4px}
 .foot{position:absolute;bottom:14px;right:16px;z-index:6;font-size:11px;color:rgba(255,255,255,.34)}
 .legend{position:absolute;right:clamp(16px,4vw,40px);top:86px;z-index:6;display:flex;flex-direction:column;gap:9px;
@@ -77,22 +77,22 @@ body{font-family:'Inter',sans-serif;background:#0b0817;color:#fff;overflow:hidde
 </div>
 
 <div class="legend">
-  <div class="li"><span class="dot t"></span>Hub</div>
-  <div class="li"><span class="dot o"></span>Anchor hub</div>
-  <div class="li"><span class="dot p"></span>Bundle route</div>
+  <div class="li"><span class="dot o"></span>Galle · pilot</div>
+  <div class="li"><span class="dot t"></span>Hub city</div>
+  <div class="li"><span class="dot p"></span>Trunk route</div>
 </div>
 
 <div class="panel">
-  <span class="vbadge"><span class="d"></span>The vision · HUBIX at scale</span>
-  <h1>Sri Lanka, <span class="t">fully connected.</span></h1>
-  <p>Every town a hub. Every road a route. <b>Bundles flow across the island, hub to hub</b> — no trucks, no warehouses. This is where we're going.</p>
+  <span class="vbadge"><span class="d"></span>The island network · at scale</span>
+  <h1>One island,<br><span class="t">one network.</span></h1>
+  <p>We link Sri Lanka's cities hub to hub — no trucks, no warehouses. <b>It starts in Galle, then the coast, then the whole island.</b></p>
   <div class="readout">
-    <div class="r"><div class="n" id="cHubs">0</div><div class="l">Hubs</div></div>
-    <div class="r"><div class="n" id="cConn">0</div><div class="l">Connectors</div></div>
+    <div class="r"><div class="n" id="cHubs">0</div><div class="l">Hub cities</div></div>
+    <div class="r"><div class="n" id="cConn">0</div><div class="l">Trunk routes</div></div>
     <div class="r"><div class="n" id="cDist">0</div><div class="l">Districts</div></div>
   </div>
 </div>
-<div class="foot">Projected vision · not live data · Pilot begins Q4 2026 · Galle 🇱🇰</div>
+<div class="foot">Projected network · not live data · Pilot begins Q4 2026 · Galle 🇱🇰</div>
 
 <script src="js/vendor/leaflet.js"></script>
 <script>
@@ -105,99 +105,126 @@ body{font-family:'Inter',sans-serif;background:#0b0817;color:#fff;overflow:hidde
     attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19}).addTo(map);
   map.fitBounds([[5.85,79.6],[9.88,81.95]],{padding:[10,10]});
 
-  // ── population centers (lat,lng,weight) — realistic island-wide coverage ──
+  // ── the network · big cities as hubs, one designed backbone ──
+  // [lat, lng, name, tier]   tier: 3 = major hub · 2 = regional · 1 = local
   var CITIES=[
-    [6.93,79.85,100,'COLOMBO'],[6.80,79.88,52,''],[7.21,79.84,42,'NEGOMBO'],[7.09,79.99,34,''],[6.71,79.90,26,''],
-    [6.58,79.96,30,'KALUTARA'],[6.03,80.22,58,'GALLE'],[5.95,80.54,42,'MATARA'],[6.02,80.79,20,'TANGALLE'],
-    [6.24,80.05,20,''],[6.12,81.12,26,'HAMBANTOTA'],[6.28,81.29,14,''],[6.68,80.40,32,'RATNAPURA'],
-    [6.34,80.85,18,''],[7.29,80.63,56,'KANDY'],[7.49,80.36,42,'KURUNEGALA'],[7.25,80.35,22,''],
-    [6.95,80.79,16,'NUWARA ELIYA'],[6.99,81.06,24,'BADULLA'],[6.83,80.99,14,''],[6.87,81.35,15,'MONARAGALA'],
-    [8.31,80.40,38,'ANURADHAPURA'],[7.94,81.00,24,'POLONNARUWA'],[7.86,80.65,18,'DAMBULLA'],[8.03,79.83,20,'PUTTALAM'],
-    [7.58,79.80,20,'CHILAW'],[8.75,80.50,18,'VAVUNIYA'],[8.57,81.23,32,'TRINCOMALEE'],[7.72,81.70,30,'BATTICALOA'],
-    [7.30,81.68,20,'AMPARA'],[7.41,81.83,16,''],[9.66,80.02,42,'JAFFNA'],[9.40,80.40,15,'KILINOCHCHI'],
-    [8.98,79.90,15,'MANNAR'],[9.82,80.23,10,'']
+    [6.93,79.85,'COLOMBO',3],       // 0
+    [7.21,79.84,'NEGOMBO',2],       // 1
+    [6.58,79.96,'',1],              // 2  Kalutara
+    [6.03,80.22,'GALLE',3],         // 3  <- PILOT
+    [5.95,80.54,'MATARA',2],        // 4
+    [6.02,80.79,'',1],              // 5  Tangalle
+    [6.12,81.12,'HAMBANTOTA',2],    // 6
+    [6.28,81.29,'',1],              // 7  Tissamaharama
+    [6.68,80.40,'RATNAPURA',2],     // 8
+    [7.29,80.63,'KANDY',3],         // 9
+    [6.95,80.79,'',1],              // 10 Nuwara Eliya
+    [6.99,81.06,'BADULLA',2],       // 11
+    [7.49,80.36,'KURUNEGALA',2],    // 12
+    [7.86,80.65,'',1],              // 13 Dambulla
+    [8.31,80.40,'ANURADHAPURA',2],  // 14
+    [7.94,81.00,'',1],              // 15 Polonnaruwa
+    [8.57,81.23,'TRINCOMALEE',2],   // 16
+    [7.72,81.70,'BATTICALOA',2],    // 17
+    [7.30,81.68,'',1],              // 18 Ampara
+    [8.03,79.83,'',1],              // 19 Puttalam
+    [8.75,80.50,'',1],              // 20 Vavuniya
+    [9.66,80.02,'JAFFNA',2]         // 21
   ];
-  // ── arteries (major routes as city-index chains) ──
-  var C=function(i){return [CITIES[i][0],CITIES[i][1]];};
-  var ARTERIES=[
-    [0,5,6,7,8].map(function(_,k){return C([0,5,6,7,10][k]);}),      // south coast Colombo→Galle→Matara→Hambantota
-    [C(0),C(16),C(14)],                                              // Colombo→Kandy
-    [C(0),C(15),C(21),C(26),C(32),C(31)],                           // A9 north →Jaffna
-    [C(14),C(23),C(22),C(28)],                                      // Kandy→Dambulla→Polonnaruwa→Batticaloa
-    [C(0),C(12),C(13),C(10)],                                       // Colombo→Ratnapura→Hambantota
-    [C(21),C(27)],                                                  // Anuradhapura→Trincomalee
-    [C(14),C(17),C(18),C(20)],                                      // Kandy→Nuwara Eliya→Badulla→Monaragala
-    [C(2),C(24),C(21)]                                              // Negombo→Puttalam→Anuradhapura
+  var PILOT=3;
+  // ── defined routes: [a, b, trunk?] — trunk = major artery (thicker + flow) ──
+  var EDGES=[
+    [0,2,1],[2,3,1],[3,4,1],[4,5,1],[5,6,1],[6,7,0], // south-west coast spine (our focus)
+    [3,8,0],                                        // Galle -> Ratnapura
+    [0,1,1],[0,9,1],[0,8,0],[0,12,1],               // Colombo hub
+    [9,10,0],[10,11,0],[9,13,1],[9,12,0],[8,11,0],  // central hills
+    [12,14,1],[14,20,1],[20,21,1],                  // A9 north spine -> Jaffna
+    [1,19,0],[19,14,0],                             // north-west
+    [13,15,1],[15,17,1],[14,16,1],[17,18,0],        // dry zone + east
+    [11,6,0],[7,18,0]                               // south-east links
   ];
+  var ADJ=[]; CITIES.forEach(function(){ADJ.push([]);});
+  EDGES.forEach(function(e){ ADJ[e[0]].push(e[1]); ADJ[e[1]].push(e[0]); });
 
   var canvas=document.getElementById('net'), ctx=canvas.getContext('2d');
-  var DPR=Math.min(window.devicePixelRatio||1,2), hubs=[], anchors=[], bundles=[], flows=[];
-  function rndn(){return (Math.random()+Math.random()+Math.random()-1.5)/1.5;}
+  var DPR=Math.min(window.devicePixelRatio||1,2), bundles=[], flows=[], t0=0;
 
-  function build(){
-    hubs=[]; anchors=[];
-    var mob=window.innerWidth<760, mult=mob?1.6:3.2;
-    CITIES.forEach(function(c){
-      var n=Math.round(c[2]*mult), sd=0.02+c[2]/100*0.11;
-      for(var k=0;k<n;k++){ hubs.push([c[0]+rndn()*sd, c[1]+rndn()*sd*0.8]); }
-      anchors.push({ll:[c[0],c[1]],big:c[2]>=40,label:c[3]});
-    });
-    // bundles on arteries (orange) + teal flows
-    bundles=[]; for(var i=0;i<(mob?7:13);i++) bundles.push(mkTrav(0.0022+Math.random()*0.0026));
-    flows=[]; for(var j=0;j<(mob?12:26);j++) flows.push(mkTrav(0.004+Math.random()*0.004));
-    document.getElementById('cHubs').dataset.t=hubs.length;
-  }
-  function mkTrav(spd){ var ai=Math.floor(Math.random()*ARTERIES.length);
-    return {ai:ai, seg:Math.floor(Math.random()*(ARTERIES[ai].length-1)), t:Math.random(), spd:spd, trail:[]}; }
-  function travLL(tv){ var art=ARTERIES[tv.ai], a=art[tv.seg], b=art[tv.seg+1]||art[tv.seg];
-    return [a[0]+(b[0]-a[0])*tv.t, a[1]+(b[1]-a[1])*tv.t]; }
-  function advance(tv){ tv.t+=tv.spd; if(tv.t>=1){ tv.t=0; tv.seg++;
-    if(tv.seg>=ARTERIES[tv.ai].length-1){ tv.ai=Math.floor(Math.random()*ARTERIES.length); tv.seg=0; tv.trail=[]; } } }
+  // travellers walk the real graph, hub to hub
+  function mkTrav(spd){ var a, nb;
+    do{ a=Math.floor(Math.random()*CITIES.length); nb=ADJ[a]; }while(!nb.length);
+    var b=nb[Math.floor(Math.random()*nb.length)];
+    return {a:a,b:b,t:Math.random(),spd:spd,trail:[]}; }
+  function advance(v){ v.t+=v.spd; if(v.t>=1){ v.t=0; var nb=ADJ[v.b], nx;
+    do{ nx=nb[Math.floor(Math.random()*nb.length)]; }while(nb.length>1&&nx===v.a);
+    v.a=v.b; v.b=nx; v.trail=[]; } }
+  function travLL(v){ var a=CITIES[v.a], b=CITIES[v.b];
+    return [a[0]+(b[0]-a[0])*v.t, a[1]+(b[1]-a[1])*v.t]; }
 
-  function P(ll){ var p=map.latLngToContainerPoint(ll); return p; }
+  function build(){ var mob=window.innerWidth<760;
+    bundles=[]; for(var i=0;i<(mob?4:7);i++) bundles.push(mkTrav(0.006+Math.random()*0.004));
+    flows=[]; for(var j=0;j<(mob?8:16);j++) flows.push(mkTrav(0.009+Math.random()*0.006)); }
+
+  function P(ll){ return map.latLngToContainerPoint([ll[0],ll[1]]); }
   function resize(){ var s=map.getSize(); canvas.width=Math.round(s.x*DPR); canvas.height=Math.round(s.y*DPR);
     canvas.style.width=s.x+'px'; canvas.style.height=s.y+'px'; ctx.setTransform(DPR,0,0,DPR,0,0); }
 
   function draw(){
     var s=map.getSize(); ctx.clearRect(0,0,s.x,s.y);
-    // arteries (faint purple→teal)
-    ARTERIES.forEach(function(art){ ctx.beginPath();
-      art.forEach(function(ll,i){ var p=P(ll); i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y); });
-      ctx.strokeStyle='rgba(160,120,255,.22)'; ctx.lineWidth=1.4; ctx.stroke(); });
-    // hubs (cheap teal dots)
-    ctx.fillStyle='rgba(0,212,188,.55)';
-    for(var i=0;i<hubs.length;i++){ var p=P(hubs[i]); ctx.fillRect(p.x-0.6,p.y-0.6,1.6,1.6); }
-    // anchors (orange glow)
-    anchors.forEach(function(a){ var p=P(a.ll), r=a.big?4:2.6;
-      ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,.16)'; ctx.arc(p.x,p.y,r*3,0,6.2832); ctx.fill();
-      ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,.95)'; ctx.shadowColor='rgba(255,159,28,.9)'; ctx.shadowBlur=a.big?12:6;
-      ctx.arc(p.x,p.y,r,0,6.2832); ctx.fill(); ctx.shadowBlur=0; });
-    // teal flows
+    // ── edges (the defined backbone) ──
+    EDGES.forEach(function(e){ var a=P(CITIES[e[0]]), b=P(CITIES[e[1]]), trunk=e[2];
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=trunk?'rgba(166,120,255,.5)':'rgba(140,105,220,.22)';
+      ctx.lineWidth=trunk?1.7:1; if(trunk){ctx.shadowColor='rgba(120,80,220,.5)';ctx.shadowBlur=4;}
+      ctx.stroke(); ctx.shadowBlur=0; });
+    // ── teal flow pulses ──
     flows.forEach(function(f){ var p=P(travLL(f));
       ctx.beginPath(); ctx.fillStyle='rgba(0,212,188,.9)'; ctx.shadowColor='rgba(0,212,188,.8)'; ctx.shadowBlur=6;
-      ctx.arc(p.x,p.y,1.7,0,6.2832); ctx.fill(); ctx.shadowBlur=0; });
-    // orange bundles (bigger + trail)
-    bundles.forEach(function(b){ var ll=travLL(b), p=P(ll);
-      b.trail.push([p.x,p.y]); if(b.trail.length>10) b.trail.shift();
-      for(var k=0;k<b.trail.length;k++){ var tp=b.trail[k],al=(k/b.trail.length)*0.4;
+      ctx.arc(p.x,p.y,1.8,0,6.2832); ctx.fill(); ctx.shadowBlur=0; });
+    // ── orange bundles (with trail) ──
+    bundles.forEach(function(b){ var p=P(travLL(b));
+      b.trail.push([p.x,p.y]); if(b.trail.length>9) b.trail.shift();
+      for(var k=0;k<b.trail.length;k++){ var tp=b.trail[k], al=(k/b.trail.length)*0.4;
         ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,'+al.toFixed(2)+')'; ctx.arc(tp[0],tp[1],2,0,6.2832); ctx.fill(); }
-      ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,.2)'; ctx.arc(p.x,p.y,9,0,6.2832); ctx.fill();
+      ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,.18)'; ctx.arc(p.x,p.y,9,0,6.2832); ctx.fill();
       ctx.beginPath(); ctx.fillStyle='#FFD166'; ctx.shadowColor='rgba(255,159,28,.95)'; ctx.shadowBlur=14; ctx.arc(p.x,p.y,4,0,6.2832); ctx.fill(); ctx.shadowBlur=0; });
+    // ── city nodes ──
+    var pulse=0.5+0.5*Math.sin(t0*0.05);
+    CITIES.forEach(function(c,i){ var p=P(c), pilot=(i===PILOT), r=c[3]===3?6:c[3]===2?4:2.6;
+      if(pilot){
+        ctx.beginPath(); ctx.strokeStyle='rgba(255,159,28,'+(0.5*(1-pulse)).toFixed(2)+')'; ctx.lineWidth=2;
+        ctx.arc(p.x,p.y,7+pulse*10,0,6.2832); ctx.stroke();
+        ctx.beginPath(); ctx.fillStyle='rgba(255,159,28,.2)'; ctx.arc(p.x,p.y,15,0,6.2832); ctx.fill();
+        ctx.beginPath(); ctx.fillStyle='#FF9F1C'; ctx.shadowColor='rgba(255,159,28,.95)'; ctx.shadowBlur=16; ctx.arc(p.x,p.y,7,0,6.2832); ctx.fill(); ctx.shadowBlur=0;
+      } else {
+        ctx.beginPath(); ctx.fillStyle='rgba(0,212,188,.14)'; ctx.arc(p.x,p.y,r*2.4,0,6.2832); ctx.fill();
+        ctx.beginPath(); ctx.fillStyle='rgba(0,212,188,.95)'; ctx.shadowColor='rgba(0,212,188,.7)'; ctx.shadowBlur=c[3]===3?10:5;
+        ctx.arc(p.x,p.y,r,0,6.2832); ctx.fill(); ctx.shadowBlur=0;
+      }
+    });
+    // ── labels (named cities only) ──
+    ctx.font='700 11px "JetBrains Mono", monospace'; ctx.textAlign='left';
+    CITIES.forEach(function(c,i){ if(!c[2]) return; var p=P(c), pilot=(i===PILOT);
+      var tx=p.x+(c[3]===3?11:9), ty=p.y+4;
+      ctx.fillStyle='rgba(8,6,18,.55)'; ctx.fillText(c[2],tx+0.7,ty+0.7);
+      ctx.fillStyle=pilot?'#FF9F1C':(c[3]===3?'rgba(255,255,255,.95)':'rgba(255,255,255,.7)');
+      ctx.fillText(c[2],tx,ty);
+      if(pilot){ ctx.font='800 8px Inter, sans-serif'; ctx.fillStyle='rgba(255,159,28,.85)';
+        ctx.fillText('PILOT · Q4 2026',tx,ty+12); ctx.font='700 11px "JetBrains Mono", monospace'; }
+    });
   }
   var raf;
-  function step(){ flows.forEach(advance); bundles.forEach(advance); draw(); raf=requestAnimationFrame(step); }
+  function step(){ t0++; flows.forEach(advance); bundles.forEach(advance); draw(); raf=requestAnimationFrame(step); }
 
-  // counters
-  var shown={cHubs:0,cConn:0,cDist:0}, targets={cHubs:14200,cConn:6500,cDist:25};
-  function counters(){ ['cHubs','cConn','cDist'].forEach(function(id){ var el=document.getElementById(id);
-    if(shown[id]<targets[id]){ shown[id]+=Math.ceil((targets[id]-shown[id])*0.045);
-      el.textContent=(id==='cHubs'?Math.round(shown[id]/100)/10+'k':Math.round(shown[id]).toLocaleString('en-US')); } });
-    if(shown.cHubs<targets.cHubs) requestAnimationFrame(counters);
-    else document.getElementById('cHubs').textContent='14k+'; }
+  // counters — honest network structure
+  var shown={cHubs:0,cConn:0,cDist:0}, targets={cHubs:22,cConn:26,cDist:25};
+  function counters(){ var done=true; ['cHubs','cConn','cDist'].forEach(function(id){ var el=document.getElementById(id);
+    if(shown[id]<targets[id]){ shown[id]=Math.min(targets[id],shown[id]+Math.ceil((targets[id]-shown[id])*0.08)+1); done=false; }
+    el.textContent=Math.round(shown[id]); });
+    if(!done) requestAnimationFrame(counters); }
 
   build(); resize();
   map.on('move zoom viewreset resize', draw);
-  window.addEventListener('resize', function(){ resize(); draw(); });
+  window.addEventListener('resize', function(){ resize(); build(); draw(); });
   map.whenReady(function(){ resize(); draw(); if(!reduce){ step(); } counters(); });
   if(reduce) draw();
 })();
