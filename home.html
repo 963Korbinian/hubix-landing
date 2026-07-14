@@ -28,7 +28,7 @@
   --card:#ffffff; --card-border:#F0EAFB; --label:#5625a2;
   --maxw:1180px; --gutter:clamp(20px,5vw,60px);
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
 body{font-family:'Inter',sans-serif;color:var(--ink);background:#F5F7FF;line-height:1.5}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -281,6 +281,93 @@ a{color:inherit;text-decoration:none}
 }
 @media(min-width:1000px){.tgrid{grid-template-columns:repeat(4,1fr)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none}}
+
+/* ═══════════ NEW · dark marketing/investor sections ═══════════ */
+.dsec{position:relative;overflow:hidden;background:linear-gradient(135deg,#160a36 0%,#251056 55%,#160a36 100%)}
+.dsec .fol{opacity:.04}
+.dsec-in{position:relative;z-index:2;padding:clamp(60px,9vw,120px) 0}
+.dsec .sec-label{color:var(--teal)}.dsec .sec-label::before{background:var(--teal)}
+.dsec .h2{color:#fff}
+.dsec .lead{color:rgba(255,255,255,.66)}.dsec .lead b{color:#fff}
+.signpost{display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.4)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{display:inline-flex;align-items:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:600;color:var(--teal);border:1px solid rgba(0,212,188,.35);border-radius:99px;padding:4px 11px;background:rgba(0,212,188,.05)}
+/* AI numbered blocks */
+.ai-blocks{display:flex;flex-direction:column;gap:16px;margin-top:44px}
+.ai-b{padding:24px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09)}
+.ai-b-num{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;color:var(--orange)}
+.ai-b-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--teal);margin:3px 0 9px}
+.ai-b h3{font-size:19px;font-weight:800;color:#fff;letter-spacing:-.3px;margin-bottom:9px}
+.ai-b p{font-size:14px;line-height:1.62;color:rgba(255,255,255,.66)}.ai-b p b{color:#fff;font-weight:700}
+.ai-payoff{margin-top:32px;text-align:center;font-size:clamp(17px,2.3vw,22px);font-weight:700;line-height:1.5;color:#fff;max-width:60ch;margin-left:auto;margin-right:auto}
+.ai-payoff .t{color:var(--teal)}
+/* difference matrix */
+.diff{display:grid;grid-template-columns:1fr;gap:12px;margin-top:40px}
+.drow{display:grid;grid-template-columns:1fr;gap:8px}
+.diff-dim{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);padding:4px 2px 0}
+.dcell{border-radius:15px;padding:16px 18px;border:1px solid}
+.dcell.old{background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.08)}
+.dcell.new{background:radial-gradient(130% 130% at 0% 0%,rgba(0,212,188,.1),transparent 62%);border-color:rgba(0,212,188,.3)}
+.dcell .dk{font-size:10.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:7px}
+.dcell.old .dk{color:rgba(255,255,255,.38)}.dcell.new .dk{color:var(--teal)}
+.dcell .dt{font-size:13px;line-height:1.5;color:rgba(255,255,255,.68)}.dcell.new .dt b{color:var(--orange);font-weight:700}
+.diff-pay{margin-top:30px;text-align:center;font-size:clamp(15px,2vw,19px);font-weight:600;line-height:1.5;color:#fff;max-width:62ch;margin-left:auto;margin-right:auto}
+.diff-pay .t{color:var(--teal)}
+.diff-note{margin-top:20px;text-align:center;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.48);max-width:56ch;margin-left:auto;margin-right:auto}
+/* investor pillars */
+.inv{background:linear-gradient(135deg,#0d0620 0%,#160a36 100%)}
+.inv .sec-label{color:var(--teal)}
+.inv .h2{color:#fff}.inv-pos{margin-top:16px;font-size:clamp(15px,1.9vw,18px);line-height:1.55;color:rgba(255,255,255,.6);max-width:64ch}.inv-pos b{color:#fff}
+.pillars{display:grid;grid-template-columns:1fr;margin-top:40px;border-top:1px solid rgba(255,255,255,.1)}
+.pillar{padding:26px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.pillar .pi{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:800;color:var(--teal);margin-bottom:10px}
+.pillar h3{font-size:18px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.3px;display:inline-block}
+.pillar.moat h3{border-bottom:2px solid var(--orange);padding-bottom:5px}
+.pillar p{font-size:13.5px;line-height:1.62;color:rgba(255,255,255,.62)}.pillar p b{color:#fff}
+.inv-thesis{margin-top:32px;padding:24px;border-radius:18px;background:rgba(0,212,188,.05);border:1px solid rgba(0,212,188,.2)}
+.inv-thesis p{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.8)}.inv-thesis p b{color:#fff}
+.inv-honest{margin-top:24px;padding-left:18px;border-left:2px solid rgba(255,255,255,.2);font-size:13px;line-height:1.6;color:rgba(255,255,255,.58)}
+.inv-cta{margin-top:26px;font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.78)}
+.inv-cta a{color:var(--teal);font-weight:700;border-bottom:1px solid rgba(0,212,188,.45)}
+/* contact */
+.contact{background:linear-gradient(135deg,#160a36 0%,#1f0d48 100%)}
+.contact-in{position:relative;z-index:2;padding:clamp(60px,8vw,100px) 0 34px}
+.contact-top{display:grid;grid-template-columns:1fr;gap:30px;margin-bottom:8px}
+.contact h2{font-size:clamp(25px,3.8vw,40px);font-weight:900;letter-spacing:-1px;color:#fff;line-height:1.08}
+.contact .csub{margin-top:12px;font-size:15px;color:var(--teal);font-weight:600}
+.contact .cintro{margin-top:14px;font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.6);max-width:46ch}
+.mailgrid{display:grid;grid-template-columns:1fr;gap:11px}
+.mailcard{display:block;padding:17px 19px;border-radius:15px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left-width:3px;transition:border-color .18s,box-shadow .2s,background .18s}
+.mailcard:hover,.mailcard:focus-visible{background:rgba(255,255,255,.07);box-shadow:0 10px 28px rgba(0,0,0,.32);outline:none}
+.mailcard .ml-role{font-size:10px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:5px}
+.mailcard .ml-addr{font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:700;color:#fff;margin-bottom:6px;word-break:break-word}
+.mailcard .ml-use{font-size:12px;line-height:1.5;color:rgba(255,255,255,.58)}
+.mailcard.general{border-left-color:rgba(255,255,255,.42)}
+.mailcard.invest{border-left-color:var(--purple)}.mailcard.invest .ml-addr{color:#c9a8ff}
+.mailcard.mjoin{border-left-color:var(--orange)}.mailcard.mjoin .ml-addr{color:var(--orange)}
+.mailcard.support{border-left-color:var(--teal)}.mailcard.support .ml-addr{color:var(--teal)}
+.contact-meta{margin-top:22px;display:flex;flex-direction:column;gap:15px}
+.c-loc{font-size:13px;color:rgba(255,255,255,.62);line-height:1.5}.c-loc b{color:#fff}
+.wa-row{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.wa-btn{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:12px;border:1.5px solid rgba(0,212,188,.4);color:var(--teal);font-weight:700;font-size:13px;background:rgba(0,212,188,.05)}
+.wa-soon{font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.22);border-radius:6px;padding:3px 7px}
+.c-note{font-size:12px;line-height:1.55;color:rgba(255,255,255,.5)}
+.c-nophone{padding-left:15px;border-left:2px solid rgba(0,212,188,.4);font-size:12px;line-height:1.55;color:rgba(255,255,255,.55)}
+.contact-foot{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.12);padding:24px 0 6px;margin-top:34px;display:flex;flex-wrap:wrap;gap:12px 20px;justify-content:space-between;align-items:center}
+.contact-foot .cf-sign{font-size:12px;color:rgba(255,255,255,.52);max-width:52ch}.contact-foot .cf-sign b{color:rgba(255,255,255,.82)}
+.contact-foot .cf-links{display:flex;flex-wrap:wrap;gap:8px 15px;font-size:11.5px}
+.contact-foot .cf-links a{color:rgba(255,255,255,.58)}.contact-foot .cf-links a:hover{color:var(--teal)}
+.fpill{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,159,28,.4);border-radius:99px;padding:3px 9px;background:rgba(255,159,28,.08)}
+@media(min-width:820px){
+  .ai-b{padding:28px 30px}
+  .diff{grid-template-columns:150px 1fr 1fr;align-items:stretch;gap:12px 14px}
+  .drow{display:contents}
+  .diff-dim{align-self:center;padding-top:0}
+  .pillars{grid-template-columns:1fr 1fr;gap:0 46px}
+  .pillar{padding:30px 0}
+  .contact-top{grid-template-columns:1fr 1.15fr;gap:46px}
+  .mailgrid{grid-template-columns:1fr 1fr}
+}
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
@@ -296,16 +383,17 @@ a{color:inherit;text-decoration:none}
     </a>
     <div class="nav-links">
       <a href="#how">How it works</a>
+      <a href="#how-ai">The AI</a>
       <a href="#trust">Trust</a>
-      <a href="#value">For hubs &amp; connectors</a>
-      <a href="#founder">Our story</a>
+      <a href="#investors">Investors</a>
+      <a href="#contact">Contact</a>
     </div>
-    <a href="index.html" class="nav-cta">Join the network <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
+    <a href="#contact" class="nav-cta">Get in touch <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="wrap nav-mobile" id="navMobile">
-    <a href="#how">How it works</a><a href="#trust">Trust</a><a href="#value">For hubs &amp; connectors</a><a href="#founder">Our story</a>
-    <a href="index.html" class="m-cta">Join the network</a>
+    <a href="#how">How it works</a><a href="#how-ai">The AI</a><a href="#trust">Trust</a><a href="#investors">Investors</a><a href="#contact">Contact</a>
+    <a href="#contact" class="m-cta">Get in touch</a>
   </div>
 </nav>
 <span id="top"></span>
@@ -320,12 +408,12 @@ a{color:inherit;text-decoration:none}
       <h1 class="hero-h1">Together we move <span class="o">Sri Lanka.</span></h1>
       <p class="hero-sub">Sri Lanka's people-powered logistics network. <b>Shops become Hubs. Neighbors become Connectors.</b> A parcel travels through hands you already trust — and everyone along the way earns.</p>
       <div class="doors">
-        <a href="index.html" class="door send"><span class="door-em">📦</span><span class="door-txt"><span class="door-t">Send a package</span><span class="door-d">Drop at a hub near you</span></span><span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span></a>
-        <a href="index.html" class="door hub"><span class="door-em">🏠</span><span class="door-txt"><span class="door-t">Become a Hub</span><span class="door-d">Turn your shop into a node</span></span><span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span></a>
-        <a href="index.html" class="door conn"><span class="door-em">🛺</span><span class="door-txt"><span class="door-t">Become a Connector</span><span class="door-d">Earn on roads you already ride</span></span><span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span></a>
+        <a href="#contact" class="door send"><span class="door-em">📦</span><span class="door-txt"><span class="door-t">Send a package</span><span class="door-d">Drop at a hub near you</span></span><span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span></a>
+        <a href="#contact" class="door hub"><span class="door-em">🏠</span><span class="door-txt"><span class="door-t">Become a Hub</span><span class="door-d">Turn your shop into a node</span></span><span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span></a>
+        <a href="#contact" class="door conn"><span class="door-em">🛺</span><span class="door-txt"><span class="door-t">Become a Connector</span><span class="door-d">Earn on roads you already ride</span></span><span class="door-arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span></a>
       </div>
       <div class="hero-actions">
-        <a href="index.html" class="btn btn-primary">Join the founding network <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
+        <a href="#contact" class="btn btn-primary">Get in touch <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
         <a href="#how" class="btn btn-ghost">See how it works</a>
       </div>
       <div class="hero-trust">
@@ -377,7 +465,7 @@ a{color:inherit;text-decoration:none}
       <div class="center reveal"><span class="sec-label">The pieces are already here</span><h2 class="h2">We don't build trucks.<br>We connect <span class="t">what exists.</span></h2></div>
       <div class="stats">
         <div class="stat reveal"><div class="num"><span data-count="22">0</span>M</div><div class="lbl">People</div></div>
-        <div class="stat reveal"><div class="num"><span data-count="275000">0</span></div><div class="lbl">Shops · hubs</div></div>
+        <div class="stat reveal"><div class="num">270k<span style="font-size:.55em;vertical-align:super">+</span></div><div class="lbl">Shops · hubs</div></div>
         <div class="stat reveal"><div class="num"><span data-count="8">0</span>M+</div><div class="lbl">Vehicles · connectors</div></div>
         <div class="stat reveal"><div class="num"><span data-count="32">0</span>M</div><div class="lbl">Mobile connections</div></div>
       </div>
@@ -474,7 +562,7 @@ a{color:inherit;text-decoration:none}
         <h2>Come in early.<br><span class="o">Grow with us.</span></h2>
         <p>Everyone who joins before launch is a <b>Founding Member</b> — a founding number, priority in your area, and a direct line to the founder. <b>No discount, no countdown.</b> A network built together doesn't shut people out.</p>
         <div class="join-actions">
-          <a href="index.html" class="btn btn-primary">Claim your founding spot <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
+          <a href="#contact" class="btn btn-primary">Get in touch <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
           <a href="#how" class="btn btn-ghost">See how it works</a>
         </div>
         <p class="join-fine">Pilot begins Q4 2026 in Galle · then across the South &amp; Southwest.</p>
@@ -483,34 +571,97 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- FOOTER (lila) -->
-<footer class="footer">
+
+<!-- UNDER THE HOOD · how the AI works -->
+<section class="dsec" id="how-ai">
   <div class="fol"></div>
-  <div class="wrap footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#top" class="nav-brand">
-          <span class="logo-box"><img src="logo3.png" alt="HUBIX lion"></span>
-          <span class="nav-word"><span class="ht">HUBI<span>X</span></span><span class="hs">Logistics Network</span></span>
-        </a>
-        <p>Sri Lanka's people-powered logistics network. Shops become hubs. Neighbors become connectors. Everyone moves — everyone earns.</p>
+  <div class="wrap dsec-in">
+    <div class="center reveal">
+      <span class="sec-label">Under the hood</span>
+      <span class="signpost">Architecture · pre-launch · Pilot Q4 2026 · Galle</span>
+      <h2 class="h2" style="margin-top:14px">How <span class="brand">HUBI<span class="brand-x">X</span></span> makes an honest hour of driving pay.</h2>
+      <p class="lead center" style="margin-top:16px">A neighbour already driving across town could carry your parcel. The problem was never the driver — it's the math. One parcel per trip earns a driver about <b>LKR 60 an hour</b>, less than the petrol; stack the right parcels onto the same road and that hour could clear <b>LKR 150 or more</b>. These are illustrative unit economics — the pilot exists to prove them. Finding those stacks, every minute, for every driver, across a whole city, is a routing problem no human can solve by hand. That's the one job our AI is built to do.</p>
+    </div>
+    <div class="ai-blocks">
+      <div class="ai-b reveal"><div class="ai-b-num">01</div><div class="ai-b-lbl">The Bundle Engine</div><h3>Parcels that share a road, found automatically.</h3><p>Every order is a point on a map — a pickup, a drop-off, a size, a deadline. Our optimizer, built on <b>Google OR-Tools and PyVRP</b> (the same class of solver that routes commercial fleets), continuously searches for the parcels that happen to share a road. It doesn't hand a driver a growing to-do list — it hands them one finished, fully-sequenced route. The driver takes the whole bundle as-is, or leaves it for the next one. We call it <b>Pick-a-whole-Bundle</b> — the plan is optimized before it ever reaches a phone.</p><div class="chips"><span class="chip">Google OR-Tools</span><span class="chip">PyVRP</span><span class="chip">VRP solver</span></div></div>
+      <div class="ai-b reveal"><div class="ai-b-num">02</div><div class="ai-b-lbl">The Continuous Order Book</div><h3>The plan never freezes. It re-solves every 60 seconds.</h3><p>Real demand doesn't arrive in tidy batches, so we never freeze the plan. Every <b>60 seconds</b> the order book re-solves from scratch against whatever is on the map right now. Anything that keeps getting passed over earns an automatic price boost the longer it waits — until it becomes worth someone's short detour. Nothing sits forgotten in a corner. It's a marketplace built to clear itself, minute by minute.</p><div class="chips"><span class="chip">60s re-solve</span><span class="chip">aging price-boost</span></div></div>
+      <div class="ai-b reveal"><div class="ai-b-num">03</div><div class="ai-b-lbl">The Self-Learning Loop</div><h3>The road overwrites the map.</h3><p>Google Maps is optimistic about Sri Lankan roads — a tuk-tuk stuck behind a bus on the Galle Road doesn't move at map speed. So every estimate starts with a <b>×1.35 reality correction</b>, and then the road overwrites it: once a lane has enough real trips behind it (~30), the system trusts its own measured times over the map's. It also treats a bus or a train as a valid leg. Every handover makes the next prediction sharper — a compounding advantage that grows with the network.</p><div class="chips"><span class="chip">×1.35 correction</span><span class="chip">learns after ~30 trips</span><span class="chip">bus · train legs</span></div></div>
+      <div class="ai-b reveal"><div class="ai-b-num">04</div><div class="ai-b-lbl">The Trust Layer</div><h3>Clever routing is worthless if the chain isn't trusted.</h3><p>A parcel changes hands up to <b>five times</b>, and every single handover is a two-sided handshake backed by a photo — logged, timestamped, and attached to that parcel's history. Senders, hubs, connectors and recipients each carry their own trust score. The trust history a network like this accumulates — who did what, reliably, over time — is the real moat: the one thing a competitor can't copy over a weekend.</p><div class="chips"><span class="chip">2-way handshake</span><span class="chip">photo trail</span><span class="chip">5 handovers</span><span class="chip">4 trust scores</span></div></div>
+    </div>
+    <p class="ai-payoff reveal">None of this is magic. It's a routing engine, a continuous order book, and a learning loop — all pointed at one question: <span class="t">how do we make an honest hour of driving genuinely pay?</span> Answer that, and the network starts to build itself.</p>
+  </div>
+</section>
+
+<!-- WHY THIS ISN'T JUST ANOTHER COURIER -->
+<section class="dsec" id="different" style="background:linear-gradient(135deg,#1a0a3e 0%,#2d1060 60%,#1a0a3e 100%)">
+  <div class="fol"></div>
+  <div class="wrap dsec-in">
+    <div class="reveal">
+      <span class="sec-label">The difference</span>
+      <h2 class="h2" style="margin-top:12px">Why this isn't just<br>another courier.</h2>
+      <p class="lead" style="margin-top:16px">Traditional couriers move parcels by owning everything — the vans, the riders, the routes. That works. It's also why the economics only add up at high volume, on corridors big enough to justify a truck. The everyday shipments — a small shop sending five orders down one road — are exactly what falls through those gaps. <b><span class="brand">HUBI<span class="brand-x">X</span></span> starts from the other end.</b> We don't buy vehicles. Shops become hubs. Neighbours already making the trip become connectors. And by design, an AI dispatcher bundles loose orders into one optimized run — recomputed every 60 seconds — so a single ride can carry many parcels instead of one.</p>
+    </div>
+    <div class="diff reveal">
+      <div class="drow"><span class="diff-dim">Fleet &amp; assets</span><div class="dcell old"><div class="dk">The old way</div><div class="dt">Owns the vans, riders and depots. Capital-heavy.</div></div><div class="dcell new"><div class="dk">The HUBIX way</div><div class="dt">Shops become hubs. Neighbours become connectors. <b>Asset-light P2P.</b></div></div></div>
+      <div class="drow"><span class="diff-dim">Routing</span><div class="dcell old"><div class="dk">The old way</div><div class="dt">Fixed routes and schedules, planned in advance.</div></div><div class="dcell new"><div class="dk">The HUBIX way</div><div class="dt">AI bundles orders into route-optimized stacks, <b>recomputed every 60 seconds.</b></div></div></div>
+      <div class="drow"><span class="diff-dim">Unit economics</span><div class="dcell old"><div class="dk">The old way</div><div class="dt">Cost climbs with every extra vehicle on the road.</div></div><div class="dcell new"><div class="dk">The HUBIX way</div><div class="dt">One trip carries many parcels. <b>Stacking is the whole model</b> — it can turn a single-drop ride into a worthwhile one.</div></div></div>
+      <div class="drow"><span class="diff-dim">Trust</span><div class="dcell old"><div class="dk">The old way</div><div class="dt">A tracking number and a support line.</div></div><div class="dcell new"><div class="dk">The HUBIX way</div><div class="dt">Two-way handshake plus a photo trail at every handoff. <b>Four separate trust scores.</b></div></div></div>
+      <div class="drow"><span class="diff-dim">The moat</span><div class="dcell old"><div class="dk">The old way</div><div class="dt">Scale and fleet size.</div></div><div class="dcell new"><div class="dk">The HUBIX way</div><div class="dt"><b>Trust history and network density</b> — earned over time, not bought.</div></div></div>
+    </div>
+    <p class="diff-pay reveal">Same promise — your parcel gets there, accounted for at every step. A <span class="t">different machine underneath</span>: no fleet to feed, AI doing the routing, and trust you can actually see.</p>
+    <p class="diff-note reveal">This isn't a knock on classic logistics — it's a different tool for a different job. Fleets win at scale on fixed lanes. We're built for the dense, in-between routes they can't serve profitably. We're pre-launch, piloting in Galle from Q4 2026 — the architecture and the plan, built in the open.</p>
+  </div>
+</section>
+
+<!-- FOR PARTNERS & INVESTORS -->
+<section class="dsec inv" id="investors">
+  <div class="wrap dsec-in">
+    <div class="reveal">
+      <span class="sec-label">For partners &amp; investors</span>
+      <h2 class="h2" style="margin-top:12px">Built, not hyped.</h2>
+      <p class="inv-pos"><span class="brand">HUBI<span class="brand-x">X</span></span> is infrastructure, not an app skin — <b>the trust layer that makes peer-to-peer parcel delivery economical in Sri Lanka.</b> Built in Galle, engineered to scale island-wide.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar"><div class="pi">01 · The market</div><h3>Fragmented, thin outside Colombo</h3><p>Sri Lanka's domestic parcel flow is fragmented, cash-on-delivery-heavy, and thin everywhere outside the Colombo corridor. Shops move goods through informal favours, buses, and three-wheelers — reliable enough to survive, too unreliable to scale. We start where the pain is sharpest and the incumbents are weakest: <b>Galle and the Southern Province.</b></p></div>
+      <div class="pillar"><div class="pi">02 · Why now</div><h3>The rails are missing, not the demand</h3><p>Smartphones and shop-to-consumer commerce have reached the south, but no one has built a trusted delivery network beneath them. Whoever earns trust on these corridors first sets the standard — and that window is open <b>now, not forever.</b></p></div>
+      <div class="pillar moat"><div class="pi">03 · The moat</div><h3>Trust-takes-all, not winner-takes-all</h3><p>P2P logistics isn't winner-takes-all — it's trust-takes-all. Every handoff we verify (two-sided handshake plus photo trail across all five touchpoints) compounds into a delivery history that's hard to buy or backfill. <b>AI is the catalyst, not the moat</b> — it makes bundling economical; the network and its trust record are what's hard to copy. We estimate a <b>24–36 month</b> first-mover window to build that lead.</p></div>
+      <div class="pillar"><div class="pi">04 · The architecture</div><h3>Asset-light, self-optimising by design</h3><p>Shops become hubs, neighbours become connectors, no fleet on our books. A continuous order book re-optimises every 60 seconds; an OR-Tools + PyVRP solver bundles single parcels into multi-order routes a driver takes as one whole. Built to learn real Sri Lankan travel times against prediction — from a ×1.35 correction, refined once enough trips accrue (~30 per lane) — and treats buses and trains as first-class transport modes.</p></div>
+    </div>
+    <div class="inv-thesis reveal"><p><b>The economic thesis.</b> A driver carrying single parcels earns too little to show up twice. Bundled into optimised multi-order stacks, the same hour becomes worth doing. That gap — from unviable to viable — is the entire reason the routing engine exists. It's the problem we engineer around, stated as a model, not a claim of traction.</p></div>
+    <p class="inv-honest reveal">We're pre-launch, with the pilot targeted for Q4 2026 in Galle. So we won't wave traction numbers we haven't earned. What we show instead is real: a working architecture, a defensible moat thesis, a concrete rollout plan, and a founder-built product. <b style="color:#fff">Vision, engineered — not a deck of promises.</b></p>
+    <p class="inv-cta reveal">If you back infrastructure before it's obvious — or you can open doors in Sri Lankan logistics, retail, or capital — let's talk. Reach the founder directly: <a href="mailto:founder@hubixlogistics.com">founder@hubixlogistics.com</a> · Galle, Southern Province, Sri Lanka.</p>
+  </div>
+</section>
+
+<!-- CONTACT + FOOTER -->
+<footer class="contact" id="contact">
+  <div class="fol"></div>
+  <div class="wrap contact-in">
+    <div class="contact-top">
+      <div class="reveal">
+        <h2>No call center.<br>Just the founder building <span class="brand">HUBI<span class="brand-x">X</span></span>.</h2>
+        <p class="csub">Four inboxes, one promise: a human reads it, a human replies.</p>
+        <p class="cintro">Most logistics companies hide behind a hotline and a ticket number. <span class="brand">HUBI<span class="brand-x">X</span></span> doesn't. It's a founder in Galle building the founding network — every message lands with a real person. Pick the inbox that fits.</p>
       </div>
-      <div class="footer-cols">
-        <div class="fcol"><h4>Network</h4><a href="#how">How it works</a><a href="#trust">Trust</a><a href="#value">For hubs &amp; connectors</a></div>
-        <div class="fcol"><h4>Join</h4><a href="index.html">Send a package</a><a href="index.html">Become a Hub</a><a href="index.html">Become a Connector</a></div>
-        <div class="fcol"><h4>Company</h4><a href="#founder">Our story</a><a href="index.html">Founding Members</a></div>
+      <div class="mailgrid reveal">
+        <a class="mailcard general" href="mailto:hallo@hubixlogistics.com"><div class="ml-role">General</div><div class="ml-addr">hallo@hubixlogistics.com</div><div class="ml-use">Not sure where to start? Start here — questions, hellos, anything that doesn't fit the boxes.</div></a>
+        <a class="mailcard invest" href="mailto:founder@hubixlogistics.com"><div class="ml-role">Investors &amp; Press</div><div class="ml-addr">founder@hubixlogistics.com</div><div class="ml-use">Straight to the founder — no gatekeeper. We're pre-launch and honest about it: vision, architecture, plan, moat — not invented traction.</div></a>
+        <a class="mailcard mjoin" href="mailto:join@hubixlogistics.com"><div class="ml-role">Join the network <span class="fpill">founding 100</span></div><div class="ml-addr">join@hubixlogistics.com</div><div class="ml-use">Turn your shop into a Hub, deliver as a Connector, or ship with us. Tell us your shop, your route, or what you need moved.</div></a>
+        <a class="mailcard support" href="mailto:service@hubixlogistics.com"><div class="ml-role">Support</div><div class="ml-addr">service@hubixlogistics.com</div><div class="ml-use">Once you're moving parcels with us — support, handover questions, anything about an active delivery.</div></a>
       </div>
     </div>
-    <div class="footer-bot">
-      <span class="copy">© 2026 HUBIX Logistics · Pilot Q4 2026 · Galle</span>
-      <span class="made">Built in Sri Lanka <b>🇱🇰</b> · people help people</span>
-      <div class="footer-langs"><span class="on">EN</span><span>සිංහල</span><span>தமிழ්</span></div>
+    <div class="contact-meta reveal">
+      <p class="c-loc">📍 Built in <b>Galle, Southern Province, Sri Lanka</b> — where our pilot goes live in Q4 2026. Local first, on purpose.</p>
+      <div class="wa-row"><span class="wa-btn">💬 HUBIX community on WhatsApp</span><span class="wa-soon">Link coming soon</span></div>
+      <p class="c-note">Every message gets read personally, so replies take a little time and a lot of care — usually within 1–2 business days.</p>
+      <p class="c-nophone">You won't find a personal phone number here, and that's deliberate. Every request lives in writing, so nothing slips between a call and a promise — the same principle behind our handshake and photo-trail at every handover: trust you can trace.</p>
+    </div>
+    <div class="contact-foot">
+      <span class="cf-sign"><b><span class="brand">HUBI<span class="brand-x">X</span></span></b> — AI-orchestrated P2P parcel logistics for Sri Lanka. Built in Galle. Piloting Q4 2026.</span>
+      <div class="cf-links"><a href="mailto:hallo@hubixlogistics.com">hallo@</a><a href="#investors">Investors &amp; Press</a><a href="#how-ai">How the AI works</a><span>Galle, Sri Lanka 🇱🇰</span></div>
     </div>
   </div>
 </footer>
-
-<script src="js/vendor/gsap.min.js"></script>
-<script src="js/vendor/ScrollTrigger.min.js"></script>
 <script>
 // mobile nav
 (function(){var b=document.getElementById('burger'),m=document.getElementById('navMobile');
