@@ -261,6 +261,39 @@ a{color:inherit;text-decoration:none}
 .footer-langs span{font-size:11px;font-weight:700;padding:5px 11px;border-radius:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
 .footer-langs span.on{color:var(--teal);background:rgba(0,212,188,.14)}
 
+/* ═══════════ DARK-PREMIUM · SEXY (Founder: sexier + dark-hero-Variante) ═══════════ */
+:root{
+  --ink:#ffffff; --ink-2:rgba(255,255,255,.72); --ink-3:rgba(255,255,255,.46);
+  --card:rgba(255,255,255,.045); --card-border:rgba(255,255,255,.11); --label:#c8a6ff;
+}
+body{background:#0b0817}
+.light{background:
+  radial-gradient(ellipse 60% 45% at 84% 3%,rgba(255,159,28,.12),transparent 60%),
+  radial-gradient(ellipse 55% 45% at 5% 28%,rgba(0,212,188,.08),transparent 62%),
+  radial-gradient(ellipse 60% 50% at 50% 100%,rgba(86,37,162,.18),transparent 72%),
+  linear-gradient(180deg,#0d0a1e 0%,#0b0817 58%,#080a18 100%)}
+/* glassy cards + sexy depth */
+.po-card,.tcard,.stat,.bcol,.hcard{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 22px 54px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.05)}
+.po-card.problem{border-color:rgba(255,120,90,.30);background:linear-gradient(160deg,rgba(255,90,60,.08),rgba(255,255,255,.02))}
+.po-card.outcome{border-color:rgba(0,212,188,.32);background:linear-gradient(160deg,rgba(0,212,188,.10),rgba(86,37,162,.08))}
+.bcol.senders{background:linear-gradient(165deg,rgba(255,159,28,.10),rgba(255,255,255,.015));border-color:rgba(255,159,28,.26)}
+.bcol.network{background:linear-gradient(165deg,rgba(0,212,188,.10),rgba(160,120,255,.07));border-color:rgba(0,212,188,.28)}
+.tcard:hover,.hcard:hover{box-shadow:0 28px 64px rgba(86,37,162,.30),0 0 0 1px rgba(0,212,188,.18)}
+.join{background:linear-gradient(180deg,#0b0817,#0d0a1e)}
+.hcard p{color:#fff}
+.h2 .o{text-shadow:0 0 46px rgba(255,159,28,.55),0 2px 8px rgba(255,159,28,.25)}
+.stat .num{text-shadow:0 0 30px currentColor}
+.tcard .stat-num{text-shadow:0 0 26px currentColor}
+/* hero network canvas + veil + cursor glow */
+.hero-net{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-net canvas{width:100%;height:100%;display:block}
+.hero-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 92% 82% at 20% 42%,rgba(11,8,23,.78),rgba(11,8,23,.24) 56%,transparent 78%)}
+.cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;z-index:99;pointer-events:none;
+  transform:translate(-50%,-50%);opacity:0;transition:opacity .4s ease;mix-blend-mode:screen;
+  background:radial-gradient(circle,rgba(255,159,28,.10),rgba(0,212,188,.05) 40%,transparent 66%)}
+
 /* reveal */
 .js .reveal{opacity:0;transform:translateY(22px)}
 .js:not(.gsap) .reveal{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
@@ -373,6 +406,7 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 
+<div class="cursor-glow" id="cursorGlow"></div>
 <!-- ZONE 1 · LILA HEADER / NAV -->
 <nav class="nav">
   <div class="fol"></div>
@@ -400,6 +434,8 @@ a{color:inherit;text-decoration:none}
 
 <!-- ZONE 2 · DARK-VIOLET HERO -->
 <header class="hero">
+  <div class="hero-net"><canvas id="netCanvas"></canvas></div>
+  <div class="hero-veil"></div>
   <div class="fol"></div>
   <div class="hero-lion"><img src="logo3.png" alt=""></div>
   <div class="wrap">
@@ -470,6 +506,32 @@ a{color:inherit;text-decoration:none}
         <div class="stat reveal"><div class="num"><span data-count="32">0</span>M</div><div class="lbl">Mobile connections</div></div>
       </div>
       <p class="stat-foot reveal">Everything is already on this island — the shops, the roads, the phones. <b>HUBIX is the network that connects them.</b></p>
+    </div>
+  </section>
+
+  <!-- ISLAND NETWORK MAP -->
+  <style>
+  .net-embed{position:relative;max-width:1180px;margin:34px auto 0;padding:0 clamp(20px,5vw,56px)}
+  .net-embed iframe{width:100%;height:min(72vh,640px);border:1px solid rgba(255,255,255,.12);border-radius:22px;
+    background:#0b0817;box-shadow:0 30px 80px rgba(0,0,0,.5);display:block}
+  .net-open{position:absolute;right:calc(clamp(20px,5vw,56px) + 16px);top:16px;z-index:2;font-size:12px;font-weight:800;
+    color:#fff;background:rgba(11,8,23,.72);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:8px 12px;
+    text-decoration:none;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .net-open:hover{border-color:rgba(0,212,188,.5)}
+  @media(max-width:760px){.net-embed{padding:0 12px}.net-embed iframe{height:66vh}}
+  </style>
+  <section class="sec" id="network">
+    <div class="wrap">
+      <div class="center reveal"><span class="sec-label t">Where we're going</span><h2 class="h2">One island. <span class="t">One network.</span></h2><p class="lead center" style="margin-top:14px">Every town a hub. Every road a route. Watch parcels move across Sri Lanka, hub to hub — <b>the network we're building, starting in Galle.</b></p></div>
+      <div class="stats" style="margin-top:6px">
+        <div class="stat reveal"><div class="num"><span data-count="22">0</span></div><div class="lbl">Hub cities</div></div>
+        <div class="stat reveal"><div class="num"><span data-count="35">0</span></div><div class="lbl">Trunk routes</div></div>
+        <div class="stat reveal"><div class="num"><span data-count="25">0</span></div><div class="lbl">Districts</div></div>
+      </div>
+    </div>
+    <div class="net-embed reveal">
+      <iframe src="simulation.html?embed=1" title="HUBIX — the island network" loading="lazy"></iframe>
+      <a class="net-open" href="simulation.html" target="_blank" rel="noopener">Open full map ↗</a>
     </div>
   </section>
 
@@ -695,6 +757,68 @@ a{color:inherit;text-decoration:none}
   if(window.gsap&&window.ScrollTrigger){cs.forEach(function(el){ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:function(){run(el);}});});}
   else if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.5});cs.forEach(function(el){io.observe(el);});}
   else cs.forEach(run);
+})();
+
+// ═══ LIVING NETWORK — glowing hero canvas (dark-hero variante, sexy) ═══
+(function(){
+  var canvas=document.getElementById('netCanvas'); if(!canvas) return;
+  var ctx=canvas.getContext('2d'); var hero=document.querySelector('.hero');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W=0,H=0,DPR=Math.min(window.devicePixelRatio||1,2);
+  var nodes=[],LINK=150,mouse={x:-9999,y:-9999,active:false},raf;
+  var COL={teal:'0,212,188',orange:'255,159,28',purple:'160,120,255',white:'255,255,255'};
+  var parcel={from:0,to:1,t:0,speed:0.011,trail:[]};
+  function size(){var r=hero.getBoundingClientRect();W=r.width;H=r.height;
+    canvas.width=Math.round(W*DPR);canvas.height=Math.round(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);build();}
+  function build(){var target=Math.min(70,Math.round(W*H/17000));if(W<620)target=Math.min(34,target);
+    LINK=W<620?120:150;nodes=[];
+    for(var i=0;i<target;i++){var t=Math.random(),k=t<0.10?'orange':t<0.24?'teal':t<0.30?'purple':'white';
+      nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*0.22,vy:(Math.random()-.5)*0.22,
+        r:k==='white'?(1.1+Math.random()*1.1):(2.2+Math.random()*1.7),kind:k});}
+    parcel.from=0;parcel.to=Math.min(1,nodes.length-1);parcel.t=0;parcel.trail=[];}
+  function pickNext(f){var best=[],a=nodes[f];for(var i=0;i<nodes.length;i++){if(i===f)continue;
+    var dx=nodes[i].x-a.x,dy=nodes[i].y-a.y,d=dx*dx+dy*dy;if(d<LINK*LINK*2.4)best.push({i:i,d:d});}
+    if(!best.length)return(f+1)%nodes.length;best.sort(function(x,y){return x.d-y.d;});
+    return best[Math.floor(Math.random()*Math.min(4,best.length))].i;}
+  function draw(){ctx.clearRect(0,0,W,H);
+    for(var i=0;i<nodes.length;i++){var a=nodes[i];
+      for(var j=i+1;j<nodes.length;j++){var b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<LINK){var al=(1-d/LINK)*0.26;ctx.strokeStyle='rgba(0,212,188,'+al.toFixed(3)+')';ctx.lineWidth=1;
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}}
+    for(var k=0;k<nodes.length;k++){var n=nodes[k],c=COL[n.kind];
+      if(n.kind!=='white'){ctx.beginPath();ctx.fillStyle='rgba('+c+',0.13)';ctx.arc(n.x,n.y,n.r*3.4,0,6.2832);ctx.fill();}
+      ctx.beginPath();ctx.fillStyle='rgba('+c+',0.9)';ctx.arc(n.x,n.y,n.r,0,6.2832);ctx.fill();}
+    for(var p=0;p<parcel.trail.length;p++){var pt=parcel.trail[p],a2=(p/parcel.trail.length)*0.5;
+      ctx.beginPath();ctx.fillStyle='rgba(255,159,28,'+a2.toFixed(3)+')';ctx.arc(pt.x,pt.y,2.3,0,6.2832);ctx.fill();}
+    if(nodes.length>1){var f=nodes[parcel.from],tn=nodes[parcel.to];
+      if(f&&tn){var px=f.x+(tn.x-f.x)*parcel.t,py=f.y+(tn.y-f.y)*parcel.t;
+        ctx.beginPath();ctx.fillStyle='rgba(255,159,28,0.22)';ctx.arc(px,py,10,0,6.2832);ctx.fill();
+        ctx.beginPath();ctx.fillStyle='rgba(255,209,102,1)';ctx.shadowColor='rgba(255,159,28,.9)';ctx.shadowBlur=14;ctx.arc(px,py,3.6,0,6.2832);ctx.fill();ctx.shadowBlur=0;}}}
+  function step(){if(parcel.from>=nodes.length||parcel.to>=nodes.length){parcel.from=0;parcel.to=Math.min(1,nodes.length-1);parcel.t=0;parcel.trail=[];}
+    for(var i=0;i<nodes.length;i++){var n=nodes[i];n.x+=n.vx;n.y+=n.vy;
+      if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;
+      if(mouse.active){var dx=n.x-mouse.x,dy=n.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<130&&d>0){var force=(130-d)/130*0.9;n.x+=dx/d*force;n.y+=dy/d*force;}}}
+    parcel.t+=parcel.speed;if(parcel.t>=1){parcel.t=0;parcel.from=parcel.to;parcel.to=pickNext(parcel.from);}
+    var f=nodes[parcel.from],tn=nodes[parcel.to];
+    if(f&&tn){parcel.trail.push({x:f.x+(tn.x-f.x)*parcel.t,y:f.y+(tn.y-f.y)*parcel.t});if(parcel.trail.length>14)parcel.trail.shift();}
+    draw();raf=requestAnimationFrame(step);}
+  size();window.addEventListener('resize',size);
+  window.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();
+    if(e.clientY>=r.top&&e.clientY<=r.bottom){mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;mouse.active=true;}else mouse.active=false;});
+  if(reduce)draw();else step();
+})();
+
+// ═══ CURSOR GLOW + MAGNETIC BUTTONS (desktop) ═══
+(function(){
+  if(matchMedia('(hover:none)').matches) return;
+  var g=document.getElementById('cursorGlow');
+  if(g){window.addEventListener('mousemove',function(e){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';g.style.opacity='1';});
+    document.addEventListener('mouseleave',function(){g.style.opacity='0';});}
+  document.querySelectorAll('.btn-primary,.nav-cta').forEach(function(b){
+    b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();
+      b.style.transform='translate('+((e.clientX-r.left-r.width/2)*0.22).toFixed(1)+'px,'+((e.clientY-r.top-r.height/2)*0.32).toFixed(1)+'px)';});
+    b.addEventListener('mouseleave',function(){b.style.transform='';});});
 })();
 </script>
 </body>
