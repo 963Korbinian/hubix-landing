@@ -827,6 +827,18 @@ body{position:fixed;inset:0;display:flex;align-items:stretch;justify-content:cen
   .qr-print{max-width:100%!important}
 }
 </style>
+<!-- PostHog · Product Analytics + Session Replay (EU) -->
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId capturePageView".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_zLN4PwU9HuCamxNyZUZLXwxkw8zm72Y9oicQVTREZr8E',{
+  api_host:'https://eu.i.posthog.com',
+  person_profiles:'identified_only',
+  capture_pageview:true,
+  capture_pageleave:true,
+  autocapture:true,
+  session_recording:{ maskAllInputs:true, maskTextSelector:'.ph-mask' }
+});
+</script>
 </head>
 <body>
 <div class="app">
@@ -1890,6 +1902,25 @@ function renderQrView(){
   } catch(e){}
   applyInvitedBy();
   render();
+})();
+</script>
+<!-- PostHog · funnel step wiring (SPA screens are not page loads) -->
+<script>
+(function(){
+  function cap(){ if(window.posthog&&posthog.capture){try{posthog.capture.apply(posthog,arguments);}catch(e){}} }
+  function wrap(name, before){ var orig=window[name]; if(typeof orig!=='function')return; window[name]=function(){ try{before.apply(null,arguments);}catch(e){} return orig.apply(this,arguments); }; }
+  function init(){
+    wrap('goto', function(s){ cap('funnel_step',{step:String(s)}); });
+    wrap('pickRole', function(r){ cap('role_picked',{role:String(r)}); });
+    wrap('setSenderMode', function(m){ cap('sender_mode',{mode:String(m)}); });
+    wrap('submitForm', function(){ cap('signup_submitted'); });
+    wrap('copyLink', function(){ cap('invite_link_copied'); });
+    var started=false;
+    document.addEventListener('focusin', function(e){ var t=e.target; if(!started&&t&&/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)){started=true; cap('signup_started');} }, true);
+    var m={25:0,50:0,75:0,90:0};
+    window.addEventListener('scroll', function(){ var h=document.documentElement,b=document.body,st=h.scrollTop||b.scrollTop||0,sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight; if(sh<=0)return; var p=Math.round(st/sh*100); Object.keys(m).forEach(function(k){ if(!m[k]&&p>=+k){m[k]=1; cap('scrolled_'+k+'pct');} }); }, {passive:true});
+  }
+  if(document.readyState==='complete'){ init(); } else { window.addEventListener('load', init); }
 })();
 </script>
 </body>
